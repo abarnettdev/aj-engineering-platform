@@ -1,4 +1,4 @@
-# AJ Barnett Portfolio
+# AJ Barnett Engineering Platform
 
 Personal engineering site for AJ Barnett, an interactive engineering
 documentary rather than a traditional portfolio. Built on TanStack Start
@@ -18,15 +18,13 @@ bun install
 npm install
 ```
 
-## Develop
+## Development
 
-```bash
-bun run dev
 ```
+bun run dev
 
-The app runs at http://localhost:8080. TanStack Router regenerates
-`src/routeTree.gen.ts` automatically as you add or rename files under
-`src/routes/`.
+Starts the development server.
+```
 
 ## Build
 
