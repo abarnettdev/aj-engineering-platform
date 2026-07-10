@@ -1,9 +1,20 @@
 # AJ Barnett Engineering Platform
 
-Personal engineering site for AJ Barnett, an interactive engineering
-documentary rather than a traditional portfolio. Built on TanStack Start
-(React 19 + Vite 7) with Tailwind v4, shadcn/ui primitives, and a
-Storybook design-system reference.
+An interactive engineering journal exploring
+software architecture, frontend systems,
+design systems, AI-assisted engineering,
+component architecture,
+and product thinking.
+
+Built with:
+
+• TanStack Start
+• React 19
+• TypeScript
+• Tailwind v4
+• Storybook
+• Bun
+• Vercel
 
 ## Requirements
 
