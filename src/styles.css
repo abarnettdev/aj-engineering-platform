@@ -28,6 +28,8 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
+  --color-gold-text: var(--gold-text);
+  --color-gold-text-on-dark: var(--gold-text-on-dark);
   --color-gold-muted: var(--gold-muted);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -68,17 +70,17 @@
   --secondary-foreground: oklch(0.16 0.005 260);
 
   --muted: oklch(0.965 0.003 260);
-  --muted-foreground: oklch(0.43 0.008 260);
-
-  /* Accent is gold. One burnished gold, used for text, borders, dividers, dots, and fills. */
-  --gold: oklch(0.58 0.135 68);
-  /* decorative */
-  --gold-text: oklch(0.44 0.12 68);
-  /* text on white */
-  --gold-on-dark: oklch(0.74 0.11 72);
-  /* text on black */
-  --gold-text: var(--gold);
-  --color-gold-on-dark: var(--gold-on-dark);
+  --muted-foreground: #66686d;
+  
+  /* Bright decorative gold stays unchanged */
+  --gold: oklch(0.52 0.135 68);
+  
+  /* Dark enough for readable text on white */
+  --gold-text: #9a5700;
+  
+  /* Light enough for readable text on black */
+  --gold-text-on-dark: #b17d3a;
+  
   --gold-muted: oklch(0.72 0.10 74);
   --accent: var(--gold);
   --accent-foreground: oklch(0.98 0.003 260);
@@ -113,7 +115,6 @@
   --secondary: oklch(0.20 0.007 260);
   --secondary-foreground: oklch(0.97 0.003 260);
   --muted: oklch(0.20 0.007 260);
-  --muted-foreground: oklch(0.68 0.008 260);
   --gold: oklch(0.82 0.14 82);
   --gold-text: var(--gold);
   --oxblood: oklch(0.44 0.10 17.5);
@@ -203,14 +204,6 @@
   font-family: var(--font-accent);
   font-weight: 400;
   letter-spacing: -0.01em;
-}
-
-@utility text-gold {
-  color: var(--gold-text) !important;
-}
-
-@utility text-gold-dark {
-  color: var(--gold-on-dark) !important;
 }
 
 @utility rule-gold {

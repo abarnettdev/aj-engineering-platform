@@ -12,15 +12,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title:
-          "AJ Barnett · Product-minded systems engineer",
+        title: "AJ Barnett · Product-minded systems engineer",
       },
       {
         name: "description",
         content:
           "I chase problems worth solving, not technologies. Twenty years of frontend architecture, backend services, system design, and the engineering judgment between them.",
       },
-      { property: "og:title", content: "AJ Barnett · Product-minded systems engineer" },
+      {
+        property: "og:title",
+        content: "AJ Barnett · Product-minded systems engineer",
+      },
       {
         property: "og:description",
         content:
@@ -109,10 +111,22 @@ function Home() {
                     loading="eager"
                     decoding="async"
                   />
-                  <span aria-hidden className="absolute left-1 top-1 h-2 w-2 border-l border-t border-gold" />
-                  <span aria-hidden className="absolute right-1 top-1 h-2 w-2 border-r border-t border-gold" />
-                  <span aria-hidden className="absolute left-1 bottom-1 h-2 w-2 border-l border-b border-gold" />
-                  <span aria-hidden className="absolute right-1 bottom-1 h-2 w-2 border-r border-b border-gold" />
+                  <span
+                    aria-hidden
+                    className="absolute left-1 top-1 h-2 w-2 border-l border-t border-gold"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute right-1 top-1 h-2 w-2 border-r border-t border-gold"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute left-1 bottom-1 h-2 w-2 border-l border-b border-gold"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute right-1 bottom-1 h-2 w-2 border-r border-b border-gold"
+                  />
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col justify-between border-l border-border p-3">
                   <div className="flex items-center justify-between gap-2">
@@ -137,14 +151,15 @@ function Home() {
 
             <Reveal>
               <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                <span className="text-gold">Product-minded systems engineer</span>
+                <span className="text-gold">
+                  Product-minded systems engineer
+                </span>
                 <span className="mx-3 text-border-strong">·</span>
                 Full lifecycle
                 <span className="mx-3 text-border-strong">·</span>
                 Framework-agnostic
               </p>
             </Reveal>
-
 
             <h1 className="mt-6 text-balance font-display uppercase text-[2.2rem] leading-[1.02] tracking-[-0.045em] text-ink md:text-[3.1rem] lg:text-[3.6rem]">
               <span className="block">
@@ -157,13 +172,15 @@ function Home() {
                   not technologies.
                 </SplitReveal>
               </span>
-              <span className="mt-2 block font-accent italic normal-case text-gold" style={{ letterSpacing: "-0.01em", lineHeight: 1.15 }}>
+              <span
+                className="mt-2 block font-accent italic normal-case text-gold"
+                style={{ letterSpacing: "-0.01em", lineHeight: 1.15 }}
+              >
                 <SplitReveal delay={0.35} stagger={0.05} y={40}>
                   AI lets me solve more of them.
                 </SplitReveal>
               </span>
             </h1>
-
 
             <Reveal delay={520}>
               <div className="mt-5 h-px w-32 origin-left bg-gold rule-in" />
@@ -199,8 +216,10 @@ function Home() {
           </div>
 
           {/* Layered cinematic artifact composition */}
-          <div className="relative hidden min-h-[460px] md:block" style={{ perspective: "1400px" }}>
-
+          <div
+            className="relative hidden min-h-[460px] md:block"
+            style={{ perspective: "1400px" }}
+          >
             {/* Decorative wire connector between panels, draws once on mount */}
             <svg
               aria-hidden
@@ -210,9 +229,21 @@ function Home() {
             >
               <defs>
                 <linearGradient id="hero-wire" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="var(--gold)" stopOpacity="0.05" />
-                  <stop offset="50%" stopColor="var(--gold)" stopOpacity="0.7" />
-                  <stop offset="100%" stopColor="var(--gold)" stopOpacity="0.05" />
+                  <stop
+                    offset="0%"
+                    stopColor="var(--gold)"
+                    stopOpacity="0.05"
+                  />
+                  <stop
+                    offset="50%"
+                    stopColor="var(--gold)"
+                    stopOpacity="0.7"
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor="var(--gold)"
+                    stopOpacity="0.05"
+                  />
                 </linearGradient>
               </defs>
               <path
@@ -272,14 +303,22 @@ function Home() {
                       </span>
                     </div>
                     <pre className="mono overflow-hidden p-4 text-[11px] leading-relaxed text-foreground/85">
-{`export const semantic = {
+                      {`export const semantic = {
   color: {
-    action:  { primary: `}<span className="text-gold">{`'brand.600'`}</span>{` },
-    surface: { raised:  `}<span className="text-gold">{`'neutral.50'`}</span>{` },
-    text:    { primary: `}<span className="text-gold">{`'neutral.900'`}</span>{` },
+    action:  { primary: `}
+                      <span className="text-gold">{`'brand.600'`}</span>
+                      {` },
+    surface: { raised:  `}
+                      <span className="text-gold">{`'neutral.50'`}</span>
+                      {` },
+    text:    { primary: `}
+                      <span className="text-gold">{`'neutral.900'`}</span>
+                      {` },
   },
   space:  { 1: 4, 2: 8, 3: 12, 4: 16 },
-  motion: { ease: `}<span className="text-gold">{`'cubic-bezier(.22,1,.36,1)'`}</span>{` },
+  motion: { ease: `}
+                      <span className="text-gold">{`'cubic-bezier(.22,1,.36,1)'`}</span>
+                      {` },
 } as const;`}
                     </pre>
                   </div>
@@ -313,10 +352,22 @@ function Home() {
                         decoding="async"
                       />
                       {/* corner registration marks on the portrait */}
-                      <span aria-hidden className="absolute left-1.5 top-1.5 h-2.5 w-2.5 border-l border-t border-gold" />
-                      <span aria-hidden className="absolute right-1.5 top-1.5 h-2.5 w-2.5 border-r border-t border-gold" />
-                      <span aria-hidden className="absolute left-1.5 bottom-1.5 h-2.5 w-2.5 border-l border-b border-gold" />
-                      <span aria-hidden className="absolute right-1.5 bottom-1.5 h-2.5 w-2.5 border-r border-b border-gold" />
+                      <span
+                        aria-hidden
+                        className="absolute left-1.5 top-1.5 h-2.5 w-2.5 border-l border-t border-gold"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute right-1.5 top-1.5 h-2.5 w-2.5 border-r border-t border-gold"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute left-1.5 bottom-1.5 h-2.5 w-2.5 border-l border-b border-gold"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute right-1.5 bottom-1.5 h-2.5 w-2.5 border-r border-b border-gold"
+                      />
                     </div>
                     <div className="border-t border-border p-3">
                       <p className="font-display text-[13px] font-semibold uppercase leading-tight tracking-tight text-ink">
@@ -354,12 +405,9 @@ function Home() {
         </div>
       </section>
 
-
       {/* THE PROOF, breadth + depth across the full product lifecycle */}
       <section className="border-b border-border/70 bg-background">
         <div className="container-page grid gap-16 py-24 md:grid-cols-[1fr_1.6fr] md:py-32">
-
-
           <Reveal>
             <div className="md:sticky md:top-24 md:self-start">
               <Eyebrow>What I carry into the room</Eyebrow>
@@ -424,7 +472,6 @@ function Home() {
         /engineering, /systems, /writing.
       */}
 
-
       {/* CLOSING */}
       <div className="relative overflow-hidden border-t border-border/70">
         <div className="container-page relative py-28 md:py-36">
@@ -434,11 +481,13 @@ function Home() {
               <h2 className="mt-8 text-balance font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-7xl">
                 The next chapter
                 <br />
-                <span className="font-accent italic text-gold">is being written.</span>
+                <span className="font-accent italic text-gold">
+                  is being written.
+                </span>
               </h2>
               <p className="mt-8 text-lg text-muted-foreground">
-                If your team is building something worth showing up for, I'd love
-                to hear about it.
+                If your team is building something worth showing up for, I'd
+                love to hear about it.
               </p>
               <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
                 <Link

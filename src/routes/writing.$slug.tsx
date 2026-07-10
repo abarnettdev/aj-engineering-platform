@@ -11,7 +11,10 @@ export const Route = createFileRoute("/writing/$slug")({
     return {
       meta: [
         { title: `${a?.title ?? "Article"}, AJ Barnett` },
-        { name: "description", content: a?.dek ?? "Field notes by AJ Barnett." },
+        {
+          name: "description",
+          content: a?.dek ?? "Field notes by AJ Barnett.",
+        },
       ],
     };
   },
@@ -22,11 +25,16 @@ export const Route = createFileRoute("/writing/$slug")({
   },
   notFoundComponent: () => (
     <div className="container-page py-32 text-center">
-      <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">404</p>
+      <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+        404
+      </p>
       <h1 className="mt-6 font-display text-5xl font-medium text-ink">
         Article not found
       </h1>
-      <Link to="/writing" className="mono mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-ink hover:text-gold">
+      <Link
+        to="/writing"
+        className="mono mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-ink hover:text-gold"
+      >
         ← Back to field notes
       </Link>
     </div>
@@ -71,7 +79,9 @@ function Article() {
             </h1>
           </Reveal>
           <Reveal delay={240}>
-            <p className="mt-8 max-w-2xl text-lg text-background/80">{article.dek}</p>
+            <p className="mt-8 max-w-2xl text-lg text-background/80">
+              {article.dek}
+            </p>
           </Reveal>
           <Reveal delay={320}>
             <div className="mono mt-10 flex flex-wrap items-center gap-5 text-[10px] uppercase tracking-[0.22em] text-background/60">
@@ -94,8 +104,6 @@ function Article() {
           </p>
           <ActiveToc items={article.toc} className="mt-4" />
         </aside>
-
-
 
         {/* Prose */}
         <article className="min-w-0 max-w-2xl">
@@ -153,7 +161,7 @@ function Article() {
                 >
                   <div className="mb-3 flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-background/50">
                     <span>{block.lang ?? "code"}</span>
-                    <span className="text-gold">// snippet</span>
+                    <span className="text-gold-text-on-dark">// snippet</span>
                   </div>
                   <code>{block.text}</code>
                 </pre>

@@ -54,7 +54,7 @@ export function PageHero({
         <div className="relative">
           <Reveal>
             <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-              <span className="text-gold">{chapter}</span>
+              <span className="text-gold-text">{chapter}</span>
               <span className="mx-3 text-border-strong">·</span>
               {eyebrow}
             </p>
@@ -100,60 +100,68 @@ export function PageHero({
         </div>
 
         {/* Layered image + floating chip, landscape, never oversized */}
-        <div className="relative hidden md:block" style={{ perspective: "1400px" }}>
-        <Reveal delay={200}>
-          <Parallax speed={-0.2} scale={[1.04, 0.98]}>
-            <Tilt3D max={5} glare>
-              <div className="relative overflow-hidden border border-border shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)]">
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  width={1000}
-                  height={750}
-                  loading="lazy"
-                  className="block aspect-[4/3] w-full object-cover"
-                />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, transparent 55%, color-mix(in oklab, var(--ink) 45%, transparent))",
-                  }}
-                />
-                <div className="mono absolute bottom-3 left-3 text-[9px] uppercase tracking-[0.24em] text-background/90">
-                  Ch · {chapter}
+        <div
+          className="relative hidden md:block"
+          style={{ perspective: "1400px" }}
+        >
+          <Reveal delay={200}>
+            <Parallax speed={-0.2} scale={[1.04, 0.98]}>
+              <Tilt3D max={5} glare>
+                <div className="relative overflow-hidden border border-border shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)]">
+                  <img
+                    src={image}
+                    alt={imageAlt}
+                    width={1000}
+                    height={750}
+                    loading="lazy"
+                    className="block aspect-[4/3] w-full object-cover"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 55%, color-mix(in oklab, var(--ink) 45%, transparent))",
+                    }}
+                  />
+                  <div className="mono absolute bottom-3 left-3 text-[9px] uppercase tracking-[0.24em] text-background/90">
+                    Ch · {chapter}
+                  </div>
                 </div>
-              </div>
-            </Tilt3D>
-          </Parallax>
+              </Tilt3D>
+            </Parallax>
 
-          {/* Floating meta chip */}
-          {(imageCaption || imageMeta) && (
-            <FloatLayer depth={0.5} rotate={-1} className="absolute -bottom-6 -left-4 w-[70%]">
-              <div className="border border-border bg-background p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
-                <div className="flex items-baseline justify-between">
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
-                    {imageCaption}
-                  </p>
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                    {imageMeta}
-                  </p>
+            {/* Floating meta chip */}
+            {(imageCaption || imageMeta) && (
+              <FloatLayer
+                depth={0.5}
+                rotate={-1}
+                className="absolute -bottom-6 -left-4 w-[70%] opacity-100!"
+              >
+                <div className="border border-border bg-background p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.25)]">
+                  <div className="flex items-baseline justify-between">
+                    <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+                      {imageCaption}
+                    </p>
+                    <p className="mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                      {imageMeta}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </FloatLayer>
-          )}
-        </Reveal>
+              </FloatLayer>
+            )}
+          </Reveal>
         </div>
       </div>
-
 
       {/* Right-rail chapter dots */}
       <div
         aria-hidden
         className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-3 lg:flex"
       >
-        <span className="mono text-[10px] tracking-widest text-gold">{chapter}</span>
+        <span className="mono text-[10px] tracking-widest text-gold-text">
+          {chapter}
+        </span>
         {[0, 1, 2, 3, 4].map((i) => (
           <span key={i} className="h-1 w-1 rounded-full bg-border-strong" />
         ))}
@@ -171,11 +179,10 @@ export function PageHero({
 export function Accent({ children }: { children: ReactNode }) {
   return (
     <span
-      className="font-accent italic normal-case text-gold"
+      className="font-accent italic normal-case text-gold-text"
       style={{ letterSpacing: "-0.01em" }}
     >
       {children}
     </span>
   );
 }
-
