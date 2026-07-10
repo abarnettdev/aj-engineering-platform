@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.output/
+.storybook-static/
+
+# environment
+.env
+.env.*
+*.local
+
+# logs
+*.log
+
+# macOS
+.DS_Store
+
+# editors
+.vscode/
+.idea/
+
+# Wrangler
+.wrangler/
+.dev.vars

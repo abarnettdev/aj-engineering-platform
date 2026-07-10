@@ -1,0 +1,511 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-ink: var(--ink);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-muted: var(--gold-muted);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-muted: var(--oxblood-muted);
+  --color-ivory: var(--ivory);
+  --color-graphite: var(--graphite);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo Black", "Archivo", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Instrument Serif", "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Premium light: pure white, near-black ink, neutral grays, luxury gold */
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.16 0.005 260);
+  --ink: oklch(0.13 0.005 260);
+
+  --surface: oklch(0.985 0.002 260);
+  --surface-elevated: oklch(1 0 0);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.005 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.005 260);
+
+  --primary: oklch(0.15 0.005 260);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.965 0.003 260);
+  --secondary-foreground: oklch(0.16 0.005 260);
+
+  --muted: oklch(0.965 0.003 260);
+  --muted-foreground: oklch(0.47 0.008 260);
+
+  /* Accent is gold. One burnished gold, used for text, borders, dividers, dots, and fills. */
+  --gold: oklch(0.52 0.135 68);
+  --gold-text: var(--gold);
+  --gold-muted: oklch(0.72 0.10 74);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.98 0.003 260);
+  /* Deep Oxblood #5A1E24 — reserved for critical path, risk, review marks */
+  --oxblood: oklch(0.329 0.088 17.5);
+  --oxblood-muted: oklch(0.44 0.075 17.5);
+  --ivory: oklch(0.975 0.008 82);
+  --graphite: oklch(0.28 0.005 260);
+
+  /* destructive re-points to oxblood — no bright reds anywhere on the site */
+  --destructive: oklch(0.329 0.088 17.5);
+  --destructive-foreground: oklch(0.975 0.008 82);
+
+  --border: oklch(0.92 0.004 260);
+  --border-strong: oklch(0.80 0.006 260);
+  --input: oklch(0.92 0.004 260);
+  --ring: oklch(0.52 0.135 68);
+}
+
+.dark {
+  --background: oklch(0.09 0.005 260);
+  --foreground: oklch(0.97 0.003 260);
+  --ink: oklch(0.98 0.003 260);
+  --surface: oklch(0.13 0.006 260);
+  --surface-elevated: oklch(0.17 0.007 260);
+  --card: oklch(0.13 0.006 260);
+  --card-foreground: oklch(0.97 0.003 260);
+  --popover: oklch(0.13 0.006 260);
+  --popover-foreground: oklch(0.97 0.003 260);
+  --primary: oklch(0.97 0.003 260);
+  --primary-foreground: oklch(0.09 0.005 260);
+  --secondary: oklch(0.20 0.007 260);
+  --secondary-foreground: oklch(0.97 0.003 260);
+  --muted: oklch(0.20 0.007 260);
+  --muted-foreground: oklch(0.68 0.008 260);
+  --gold: oklch(0.82 0.14 82);
+  --gold-text: var(--gold);
+  --oxblood: oklch(0.44 0.10 17.5);
+  --oxblood-muted: oklch(0.55 0.085 17.5);
+  --ivory: oklch(0.16 0.006 82);
+  --graphite: oklch(0.72 0.005 260);
+  --gold-muted: oklch(0.62 0.11 82);
+  --accent: var(--gold);
+  --accent-foreground: oklch(0.09 0.005 260);
+  --border: oklch(0.24 0.007 260);
+  --border-strong: oklch(0.36 0.008 260);
+  --input: oklch(0.24 0.007 260);
+  --ring: oklch(0.82 0.14 82);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--gold) 32%, transparent);
+    color: var(--foreground);
+  }
+  h1, h2, h3, h4 {
+    letter-spacing: -0.035em;
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--ink);
+  }
+  h1 { font-weight: 900; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility container-narrow {
+  width: 100%;
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@utility hairline {
+  border-top: 1px solid var(--border);
+}
+
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+  background-size: 8.3333% 100%;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss01";
+  font-weight: 500;
+}
+
+@utility font-accent {
+  font-family: var(--font-accent);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@utility text-gold {
+  color: var(--gold-text) !important;
+}
+
+@utility rule-gold {
+  position: relative;
+}
+.rule-gold::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold);
+}
+
+/* Scroll reveal */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+[data-in="true"].reveal,
+.reveal[data-in="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Chapter link, mono superscript + underline sweep */
+@utility chapter-link {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.chapter-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.chapter-link:hover::after,
+.chapter-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+@utility story-link {
+  position: relative;
+  display: inline-block;
+}
+.story-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Premium lift on hover, subtle, editorial */
+@utility lift {
+  transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 400ms ease;
+}
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 0 color-mix(in oklab, var(--gold) 18%, transparent),
+    0 24px 60px -32px color-mix(in oklab, var(--foreground) 30%, transparent);
+}
+
+/* Gold sweep, passes across a surface on hover */
+@utility gold-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.gold-sweep::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    color-mix(in oklab, var(--gold) 22%, transparent) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+.gold-sweep:hover::before { transform: translateX(100%); }
+
+/* Animated hairline, used under section headers */
+@keyframes lv-rule {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@utility rule-in {
+  transform-origin: left center;
+  animation: lv-rule 1200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes lv-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
+}
+@utility float-slow {
+  animation: lv-float 9s ease-in-out infinite;
+}
+
+@keyframes lv-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@utility marquee-track {
+  animation: lv-marquee 50s linear infinite;
+}
+
+/* Editorial drop-cap */
+@utility drop-cap {
+  &::first-letter {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 4.2em;
+    line-height: 0.9;
+    float: left;
+    padding: 0.08em 0.12em 0 0;
+    color: var(--ink);
+  }
+}
+
+/* Numbered plate, quiet gold, editorial */
+@utility plate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.plate::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+
+/* Global focus indicator — WCAG 2.4.7 Focus Visible */
+@layer base {
+  :where(a, button, [role="button"], input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* Every interactive control gets the pointer. Disabled states revert. */
+  :where(button, [role="button"], a[href], summary, label[for]) {
+    cursor: pointer;
+  }
+  :where(button, [role="button"])[disabled],
+  :where(button, [role="button"])[aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+/* Idle float — gentle continuous Y bob for cinematic hero panels */
+@keyframes float-idle-a {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+@keyframes float-idle-b {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(6px); }
+}
+@keyframes float-idle-c {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-5px); }
+}
+.float-idle-a { animation: float-idle-a 7s ease-in-out infinite; }
+.float-idle-b { animation: float-idle-b 9s ease-in-out infinite; }
+.float-idle-c { animation: float-idle-c 6s ease-in-out infinite; }
+
+/* Pulsing status dot for live/shipping chips */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.85); }
+}
+.pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .float-idle-a, .float-idle-b, .float-idle-c, .pulse-dot { animation: none !important; }
+}
+
+
+/* Gold edge reveal, a hair-thin gold border blooms on the left edge of a card on hover */
+@utility edge-gold {
+  position: relative;
+  isolation: isolate;
+}
+.edge-gold::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.edge-gold:hover::after,
+.edge-gold:focus-within::after {
+  transform: scaleY(1);
+  transform-origin: bottom center;
+}
+
+/* Mask reveal, clip-path wipe used on scroll (data-in="true" toggled by IO) */
+@utility mask-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1100ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
+}
+.mask-reveal[data-in="true"] {
+  clip-path: inset(0 0 0 0);
+}
+
+/* Tactile press — subtle scale on active for buttons/links */
+@utility tactile {
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tactile:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+/* Case study numeral — oversized editorial numeral */
+@utility numeral {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: color-mix(in oklab, var(--foreground) 9%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-reveal { clip-path: none !important; transition: none !important; }
+  .edge-gold::after { transform: scaleY(1) !important; transition: none !important; }
+}
+
+/* Oxblood pull quote — editorial emphasis, used sparingly */
+@utility pull-quote {
+  position: relative;
+  padding-left: 1.25rem;
+  font-family: var(--font-accent);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.pull-quote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  bottom: 0.35em;
+  width: 2px;
+  background: var(--oxblood);
+}
+
+/* Chapter break — thin oxblood rule between major sections */
+@utility rule-oxblood {
+  border: 0;
+  height: 1px;
+  background: var(--oxblood);
+  opacity: 0.55;
+  margin-block: 3rem;
+}
+
+/* Emphasis word — inline oxblood italic for thesis lines */
+@utility emphasis {
+  color: var(--oxblood);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+}
