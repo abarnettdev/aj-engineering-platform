@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function NotFoundComponent() {
   return (
@@ -23,7 +24,8 @@ function NotFoundComponent() {
         </p>
         <h1 className="mt-4 font-display text-6xl">Page not found</h1>
         <p className="mt-4 text-sm text-muted-foreground">
-          The route you're looking for doesn't exist. It may have moved, or the link is stale.
+          The route you're looking for doesn't exist. It may have moved, or the
+          link is stale.
         </p>
         <div className="mt-8">
           <Link
@@ -77,57 +79,59 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      {
-        title:
-          "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
-      },
-      {
-        name: "description",
-        content:
-          "Staff Software Engineer turning complex problems into elegant systems that scale. React, TypeScript, enterprise design systems, accessibility, and AI-assisted engineering.",
-      },
-      { name: "author", content: "AJ Barnett" },
-      {
-        property: "og:title",
-        content:
-          "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
-      },
-      {
-        property: "og:description",
-        content:
-          "Turning complex problems into elegant systems that scale. Design systems, frontend architecture, accessibility, and AI-assisted engineering.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
-      },
-      {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossOrigin: "anonymous",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo+Black&family=Archivo:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
-});
+export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
+  {
+    head: () => ({
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        {
+          title:
+            "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
+        },
+        {
+          name: "description",
+          content:
+            "Staff Software Engineer turning complex problems into elegant systems that scale. React, TypeScript, enterprise design systems, accessibility, and AI-assisted engineering.",
+        },
+        { name: "author", content: "AJ Barnett" },
+        {
+          property: "og:title",
+          content:
+            "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
+        },
+        {
+          property: "og:description",
+          content:
+            "Turning complex problems into elegant systems that scale. Design systems, frontend architecture, accessibility, and AI-assisted engineering.",
+        },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+      links: [
+        { rel: "stylesheet", href: appCss },
+        { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.googleapis.com",
+        },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossOrigin: "anonymous",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo+Black&family=Archivo:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
+        },
+      ],
+    }),
+    shellComponent: RootShell,
+    component: RootComponent,
+    notFoundComponent: NotFoundComponent,
+    errorComponent: ErrorComponent,
+  }
+);
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
@@ -137,7 +141,8 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-	<Analytics />
+        <Analytics />
+        <SpeedInsights />
         <Scripts />
       </body>
     </html>
