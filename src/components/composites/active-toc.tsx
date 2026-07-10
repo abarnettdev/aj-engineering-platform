@@ -29,14 +29,17 @@ export function ActiveToc({
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible[0]?.target?.id) setActive(visible[0].target.id);
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.1, 0.5, 1] },
+      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.1, 0.5, 1] }
     );
     nodes.forEach((n) => io.observe(n));
     return () => io.disconnect();
   }, [items]);
 
   return (
-    <nav aria-label="Article sections" className={cn("border-l border-border pl-4", className)}>
+    <nav
+      aria-label="Article sections"
+      className={cn("border-l border-border pl-4", className)}
+    >
       <ol className="space-y-3 text-sm">
         {items.map((s, i) => {
           const isActive = active === s.id;
@@ -47,13 +50,13 @@ export function ActiveToc({
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "group flex items-baseline gap-3 transition-colors",
-                  isActive ? "text-ink" : "text-muted-foreground hover:text-ink",
+                  isActive ? "text-ink" : "text-muted-foreground hover:text-ink"
                 )}
               >
                 <span
                   className={cn(
                     "mono text-[9.5px] tracking-[0.18em] transition-colors",
-                    isActive ? "text-gold" : "text-gold/60",
+                    isActive ? "text-gold" : "text-gold-dark"
                   )}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -61,7 +64,7 @@ export function ActiveToc({
                 <span
                   className={cn(
                     "story-link relative",
-                    isActive && "after:scale-x-100 after:origin-bottom-left",
+                    isActive && "after:scale-x-100 after:origin-bottom-left"
                   )}
                 >
                   {s.label}

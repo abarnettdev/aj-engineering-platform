@@ -68,11 +68,17 @@
   --secondary-foreground: oklch(0.16 0.005 260);
 
   --muted: oklch(0.965 0.003 260);
-  --muted-foreground: oklch(0.47 0.008 260);
+  --muted-foreground: oklch(0.43 0.008 260);
 
   /* Accent is gold. One burnished gold, used for text, borders, dividers, dots, and fills. */
-  --gold: oklch(0.52 0.135 68);
+  --gold: oklch(0.58 0.135 68);
+  /* decorative */
+  --gold-text: oklch(0.44 0.12 68);
+  /* text on white */
+  --gold-on-dark: oklch(0.74 0.11 72);
+  /* text on black */
   --gold-text: var(--gold);
+  --color-gold-on-dark: var(--gold-on-dark);
   --gold-muted: oklch(0.72 0.10 74);
   --accent: var(--gold);
   --accent-foreground: oklch(0.98 0.003 260);
@@ -201,6 +207,10 @@
 
 @utility text-gold {
   color: var(--gold-text) !important;
+}
+
+@utility text-gold-dark {
+  color: var(--gold-on-dark) !important;
 }
 
 @utility rule-gold {
