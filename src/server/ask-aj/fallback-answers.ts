@@ -1,3 +1,5 @@
+import { askAjKnowledge } from "@/content/knowledge/ask-aj";
+
 type CachedAnswer = {
   id: string;
   answer: string;
@@ -11,7 +13,29 @@ const cachedAnswers: CachedAnswer[] = [
     exactQuestions: ["tell me about aj", "who is aj"],
     keywords: ["about", "aj"],
     answer:
-      "AJ Barnett is a senior software engineer focused on React, TypeScript, frontend platforms, enterprise design systems, accessibility, architecture, and AI-assisted engineering workflows. His portfolio emphasizes turning complex product and engineering problems into reusable systems that help teams move with more clarity.",
+      "AJ Barnett is a software engineer building AI-powered products, frontend platforms, and scalable developer systems. He combines React, TypeScript, enterprise platform experience, accessibility, architecture judgment, and production-minded AI engineering.",
+  },
+  {
+    id: "ask-aj",
+    exactQuestions: [
+      "what is ask aj",
+      "what is ask a j",
+      "who built ask aj",
+      "is ask aj an ai agent",
+    ],
+    keywords: ["ask", "agent"],
+    answer:
+      "Ask A.J. is a recruiter-facing AI agent designed and engineered by AJ Barnett. It is a live portfolio artifact that demonstrates server-side OpenAI integration, NDJSON streaming, request validation, fallback models, cached answers, circuit breaking, cost controls, and graceful degradation.",
+  },
+  {
+    id: "ai-product-engineering",
+    exactQuestions: [
+      "how does aj build ai-powered products",
+      "what ai application engineering capabilities does aj have",
+    ],
+    keywords: ["ai", "engineering"],
+    answer:
+      "AJ builds AI-powered products by treating the model as one part of a product system: server-owned context, strict request validation, streamed UI, timeout and retry strategy, model fallback, cost controls, origin protection, structured logging, and clear separation between implemented features and roadmap ideas.",
   },
   {
     id: "cdw-legato",
@@ -85,8 +109,7 @@ const cachedAnswers: CachedAnswer[] = [
   },
 ];
 
-const staticFallbackAnswer =
-  "Ask A.J. is temporarily unable to generate a personalized response right now. AJ is a senior software engineer with deep React, TypeScript, frontend-platform, accessibility, and enterprise design-system experience.\n\nYou can still ask focused questions like:\n- What did AJ build at CDW?\n- How does AJ think about design systems?\n- What is AJ's React and TypeScript experience?\n- What leadership experience does AJ have?\n\nYou can also use the contact form or portfolio navigation to learn more about AJ's work.";
+const staticFallbackAnswer = `Ask A.J. is temporarily unable to generate a personalized response right now. AJ is a software engineer building AI-powered products, frontend platforms, and scalable developer systems, with deep React, TypeScript, accessibility, and enterprise design-system experience.\n\nYou can still ask focused questions like:\n- What is Ask A.J. and how was it engineered?\n- How does AJ build AI-powered products?\n- What has AJ built at enterprise scale?\n- What AI application engineering capabilities does AJ have?\n\nYou can also use the contact form or portfolio navigation to learn more about AJ's work.`;
 
 export function getCachedAskAjAnswer(question: string) {
   const normalized = normalizeQuestion(question);

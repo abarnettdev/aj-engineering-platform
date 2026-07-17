@@ -7,7 +7,12 @@ import {
   ContactConfigurationError,
   getContactRuntimeConfig,
 } from "@/server/contact/env";
-import { sendRecruiterContactEmail } from "@/server/contact/email";
+import {
+  ContactEmailProviderError,
+  isDuplicateContactSubmission,
+  rememberContactSubmission,
+  sendRecruiterContactEmail,
+} from "@/server/contact/email";
 import { isContactSubmissionRateLimited } from "@/server/contact/rate-limit";
 
 export const Route = createFileRoute("/api/contact")({
@@ -31,13 +36,23 @@ export const Route = createFileRoute("/api/contact")({
             );
           }
 
-          await sendRecruiterContactEmail(contact, getContactRuntimeConfig());
+          const config = getContactRuntimeConfig();
+
+          if (isDuplicateContactSubmission(contact)) {
+            return successResponse();
+          }
+
+          await sendRecruiterContactEmail(contact, config);
+          rememberContactSubmission(contact);
           return successResponse();
         } catch (error) {
           if (error instanceof ContactConfigurationError) {
-            console.error(
-              "Recruiter contact email configuration is incomplete.",
-            );
+            console.error("contact.configuration_invalid", {
+              environment: process.env.NODE_ENV ?? "unknown",
+              missingKeys: error.missingKeys,
+              provider: error.provider || "unset",
+              timestamp: new Date().toISOString(),
+            });
             return response(
               {
                 success: false,
@@ -55,6 +70,18 @@ export const Route = createFileRoute("/api/contact")({
                 message: "Please review the highlighted fields and try again.",
               },
               400,
+            );
+          }
+
+          if (error instanceof ContactEmailProviderError) {
+            console.error("contact.provider_rejected", error.diagnostics);
+            return response(
+              {
+                success: false,
+                message:
+                  "Your message could not be sent. Please try again shortly.",
+              },
+              502,
             );
           }
 

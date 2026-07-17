@@ -19,6 +19,7 @@ import { Route as AskAjRouteImport } from './routes/ask-aj'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WritingIndexRouteImport } from './routes/writing.index'
 import { Route as WritingSlugRouteImport } from './routes/writing.$slug'
+import { Route as WorkAskAjRouteImport } from './routes/work.ask-aj'
 import { Route as ApiContactRouteImport } from './routes/api.contact'
 import { Route as ApiAskAjRouteImport } from './routes/api.ask-aj'
 
@@ -72,6 +73,11 @@ const WritingSlugRoute = WritingSlugRouteImport.update({
   path: '/writing/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkAskAjRoute = WorkAskAjRouteImport.update({
+  id: '/ask-aj',
+  path: '/ask-aj',
+  getParentRoute: () => WorkRoute,
+} as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
   path: '/api/contact',
@@ -91,9 +97,10 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
+  '/work/ask-aj': typeof WorkAskAjRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -105,9 +112,10 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
+  '/work/ask-aj': typeof WorkAskAjRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing': typeof WritingIndexRoute
 }
@@ -120,9 +128,10 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRoute
+  '/work': typeof WorkRouteWithChildren
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
+  '/work/ask-aj': typeof WorkAskAjRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/api/ask-aj'
     | '/api/contact'
+    | '/work/ask-aj'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/api/ask-aj'
     | '/api/contact'
+    | '/work/ask-aj'
     | '/writing/$slug'
     | '/writing'
   id:
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/work'
     | '/api/ask-aj'
     | '/api/contact'
+    | '/work/ask-aj'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesById: FileRoutesById
@@ -179,7 +191,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsRoute: typeof SystemsRoute
   TimelineRoute: typeof TimelineRoute
-  WorkRoute: typeof WorkRoute
+  WorkRoute: typeof WorkRouteWithChildren
   ApiAskAjRoute: typeof ApiAskAjRoute
   ApiContactRoute: typeof ApiContactRoute
   WritingSlugRoute: typeof WritingSlugRoute
@@ -258,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WritingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/ask-aj': {
+      id: '/work/ask-aj'
+      path: '/ask-aj'
+      fullPath: '/work/ask-aj'
+      preLoaderRoute: typeof WorkAskAjRouteImport
+      parentRoute: typeof WorkRoute
+    }
     '/api/contact': {
       id: '/api/contact'
       path: '/api/contact'
@@ -275,6 +294,16 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface WorkRouteChildren {
+  WorkAskAjRoute: typeof WorkAskAjRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkAskAjRoute: WorkAskAjRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AskAjRoute: AskAjRoute,
@@ -283,7 +312,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsRoute: SystemsRoute,
   TimelineRoute: TimelineRoute,
-  WorkRoute: WorkRoute,
+  WorkRoute: WorkRouteWithChildren,
   ApiAskAjRoute: ApiAskAjRoute,
   ApiContactRoute: ApiContactRoute,
   WritingSlugRoute: WritingSlugRoute,

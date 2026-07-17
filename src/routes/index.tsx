@@ -12,21 +12,21 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "AJ Barnett · Product-minded systems engineer",
+        title: "AJ Barnett · AI Product Engineer",
       },
       {
         name: "description",
         content:
-          "I chase problems worth solving, not technologies. Twenty years of frontend architecture, backend services, system design, and the engineering judgment between them.",
+          "Software engineer building AI-powered products, frontend platforms, and scalable developer systems with React, TypeScript, and production-minded architecture.",
       },
       {
         property: "og:title",
-        content: "AJ Barnett · Product-minded systems engineer",
+        content: "AJ Barnett · AI Product Engineer",
       },
       {
         property: "og:description",
         content:
-          "I chase problems worth solving, not technologies. AI is leverage. Judgment is human.",
+          "Ask A.J. is a live AI agent built by AJ Barnett to demonstrate production-minded AI product engineering.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -35,46 +35,49 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-// The disciplines AJ carries into a room, breadth + depth, framework-agnostic.
-// Eight is the proof; the answer to "Who is AJ?" is the shape of this list.
 const disciplines = [
   {
     k: "01",
+    t: "AI Application Engineering",
+    d: "Server-side model integration, streamed interfaces, fallback models, circuit breaking, validation, and cost-aware production behavior.",
+  },
+  {
+    k: "02",
     t: "Frontend Architecture",
     d: "Interfaces designed for change, not for demos. Boundaries first, then components.",
   },
   {
-    k: "02",
+    k: "03",
     t: "Backend & System Design",
     d: "API contracts, data shape, service seams. The parts of the product no user sees, but every user feels.",
   },
   {
-    k: "03",
+    k: "04",
     t: "Product Engineering",
     d: "Ship the outcome, not the ticket. Own the surface area from problem to release.",
   },
   {
-    k: "04",
+    k: "05",
     t: "Technical Leadership",
     d: "Multiply teams. Lower ambiguity. Make the next decision cheaper than the last.",
   },
   {
-    k: "05",
+    k: "06",
     t: "Design Systems",
     d: "Tokens, primitives, motion, docs, accessibility, one chapter of the work, not the thesis.",
   },
   {
-    k: "06",
+    k: "07",
     t: "Accessibility",
     d: "WCAG 2.1 AA and Section 508 as product quality, verified, never a compliance checkbox.",
   },
   {
-    k: "07",
+    k: "08",
     t: "AI as Leverage",
-    d: "Claude, Copilot, MCP, and the rest, used to widen the surface I can hold. Execution accelerates. Judgment stays human.",
+    d: "Model-assisted workflows used to widen the surface I can hold. Execution accelerates. Judgment stays human.",
   },
   {
-    k: "08",
+    k: "09",
     t: "Engineering Judgment",
     d: "The compounding asset. Knowing which problems are worth solving, and which tradeoffs to refuse.",
   },
@@ -151,25 +154,23 @@ function Home() {
 
             <Reveal>
               <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                <span className="text-gold">
-                  Product-minded systems engineer
-                </span>
+                <span className="text-gold">AI product engineer</span>
                 <span className="mx-3 text-border-strong">·</span>
-                Full lifecycle
+                React + TypeScript
                 <span className="mx-3 text-border-strong">·</span>
-                Framework-agnostic
+                Production systems
               </p>
             </Reveal>
 
             <h1 className="mt-6 text-balance font-display uppercase text-[2.2rem] leading-[1.02] tracking-[-0.045em] text-ink md:text-[3.1rem] lg:text-[3.6rem]">
               <span className="block">
                 <SplitReveal stagger={0.06} y={40}>
-                  I chase problems,
+                  I build AI-powered
                 </SplitReveal>
               </span>
               <span className="block">
                 <SplitReveal delay={0.15} stagger={0.06} y={40}>
-                  not technologies.
+                  software systems.
                 </SplitReveal>
               </span>
               <span
@@ -177,7 +178,7 @@ function Home() {
                 style={{ letterSpacing: "-0.01em", lineHeight: 1.15 }}
               >
                 <SplitReveal delay={0.35} stagger={0.05} y={40}>
-                  AI lets me solve more of them.
+                  Ask A.J. is the live proof.
                 </SplitReveal>
               </span>
             </h1>
@@ -188,27 +189,28 @@ function Home() {
 
             <Reveal delay={620}>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Twenty years across agencies, studios, fintech, and Fortune 500
-                engineering, frontend architecture, backend services, system
-                design, and the judgment between them. Technologies expire.
-                Thinking scales.
+                Software engineer building AI-powered products, frontend
+                platforms, and scalable developer systems. I combine nearly two
+                decades of software engineering experience with modern AI
+                orchestration, React, TypeScript, server architecture, and
+                enterprise platform engineering.
               </p>
             </Reveal>
 
             <Reveal delay={720}>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/work"
+                  to="/ask-aj"
                   className="group tactile inline-flex cursor-pointer items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
                 >
-                  See the work
+                  Ask A.J.
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
-                  to="/engineering"
+                  to="/work"
                   className="group tactile inline-flex cursor-pointer items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
                 >
-                  How I think
+                  Explore my engineering work
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </div>
@@ -402,6 +404,62 @@ function Home() {
               Problems · Judgment · Systems
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border/70 bg-surface/30">
+        <div className="container-page grid gap-10 py-20 md:grid-cols-[0.9fr_1.4fr] md:py-28">
+          <Reveal>
+            <div>
+              <Eyebrow>Featured Experience</Eyebrow>
+              <h2 className="mt-6 font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl">
+                Ask A.J.
+                <br />
+                <span className="font-accent italic normal-case text-gold">
+                  is the portfolio proof.
+                </span>
+              </h2>
+              <p className="mt-7 max-w-md text-[17px] leading-relaxed text-foreground/85">
+                A recruiter-facing AI agent designed and engineered by AJ
+                Barnett, built to show how intelligent product experiences work
+                when the model is only one piece of a resilient system.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  to="/ask-aj"
+                  className="inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink"
+                >
+                  Try Ask A.J.
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  to="/work/ask-aj"
+                  className="inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink hover:border-gold hover:text-gold"
+                >
+                  Read the case study
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                "OpenAI Responses API with server-owned context",
+                "NDJSON streaming for visible, responsive answers",
+                "Request validation, origin checks, and cost controls",
+                "Retries, fallback model, cached answers, and graceful degradation",
+                "Curated portfolio knowledge with retrieval-ready structure",
+                "React and TypeScript interface built for recruiter conversations",
+              ].map((item) => (
+                <div key={item} className="border border-border bg-card p-5">
+                  <p className="text-sm leading-relaxed text-foreground/85">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 

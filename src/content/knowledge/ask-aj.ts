@@ -1,0 +1,106 @@
+export const askAjSuggestedQuestions = [
+  "How does AJ build AI-powered products?",
+  "What is Ask A.J. and how was it engineered?",
+  "Why should we hire AJ?",
+  "What has AJ built at enterprise scale?",
+  "How does AJ approach frontend platform architecture?",
+  "What measurable engineering impact has AJ delivered?",
+  "What AI application engineering capabilities does AJ have?",
+  "How does AJ design reliable AI experiences?",
+  "Tell me about AJ's enterprise design-system work.",
+];
+
+export const askAjKnowledge = {
+  summary:
+    "Ask A.J. is a recruiter-facing AI agent designed and engineered by AJ Barnett as a live portfolio artifact.",
+  problem:
+    "Recruiters and engineering leaders need a fast way to understand AJ's experience, architecture judgment, and fit for AI-powered product engineering roles.",
+  audience:
+    "Recruiters, engineering leaders, product-minded technical teams, and hiring partners evaluating AJ's work.",
+  value:
+    "Ask A.J. demonstrates how AJ designs intelligent, resilient user experiences from product framing through server-side AI integration, streaming UI, safeguards, and graceful degradation.",
+  implementedCapabilities: [
+    "OpenAI Responses API integration",
+    "Configurable primary and fallback models",
+    "Server-owned system context",
+    "NDJSON streamed responses",
+    "Transient retry before the first text delta",
+    "Timeout budgeting",
+    "Circuit breaker",
+    "Curated cached answers",
+    "Static graceful fallback",
+    "Input validation",
+    "Origin validation",
+    "Local rate limiting",
+    "Duplicate request protection",
+    "Structured provider-safe logging",
+    "Token and cost controls",
+    "store:false so OpenAI does not retain response state for this feature",
+  ],
+  architecture: [
+    "React and TypeScript presentation components render the recruiter experience.",
+    "TanStack Start server routes own secrets, request validation, provider calls, and NDJSON framing.",
+    "The browser receives only application-owned stream events, never provider-specific events.",
+    "The contact form is server-only and sends through Resend with the recruiter's email as replyTo.",
+  ],
+  reliability: [
+    "Primary OpenAI model",
+    "Bounded retry for transient provider failures before the first delta",
+    "One fallback OpenAI model",
+    "Cached answer for recognized common questions",
+    "Static graceful fallback when no cache match exists",
+  ],
+  safeguards: [
+    "JSON-only request validation",
+    "25 KB request body limit",
+    "1,000-character current question limit",
+    "500-token output cap",
+    "Allowed-origin validation",
+    "Local per-IP rate limiting",
+    "Duplicate in-flight request protection",
+    "No OpenAI tools, web search, file search, background calls, or client-side provider calls",
+  ],
+  technologyStack: [
+    "React 19",
+    "TypeScript",
+    "TanStack Start",
+    "TanStack Router",
+    "OpenAI Responses API",
+    "NDJSON streaming",
+    "Tailwind CSS v4",
+    "Storybook",
+    "Vercel",
+    "Resend",
+  ],
+  tradeoffs: [
+    "In-memory rate limits and circuit state are no-cost MVP safeguards, but they are per server instance.",
+    "Cached answers reduce failure impact for common questions, but they are not a replacement for retrieval.",
+    "The current knowledge source is curated content, not vector search or embeddings.",
+  ],
+  limitations: [
+    "No vector database, embeddings, LangGraph, MCP, or RAG retrieval is active yet.",
+    "Circuit-breaker, rate-limit, and availability counters are local to a server instance.",
+    "Functional availability is designed through graceful degradation, not guaranteed as an SLA.",
+  ],
+  roadmap: [
+    "Durable shared rate limiting and circuit state",
+    "RAG over AJ-owned portfolio content",
+    "Citation-backed answers",
+    "MCP tools for standardized capability access",
+    "Explicit workflow orchestration",
+    "Conversation persistence with privacy controls",
+  ],
+  facts: [
+    "AJ built Ask A.J. as a production-minded AI portfolio agent.",
+    "AJ's AI work is now a primary portfolio capability.",
+    "AJ's enterprise frontend, platform, and design-system work provides evidence of scale and engineering depth.",
+    "At CDW, AJ worked on the Legato Design System as a Senior Software Engineer I / Technical Lead.",
+    "Legato supported more than 10 product teams and more than 15 applications across the CDW portfolio.",
+    "AJ's Legato work included React, TypeScript, Stencil Web Components, Storybook, Nx, design tokens, and accessibility.",
+    "AJ describes design systems as shared product infrastructure that lowers ambiguity and lets product teams focus on product work.",
+    "At Midland Trust, AJ worked on regulated IRA and banking-related portals, including React and TypeScript delivery.",
+    "AJ's engineering approach emphasizes framing problems, weighing tradeoffs, naming risk, and using AI as leverage while keeping human judgment responsible for final decisions.",
+  ],
+} as const;
+
+export type AskAjKnowledge = typeof askAjKnowledge;

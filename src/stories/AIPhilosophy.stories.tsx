@@ -15,7 +15,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "This site treats AI as an accelerant inside the engineering loop, not a replacement for it. Every tool has a role — Claude for architecture, Copilot for in-editor completion, ChatGPT for exploration, MCP for real repo context, Figma AI to shorten the design-to-code loop.",
+          "This site treats AI as an accelerant inside the engineering loop, not a replacement for it. Exploration, scaffolding, code assistance, repository context, and design-to-code review each have a role.",
       },
     },
   },
@@ -26,7 +26,7 @@ type Story = StoryObj;
 
 const helps = [
   "Widening the option space before a decision",
-  "Boilerplate, migrations, and refactors at scale",
+  "Repeatable setup, migrations, and refactors at scale",
   "Test scaffolding and edge-case enumeration",
   "Documentation and changelog drafting",
   "Onboarding into unfamiliar codebases",

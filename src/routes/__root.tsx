@@ -14,6 +14,7 @@ import { reportError } from "../lib/error-reporting";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { AskAjLauncher } from "@/components/ask-aj-launcher";
 
 function NotFoundComponent() {
   return (
@@ -87,23 +88,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           title:
-            "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
+            "AJ Barnett · AI Product Engineering · React · TypeScript",
         },
         {
           name: "description",
           content:
-            "Staff Software Engineer turning complex problems into elegant systems that scale. React, TypeScript, enterprise design systems, accessibility, and AI-assisted engineering.",
+            "Software engineer building AI-powered products, frontend platforms, scalable developer systems, React and TypeScript architecture, and production-minded AI systems.",
         },
         { name: "author", content: "AJ Barnett" },
         {
           property: "og:title",
           content:
-            "AJ Barnett, Staff Software Engineer · Design Systems · AI-Assisted Engineering",
+            "AJ Barnett · AI Product Engineering · React · TypeScript",
         },
         {
           property: "og:description",
           content:
-            "Turning complex problems into elegant systems that scale. Design systems, frontend architecture, accessibility, and AI-assisted engineering.",
+            "Ask A.J. is a live AI agent built by AJ Barnett, supported by frontend platform, enterprise design-system, and software architecture experience.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -167,6 +168,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
       </div>
+      <AskAjLauncher />
     </QueryClientProvider>
   );
 }

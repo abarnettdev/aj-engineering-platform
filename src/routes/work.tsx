@@ -23,13 +23,13 @@ export const Route = createFileRoute("/work")({
       {
         name: "description",
         content:
-          "Five case studies of problems owned end-to-end: CDW Legato at Fortune 500 scale, Midland Trust regulated fintech, Priority Marketing, agency origins, and RealiDreams.",
+          "Case studies of AI product engineering, frontend platforms, enterprise design systems, regulated fintech, and product-minded software delivery.",
       },
       { property: "og:title", content: "Work · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "Five case studies. Challenge, Role, Approach, Impact, Lessons, the decisions behind the ship.",
+          "AI product engineering, frontend platforms, and enterprise systems, the decisions behind the ship.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -40,6 +40,8 @@ export const Route = createFileRoute("/work")({
 
 function CaseIllus({ slug }: { slug: string }) {
   switch (slug) {
+    case "ask-aj":
+      return <AiLoopIllus />;
     case "cdw-legato":
       return <ComponentSystemIllus />;
     case "midland-trust":
@@ -207,12 +209,20 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
             <div className="mt-2 border-t border-border pt-6">
               <Magnetic strength={0.25}>
                 <Link
-                  to="/timeline"
-                  hash={w.slug}
+                  to={w.slug === "ask-aj" ? "/work/ask-aj" : "/timeline"}
+                  hash={w.slug === "ask-aj" ? undefined : w.slug}
                   className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
-                  aria-label={`Read the full ${w.company} chapter in the journey`}
+                  aria-label={
+                    w.slug === "ask-aj"
+                      ? "Read the Ask A.J. case study"
+                      : `Read the full ${w.company} chapter in the journey`
+                  }
                 >
-                  <span className="story-link">Read the chapter</span>
+                  <span className="story-link">
+                    {w.slug === "ask-aj"
+                      ? "Read the case study"
+                      : "Read the chapter"}
+                  </span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
                 </Link>
               </Magnetic>
@@ -244,9 +254,10 @@ function Work() {
         }
         description={
           <>
-            Five problems owned end-to-end, agency floors, regulated fintech,
-            Fortune 500 design systems. Each case reads the same way: Challenge,
-            Role, Approach, Impact, Lessons. Judgment first, artifacts second.
+            AI-powered software, frontend platforms, regulated fintech, agency
+            systems, and Fortune 500 design systems. Each case reads the same
+            way: Challenge, Role, Approach, Impact, Lessons. Judgment first,
+            artifacts second.
           </>
         }
       />

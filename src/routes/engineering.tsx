@@ -15,13 +15,13 @@ export const Route = createFileRoute("/engineering")({
       {
         name: "description",
         content:
-          "The operating system underneath the work, how a staff engineer frames problems, weighs tradeoffs, names risk, and treats AI as leverage without ceding judgment.",
+          "How AJ Barnett frames AI-powered product engineering, frontend platforms, architecture tradeoffs, risk, and reliable software systems.",
       },
       { property: "og:title", content: "How I think · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "How a product-minded systems engineer frames problems, weighs tradeoffs, and treats AI as leverage.",
+          "AI application engineering, frontend platform judgment, React, TypeScript, and production-minded systems thinking.",
       },
     ],
   }),
@@ -137,9 +137,9 @@ function Engineering() {
               </h2>
               <div className="mt-6 h-px w-24 bg-gold" />
               <p className="mt-8 max-w-md text-[17px] leading-relaxed text-foreground/85">
-                Product intent, users, constraints, and the systems already
-                in the ground, all of it passes through the same axis before
-                it becomes architecture, interfaces, accessibility, and
+                Product intent, users, constraints, and the systems already in
+                the ground, all of it passes through the same axis before it
+                becomes architecture, interfaces, accessibility, and
                 performance.
               </p>
               <p className="mt-6 max-w-md text-[15px] leading-relaxed text-foreground/70">
@@ -153,6 +153,49 @@ function Engineering() {
           <Reveal delay={140}>
             <div className="relative min-w-0">
               <SystemsMap />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="ai-product-engineering-heading"
+        className="border-b border-border/70 bg-card"
+      >
+        <div className="container-page grid gap-10 py-20 md:grid-cols-[0.9fr_1.4fr] md:py-28">
+          <Reveal>
+            <div>
+              <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                From Frontend to AI Product Engineering
+              </p>
+              <h2
+                id="ai-product-engineering-heading"
+                className="mt-6 font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl"
+              >
+                The same foundation,
+                <br />
+                <span className="font-accent italic normal-case text-gold">
+                  a larger product surface.
+                </span>
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="space-y-5 text-[17px] leading-relaxed text-foreground/85">
+              <p>
+                Reusable component APIs, design systems, platform standards,
+                documentation systems, cross-team adoption workflows,
+                accessibility, scalable frontend architecture, and server
+                integrations are the same muscles required for trustworthy
+                AI-powered applications.
+              </p>
+              <p>
+                CDW and Legato remain important proof: AJ can lead enterprise
+                engineering initiatives, coordinate across product, design, QA,
+                and engineering, build reusable platforms, and operate at
+                organizational scale. Ask A.J. turns that foundation toward
+                modern AI product engineering.
+              </p>
             </div>
           </Reveal>
         </div>
@@ -300,23 +343,27 @@ function Engineering() {
 
                 <div className="mt-10 max-w-xl space-y-6 text-[17px] leading-[1.7] text-foreground/90">
                   <p>
-                    <strong className="font-semibold text-ink">WCAG 2.1 AA</strong>{" "}
+                    <strong className="font-semibold text-ink">
+                      WCAG 2.1 AA
+                    </strong>{" "}
                     and{" "}
-                    <strong className="font-semibold text-ink">Section 508</strong>{" "}
+                    <strong className="font-semibold text-ink">
+                      Section 508
+                    </strong>{" "}
                     are the floor of what a product owes the humans using it,
                     not a checklist to survive an audit.
                   </p>
                   <p>
                     The ceiling is quality: keyboard-first flows, visible focus
                     states, semantic HTML, reduced-motion parity, screen-reader
-                    announcements that match the visual truth, and contrast
-                    that holds up in real lighting.
+                    announcements that match the visual truth, and contrast that
+                    holds up in real lighting.
                   </p>
                   <p className="text-foreground/75">
                     Every accessibility investment pays back somewhere else,
                     tighter component APIs, better test coverage, faster
-                    onboarding. Quality compounds because the constraints
-                    force clarity.
+                    onboarding. Quality compounds because the constraints force
+                    clarity.
                   </p>
                 </div>
               </div>
@@ -344,8 +391,14 @@ function Engineering() {
                   {[
                     ["Keyboard-first", "Every path reachable without a mouse."],
                     ["Semantic HTML", "Landmarks, headings, roles by default."],
-                    ["Focus management", "Visible, predictable, trapped when it should be."],
-                    ["Screen-reader parity", "Announcements match the visual truth."],
+                    [
+                      "Focus management",
+                      "Visible, predictable, trapped when it should be.",
+                    ],
+                    [
+                      "Screen-reader parity",
+                      "Announcements match the visual truth.",
+                    ],
                     ["Reduced motion", "Motion is a feature, not a mandate."],
                     ["Colour contrast", "AA minimum, AAA where it counts."],
                   ].map(([t, d]) => (
@@ -392,10 +445,9 @@ function Engineering() {
                 </h2>
               </div>
               <p className="max-w-lg text-[17px] leading-relaxed text-foreground/85">
-                Claude for architecture. Copilot for in-editor completion.
-                ChatGPT for exploration. MCP for real repo context. Figma AI
-                to shorten the design-to-code loop. Each tool has a role,
-                the engineer stays at the centre.
+                AI belongs inside a deliberate engineering loop: exploration,
+                scaffolding, review, documentation, and product reasoning. Each
+                tool has a role, and the engineer stays at the centre.
               </p>
             </div>
           </Reveal>
@@ -415,7 +467,7 @@ function Engineering() {
                 <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-foreground/85">
                   {[
                     "Widening the option space before a decision",
-                    "Boilerplate, migrations, and refactors at scale",
+                    "Repeatable setup, migrations, and refactors at scale",
                     "Test scaffolding and edge-case enumeration",
                     "Documentation and changelog drafting",
                     "Onboarding into unfamiliar codebases",
@@ -483,8 +535,8 @@ function Engineering() {
                 </h2>
               </div>
               <p className="max-w-lg text-[17px] leading-relaxed text-foreground/85">
-                Three of the pictures I draw before I write anything down.
-                The code exists to make one of these true, nothing more.
+                Three of the pictures I draw before I write anything down. The
+                code exists to make one of these true, nothing more.
               </p>
             </div>
           </Reveal>

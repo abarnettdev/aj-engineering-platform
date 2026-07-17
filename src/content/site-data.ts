@@ -146,7 +146,7 @@ export const timeline: TimelineEntry[] = [
     year: "2026",
     chapter: "Now",
     role: "Staff / Principal engineering roles",
-    tech: ["MCP", "Claude", "ChatGPT", "Copilot", "React", "TypeScript"],
+    tech: ["MCP", "AI workflows", "React", "TypeScript"],
     changed:
       "The problem worth solving now: full product lifecycle, architecture, backend seams, product surface, accelerated by AI without ceding judgment to it.",
     learned:
@@ -174,6 +174,34 @@ export type WorkCase = {
 };
 
 export const workCases: WorkCase[] = [
+  {
+    slug: "ask-aj",
+    company: "AJ Barnett",
+    title: "Ask A.J. AI Portfolio Agent",
+    period: "2026",
+    role: "Product Engineer",
+    summary:
+      "Designed and engineered a recruiter-facing AI agent with streamed responses, server-side OpenAI integration, request safeguards, fallback models, cached answers, and graceful degradation.",
+    tags: ["AI", "OpenAI", "React", "TypeScript", "TanStack Start", "NDJSON"],
+    metrics: [
+      ["1", "live AI agent"],
+      ["5", "availability layers"],
+      ["0", "client-side secrets"],
+    ],
+    discipline: "AI application engineering",
+    challenge:
+      "The portfolio needed to show AI product engineering as a working system, not just a claim in copy.",
+    approach: [
+      "Kept provider calls, secrets, validation, retries, and fallback behavior server-side.",
+      "Streamed application-owned NDJSON events so the browser never depends on provider-specific event names.",
+      "Added request validation, origin checks, local rate limiting, duplicate request protection, token caps, and graceful fallback answers.",
+      "Structured the knowledge source so future retrieval can build on curated portfolio facts.",
+    ],
+    impact:
+      "Ask A.J. gives recruiters a direct way to understand AJ's work while demonstrating production-minded AI interface design.",
+    lessons:
+      "An AI product is the whole system around the model: context, trust boundaries, latency, failure behavior, and cost.",
+  },
   {
     slug: "cdw-legato",
     company: "CDW",
@@ -314,7 +342,6 @@ export const workCases: WorkCase[] = [
   },
 ];
 
-
 export const projects = [
   {
     slug: "enterprise-design-system",
@@ -355,7 +382,7 @@ export const projects = [
   {
     slug: "ai-assisted-workflows",
     title: "AI-Assisted Engineering Workflows",
-    tagline: "MCP, Claude, and Copilot woven into architecture and delivery.",
+    tagline: "AI workflows woven into architecture and delivery.",
     tags: ["AI", "MCP", "DX", "Architecture"],
   },
 ];
@@ -427,18 +454,43 @@ export const articles: Article[] = [
       { id: "close", label: "Closing" },
     ],
     body: [
-      { kind: "p", text: "A stylesheet describes appearance. A token describes intent. That single distinction is the difference between a design system that scales an organization and one that becomes a museum of past decisions." },
+      {
+        kind: "p",
+        text: "A stylesheet describes appearance. A token describes intent. That single distinction is the difference between a design system that scales an organization and one that becomes a museum of past decisions.",
+      },
       { kind: "h2", id: "contract", text: "The contract" },
-      { kind: "p", text: "When a token is named color.action.primary, three teams now share a promise: design uses it in Figma, engineering imports it in code, and product reasons about it in specs. Nobody is inventing new grammar in a hallway." },
-      { kind: "quote", text: "Tokens aren't about consistency. They're about communication." },
+      {
+        kind: "p",
+        text: "When a token is named color.action.primary, three teams now share a promise: design uses it in Figma, engineering imports it in code, and product reasons about it in specs. Nobody is inventing new grammar in a hallway.",
+      },
+      {
+        kind: "quote",
+        text: "Tokens aren't about consistency. They're about communication.",
+      },
       { kind: "h2", id: "grammar", text: "A grammar for teams" },
-      { kind: "p", text: "The best token architectures read like a language: nouns (color, space, radius), adjectives (subtle, strong, muted), and roles (surface, action, feedback). Once the grammar exists, individual decisions get faster because the space of choices is smaller." },
-      { kind: "code", lang: "ts", text: "// tokens as intent, not appearance\nexport const semantic = {\n  color: {\n    surface: { base: 'color.neutral.0', raised: 'color.neutral.50' },\n    action:  { primary: 'color.brand.600', danger: 'color.red.600' },\n    text:    { primary: 'color.neutral.900', muted: 'color.neutral.600' },\n  },\n} as const;" },
+      {
+        kind: "p",
+        text: "The best token architectures read like a language: nouns (color, space, radius), adjectives (subtle, strong, muted), and roles (surface, action, feedback). Once the grammar exists, individual decisions get faster because the space of choices is smaller.",
+      },
+      {
+        kind: "code",
+        lang: "ts",
+        text: "// tokens as intent, not appearance\nexport const semantic = {\n  color: {\n    surface: { base: 'color.neutral.0', raised: 'color.neutral.50' },\n    action:  { primary: 'color.brand.600', danger: 'color.red.600' },\n    text:    { primary: 'color.neutral.900', muted: 'color.neutral.600' },\n  },\n} as const;",
+      },
       { kind: "h2", id: "scale", text: "Why it scales" },
-      { kind: "p", text: "Every team that adopts the token layer inherits the review process behind it, accessibility contrast, dark-mode parity, brand alignment. A single semantic change ripples across every product surface without a coordination meeting." },
-      { kind: "callout", text: "If your design system needs a change-management email, you don't have a system. You have a library." },
+      {
+        kind: "p",
+        text: "Every team that adopts the token layer inherits the review process behind it, accessibility contrast, dark-mode parity, brand alignment. A single semantic change ripples across every product surface without a coordination meeting.",
+      },
+      {
+        kind: "callout",
+        text: "If your design system needs a change-management email, you don't have a system. You have a library.",
+      },
       { kind: "h2", id: "close", text: "Closing" },
-      { kind: "p", text: "Treat tokens as a language and the system stops being a burden on individual teams. It becomes shared infrastructure, quiet, durable, and multiplying every decision downstream." },
+      {
+        kind: "p",
+        text: "Treat tokens as a language and the system stops being a burden on individual teams. It becomes shared infrastructure, quiet, durable, and multiplying every decision downstream.",
+      },
     ],
     related: ["composition-over-configuration", "ai-in-the-engineering-loop"],
   },
@@ -455,15 +507,35 @@ export const articles: Article[] = [
       { id: "when", label: "When configuration wins" },
     ],
     body: [
-      { kind: "p", text: "Every enterprise component eventually reaches a fork: add another boolean prop, or expose a slot and let the caller decide. The choice defines whether the component is a product or a prison." },
+      {
+        kind: "p",
+        text: "Every enterprise component eventually reaches a fork: add another boolean prop, or expose a slot and let the caller decide. The choice defines whether the component is a product or a prison.",
+      },
       { kind: "h2", id: "problem", text: "The prop explosion" },
-      { kind: "p", text: "A Card with 32 props is not flexible, it's brittle. Every consumer's edge case becomes another prop, another test matrix cell, another line in the migration guide." },
-      { kind: "code", lang: "tsx", text: "// configuration, the caller pleads with the component\n<Card\n  title=\"…\" subtitle=\"…\" icon={<X/>} iconPosition=\"start\"\n  actionLabel=\"…\" actionVariant=\"outline\" showDivider hasFooter\n  footerAlign=\"end\" densityCompact\n/>" },
+      {
+        kind: "p",
+        text: "A Card with 32 props is not flexible, it's brittle. Every consumer's edge case becomes another prop, another test matrix cell, another line in the migration guide.",
+      },
+      {
+        kind: "code",
+        lang: "tsx",
+        text: '// configuration, the caller pleads with the component\n<Card\n  title="…" subtitle="…" icon={<X/>} iconPosition="start"\n  actionLabel="…" actionVariant="outline" showDivider hasFooter\n  footerAlign="end" densityCompact\n/>',
+      },
       { kind: "h2", id: "shape", text: "The shape that scales" },
-      { kind: "code", lang: "tsx", text: "// composition, the caller writes intent\n<Card>\n  <Card.Header>\n    <Card.Title>…</Card.Title>\n  </Card.Header>\n  <Card.Body>…</Card.Body>\n  <Card.Footer align=\"end\">\n    <Button variant=\"outline\">…</Button>\n  </Card.Footer>\n</Card>" },
-      { kind: "quote", text: "Fewer props. Sharper primitives. Let composition carry the weight." },
+      {
+        kind: "code",
+        lang: "tsx",
+        text: '// composition, the caller writes intent\n<Card>\n  <Card.Header>\n    <Card.Title>…</Card.Title>\n  </Card.Header>\n  <Card.Body>…</Card.Body>\n  <Card.Footer align="end">\n    <Button variant="outline">…</Button>\n  </Card.Footer>\n</Card>',
+      },
+      {
+        kind: "quote",
+        text: "Fewer props. Sharper primitives. Let composition carry the weight.",
+      },
       { kind: "h2", id: "when", text: "When configuration wins" },
-      { kind: "p", text: "Small, opinionated components (Badge, Avatar) benefit from a tight prop surface. The rule of thumb: if the component contains more than one meaningful region, expose slots. If it's a single atom, ship props." },
+      {
+        kind: "p",
+        text: "Small, opinionated components (Badge, Avatar) benefit from a tight prop surface. The rule of thumb: if the component contains more than one meaningful region, expose slots. If it's a single atom, ship props.",
+      },
     ],
     related: ["tokens-are-a-language", "accessibility-as-product"],
   },
@@ -480,14 +552,26 @@ export const articles: Article[] = [
       { id: "practice", label: "Daily practice" },
     ],
     body: [
-      { kind: "p", text: "The best AI-assisted engineers I've worked with don't use AI to replace thinking. They use it to widen the surface of thinking they can hold at once." },
+      {
+        kind: "p",
+        text: "The best AI-assisted engineers I've worked with don't use AI to replace thinking. They use it to widen the surface of thinking they can hold at once.",
+      },
       { kind: "h2", id: "loop", text: "The loop" },
-      { kind: "p", text: "Explore → Draft → Review → Refine → Ship. AI is most valuable in Explore and Draft. It is dangerous in Review unless a human owns the last mile." },
+      {
+        kind: "p",
+        text: "Explore → Draft → Review → Refine → Ship. AI is most valuable in Explore and Draft. It is dangerous in Review unless a human owns the last mile.",
+      },
       { kind: "callout", text: "AI accelerates me. It does not replace me." },
       { kind: "h2", id: "judgment", text: "Where judgment lives" },
-      { kind: "p", text: "Judgment lives in the framing of the prompt, the shape of the review, and the decision to keep or discard. That is engineering. The typing is not." },
+      {
+        kind: "p",
+        text: "Judgment lives in the framing of the work, the shape of the review, and the decision to keep or discard. That is engineering. The typing is not.",
+      },
       { kind: "h2", id: "practice", text: "Daily practice" },
-      { kind: "p", text: "MCP for context. Claude for architecture and long-form reasoning. Copilot for in-editor completion. ChatGPT for exploration and rubber-duck. Figma AI for design-to-code alignment. Each has a role, and the role changes with the task." },
+      {
+        kind: "p",
+        text: "Repository context, model-assisted exploration, in-editor completion, and design-to-code review each have a role. The role changes with the task, but the final judgment stays with the engineer.",
+      },
     ],
     related: ["tokens-are-a-language", "accessibility-as-product"],
   },
@@ -503,12 +587,24 @@ export const articles: Article[] = [
       { id: "quality", label: "Quality by another name" },
     ],
     body: [
-      { kind: "p", text: "When a team talks about accessibility as compliance, it becomes a ticket at the end of a sprint. When they talk about it as product quality, it becomes the default." },
+      {
+        kind: "p",
+        text: "When a team talks about accessibility as compliance, it becomes a ticket at the end of a sprint. When they talk about it as product quality, it becomes the default.",
+      },
       { kind: "h2", id: "reframe", text: "The reframe" },
-      { kind: "p", text: "WCAG 2.1 AA and Section 508 are the floor, not the ceiling. Keyboard flow, focus visibility, semantic HTML, reduced motion, and screen-reader parity are product decisions that raise the ceiling for every user." },
-      { kind: "quote", text: "Accessibility isn't a checklist. It's the shape of a mature product." },
+      {
+        kind: "p",
+        text: "WCAG 2.1 AA and Section 508 are the floor, not the ceiling. Keyboard flow, focus visibility, semantic HTML, reduced motion, and screen-reader parity are product decisions that raise the ceiling for every user.",
+      },
+      {
+        kind: "quote",
+        text: "Accessibility isn't a checklist. It's the shape of a mature product.",
+      },
       { kind: "h2", id: "quality", text: "Quality by another name" },
-      { kind: "p", text: "Every accessibility investment I've made at enterprise scale has paid back somewhere else: better test coverage, clearer component APIs, faster onboarding for new engineers. Quality compounds." },
+      {
+        kind: "p",
+        text: "Every accessibility investment I've made at enterprise scale has paid back somewhere else: better test coverage, clearer component APIs, faster onboarding for new engineers. Quality compounds.",
+      },
     ],
     related: ["tokens-are-a-language", "composition-over-configuration"],
   },
@@ -525,14 +621,29 @@ export const articles: Article[] = [
       { id: "next", label: "What's next" },
     ],
     body: [
-      { kind: "p", text: "I've watched Flash die, jQuery peak, Backbone rise, Angular pivot, React arrive, TypeScript conquer, and AI arrive on the doorstep. The framework changes. The mindset doesn't." },
+      {
+        kind: "p",
+        text: "I've watched Flash die, jQuery peak, Backbone rise, Angular pivot, React arrive, TypeScript conquer, and AI arrive on the doorstep. The framework changes. The mindset doesn't.",
+      },
       { kind: "h2", id: "cycles", text: "The cycles" },
-      { kind: "p", text: "Every cycle promises to replace what came before. Very few actually do. Most inherit the same problems, state, layout, motion, accessibility, and re-express them in new syntax." },
+      {
+        kind: "p",
+        text: "Every cycle promises to replace what came before. Very few actually do. Most inherit the same problems, state, layout, motion, accessibility, and re-express them in new syntax.",
+      },
       { kind: "h2", id: "constants", text: "The constants" },
-      { kind: "p", text: "Curiosity. Ownership. Communication. The engineers who thrive across cycles are the ones who invest in these three, and treat the framework of the moment as a rental." },
-      { kind: "callout", text: "The framework will change. The mindset won't." },
+      {
+        kind: "p",
+        text: "Curiosity. Ownership. Communication. The engineers who thrive across cycles are the ones who invest in these three, and treat the framework of the moment as a rental.",
+      },
+      {
+        kind: "callout",
+        text: "The framework will change. The mindset won't.",
+      },
       { kind: "h2", id: "next", text: "What's next" },
-      { kind: "p", text: "AI-assisted engineering is not the next framework. It's the next layer of the loop, a peer, a co-author, a reviewer. Treat it as engineering practice, not as magic." },
+      {
+        kind: "p",
+        text: "AI-assisted engineering is not the next framework. It's the next layer of the loop, a peer, a co-author, a reviewer. Treat it as engineering practice, not as magic.",
+      },
     ],
     related: ["ai-in-the-engineering-loop", "accessibility-as-product"],
   },

@@ -4,7 +4,7 @@
 
 Ask A.J. is an AI engineering representative embedded in AJ Barnett's existing engineering platform.
 
-It is not a generic chatbot or a thin ChatGPT wrapper.
+It is not a generic chatbot or a thin model wrapper.
 
 The system helps recruiters, engineering leaders, and other visitors understand:
 
@@ -85,7 +85,7 @@ Recruiter question
 
 The first production-shaped request is:
 
-"What did AJ build at CDW?"
+"What is Ask A.J. and how was it engineered?"
 
 The working slice must:
 
@@ -143,7 +143,7 @@ Do not:
 - introduce Express or NestJS without an approved architectural reason
 - create a disconnected second application
 - install packages before checking runtime compatibility
-- build an oversized autonomous agent prompt
+- build an oversized autonomous agent instruction block
 - fabricate citations
 - turn client-imported content modules into server-only modules
 - broadly scaffold every future subsystem before proving one vertical slice

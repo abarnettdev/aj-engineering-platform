@@ -38,12 +38,12 @@ const sources: AskAjCitation[] = [
 ];
 
 const completedAnswer =
-  "At CDW, AJ worked on Legato, an enterprise design system serving 10+ product teams and 15+ applications. As a Senior Software Engineer I and Technical Lead, he helped make a shared UI foundation practical for product teams through React, TypeScript, Stencil Web Components, Storybook, Nx, design tokens, and accessibility.\n\nThe system was treated as product infrastructure:\n- It reduced repeated interface decisions.\n- It gave product teams a shared foundation.\n- It let engineering and design teams focus on product work.";
+  "Ask A.J. is a live AI portfolio agent built by AJ Barnett to show how he approaches production-minded AI application engineering. It uses a TanStack Start server boundary for model calls, streams application-owned NDJSON events to the browser, and keeps provider keys out of client code.\n\nThe implementation emphasizes small product-shaped decisions:\n- recruiter-facing answers instead of a generic chatbot frame\n- visible streaming and graceful waiting states\n- clear boundaries between implemented behavior and future retrieval work\n- supporting evidence from AJ's enterprise design-system and frontend platform background";
 
 const starterQuestions = [
-  "What did AJ build at CDW?",
+  "What is Ask A.J. and how was it engineered?",
+  "How does AJ build AI-powered products?",
   "How does AJ think about design systems?",
-  "What is AJ's React and TypeScript experience?",
 ];
 
 const meta = {
@@ -101,14 +101,14 @@ export const Empty: Story = {};
 
 export const InitialThinking: Story = {
   args: {
-    question: "What did AJ build at CDW?",
+    question: "What is Ask A.J. and how was it engineered?",
     isStreaming: true,
     statusLabel: "Thinking through AJ's experience...",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ask-aj",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(""),
@@ -118,14 +118,14 @@ export const InitialThinking: Story = {
 
 export const RotatingWaiting: Story = {
   args: {
-    question: "What did AJ build at CDW?",
+    question: "How does AJ build AI-powered products?",
     isStreaming: true,
     statusLabel: "Reviewing the relevant details...",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ai-products",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "How does AJ build AI-powered products?",
         sources: [],
       },
       assistantMessage(""),
@@ -135,18 +135,18 @@ export const RotatingWaiting: Story = {
 
 export const Writing: Story = {
   args: {
-    question: "What did AJ build at CDW?",
+    question: "What is Ask A.J. and how was it engineered?",
     isStreaming: true,
     statusLabel: "Writing a concise response...",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ask-aj",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(
-        "At CDW, AJ worked on Legato, an enterprise design system",
+        "Ask A.J. is a live AI portfolio agent built with a server-owned streaming boundary",
       ),
     ],
   },
@@ -154,15 +154,15 @@ export const Writing: Story = {
 
 export const ReducedMotion: Story = {
   args: {
-    question: "What did AJ build at CDW?",
+    question: "How does AJ build AI-powered products?",
     isStreaming: true,
     reducedMotion: true,
     statusLabel: "Almost ready...",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ai-products",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "How does AJ build AI-powered products?",
         sources: [],
       },
       assistantMessage(""),
@@ -175,9 +175,9 @@ export const CompletedWithSources: Story = {
     statusLabel: "Ready for a follow-up",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ask-aj",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(completedAnswer, sources),
@@ -187,24 +187,24 @@ export const CompletedWithSources: Story = {
 
 export const FollowUpConversation: Story = {
   args: {
-    question: "What did that mean for product teams?",
+    question: "How does that connect to AJ's enterprise experience?",
     statusLabel: "Ready for a follow-up",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ask-aj",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(completedAnswer, sources),
       {
         id: "user-follow-up",
         role: "user",
-        content: "What did that mean for product teams?",
+        content: "How does that connect to AJ's enterprise experience?",
         sources: [],
       },
       assistantMessage(
-        "It gave product teams a shared, documented set of interface patterns and implementation primitives. Instead of solving accessibility, token usage, and component behavior from scratch in each application, teams could compose a stable foundation and direct their effort toward the workflow their customers actually needed.",
+        "The same instincts show up in both places: define stable contracts, make behavior visible, protect the user from internal complexity, and design the system so teams can build on it safely. AJ's CDW work on Legato is supporting proof because it required a shared foundation across many product teams and applications.",
         [sources[0]],
       ),
     ],
@@ -213,7 +213,7 @@ export const FollowUpConversation: Story = {
 
 export const Error: Story = {
   args: {
-    question: "What did AJ build at CDW?",
+    question: "What is Ask A.J. and how was it engineered?",
     error: "Ask A.J. received an invalid stream event. Please try again.",
   },
 };
@@ -223,13 +223,13 @@ export const Aborted: Story = {
     statusLabel: "Stopped",
     messages: [
       {
-        id: "user-cdw",
+        id: "user-ask-aj",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(
-        "At CDW, AJ worked on Legato, an enterprise design system.",
+        "Ask A.J. is a live AI portfolio agent built by AJ Barnett.",
       ),
     ],
   },
@@ -274,7 +274,7 @@ export const MobileStickyComposer: Story = {
       {
         id: "user-mobile",
         role: "user",
-        content: "What did AJ build at CDW?",
+        content: "What is Ask A.J. and how was it engineered?",
         sources: [],
       },
       assistantMessage(`${completedAnswer}\n\n${completedAnswer}`, sources),

@@ -8,16 +8,16 @@ export const Route = createFileRoute("/ask-aj")({
       {
         name: "description",
         content:
-          "Ask AJ Barnett about enterprise design systems, React and TypeScript architecture, accessibility, developer experience, mentoring, and AI-assisted workflows.",
+          "Ask A.J. is a recruiter-facing AI agent built by AJ Barnett to explain his AI product engineering, frontend platform, React, TypeScript, and enterprise systems work.",
       },
       {
         property: "og:title",
-        content: "Ask A.J. · AI Engineering Representative",
+        content: "Ask A.J. · AI Agent Built by AJ Barnett",
       },
       {
         property: "og:description",
         content:
-          "A recruiter-facing way to explore AJ Barnett's engineering experience and projects.",
+          "A live AI portfolio agent demonstrating production-minded AI product engineering.",
       },
       { property: "og:type", content: "website" },
     ],

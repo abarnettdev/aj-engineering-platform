@@ -67,7 +67,7 @@ export function AskAjExperience({
                 id="ask-aj-heading"
                 className="mt-2 font-display text-3xl leading-tight text-ink md:text-5xl"
               >
-                Curious about my engineering experience?
+                Explore my AI product engineering.
               </h1>
             </div>
             <Badge
@@ -78,10 +78,10 @@ export function AskAjExperience({
             </Badge>
           </div>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-            Ask about the enterprise design system I helped lead at CDW, React
-            and TypeScript architecture, accessibility, developer experience,
-            mentoring, AI-assisted workflows, or any project featured on this
-            site.
+            Ask A.J. is a live AI agent built to help recruiters and engineering
+            leaders understand my work: AI-powered product systems, React and
+            TypeScript architecture, frontend platforms, enterprise design
+            systems, accessibility, and production tradeoffs.
           </p>
         </div>
 
@@ -178,7 +178,7 @@ export function AskAjExperience({
               ref={questionInputRef}
               value={question}
               onChange={(event) => onQuestionChange(event.target.value)}
-              placeholder="Ask about AJ's CDW work, design systems, React, TypeScript..."
+              placeholder="Ask how AJ builds AI-powered products, reliable AI interfaces, or frontend platforms..."
               className="min-h-24 resize-none bg-background"
               disabled={isStreaming}
             />

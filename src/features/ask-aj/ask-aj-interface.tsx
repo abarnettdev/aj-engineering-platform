@@ -16,6 +16,7 @@ import {
   askAjStreamEventSchema,
   type AskAjStreamEvent,
 } from "@/features/ask-aj/contracts";
+import { askAjSuggestedQuestions } from "@/content/knowledge/ask-aj";
 
 const waitingStatusLabels = [
   "Thinking through AJ's experience...",
@@ -24,14 +25,12 @@ const waitingStatusLabels = [
   "Almost ready...",
 ];
 
-const starterQuestions = [
-  "What did AJ build at CDW?",
-  "How does AJ think about design systems?",
-  "What is AJ's React and TypeScript experience?",
-];
+const starterQuestions = askAjSuggestedQuestions.slice(0, 6);
 
 export function AskAjInterface() {
-  const [question, setQuestion] = useState("What did AJ build at CDW?");
+  const [question, setQuestion] = useState(
+    "What is Ask A.J. and how was it engineered?",
+  );
   const [conversationId, setConversationId] = useState<string>();
   const [messages, setMessages] = useState<AskAjMessage[]>([]);
   const [statusLabel, setStatusLabel] = useState("Ready");

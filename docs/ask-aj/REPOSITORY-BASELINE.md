@@ -73,7 +73,7 @@ No project `.env` files were found.
 
 No active application usage of `import.meta.env` or `process.env` was found, except `scripts/build-storybook.mjs` passing `process.env` through to Storybook.
 
-`vite.config.ts` notes that the Lovable TanStack config includes `VITE_*` env injection. Server secrets for Ask A.J. should not use `VITE_*`; they should remain server-only.
+`vite.config.ts` notes that the shared TanStack/Vite config includes `VITE_*` env injection. Server secrets for Ask A.J. should not use `VITE_*`; they should remain server-only.
 
 ## 6. RAG Content Sources
 
