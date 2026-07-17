@@ -165,12 +165,12 @@ function Home() {
             <h1 className="mt-6 text-balance font-display uppercase text-[2.2rem] leading-[1.02] tracking-[-0.045em] text-ink md:text-[3.1rem] lg:text-[3.6rem]">
               <span className="block">
                 <SplitReveal stagger={0.06} y={40}>
-                  I build AI-powered
+                  I chase problems
                 </SplitReveal>
               </span>
               <span className="block">
                 <SplitReveal delay={0.15} stagger={0.06} y={40}>
-                  software systems.
+                  worth solving,
                 </SplitReveal>
               </span>
               <span
@@ -178,7 +178,7 @@ function Home() {
                 style={{ letterSpacing: "-0.01em", lineHeight: 1.15 }}
               >
                 <SplitReveal delay={0.35} stagger={0.05} y={40}>
-                  Ask A.J. is the live proof.
+                  not technologies.
                 </SplitReveal>
               </span>
             </h1>

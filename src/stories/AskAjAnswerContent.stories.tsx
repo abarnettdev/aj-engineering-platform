@@ -10,7 +10,7 @@ const meta = {
   },
   args: {
     content:
-      "AJ worked on Legato at CDW.\n\n- Shared UI foundations\n- Accessible components\n- Design tokens and documentation",
+      "A reliable AI product is more than a model call.\n\n- Keep provider calls server-side\n- Stream application-owned events\n- Design failure states intentionally\n- Make accessibility part of the interaction contract",
     isPending: false,
   },
   decorators: [
@@ -29,7 +29,7 @@ export const ParagraphsAndList: Story = {};
 
 export const Streaming: Story = {
   args: {
-    content: "AJ worked on Legato, an enterprise design system",
+    content: "A reliable AI product starts with clear boundaries",
     isPending: true,
   },
 };

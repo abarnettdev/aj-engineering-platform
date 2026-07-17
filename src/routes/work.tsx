@@ -209,20 +209,16 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
             <div className="mt-2 border-t border-border pt-6">
               <Magnetic strength={0.25}>
                 <Link
-                  to={w.slug === "ask-aj" ? "/work/ask-aj" : "/timeline"}
-                  hash={w.slug === "ask-aj" ? undefined : w.slug}
+                  to="/timeline"
+                  hash={w.slug === "ask-aj" ? "now" : w.slug}
                   className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
                   aria-label={
                     w.slug === "ask-aj"
-                      ? "Read the Ask A.J. case study"
+                      ? "Read the Now chapter in the journey"
                       : `Read the full ${w.company} chapter in the journey`
                   }
                 >
-                  <span className="story-link">
-                    {w.slug === "ask-aj"
-                      ? "Read the case study"
-                      : "Read the chapter"}
-                  </span>
+                  <span className="story-link">Read the chapter</span>
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
                 </Link>
               </Magnetic>

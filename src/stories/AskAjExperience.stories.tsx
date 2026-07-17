@@ -9,31 +9,31 @@ import type { AskAjCitation } from "@/features/ask-aj/contracts";
 
 const sources: AskAjCitation[] = [
   {
-    id: "cdw-legato-work",
-    sourceId: "work-case:cdw-legato",
-    title: "Legato Design System",
-    url: "/work#cdw-legato",
+    id: "ask-aj-work",
+    sourceId: "work-case:ask-aj",
+    title: "Ask A.J. AI Portfolio Agent",
+    url: "/work/ask-aj",
     section: "Work",
     excerpt:
-      "Evolved an enterprise design system supporting 10+ product teams and 15+ applications across the CDW portfolio.",
+      "A production-minded AI portfolio agent with server-side provider calls, streamed application events, and recruiter-facing interaction design.",
   },
   {
-    id: "cdw-timeline",
-    sourceId: "timeline:cdw-legato",
-    title: "CDW, Legato Design System",
-    url: "/timeline#cdw-legato",
-    section: "Journey",
-    excerpt:
-      "Senior Software Engineer I / Technical Lead working with React, TypeScript, Stencil, Web Components, Storybook, Nx, design tokens, and accessibility.",
-  },
-  {
-    id: "engineering-principles",
+    id: "architecture-principles",
     sourceId: "page:engineering",
-    title: "How I think",
+    title: "Engineering Principles",
     url: "/engineering",
-    section: "Engineering principles",
+    section: "Engineering",
     excerpt:
-      "The operating system underneath the work: framing problems, weighing tradeoffs, naming risk, and treating AI as leverage without ceding judgment.",
+      "Framing problems, weighing tradeoffs, naming risk, and using AI as leverage while keeping human judgment responsible for final decisions.",
+  },
+  {
+    id: "platform-thinking",
+    sourceId: "page:systems",
+    title: "Systems and Platform Thinking",
+    url: "/systems",
+    section: "Architecture",
+    excerpt:
+      "Reusable architecture, component contracts, accessibility, documentation, and developer experience treated as product infrastructure.",
   },
 ];
 
@@ -91,7 +91,7 @@ const assistantMessage = (
   content: string,
   messageSources: AskAjCitation[] = [],
 ): AskAjMessage => ({
-  id: "assistant-cdw",
+  id: "assistant-engineering",
   role: "assistant",
   content,
   sources: messageSources,
@@ -204,7 +204,7 @@ export const FollowUpConversation: Story = {
         sources: [],
       },
       assistantMessage(
-        "The same instincts show up in both places: define stable contracts, make behavior visible, protect the user from internal complexity, and design the system so teams can build on it safely. AJ's CDW work on Legato is supporting proof because it required a shared foundation across many product teams and applications.",
+        "The same instincts show up across AI products and platform engineering: define stable contracts, make behavior visible, protect users from internal complexity, and design the system so teams can build on it safely. For Ask A.J., that means server-owned provider boundaries, streamed application events, honest fallback states, and a UI that makes the system's limits clear.",
         [sources[0]],
       ),
     ],
@@ -281,8 +281,10 @@ export const MobileStickyComposer: Story = {
     ],
   },
   render: (args) => (
-    <div className="h-[42rem] max-w-sm overflow-y-auto border border-border">
-      <AskAjExperience {...args} />
+    <div className="h-[42rem] max-w-sm overflow-hidden border border-border bg-background">
+      <div className="h-full overflow-y-auto pb-32">
+        <AskAjExperience {...args} />
+      </div>
     </div>
   ),
 };

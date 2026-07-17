@@ -37,7 +37,6 @@ export const Route = createFileRoute("/timeline")({
   component: Timeline,
 });
 
-
 const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
   {
     src: ch1,
@@ -81,13 +80,13 @@ const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
   },
 ];
 
-
 /**
  * Anchor IDs for deep-linking from the Work page. Keys are `chapter` strings
  * from site-data; values match the `slug` on the matching case study so
  * `/timeline#<slug>` scrolls straight to the right chapter.
  */
 const chapterAnchor: Record<string, string> = {
+  Now: "now",
   "CDW, Legato Design System": "cdw-legato",
   "Midland Trust": "midland-trust",
   "Priority Marketing": "priority-marketing",
@@ -117,12 +116,11 @@ function Timeline() {
         }
         description={
           <>
-            Technologies expired. The problems didn't. Each chapter carries
-            an artifact, the tech that defined it, the lesson it taught, and
-            the mindset it forged.
+            Technologies expired. The problems didn't. Each chapter carries an
+            artifact, the tech that defined it, the lesson it taught, and the
+            mindset it forged.
           </>
         }
-
       />
 
       <Section>
@@ -141,7 +139,13 @@ function Timeline() {
                   chapter={t.chapter}
                   role={t.role}
                   flip={i % 2 === 1}
-                  artifact={<ChapterArtwork src={art.src} alt={art.alt} caption={art.caption} />}
+                  artifact={
+                    <ChapterArtwork
+                      src={art.src}
+                      alt={art.alt}
+                      caption={art.caption}
+                    />
+                  }
                 >
                   <p className="mt-7 max-w-xl leading-relaxed text-foreground/85">
                     {t.changed}

@@ -145,7 +145,7 @@ export const timeline: TimelineEntry[] = [
   {
     year: "2026",
     chapter: "Now",
-    role: "Staff / Principal engineering roles",
+    role: "Lead Sr. Software Engineer / Staff Engineer roles",
     tech: ["MCP", "AI workflows", "React", "TypeScript"],
     changed:
       "The problem worth solving now: full product lifecycle, architecture, backend seams, product surface, accelerated by AI without ceding judgment to it.",

@@ -33,6 +33,9 @@
   --color-gold-muted: var(--gold-muted);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-surface: var(--success-surface);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-oxblood: var(--oxblood);
@@ -93,6 +96,9 @@
   /* destructive re-points to oxblood — no bright reds anywhere on the site */
   --destructive: oklch(0.329 0.088 17.5);
   --destructive-foreground: oklch(0.975 0.008 82);
+  --success: oklch(0.35 0.085 150);
+  --success-foreground: oklch(0.16 0.005 260);
+  --success-surface: oklch(0.97 0.028 150);
 
   --border: oklch(0.92 0.004 260);
   --border-strong: oklch(0.80 0.006 260);
@@ -124,6 +130,9 @@
   --gold-muted: oklch(0.62 0.11 82);
   --accent: var(--gold);
   --accent-foreground: oklch(0.09 0.005 260);
+  --success: oklch(0.74 0.12 150);
+  --success-foreground: oklch(0.97 0.003 260);
+  --success-surface: oklch(0.18 0.035 150);
   --border: oklch(0.24 0.007 260);
   --border-strong: oklch(0.36 0.008 260);
   --input: oklch(0.24 0.007 260);

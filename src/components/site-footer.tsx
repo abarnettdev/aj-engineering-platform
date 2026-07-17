@@ -18,7 +18,7 @@ export function SiteFooter() {
             backend services, system design, and the judgment between them.
           </p>
           <p className="mono mt-6 text-[11px] uppercase tracking-widest text-muted-foreground">
-            Available for Senior · Staff · Principal engineering roles
+            Available for Lead Sr. Software Engineer · Staff Engineer roles
           </p>
         </div>
 
@@ -35,7 +35,10 @@ export function SiteFooter() {
               ["Field Notes", "/writing"],
             ].map(([label, to]) => (
               <li key={to}>
-                <Link to={to} className="text-foreground/80 hover:text-foreground">
+                <Link
+                  to={to}
+                  className="text-foreground/80 hover:text-foreground"
+                >
                   {label}
                 </Link>
               </li>
@@ -81,8 +84,12 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border/70">
         <div className="container-page flex flex-col items-start justify-between gap-2 py-5 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p className="mono">© {new Date().getFullYear()} AJ Barnett, Built with intent.</p>
-          <p className="mono">Systems thinking · Product engineering · AI as leverage</p>
+          <p className="mono">
+            © {new Date().getFullYear()} AJ Barnett, Built with intent.
+          </p>
+          <p className="mono">
+            Systems thinking · Product engineering · AI as leverage
+          </p>
         </div>
       </div>
     </footer>

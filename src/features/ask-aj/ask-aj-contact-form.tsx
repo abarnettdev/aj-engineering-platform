@@ -161,11 +161,11 @@ export function AskAjContactForm({
       )}
       {state === "success" && (
         <p
-          className="border border-gold/40 bg-gold/10 p-3 text-sm text-ink"
+          className="border border-success/35 bg-success-surface p-3 text-sm text-success-foreground"
           role="status"
           aria-live="polite"
         >
-          Thanks. Your message was sent to AJ.
+          Thanks! Your message has been sent. I'll be in touch soon.
         </p>
       )}
       <Button type="submit" className="min-h-11 w-full" disabled={isSubmitting}>

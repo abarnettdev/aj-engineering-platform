@@ -16,11 +16,21 @@ try {
     renameSync(original, stash);
     moved = true;
   }
-  const result = spawnSync(
-    "bunx",
-    ["storybook", "build", "-o", "public/storybook"],
-    { stdio: "inherit", env: process.env },
-  );
+  const runner = spawnSync("bunx", ["--version"], { stdio: "ignore" }).error
+    ? "npx"
+    : "bunx";
+  const args =
+    runner === "npx"
+      ? ["storybook", "build", "-o", "public/storybook"]
+      : ["storybook", "build", "-o", "public/storybook"];
+  const result = spawnSync(runner, args, {
+    stdio: "inherit",
+    env: process.env,
+  });
+  if (result.error) {
+    console.error(`Failed to run ${runner}: ${result.error.message}`);
+    process.exitCode = 1;
+  }
   if (result.status !== 0) process.exitCode = result.status ?? 1;
 } finally {
   if (moved && existsSync(stash)) {
