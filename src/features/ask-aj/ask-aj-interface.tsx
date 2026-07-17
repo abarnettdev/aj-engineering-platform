@@ -28,9 +28,7 @@ const waitingStatusLabels = [
 const starterQuestions = askAjSuggestedQuestions.slice(0, 6);
 
 export function AskAjInterface() {
-  const [question, setQuestion] = useState(
-    "What is Ask A.J. and how was it engineered?",
-  );
+  const [question, setQuestion] = useState("");
   const [conversationId, setConversationId] = useState<string>();
   const [messages, setMessages] = useState<AskAjMessage[]>([]);
   const [statusLabel, setStatusLabel] = useState("Ready");
@@ -70,6 +68,8 @@ export function AskAjInterface() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (isStreaming) return;
+
     const trimmed = question.trim();
     if (!trimmed) return;
 
@@ -186,6 +186,8 @@ export function AskAjInterface() {
 
   async function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (contactState === "submitting") return;
+
     const parsed = contactFormValuesSchema.safeParse(contactValues);
 
     if (!parsed.success) {

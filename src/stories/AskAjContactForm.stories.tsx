@@ -39,6 +39,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const KeyboardSubmissionReady: Story = {
+  args: {
+    values: {
+      ...emptyContactFormValues,
+      name: "Morgan Lee",
+      email: "morgan@example.com",
+      roleCompany: "Engineering recruiter, Northstar",
+      message:
+        "I'd like to discuss a senior engineering role.\n\nShift + Enter keeps this second paragraph in the message.",
+    },
+  },
+};
+
 export const Submitting: Story = {
   args: {
     state: "submitting",

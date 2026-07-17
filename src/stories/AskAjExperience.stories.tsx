@@ -99,6 +99,14 @@ const assistantMessage = (
 
 export const Empty: Story = {};
 
+export const MultilineDraft: Story = {
+  args: {
+    question:
+      "How would AJ approach an AI feature rollout?\n\nPlease cover architecture, reliability, and user trust.",
+    statusLabel: "Ready",
+  },
+};
+
 export const InitialThinking: Story = {
   args: {
     question: "What is Ask A.J. and how was it engineered?",
@@ -147,6 +155,25 @@ export const Writing: Story = {
       },
       assistantMessage(
         "Ask A.J. is a live AI portfolio agent built with a server-owned streaming boundary",
+      ),
+    ],
+  },
+};
+
+export const StreamingLocksComposer: Story = {
+  args: {
+    question: "This draft stays disabled while Ask A.J. is responding.",
+    isStreaming: true,
+    statusLabel: "Writing a concise response...",
+    messages: [
+      {
+        id: "user-streaming-lock",
+        role: "user",
+        content: "How does AJ keep AI interfaces reliable?",
+        sources: [],
+      },
+      assistantMessage(
+        "AJ starts with server-owned boundaries, explicit stream events, and failure states users can understand.",
       ),
     ],
   },

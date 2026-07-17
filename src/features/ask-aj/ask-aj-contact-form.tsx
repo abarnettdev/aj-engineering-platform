@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { useEffect, useRef, type FormEvent, type KeyboardEvent } from "react";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,6 +26,43 @@ export function AskAjContactForm({
   onSubmit,
 }: AskAjContactFormProps) {
   const isSubmitting = state === "submitting";
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const roleCompanyRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (state !== "error") return;
+
+    if (errors.name) {
+      nameRef.current?.focus();
+      return;
+    }
+    if (errors.email) {
+      emailRef.current?.focus();
+      return;
+    }
+    if (errors.roleCompany) {
+      roleCompanyRef.current?.focus();
+      return;
+    }
+    if (errors.message) {
+      messageRef.current?.focus();
+    }
+  }, [errors.email, errors.message, errors.name, errors.roleCompany, state]);
+
+  function handleMessageKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (
+      event.nativeEvent.isComposing ||
+      event.shiftKey ||
+      event.key !== "Enter"
+    )
+      return;
+
+    event.preventDefault();
+    if (isSubmitting) return;
+    event.currentTarget.form?.requestSubmit();
+  }
 
   return (
     <form
@@ -46,6 +83,7 @@ export function AskAjContactForm({
         </label>
         <Input
           id="ask-aj-contact-name"
+          ref={nameRef}
           value={values.name}
           onChange={(event) => onChange("name", event.target.value)}
           aria-invalid={Boolean(errors.name)}
@@ -69,6 +107,7 @@ export function AskAjContactForm({
         </label>
         <Input
           id="ask-aj-contact-email"
+          ref={emailRef}
           type="email"
           value={values.email}
           onChange={(event) => onChange("email", event.target.value)}
@@ -95,6 +134,7 @@ export function AskAjContactForm({
         </label>
         <Input
           id="ask-aj-contact-role-company"
+          ref={roleCompanyRef}
           value={values.roleCompany}
           onChange={(event) => onChange("roleCompany", event.target.value)}
           aria-invalid={Boolean(errors.roleCompany)}
@@ -121,8 +161,10 @@ export function AskAjContactForm({
         </label>
         <Textarea
           id="ask-aj-contact-message"
+          ref={messageRef}
           value={values.message}
           onChange={(event) => onChange("message", event.target.value)}
+          onKeyDown={handleMessageKeyDown}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={
             errors.message ? "ask-aj-contact-message-error" : undefined

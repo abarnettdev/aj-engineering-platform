@@ -1,4 +1,4 @@
-import type { FormEvent, RefObject } from "react";
+import type { FormEvent, KeyboardEvent, RefObject } from "react";
 import { ArrowUpRight, Send, Square } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,19 @@ export function AskAjExperience({
   onSubmit,
   onStop,
 }: AskAjExperienceProps) {
+  function handleQuestionKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
+    if (
+      event.nativeEvent.isComposing ||
+      event.shiftKey ||
+      event.key !== "Enter"
+    )
+      return;
+
+    event.preventDefault();
+    if (isStreaming || !question.trim()) return;
+    event.currentTarget.form?.requestSubmit();
+  }
+
   return (
     <main className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
       <section
@@ -178,16 +191,22 @@ export function AskAjExperience({
               ref={questionInputRef}
               value={question}
               onChange={(event) => onQuestionChange(event.target.value)}
+              onKeyDown={handleQuestionKeyDown}
               placeholder="Ask how AJ builds AI-powered products, reliable AI interfaces, or frontend platforms..."
               className="min-h-24 resize-none bg-background"
               disabled={isStreaming}
             />
             <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-              <AskAjStatus
-                label={statusLabel}
-                isLoading={isStreaming}
-                reducedMotion={reducedMotion}
-              />
+              <div className="space-y-1">
+                <AskAjStatus
+                  label={statusLabel}
+                  isLoading={isStreaming}
+                  reducedMotion={reducedMotion}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Press Enter to send · Shift + Enter for a new line
+                </p>
+              </div>
               <div className="flex gap-2">
                 {isStreaming && (
                   <Button
