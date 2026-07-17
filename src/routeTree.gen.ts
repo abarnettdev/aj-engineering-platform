@@ -15,9 +15,12 @@ import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as EngineeringRouteImport } from './routes/engineering'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AskAjRouteImport } from './routes/ask-aj'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WritingIndexRouteImport } from './routes/writing.index'
 import { Route as WritingSlugRouteImport } from './routes/writing.$slug'
+import { Route as ApiContactRouteImport } from './routes/api.contact'
+import { Route as ApiAskAjRouteImport } from './routes/api.ask-aj'
 
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
@@ -49,6 +52,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AskAjRoute = AskAjRouteImport.update({
+  id: '/ask-aj',
+  path: '/ask-aj',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -64,38 +72,57 @@ const WritingSlugRoute = WritingSlugRouteImport.update({
   path: '/writing/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAskAjRoute = ApiAskAjRouteImport.update({
+  id: '/api/ask-aj',
+  path: '/api/ask-aj',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
   '/work': typeof WorkRoute
+  '/api/ask-aj': typeof ApiAskAjRoute
+  '/api/contact': typeof ApiContactRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
   '/work': typeof WorkRoute
+  '/api/ask-aj': typeof ApiAskAjRoute
+  '/api/contact': typeof ApiContactRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing': typeof WritingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
   '/work': typeof WorkRoute
+  '/api/ask-aj': typeof ApiAskAjRoute
+  '/api/contact': typeof ApiContactRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -103,46 +130,58 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/ask-aj'
     | '/contact'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
     | '/timeline'
     | '/work'
+    | '/api/ask-aj'
+    | '/api/contact'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/ask-aj'
     | '/contact'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
     | '/timeline'
     | '/work'
+    | '/api/ask-aj'
+    | '/api/contact'
     | '/writing/$slug'
     | '/writing'
   id:
     | '__root__'
     | '/'
+    | '/ask-aj'
     | '/contact'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
     | '/timeline'
     | '/work'
+    | '/api/ask-aj'
+    | '/api/contact'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AskAjRoute: typeof AskAjRoute
   ContactRoute: typeof ContactRoute
   EngineeringRoute: typeof EngineeringRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsRoute: typeof SystemsRoute
   TimelineRoute: typeof TimelineRoute
   WorkRoute: typeof WorkRoute
+  ApiAskAjRoute: typeof ApiAskAjRoute
+  ApiContactRoute: typeof ApiContactRoute
   WritingSlugRoute: typeof WritingSlugRoute
   WritingIndexRoute: typeof WritingIndexRoute
 }
@@ -191,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ask-aj': {
+      id: '/ask-aj'
+      path: '/ask-aj'
+      fullPath: '/ask-aj'
+      preLoaderRoute: typeof AskAjRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -212,17 +258,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WritingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ask-aj': {
+      id: '/api/ask-aj'
+      path: '/api/ask-aj'
+      fullPath: '/api/ask-aj'
+      preLoaderRoute: typeof ApiAskAjRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AskAjRoute: AskAjRoute,
   ContactRoute: ContactRoute,
   EngineeringRoute: EngineeringRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsRoute: SystemsRoute,
   TimelineRoute: TimelineRoute,
   WorkRoute: WorkRoute,
+  ApiAskAjRoute: ApiAskAjRoute,
+  ApiContactRoute: ApiContactRoute,
   WritingSlugRoute: WritingSlugRoute,
   WritingIndexRoute: WritingIndexRoute,
 }

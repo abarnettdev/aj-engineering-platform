@@ -60,6 +60,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
   return (
     <Reveal>
       <article
+        id={w.slug}
         aria-labelledby={`case-${w.slug}-title`}
         className="group edge-gold relative border border-border bg-card shadow-[0_30px_60px_-40px_rgba(0,0,0,0.25)]"
       >
@@ -244,9 +245,8 @@ function Work() {
         description={
           <>
             Five problems owned end-to-end, agency floors, regulated fintech,
-            Fortune 500 design systems. Each case reads the same way:
-            Challenge, Role, Approach, Impact, Lessons. Judgment first,
-            artifacts second.
+            Fortune 500 design systems. Each case reads the same way: Challenge,
+            Role, Approach, Impact, Lessons. Judgment first, artifacts second.
           </>
         }
       />

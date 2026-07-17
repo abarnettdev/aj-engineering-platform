@@ -17,7 +17,8 @@ const chapters = [
   { to: "/engineering", label: "Engineering", num: "03" },
   { to: "/systems", label: "Systems", num: "04" },
   { to: "/writing", label: "Field Notes", num: "05" },
-  { to: "/contact", label: "Contact", num: "06" },
+  { to: "/ask-aj", label: "Ask A.J.", num: "06" },
+  { to: "/contact", label: "Contact", num: "07" },
 ] as const;
 
 const externals = [
@@ -55,7 +56,7 @@ export function SiteNav() {
 
         <nav aria-label="Chapters" className="hidden lg:block">
           <ul className="flex items-center gap-8 text-xs">
-            {chapters.slice(1, 6).map((c) => (
+            {chapters.slice(1, 7).map((c) => (
               <li key={c.to}>
                 <Link
                   to={c.to}

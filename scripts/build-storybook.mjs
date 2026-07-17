@@ -21,7 +21,7 @@ try {
     ["storybook", "build", "-o", "public/storybook"],
     { stdio: "inherit", env: process.env },
   );
-  if (result.status !== 0) process.exit(result.status ?? 1);
+  if (result.status !== 0) process.exitCode = result.status ?? 1;
 } finally {
   if (moved && existsSync(stash)) {
     renameSync(stash, original);
