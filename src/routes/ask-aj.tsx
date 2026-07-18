@@ -27,8 +27,8 @@ export const Route = createFileRoute("/ask-aj")({
 
 function AskAjPage() {
   return (
-    <div className="border-b border-border/70 bg-background">
-      <div className="container-page py-10 md:py-14">
+    <div className="h-[calc(100dvh-4rem)] overflow-hidden border-b border-border/70 bg-background">
+      <div className="container-page h-full py-3 md:py-5">
         <AskAjInterface />
       </div>
     </div>

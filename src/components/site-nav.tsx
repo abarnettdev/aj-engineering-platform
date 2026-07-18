@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Linkedin, ArrowUpRight, Menu, Github, Mail } from "lucide-react";
 import {
@@ -108,106 +108,10 @@ export function SiteNav() {
               side="right"
               className="flex w-[min(22rem,100vw)] flex-col gap-0 border-l border-border bg-background p-0"
             >
-              <SheetTitle className="sr-only">Site navigation</SheetTitle>
-              <SheetDescription className="sr-only">
-                Navigate the site chapters, links, and contact.
-              </SheetDescription>
-
-              <div className="flex items-center justify-between border-b border-border px-6 py-5">
-                <span className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
-                  Chapters
-                </span>
-                <span className="mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                  Menu
-                </span>
-              </div>
-
-              <nav aria-label="Site" className="flex-1 overflow-y-auto">
-                <ul>
-                  {chapters.map((c) => {
-                    const isActive =
-                      c.to === "/"
-                        ? currentPath === "/"
-                        : currentPath.startsWith(c.to);
-                    return (
-                      <li key={c.to} className="border-b border-border/70">
-                        <Link
-                          to={c.to}
-                          onClick={() => setOpen(false)}
-                          className="group flex items-baseline justify-between gap-4 px-6 py-5 transition-colors hover:bg-surface"
-                        >
-                          <span className="flex items-baseline gap-4">
-                            <span
-                              className={`mono text-[10px] uppercase tracking-[0.24em] ${
-                                isActive ? "text-gold" : "text-muted-foreground"
-                              }`}
-                            >
-                              {c.num}
-                            </span>
-                            <span
-                              className={`font-display text-2xl font-medium tracking-tight ${
-                                isActive ? "text-gold" : "text-ink"
-                              }`}
-                            >
-                              {c.label}
-                            </span>
-                          </span>
-                          <ArrowUpRight
-                            className={`h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${
-                              isActive ? "text-gold" : "text-muted-foreground"
-                            }`}
-                            aria-hidden="true"
-                          />
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
-
-              <div className="border-t border-border px-6 py-5">
-                <p className="mono mb-4 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                  Elsewhere
-                </p>
-                <ul className="flex flex-col gap-3">
-                  {externals.map((e) => {
-                    const Icon = e.icon;
-                    return (
-                      <li key={e.href}>
-                        <a
-                          href={e.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => setOpen(false)}
-                          className="group flex items-center justify-between gap-4 border border-border bg-background px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
-                          aria-label={`${e.label}, ${e.handle}`}
-                        >
-                          <span className="flex items-center gap-3">
-                            <Icon className="h-4 w-4" aria-hidden="true" />
-                            {e.label}
-                          </span>
-                          <span className="mono text-[10px] normal-case tracking-[0.18em] text-muted-foreground group-hover:text-gold">
-                            {e.handle}
-                          </span>
-                        </a>
-                      </li>
-                    );
-                  })}
-                  <li>
-                    <Link
-                      to="/contact"
-                      onClick={() => setOpen(false)}
-                      className="group flex items-center justify-between gap-4 bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
-                    >
-                      <span className="flex items-center gap-3">
-                        <Mail className="h-4 w-4" aria-hidden="true" />
-                        Start a conversation
-                      </span>
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+              <MobileNavPanelContent
+                currentPath={currentPath}
+                onNavigate={() => setOpen(false)}
+              />
             </SheetContent>
           </Sheet>
         </div>
@@ -215,3 +119,132 @@ export function SiteNav() {
     </header>
   );
 }
+
+export function MobileNavPanelContent({
+  currentPath = "/",
+  onNavigate,
+  renderLink = ({ to, className, onClick, children }) => (
+    <Link to={to} onClick={onClick} className={className}>
+      {children}
+    </Link>
+  ),
+}: {
+  currentPath?: string;
+  onNavigate?: () => void;
+  renderLink?: (props: MobileNavLinkProps) => ReactNode;
+}) {
+  return (
+    <>
+      <SheetTitle className="sr-only">Site navigation</SheetTitle>
+      <SheetDescription className="sr-only">
+        Navigate the site chapters, links, and contact.
+      </SheetDescription>
+
+      <div className="flex min-h-20 items-center border-b border-border px-6 py-5 pr-20">
+        <span className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+          Chapters
+        </span>
+      </div>
+
+      <nav aria-label="Site" className="flex-1 overflow-y-auto">
+        <ul>
+          {chapters.map((c) => {
+            const isActive =
+              c.to === "/" ? currentPath === "/" : currentPath.startsWith(c.to);
+            return (
+              <li key={c.to} className="border-b border-border/70">
+                {renderLink({
+                  to: c.to,
+                  onClick: onNavigate,
+                  className:
+                    "group flex items-baseline justify-between gap-4 px-6 py-5 transition-colors hover:bg-surface",
+                  children: (
+                    <>
+                      <span className="flex items-baseline gap-4">
+                        <span
+                          className={`mono text-[10px] uppercase tracking-[0.24em] ${
+                            isActive ? "text-gold" : "text-muted-foreground"
+                          }`}
+                        >
+                          {c.num}
+                        </span>
+                        <span
+                          className={`font-display text-2xl font-medium tracking-tight ${
+                            isActive ? "text-gold" : "text-ink"
+                          }`}
+                        >
+                          {c.label}
+                        </span>
+                      </span>
+                      <ArrowUpRight
+                        className={`h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ${
+                          isActive ? "text-gold" : "text-muted-foreground"
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </>
+                  ),
+                })}
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <div className="border-t border-border px-6 py-5">
+        <p className="mono mb-4 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+          Elsewhere
+        </p>
+        <ul className="flex flex-col gap-3">
+          {externals.map((e) => {
+            const Icon = e.icon;
+            return (
+              <li key={e.href}>
+                <a
+                  href={e.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onNavigate}
+                  className="group flex items-center justify-between gap-4 border border-border bg-background px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
+                  aria-label={`${e.label}, ${e.handle}`}
+                >
+                  <span className="flex items-center gap-3">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                    {e.label}
+                  </span>
+                  <span className="mono text-[10px] normal-case tracking-[0.18em] text-muted-foreground group-hover:text-gold">
+                    {e.handle}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+          <li>
+            {renderLink({
+              to: "/contact",
+              onClick: onNavigate,
+              className:
+                "group flex items-center justify-between gap-4 bg-ink px-4 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink",
+              children: (
+                <>
+                  <span className="flex items-center gap-3">
+                    <Mail className="h-4 w-4" aria-hidden="true" />
+                    Start a conversation
+                  </span>
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </>
+              ),
+            })}
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+}
+
+type MobileNavLinkProps = {
+  to: (typeof chapters)[number]["to"];
+  className: string;
+  children: ReactNode;
+  onClick?: () => void;
+};

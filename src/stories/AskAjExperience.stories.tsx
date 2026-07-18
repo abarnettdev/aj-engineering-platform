@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ReactNode } from "react";
 import { fn } from "@storybook/test";
 import {
   AskAjExperience,
@@ -86,6 +87,32 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+function ViewportFrame({
+  children,
+  width,
+  height,
+  label,
+}: {
+  children: ReactNode;
+  width: string;
+  height: string;
+  label: string;
+}) {
+  return (
+    <div className="bg-background p-3">
+      <p className="mono mb-2 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        {label}
+      </p>
+      <div
+        className="overflow-hidden border border-border bg-background"
+        style={{ width, height }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 const assistantMessage = (
   content: string,
@@ -293,25 +320,178 @@ export const LongContent: Story = {
   ),
 };
 
-export const MobileStickyComposer: Story = {
+export const NarrowMobileEmpty: Story = {
+  render: (args) => (
+    <ViewportFrame width="320px" height="640px" label="320px mobile empty">
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const NarrowMobileActiveConversation: Story = {
   args: {
-    question: "How did AJ approach adoption across product teams?",
+    question: "",
     statusLabel: "Ready for a follow-up",
     messages: [
       {
-        id: "user-mobile",
+        id: "user-mobile-active",
         role: "user",
-        content: "What is Ask A.J. and how was it engineered?",
+        content: "How does AJ think about reliable AI interfaces?",
         sources: [],
       },
-      assistantMessage(`${completedAnswer}\n\n${completedAnswer}`, sources),
+      assistantMessage(
+        "AJ treats reliability as part of the product experience: make waiting states honest, keep provider details server-side, stream small application events, and design clear recovery paths when something fails.",
+      ),
     ],
   },
   render: (args) => (
-    <div className="h-[42rem] max-w-sm overflow-hidden border border-border bg-background">
-      <div className="h-full overflow-y-auto pb-32">
-        <AskAjExperience {...args} />
-      </div>
-    </div>
+    <ViewportFrame width="375px" height="667px" label="375px mobile active">
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const LongConversation: Story = {
+  args: {
+    question: "What would AJ focus on next?",
+    statusLabel: "Ready for a follow-up",
+    messages: [
+      {
+        id: "user-ai-products",
+        role: "user",
+        content: "How does AJ build AI-powered products?",
+        sources: [],
+      },
+      assistantMessage(completedAnswer, sources),
+      {
+        id: "user-architecture",
+        role: "user",
+        content: "What architecture choices matter most?",
+        sources: [],
+      },
+      assistantMessage(
+        "The important choices are the boundaries users cannot see but will feel: server-side model calls, stable stream contracts, resilient error handling, useful observability, and honest copy that does not pretend the product can do more than it can.",
+        [sources[1]],
+      ),
+      {
+        id: "user-platform",
+        role: "user",
+        content: "How does that connect to frontend platform work?",
+        sources: [],
+      },
+      assistantMessage(
+        "Frontend platform work has the same shape: shared contracts, accessible components, repeatable patterns, and enough documentation that other engineers can move faster without inheriting hidden complexity.",
+        [sources[2]],
+      ),
+    ],
+  },
+  render: (args) => (
+    <ViewportFrame width="390px" height="720px" label="390px long thread">
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const MultilineComposerMaxHeight: Story = {
+  args: {
+    question:
+      "I am evaluating AJ for a senior product engineering role.\n\nCan you explain how his AI application work connects to frontend architecture, backend boundaries, accessibility, and developer experience?\n\nPlease keep the answer concise but specific.",
+    statusLabel: "Ready",
+    messages: [
+      {
+        id: "user-max-composer",
+        role: "user",
+        content: "What can I ask here?",
+        sources: [],
+      },
+      assistantMessage(
+        "Ask about AI products, architecture decisions, frontend platform work, accessibility, design systems, backend services, or engineering philosophy.",
+      ),
+    ],
+  },
+  render: (args) => (
+    <ViewportFrame
+      width="390px"
+      height="720px"
+      label="390px capped multiline composer"
+    >
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const StreamingStableComposer: Story = {
+  args: {
+    question: "This draft stays in a stable composer row while streaming.",
+    isStreaming: true,
+    statusLabel: "Writing a concise response...",
+    messages: [
+      {
+        id: "user-streaming-mobile",
+        role: "user",
+        content: "How does AJ keep AI interfaces reliable?",
+        sources: [],
+      },
+      assistantMessage(
+        "AJ starts with a server-owned boundary, application-level stream events, visible waiting states, and clear failure behavior.",
+      ),
+    ],
+  },
+  render: (args) => (
+    <ViewportFrame
+      width="390px"
+      height="720px"
+      label="390px streaming composer"
+    >
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const SoftwareKeyboardViewport: Story = {
+  args: {
+    question: "How would AJ approach this rollout?",
+    statusLabel: "Ready",
+    messages: [
+      {
+        id: "user-keyboard",
+        role: "user",
+        content: "What makes Ask A.J. production-shaped?",
+        sources: [],
+      },
+      assistantMessage(
+        "It uses the existing app boundary, keeps provider calls server-side, streams typed events, and designs the recruiter experience around honest system capabilities.",
+      ),
+    ],
+  },
+  render: (args) => (
+    <ViewportFrame
+      width="390px"
+      height="520px"
+      label="390px software-keyboard approximation"
+    >
+      <AskAjExperience {...args} />
+    </ViewportFrame>
+  ),
+};
+
+export const ShortDesktopViewport: Story = {
+  args: {
+    question: "How does AJ balance speed and reliability?",
+    statusLabel: "Ready for a follow-up",
+    messages: [
+      {
+        id: "user-short-desktop",
+        role: "user",
+        content: "What should engineering leaders know about AJ?",
+        sources: [],
+      },
+      assistantMessage(completedAnswer, sources),
+    ],
+  },
+  render: (args) => (
+    <ViewportFrame width="1024px" height="520px" label="short desktop">
+      <AskAjExperience {...args} />
+    </ViewportFrame>
   ),
 };

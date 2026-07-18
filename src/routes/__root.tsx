@@ -87,8 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
-          title:
-            "AJ Barnett · AI Product Engineering · React · TypeScript",
+          title: "AJ Barnett · AI Product Engineering · React · TypeScript",
         },
         {
           name: "description",
@@ -98,13 +97,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "author", content: "AJ Barnett" },
         {
           property: "og:title",
-          content:
-            "AJ Barnett · AI Product Engineering · React · TypeScript",
+          content: "AJ Barnett · AI Product Engineering · React · TypeScript",
         },
         {
           property: "og:description",
           content:
-            "Ask A.J. is a live AI agent built by AJ Barnett, supported by frontend platform, enterprise design-system, and software architecture experience.",
+            "Ask A.J. is a production AI agent designed and engineered by AJ Barnett, supported by frontend platform, enterprise design-system, and software architecture experience.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -131,7 +129,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     component: RootComponent,
     notFoundComponent: NotFoundComponent,
     errorComponent: ErrorComponent,
-  }
+  },
 );
 
 function RootShell({ children }: { children: ReactNode }) {

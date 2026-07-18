@@ -1,4 +1,4 @@
-import type { FormEvent, KeyboardEvent, RefObject } from "react";
+import type { FormEvent, KeyboardEvent, RefObject, UIEvent } from "react";
 import { ArrowUpRight, Send, Square } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import {
 import { AskAjAnswerContent } from "@/features/ask-aj/ask-aj-answer-content";
 import { AskAjStatus } from "@/features/ask-aj/ask-aj-status";
 import type { AskAjCitation } from "@/features/ask-aj/contracts";
+import { cn } from "@/lib/utils";
 
 export type AskAjMessage = {
   id: string;
@@ -29,10 +30,13 @@ export type AskAjExperienceProps = {
   starterQuestions: string[];
   contactForm: AskAjContactFormProps;
   questionInputRef?: RefObject<HTMLTextAreaElement | null>;
+  conversationScrollRef?: RefObject<HTMLDivElement | null>;
+  conversationEndRef?: RefObject<HTMLDivElement | null>;
   onQuestionChange: (question: string) => void;
   onStarterQuestion: (question: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onStop: () => void;
+  onConversationScroll?: (event: UIEvent<HTMLDivElement>) => void;
 };
 
 export function AskAjExperience({
@@ -46,10 +50,13 @@ export function AskAjExperience({
   starterQuestions,
   contactForm,
   questionInputRef,
+  conversationScrollRef,
+  conversationEndRef,
   onQuestionChange,
   onStarterQuestion,
   onSubmit,
   onStop,
+  onConversationScroll,
 }: AskAjExperienceProps) {
   function handleQuestionKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
     if (
@@ -64,60 +71,91 @@ export function AskAjExperience({
     event.currentTarget.form?.requestSubmit();
   }
 
+  const visibleStarterQuestions = starterQuestions.slice(0, 4);
+  const visibleFollowUpQuestions = starterQuestions.slice(0, 3);
+  const hasConversation = messages.length > 0;
+
   return (
-    <main className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start">
+    <main className="grid h-full min-h-0 gap-4 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-stretch">
       <section
-        className="min-w-0 border border-border bg-card"
+        className="grid min-h-0 min-w-0 grid-rows-[auto_minmax(0,1fr)_auto] border border-border bg-card"
         aria-labelledby="ask-aj-heading"
       >
-        <div className="border-b border-border p-5">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+        <div
+          className={cn(
+            "border-b border-border transition-[padding] duration-200 motion-reduce:transition-none",
+            hasConversation ? "p-3 md:p-4" : "p-4 md:p-5",
+          )}
+        >
+          <div className="flex items-start justify-between gap-3">
             <div>
               <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
                 Ask A.J.
               </p>
               <h1
                 id="ask-aj-heading"
-                className="mt-2 font-display text-3xl leading-tight text-ink md:text-5xl"
+                className={cn(
+                  "mt-1.5 font-display leading-tight text-ink transition-[font-size,line-height] duration-200 motion-reduce:transition-none",
+                  hasConversation
+                    ? "text-2xl md:text-3xl"
+                    : "text-3xl md:text-4xl",
+                )}
               >
-                Explore my AI product engineering.
+                Ask about how I build.
               </h1>
             </div>
             <Badge
               variant="outline"
-              className="mono uppercase tracking-[0.18em]"
+              className="mono max-w-[9rem] text-right text-[10px] uppercase tracking-[0.16em] sm:max-w-none"
             >
-              MVP
+              Production AI Agent
             </Badge>
           </div>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-            Ask A.J. is a live AI agent built to help recruiters and engineering
-            leaders understand my work: AI-powered product systems, React and
-            TypeScript architecture, frontend platforms, enterprise design
-            systems, accessibility, and production tradeoffs.
+          <p
+            className={cn(
+              "mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground transition-opacity duration-200 motion-reduce:transition-none md:text-base",
+              hasConversation ? "hidden" : "block",
+            )}
+          >
+            Ask A.J. is a production agent I designed and engineered so
+            recruiters and engineering leaders can explore how I build software,
+            architect systems, and solve complex problems.
           </p>
         </div>
 
-        <div className="space-y-5 p-5">
+        <div
+          ref={conversationScrollRef}
+          onScroll={onConversationScroll}
+          className="min-h-0 overflow-y-auto overscroll-contain scroll-smooth p-4 [scroll-padding-bottom:2rem] md:p-5"
+          aria-busy={isStreaming}
+        >
           {messages.length === 0 && (
-            <div className="grid gap-3 md:grid-cols-3">
-              {starterQuestions.map((starter) => (
-                <button
-                  key={starter}
-                  type="button"
-                  onClick={() => onStarterQuestion(starter)}
-                  className="min-h-11 border border-border bg-surface p-4 text-left text-sm leading-relaxed transition-colors hover:border-gold hover:bg-background"
-                >
-                  {starter}
-                </button>
-              ))}
+            <div className="space-y-3 transition-opacity duration-200 motion-reduce:transition-none">
+              <div className="border border-border bg-surface p-3 md:p-4">
+                <p className="text-sm leading-relaxed text-foreground/85">
+                  Start with architecture, AI products, frontend platforms,
+                  design systems, accessibility, or engineering philosophy.
+                </p>
+              </div>
+              <div
+                className="flex gap-2 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 xl:grid-cols-4"
+                aria-label="Starter questions"
+              >
+                {visibleStarterQuestions.map((starter) => (
+                  <button
+                    key={starter}
+                    type="button"
+                    onClick={() => onStarterQuestion(starter)}
+                    className="min-h-11 w-[15rem] shrink-0 border border-border bg-surface p-3 text-left text-sm leading-relaxed transition-colors hover:border-gold hover:bg-background md:w-auto"
+                  >
+                    {starter}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
 
-          <div
-            className="min-h-[15rem] space-y-4 pb-36"
-            aria-busy={isStreaming}
-          >
+          <div className="space-y-4 pb-6">
             {messages.map((message) => (
               <article
                 key={message.id}
@@ -168,6 +206,24 @@ export function AskAjExperience({
                 )}
               </article>
             ))}
+            {hasConversation && !isStreaming && (
+              <div
+                className="flex gap-2 overflow-x-auto pb-2 pt-1"
+                aria-label="Follow-up suggestions"
+              >
+                {visibleFollowUpQuestions.map((starter) => (
+                  <button
+                    key={starter}
+                    type="button"
+                    onClick={() => onStarterQuestion(starter)}
+                    className="min-h-10 w-[13rem] shrink-0 border border-border bg-surface px-3 py-2 text-left text-xs leading-relaxed text-muted-foreground transition-colors hover:border-gold hover:bg-background hover:text-ink"
+                  >
+                    {starter}
+                  </button>
+                ))}
+              </div>
+            )}
+            <div ref={conversationEndRef} aria-hidden="true" />
           </div>
 
           {error && (
@@ -178,65 +234,67 @@ export function AskAjExperience({
               {error}
             </div>
           )}
-
-          <form
-            onSubmit={onSubmit}
-            className="sticky bottom-0 z-10 -mx-5 border-y border-border bg-card/95 px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 backdrop-blur"
-          >
-            <label className="sr-only" htmlFor="ask-aj-question">
-              Ask A.J. a question
-            </label>
-            <Textarea
-              id="ask-aj-question"
-              ref={questionInputRef}
-              value={question}
-              onChange={(event) => onQuestionChange(event.target.value)}
-              onKeyDown={handleQuestionKeyDown}
-              placeholder="Ask how AJ builds AI-powered products, reliable AI interfaces, or frontend platforms..."
-              className="min-h-24 resize-none bg-background"
-              disabled={isStreaming}
-            />
-            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
-              <div className="space-y-1">
-                <AskAjStatus
-                  label={statusLabel}
-                  isLoading={isStreaming}
-                  reducedMotion={reducedMotion}
-                />
-                <p className="text-xs text-muted-foreground">
-                  Press Enter to send · Shift + Enter for a new line
-                </p>
-              </div>
-              <div className="flex gap-2">
-                {isStreaming && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="min-h-11"
-                    onClick={onStop}
-                  >
-                    <Square className="h-4 w-4" />
-                    Stop
-                  </Button>
-                )}
-                <Button
-                  type="submit"
-                  className="min-h-11"
-                  disabled={isStreaming || !question.trim()}
-                >
-                  <Send className="h-4 w-4" />
-                  Ask
-                </Button>
-              </div>
-            </div>
-          </form>
-          <p className="sr-only" aria-live="polite">
-            {completionAnnouncement}
-          </p>
         </div>
+
+        <form
+          onSubmit={onSubmit}
+          className="border-t border-border bg-card px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 md:px-5 md:pb-[max(1rem,env(safe-area-inset-bottom))]"
+        >
+          <label className="sr-only" htmlFor="ask-aj-question">
+            Ask A.J. a question
+          </label>
+          <Textarea
+            id="ask-aj-question"
+            ref={questionInputRef}
+            value={question}
+            rows={2}
+            onChange={(event) => onQuestionChange(event.target.value)}
+            onKeyDown={handleQuestionKeyDown}
+            placeholder="Ask about AI products, architecture, or frontend platforms..."
+            className="max-h-32 min-h-16 resize-none overflow-y-auto bg-background leading-relaxed"
+            disabled={isStreaming}
+          />
+          <div className="mt-3 grid min-h-11 grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+            <div className="min-w-0 space-y-1">
+              <AskAjStatus
+                label={statusLabel}
+                isLoading={isStreaming}
+                reducedMotion={reducedMotion}
+              />
+              <p className="min-h-4 text-xs leading-none text-muted-foreground">
+                Press Enter to send · Shift + Enter for a new line
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                className={`min-h-11 w-20 ${isStreaming ? "" : "invisible"}`}
+                onClick={onStop}
+                disabled={!isStreaming}
+                aria-hidden={!isStreaming}
+                tabIndex={isStreaming ? undefined : -1}
+              >
+                <Square className="h-4 w-4" />
+                Stop
+              </Button>
+              <Button
+                type="submit"
+                className="min-h-11 w-20"
+                disabled={isStreaming || !question.trim()}
+              >
+                <Send className="h-4 w-4" />
+                Ask
+              </Button>
+            </div>
+          </div>
+        </form>
+        <p className="sr-only" aria-live="polite">
+          {completionAnnouncement}
+        </p>
       </section>
 
-      <aside className="h-fit border border-border bg-surface p-5 lg:sticky lg:top-24">
+      <aside className="hidden min-h-0 overflow-y-auto overscroll-contain border border-border bg-surface p-5 lg:block">
         <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
           Recruiter contact
         </p>

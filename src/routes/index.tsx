@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Ask A.J. is a live AI agent built by AJ Barnett to demonstrate production-minded AI product engineering.",
+          "Ask A.J. is a production AI agent designed and engineered by AJ Barnett to demonstrate production-minded AI product engineering.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -420,9 +420,9 @@ function Home() {
                 </span>
               </h2>
               <p className="mt-7 max-w-md text-[17px] leading-relaxed text-foreground/85">
-                A recruiter-facing AI agent designed and engineered by AJ
-                Barnett, built to show how intelligent product experiences work
-                when the model is only one piece of a resilient system.
+                A production AI agent designed and engineered by AJ Barnett,
+                built to show how intelligent product experiences work when the
+                model is only one piece of a resilient system.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link

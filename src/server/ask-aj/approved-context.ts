@@ -10,6 +10,9 @@ const limitationList = askAjKnowledge.limitations
 const roadmapList = askAjKnowledge.roadmap
   .map((item) => `- ${item}`)
   .join("\n");
+const implementationAnswerList = askAjKnowledge.implementationAnswers
+  .map((item) => `- ${item}`)
+  .join("\n");
 
 // Temporary approved context for Story 2. Story 3 retrieval replaces this file.
 export const askAjApprovedContext = `
@@ -24,6 +27,9 @@ ${limitationList}
 
 Ask A.J. roadmap, not implemented yet:
 ${roadmapList}
+
+Ask A.J. implementation answers:
+${implementationAnswerList}
 `;
 
 export const askAjInstructions = `

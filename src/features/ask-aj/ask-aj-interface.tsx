@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+  type UIEvent,
+} from "react";
 import { z } from "zod";
 import {
   AskAjExperience,
@@ -49,9 +55,18 @@ export function AskAjInterface() {
   const abortRef = useRef<AbortController | undefined>(undefined);
   const requestIdRef = useRef(0);
   const questionInputRef = useRef<HTMLTextAreaElement>(null);
+  const conversationScrollRef = useRef<HTMLDivElement>(null);
+  const conversationEndRef = useRef<HTMLDivElement>(null);
+  const shouldFollowScrollRef = useRef(true);
+  const scrollFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
-    return () => abortRef.current?.abort();
+    return () => {
+      abortRef.current?.abort();
+      if (scrollFrameRef.current != null) {
+        window.cancelAnimationFrame(scrollFrameRef.current);
+      }
+    };
   }, []);
 
   useEffect(() => {
@@ -65,6 +80,11 @@ export function AskAjInterface() {
 
     return () => window.clearInterval(intervalId);
   }, [hasReceivedFirstDelta, isStreaming, streamSession]);
+
+  useEffect(() => {
+    if (!shouldFollowScrollRef.current) return;
+    queueScrollToBottom();
+  }, [messages, parseError]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -86,6 +106,7 @@ export function AskAjInterface() {
       { id: crypto.randomUUID(), role: "user", content: trimmed, sources: [] },
       { id: assistantId, role: "assistant", content: "", sources: [] },
     ]);
+    shouldFollowScrollRef.current = true;
     setQuestion("");
     setHasReceivedFirstDelta(false);
     setWaitingStatusIndex(0);
@@ -184,6 +205,19 @@ export function AskAjInterface() {
     if (contactState !== "idle") setContactState("idle");
   }
 
+  function handleConversationScroll(event: UIEvent<HTMLDivElement>) {
+    shouldFollowScrollRef.current = isNearScrollBottom(event.currentTarget);
+  }
+
+  function queueScrollToBottom() {
+    if (scrollFrameRef.current != null) return;
+
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      scrollFrameRef.current = undefined;
+      conversationEndRef.current?.scrollIntoView({ block: "end" });
+    });
+  }
+
   async function submitContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (contactState === "submitting") return;
@@ -253,12 +287,21 @@ export function AskAjInterface() {
         onSubmit: submitContact,
       }}
       questionInputRef={questionInputRef}
+      conversationScrollRef={conversationScrollRef}
+      conversationEndRef={conversationEndRef}
       onQuestionChange={setQuestion}
       onStarterQuestion={setQuestion}
       onSubmit={handleSubmit}
       onStop={stopStream}
+      onConversationScroll={handleConversationScroll}
     />
   );
+}
+
+function isNearScrollBottom(element: HTMLDivElement) {
+  const distanceFromBottom =
+    element.scrollHeight - element.scrollTop - element.clientHeight;
+  return distanceFromBottom < 96;
 }
 
 async function readAskAjStream(

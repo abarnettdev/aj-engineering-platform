@@ -1,6 +1,8 @@
 export const askAjSuggestedQuestions = [
   "How does AJ build AI-powered products?",
   "What is Ask A.J. and how was it engineered?",
+  "How does Ask A.J. work?",
+  "What happens when the primary model fails?",
   "Why should we hire AJ?",
   "What has AJ built at enterprise scale?",
   "How does AJ approach frontend platform architecture?",
@@ -89,6 +91,17 @@ export const askAjKnowledge = {
     "MCP tools for standardized capability access",
     "Explicit workflow orchestration",
     "Conversation persistence with privacy controls",
+  ],
+  implementationAnswers: [
+    "Ask A.J. works through a React conversation interface, a TanStack Start server route, request validation, approved server-owned context, OpenAI Responses API streaming, and a browser-facing NDJSON event contract.",
+    "Responses are streamed by translating OpenAI output text deltas into application-owned message.delta events. The browser never receives raw provider stream objects.",
+    "When the primary model fails before output begins, eligible transient failures can retry, then move to a fallback OpenAI model, then a curated cached answer, then a static graceful fallback.",
+    "Ask A.J. protects the application with JSON request validation, a 25 KB request body limit, a 1,000-character question limit, allowed-origin validation, local rate limiting, duplicate in-flight request protection, output token caps, store:false provider requests, and server-only secrets.",
+    "The contact form validates recruiter input, uses a hidden honeypot field, applies server-side rate limiting and duplicate submission protection, sends through Resend from a verified server-owned sender, and uses the recruiter's email as replyTo.",
+    "Storybook is used to document deterministic UI states including streaming, waiting, completed answers, long content, errors, aborted responses, mobile sticky behavior, reduced motion, keyboard input, contact success, and contact validation without real network calls.",
+    "AJ's AI-assisted engineering approach keeps human judgment responsible for product framing, architecture, risk, accessibility, and final decisions while using AI to accelerate delivery.",
+    "The main MVP tradeoffs are in-memory rate limits and circuit state, curated knowledge instead of active retrieval, and cached/static fallback answers instead of citation-backed RAG.",
+    "The next meaningful improvements are durable shared safeguards, RAG over AJ-owned portfolio content, citation-backed answers, MCP tools, explicit workflow orchestration, and privacy-aware conversation persistence.",
   ],
   facts: [
     "AJ built Ask A.J. as a production-minded AI portfolio agent.",
