@@ -12,7 +12,6 @@ import {
   PenTool,
   Smartphone,
 } from "lucide-react";
-import { ProjectShowcase } from "@/components/project-showcase";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,30 +39,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
-
-const clientScreenshots = [
-  {
-    src: "/projects/lsi-current-reference.webp",
-    srcSet:
-      "/projects/lsi-current-reference-960.webp 960w, /projects/lsi-current-reference.webp 1440w",
-    alt: "Current LSI Companies public homepage showing commercial real-estate navigation over an aerial property image.",
-    label: "LSI Companies",
-  },
-  {
-    src: "/projects/artisan-current-reference.webp",
-    srcSet:
-      "/projects/artisan-current-reference-960.webp 960w, /projects/artisan-current-reference.webp 1440w",
-    alt: "Current Artisan Eatery public homepage showing restaurant navigation over a food image.",
-    label: "Artisan Eatery",
-  },
-  {
-    src: "/projects/hope-current-reference.webp",
-    srcSet:
-      "/projects/hope-current-reference-960.webp 960w, /projects/hope-current-reference.webp 1440w",
-    alt: "Current Hope Hospice public homepage showing its care information and contact form.",
-    label: "Hope Hospice",
-  },
-] as const;
 
 const stats = [
   ["20+", "Years across design and engineering"],
@@ -131,10 +106,17 @@ function Home() {
                 Try Ask A.J.
               </Link>
             </div>
-            <ProjectShowcase
-              screenshots={clientScreenshots}
-              className="mx-auto mt-12 max-w-5xl text-left"
-            />
+            <div className="mx-auto mt-12 max-w-5xl overflow-hidden rounded-3xl border border-white/70 bg-white p-2 shadow-lift">
+              <img
+                src="/visuals/client-work-studio.webp"
+                srcSet="/visuals/client-work-studio-960.webp 960w, /visuals/client-work-studio.webp 1580w"
+                sizes="(min-width: 1280px) 1000px, calc(100vw - 3rem)"
+                alt="Three polished browser mockups showing the current LSI Companies, Artisan Eatery, and Hope Hospice websites."
+                width={1580}
+                height={996}
+                className="aspect-[8/5] w-full rounded-[1.15rem] object-cover"
+              />
+            </div>
             <p className="mx-auto mt-4 max-w-3xl text-xs leading-relaxed text-muted-foreground">
               Current public references captured October 20, 2026. These sites
               may differ from the versions AJ originally designed and built.
@@ -216,13 +198,13 @@ function Home() {
           <article className="overflow-hidden rounded-3xl bg-card p-3 shadow-soft lg:grid lg:grid-cols-[1.2fr_0.8fr]">
             <div className="overflow-hidden rounded-2xl bg-ink p-4 sm:p-8">
               <img
-                src="/projects/design-system-demo.webp"
-                srcSet="/projects/design-system-demo-960.webp 960w, /projects/design-system-demo.webp 1440w"
+                src="/visuals/design-system-studio.webp"
+                srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1581w"
                 sizes="(min-width: 1024px) 55vw, 100vw"
-                alt="Independent public design-system demonstration showing live tokens and a component preview."
-                width={1440}
-                height={900}
-                className="aspect-[16/9] w-full rounded-xl object-cover object-top shadow-lift"
+                alt="AJ Barnett's interactive design-system playground displayed on a polished studio laptop."
+                width={1581}
+                height={995}
+                className="aspect-[8/5] w-full rounded-xl object-cover shadow-lift"
               />
             </div>
             <div className="flex flex-col justify-between p-6 sm:p-9">
@@ -294,14 +276,14 @@ function Home() {
             </div>
             <div className="m-3 overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3 lg:ml-0">
               <img
-                src="/projects/ask-aj-product.webp"
-                srcSet="/projects/ask-aj-product-960.webp 960w, /projects/ask-aj-product.webp 1440w"
+                src="/visuals/ask-aj-studio.webp"
+                srcSet="/visuals/ask-aj-studio-960.webp 960w, /visuals/ask-aj-studio.webp 1580w"
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                alt="The live Ask A.J. interface with starter questions, status, and a message composer."
-                width={1440}
-                height={900}
+                alt="The real Ask A.J. interface presented on a laptop in a dark coral studio scene."
+                width={1580}
+                height={995}
                 loading="lazy"
-                className="h-full min-h-72 w-full rounded-xl object-cover object-top"
+                className="h-full min-h-72 w-full rounded-xl object-cover"
               />
             </div>
           </article>

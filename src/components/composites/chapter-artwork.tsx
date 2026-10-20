@@ -26,13 +26,13 @@ export function ChapterArtwork({
     >
       <div
         className="relative w-full overflow-hidden bg-background"
-        style={{ aspectRatio: "4 / 3" }}
+        style={{ aspectRatio: "8 / 5" }}
       >
         <img
           src={src}
           alt={alt}
           width={1600}
-          height={1200}
+          height={1008}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"

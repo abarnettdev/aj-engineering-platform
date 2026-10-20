@@ -4,7 +4,6 @@ import { Reveal } from "@/components/reveal";
 import { articles } from "@/content/site-data";
 import { PageHero, Accent } from "@/components/page-hero";
 import { ArticleCard } from "@/components/composites/article-card";
-import heroImage from "@/assets/hero-writing.jpg";
 
 export const Route = createFileRoute("/writing/")({
   head: () => ({
@@ -28,8 +27,8 @@ function Writing() {
         eyebrow="Field notes"
         chapter="05"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Open notebook with fountain pen and coffee, the daily practice of writing between shipping."
+        image="/visuals/product-system-studio.webp"
+        imageAlt="Floating component, token, and code panels showing the system behind documented product work."
         imageCaption="Written between shipping"
         imageMeta="Ongoing"
         headline={

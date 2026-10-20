@@ -6,15 +6,7 @@ import { Reveal } from "@/components/reveal";
 import { Magnetic, Tilt3D } from "@/components/motion";
 import { MaskReveal } from "@/components/mask-reveal";
 import { workCases, type WorkCase } from "@/content/site-data";
-import {
-  BlueprintIllus,
-  ComponentSystemIllus,
-  ArchitectureIllus,
-  AutomotiveIllus,
-  AiLoopIllus,
-} from "@/components/illus";
 import { PageHero, Accent } from "@/components/page-hero";
-import heroImage from "@/assets/hero-work.jpg";
 
 export const Route = createFileRoute("/work")({
   head: () => ({
@@ -38,21 +30,45 @@ export const Route = createFileRoute("/work")({
   component: Work,
 });
 
-function CaseIllus({ slug }: { slug: string }) {
-  switch (slug) {
-    case "ask-aj":
-      return <AiLoopIllus />;
-    case "cdw-legato":
-      return <ComponentSystemIllus />;
-    case "midland-trust":
-      return <ArchitectureIllus />;
-    case "priority-marketing":
-      return <BlueprintIllus label="CMS" />;
-    case "affinitiv":
-      return <AutomotiveIllus />;
-    default:
-      return <BlueprintIllus label="Case" />;
-  }
+const caseVisuals: Record<string, { src: string; alt: string }> = {
+  "ask-aj": {
+    src: "/visuals/ask-aj-studio.webp",
+    alt: "The real Ask A.J. product displayed in a dark coral studio laptop mockup.",
+  },
+  "cdw-legato": {
+    src: "/visuals/design-system-studio.webp",
+    alt: "AJ Barnett's interactive design-system playground displayed on a studio laptop.",
+  },
+  "midland-trust": {
+    src: "/visuals/platform-studio.webp",
+    alt: "A polished tablet product mockup representing secure financial-platform work.",
+  },
+  "priority-marketing": {
+    src: "/visuals/client-work-studio.webp",
+    alt: "A polished studio composition of three real client websites.",
+  },
+  affinitiv: {
+    src: "/visuals/client-work-studio.webp",
+    alt: "A polished studio composition of production client websites.",
+  },
+};
+
+function CaseVisual({ slug }: { slug: string }) {
+  const visual = caseVisuals[slug] ?? {
+    src: "/visuals/product-system-studio.webp",
+    alt: "Floating interface panels and code in a polished product-system composition.",
+  };
+
+  return (
+    <img
+      src={visual.src}
+      alt={visual.alt}
+      width={1600}
+      height={1008}
+      loading="lazy"
+      className="aspect-[8/5] w-full object-cover"
+    />
+  );
 }
 
 function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
@@ -173,7 +189,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
               <MaskReveal>
                 <Tilt3D max={5} glare={false} scale={1.01}>
                   <div className="overflow-hidden rounded-2xl border border-border bg-surface p-1 shadow-lift">
-                    <CaseIllus slug={w.slug} />
+                    <CaseVisual slug={w.slug} />
                   </div>
                 </Tilt3D>
               </MaskReveal>
@@ -245,9 +261,9 @@ function Work() {
         eyebrow="Case studies"
         chapter="01"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Modernist glass skyscraper, real teams, real constraints, real outcomes."
-        imageCaption="Enterprise scale · Fortune 500"
+        image="/visuals/client-work-studio.webp"
+        imageAlt="Three polished browser mockups showing real client websites built across AJ's career."
+        imageCaption="Real client work · Polished presentation"
         imageMeta="Est. 2001"
         headline={
           <>

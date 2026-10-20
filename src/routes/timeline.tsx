@@ -5,14 +5,6 @@ import { timeline } from "@/content/site-data";
 import { ChapterArtwork } from "@/components/composites/chapter-artwork";
 import { PageHero, Accent } from "@/components/page-hero";
 import { JourneyRail } from "@/components/composites/journey-rail";
-import heroImage from "@/assets/hero-timeline.jpg";
-import ch1 from "@/assets/chapter-01-first-website.jpg";
-import ch2 from "@/assets/chapter-02-creative-technologist.jpg";
-import ch4 from "@/assets/chapter-04-caldwell-kerr.jpg";
-import ch5 from "@/assets/chapter-05-priority.jpg";
-import ch6 from "@/assets/chapter-06-midland.jpg";
-import ch7 from "@/assets/chapter-07-cdw-legato.jpg";
-import ch8 from "@/assets/chapter-08-now.jpg";
 
 export const Route = createFileRoute("/timeline")({
   head: () => ({
@@ -38,39 +30,39 @@ export const Route = createFileRoute("/timeline")({
 
 const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
   {
-    src: ch1,
-    alt: "Illustration of a beige CRT monitor on a small stand, its screen showing a simple pink browser window with the word HTML, representing the very first web page built in 2001.",
-    caption: "01 · First website · HTML",
+    src: "/visuals/product-system-studio.webp",
+    alt: "Floating interface, component, and code panels showing the foundations of product work.",
+    caption: "01 · From first page to product systems",
   },
   {
-    src: ch2,
-    alt: "Illustration of a creative technologist's toolkit: a graphics tablet with color wheel and stylus, a 3D wireframe cube, and an After Effects motion timeline, representing design, motion, and 3D craft.",
-    caption: "02 · Design + motion + 3D",
+    src: "/visuals/client-work-studio.webp",
+    alt: "Three real client websites presented as polished browser mockups.",
+    caption: "02 · Design became production work",
   },
   {
-    src: ch4,
-    alt: "Illustration of a laptop screen displaying a marketing campaign dashboard with a rising conversion chart and upward gold arrow, representing web work that improved conversion for agency clients.",
-    caption: "04 · Marketing → conversion",
+    src: "/visuals/client-work-studio.webp",
+    alt: "A studio composition of production client websites across real estate, hospitality, and health care.",
+    caption: "04 · Marketing, measured in outcomes",
   },
   {
-    src: ch5,
-    alt: "Illustration of modular content blocks and a cursor assembling them into a page frame, next to a rendered CMS preview, representing modular content management systems built for editors.",
-    caption: "05 · Modular CMS systems",
+    src: "/visuals/client-work-studio.webp",
+    alt: "Real production websites arranged as a cohesive multi-project browser composition.",
+    caption: "05 · Reusable systems for client teams",
   },
   {
-    src: ch6,
-    alt: "Illustration of a small bank vault marked with a gold shield, a padlock, stacks of gold coins, and a secure transaction card, representing engineering for a regulated fintech product.",
-    caption: "06 · Fintech · trust & rigor",
+    src: "/visuals/platform-studio.webp",
+    alt: "A secure financial-platform interface displayed on a polished tablet device.",
+    caption: "06 · Fintech · trust and rigor",
   },
   {
-    src: ch7,
-    alt: "Illustration of a central gold design-token coin with thin lines radiating out to surrounding UI components: a button, a toggle, an input, and a card, representing the Legato enterprise design system.",
-    caption: "07 · Enterprise design system",
+    src: "/visuals/design-system-studio.webp",
+    alt: "AJ Barnett's interactive design-system playground displayed on a studio laptop.",
+    caption: "07 · Enterprise design-system leadership",
   },
   {
-    src: ch8,
-    alt: "Illustration of an engineer's workstation with two laptops and a monitor, a glowing AI knowledge-orb hovering above with two agent nodes orbiting it, representing today's AI-assisted engineering practice.",
-    caption: "08 · AI-assisted engineering",
+    src: "/visuals/ask-aj-studio.webp",
+    alt: "The real Ask A.J. interface displayed on a laptop in a dark coral studio scene.",
+    caption: "08 · AI application engineering",
   },
 ];
 
@@ -94,9 +86,9 @@ function Timeline() {
         eyebrow="2001 → 2026"
         chapter="02"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="A long empty highway stretching to the horizon, a career built one mile at a time."
-        imageCaption="One road · Many chapters"
+        image="/visuals/product-system-studio.webp"
+        imageAlt="A polished composition of component panels and code representing a career spanning design and engineering."
+        imageCaption="One practice · Many chapters"
         imageMeta="Est. 2001"
         headline={
           <>

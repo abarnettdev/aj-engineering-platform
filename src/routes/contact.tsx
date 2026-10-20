@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/section";
 import { Linkedin, Github, Mail, FileDown } from "lucide-react";
 import { PageHero, Accent } from "@/components/page-hero";
-import heroImage from "@/assets/hero-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -33,8 +32,8 @@ function Contact() {
         eyebrow="Contact · Let's connect"
         chapter="07"
         chapterLabel="END"
-        image={heroImage}
-        imageAlt="A lighthouse cutting warm light through fog, a signal for the right teams to find their way in."
+        image="/visuals/ask-aj-studio.webp"
+        imageAlt="The real Ask A.J. interface and recruiter contact form presented in a dark coral studio scene."
         imageCaption="Signal · Not noise"
         imageMeta="Available"
         headline={

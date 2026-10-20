@@ -6,7 +6,6 @@ import { TokensIllus, ArchitectureIllus } from "@/components/illus";
 import { PageHero, Accent } from "@/components/page-hero";
 import { TokenPlayground } from "@/components/token-playground";
 import { ComponentAnatomy } from "@/components/composites/component-anatomy";
-import heroImage from "@/assets/hero-design-system.jpg";
 
 export const Route = createFileRoute("/systems")({
   head: () => ({
@@ -88,8 +87,8 @@ function DesignSystem() {
         eyebrow="Design system"
         chapter="04"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Brutalist grid ceiling with dramatic light, a system built from repeated, disciplined form."
+        image="/visuals/design-system-studio.webp"
+        imageAlt="AJ Barnett's interactive design-system playground displayed on a polished studio laptop."
         imageCaption="Architecture · API · DX · Tokens"
         imageMeta="Systems"
         headline={

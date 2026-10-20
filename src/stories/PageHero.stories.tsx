@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PageHero } from "@/components/page-hero";
-import heroImage from "@/assets/hero-engineering.jpg";
 
 /**
  * # PageHero
  *
  * The editorial hero used at the top of interior routes (Work, Journey,
  * Engineering, Systems, Contact, Field Notes). Composes an eyebrow,
- * chapter mark, headline, description, actions, and an anchored image
- * with a blueprint backdrop.
+ * chapter mark, headline, description, actions, and a polished product image.
  *
  * ## When to use
  * The first block of any interior route. Sets the reading contract
@@ -20,13 +18,12 @@ import heroImage from "@/assets/hero-engineering.jpg";
  * ## Accessibility
  * - Headline renders as `<h1>`; only one `PageHero` per page.
  * - Image requires `imageAlt`. Decorative backdrop grid is `aria-hidden`.
- * - Motion (parallax, tilt) no-ops under reduced motion.
  *
  * ## Responsive
  * Stacks on mobile (image below headline), splits on md+. Chips wrap.
  *
  * ## Related
- * - `Reveal`, `Parallax`, `Tilt3D`, `FloatLayer`
+ * - `Section`, `Button`, `Badge`
  */
 const meta = {
   title: "Composites/PageHero",
@@ -56,9 +53,9 @@ const source = `<PageHero
   chapterLabel="Engineering Judgment"
   headline={<>The craft of shipping <em>with taste</em>.</>}
   description="How I choose what to build, what to postpone, and what to refuse."
-  image={hero}
-  imageAlt="Studio workspace"
-  imageCaption="Studio, mid-review"
+  image="/visuals/product-system-studio.webp"
+  imageAlt="Floating product-system panels"
+  imageCaption="Product system"
   imageMeta="2026"
   chips={["Systems", "Editorial", "Motion"]}
 />`;
@@ -70,14 +67,15 @@ export const Default: Story = {
     chapterLabel: "Engineering Judgment",
     headline: (
       <>
-        The craft of shipping <em className="italic text-gold/90">with taste</em>.
+        The craft of shipping{" "}
+        <em className="italic text-gold/90">with taste</em>.
       </>
     ),
     description:
       "How I choose what to build, what to postpone, and what to refuse.",
-    image: heroImage,
-    imageAlt: "Studio workspace, mid-review",
-    imageCaption: "Studio, mid-review",
+    image: "/visuals/product-system-studio.webp",
+    imageAlt: "Floating product-system panels with components and code",
+    imageCaption: "Product system",
     imageMeta: "2026",
     chips: ["Systems", "Editorial", "Motion"],
   },

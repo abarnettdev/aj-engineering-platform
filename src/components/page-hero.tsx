@@ -76,7 +76,7 @@ export function PageHero(props: PageHeroProps) {
                 width={1000}
                 height={750}
                 loading="lazy"
-                className="block aspect-[4/3] w-full rounded-[1.15rem] object-cover"
+                className="block aspect-[8/5] w-full rounded-[1.15rem] object-cover"
               />
               {(props.imageCaption || props.imageMeta) && (
                 <figcaption className="flex flex-wrap justify-between gap-2 px-3 py-3 text-xs text-muted-foreground">

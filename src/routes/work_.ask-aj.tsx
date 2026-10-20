@@ -14,7 +14,6 @@ import {
   type AskAjSignal,
 } from "@/features/ask-aj/ask-aj-architecture";
 import { askAjKnowledge } from "@/content/knowledge/ask-aj";
-import heroImage from "@/assets/composite-ai-lifecycle.jpg";
 
 export const Route = createFileRoute("/work_/ask-aj")({
   head: () => ({
@@ -49,8 +48,8 @@ function AskAjCaseStudy() {
         eyebrow="Case Study · AI Application Engineering"
         chapter="AI"
         chapterLabel="Ask A.J."
-        image={heroImage}
-        imageAlt="AI lifecycle diagram representing an engineered AI product workflow."
+        image="/visuals/ask-aj-studio.webp"
+        imageAlt="The real Ask A.J. product displayed on a laptop in a dark coral studio scene."
         imageCaption="Live AI agent"
         imageMeta="Production-minded MVP"
         headline={

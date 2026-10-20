@@ -6,7 +6,6 @@ import { SystemsMap } from "@/components/composites/systems-map";
 import { AiLifecycle } from "@/components/composites/ai-lifecycle";
 import { MentalModels } from "@/components/composites/mental-models";
 import { Magnetic } from "@/components/motion";
-import heroImage from "@/assets/hero-engineering.jpg";
 
 export const Route = createFileRoute("/engineering")({
   head: () => ({
@@ -79,8 +78,8 @@ function Engineering() {
         eyebrow="How I think"
         chapter="03"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Control-room whiteboard covered in hand-drawn architecture: nodes, contracts, and a critical path traced in gold with a single risk noted in oxblood."
+        image="/visuals/product-system-studio.webp"
+        imageAlt="Floating interface panels, component tokens, and code arranged as a polished product-system composition."
         imageCaption="Systems thinking"
         imageMeta="Practice"
         headline={

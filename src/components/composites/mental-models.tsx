@@ -1,31 +1,21 @@
 import { CompositeFigure } from "@/components/composites/figure";
-import image from "@/assets/composite-mental-models.jpg";
-
-/**
- * MentalModels — editorial triptych of three ways to think about a system.
- *
- * A single 3D illustration containing three sculptural diagrams:
- * hierarchy (stepped pyramid), core-and-orbit (concentric rings), and
- * branching graph (node tree).
- */
 export function MentalModels() {
   return (
     <CompositeFigure
-      eyebrow="Fig. 05 · Mental Models"
-      title="Hierarchy · Orbit · Graph"
-      image={image}
-      alt="Three isometric sculptural diagrams on plinths: a stepped pyramid, concentric rings around a gold sphere, and a branching node tree."
+      eyebrow="Fig. 05 · Platform Model"
+      title="Data · Interface · Trust"
+      image="/visuals/platform-studio.webp"
+      alt="A financial-platform interface displayed on a polished tablet device."
       caption={
         <>
-          A system rarely fits one metaphor. The useful move is holding
-          three at once and choosing the one that answers the question in
-          front of you.
+          Strong platforms make complex data understandable while keeping the
+          boundaries, permissions, and user trust visible in the experience.
         </>
       }
       legend={[
-        { label: "Hierarchy", note: "who reports to what" },
-        { label: "Orbit", note: "what circles the core" },
-        { label: "Graph", note: "how signal actually travels" },
+        { label: "Data", note: "the shape behind the product" },
+        { label: "Interface", note: "the decisions users can see" },
+        { label: "Trust", note: "reliability, access, and clarity" },
       ]}
     />
   );
