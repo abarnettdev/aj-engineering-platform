@@ -88,8 +88,8 @@ function DesignSystem() {
         chapter="04"
         chapterLabel="06"
         image="/visuals/design-system-studio.webp"
-        imageAlt="AJ Barnett's interactive design-system playground displayed on a polished studio laptop."
-        imageCaption="Architecture · API · DX · Tokens"
+        imageAlt="The current CDW website, built with the Legato design system, displayed in a polished studio monitor."
+        imageCaption="Legato in production · Architecture · API · DX"
         imageMeta="Systems"
         headline={
           <>

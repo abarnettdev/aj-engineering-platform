@@ -56,7 +56,7 @@ const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
   },
   {
     src: "/visuals/design-system-studio.webp",
-    alt: "AJ Barnett's interactive design-system playground displayed on a studio laptop.",
+    alt: "The current CDW website, built with Legato, displayed in a polished studio monitor.",
     caption: "07 · Enterprise design-system leadership",
   },
   {

@@ -37,7 +37,7 @@ const caseVisuals: Record<string, { src: string; alt: string }> = {
   },
   "cdw-legato": {
     src: "/visuals/design-system-studio.webp",
-    alt: "AJ Barnett's interactive design-system playground displayed on a studio laptop.",
+    alt: "The current CDW website, built with Legato, displayed in a polished studio monitor.",
   },
   "midland-trust": {
     src: "/visuals/platform-studio.webp",

@@ -159,15 +159,15 @@ function LegatoCaseStudy() {
           <figure className="mt-14 overflow-hidden rounded-3xl border border-border bg-card p-2 shadow-lift">
             <img
               src="/visuals/design-system-studio.webp"
-              srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1581w"
+              srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1586w"
               sizes="(min-width: 1280px) 1200px, calc(100vw - 3rem)"
-              alt="AJ Barnett's interactive design-system playground displayed on a polished studio laptop."
-              width={1581}
-              height={995}
+              alt="The current CDW website, built with the Legato design system, displayed in a polished studio monitor."
+              width={1586}
+              height={992}
               className="aspect-[8/5] w-full rounded-[1.15rem] object-cover"
             />
             <figcaption className="px-4 py-3 text-xs text-muted-foreground">
-              Independent public demonstration · Real interactive system screen
+              Legato in production · Current CDW public website
             </figcaption>
           </figure>
 

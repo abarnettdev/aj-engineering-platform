@@ -15,6 +15,7 @@ Last updated: October 20, 2026
 - Applied the approved cool-gray, white-card, near-black, and orange-red visual system across shared site surfaces.
 - Restored Ask A.J. to the main navigation and persistent launcher, and placed the authentic product screen inside a dark coral studio composition.
 - Reframed verified client screenshots inside a polished multi-browser studio composition while keeping each real site recognizable.
+- Replaced the placeholder Legato component screen with the current CDW public experience to show the system working in production.
 - Added a flagship Legato case study and made the Ask A.J. project route directly accessible.
 - Updated Storybook foundations and shared primitives to use the same tokens as the application.
 - Replaced the legacy photo and illustration set across active routes with the approved studio-device visual language.

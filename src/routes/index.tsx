@@ -196,14 +196,14 @@ function Home() {
 
         <div className="mt-12 grid gap-6">
           <article className="overflow-hidden rounded-3xl bg-card p-3 shadow-soft lg:grid lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="overflow-hidden rounded-2xl bg-ink p-4 sm:p-8">
+            <div className="overflow-hidden rounded-2xl bg-muted p-4 sm:p-8">
               <img
                 src="/visuals/design-system-studio.webp"
-                srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1581w"
+                srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1586w"
                 sizes="(min-width: 1024px) 55vw, 100vw"
-                alt="AJ Barnett's interactive design-system playground displayed on a polished studio laptop."
-                width={1581}
-                height={995}
+                alt="The current CDW website, built with Legato, displayed in a polished studio monitor."
+                width={1586}
+                height={992}
                 className="aspect-[8/5] w-full rounded-xl object-cover shadow-lift"
               />
             </div>
