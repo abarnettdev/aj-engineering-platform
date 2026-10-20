@@ -13,8 +13,8 @@ import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AskAjLauncher } from "@/components/ask-aj-launcher";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function NotFoundComponent() {
   return (
@@ -41,7 +41,13 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({
+  error,
+  reset,
+}: {
+  error: unknown;
+  reset: () => void;
+}) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -87,22 +93,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
-          title: "AJ Barnett · AI Product Engineering · React · TypeScript",
+          title: "AJ Barnett · Product Designer & Software Engineer",
         },
         {
           name: "description",
           content:
-            "Software engineer building AI-powered products, frontend platforms, scalable developer systems, React and TypeScript architecture, and production-minded AI systems.",
+            "Product design, visual design, design systems, and software engineering. From first concept to production code.",
         },
         { name: "author", content: "AJ Barnett" },
         {
           property: "og:title",
-          content: "AJ Barnett · AI Product Engineering · React · TypeScript",
+          content: "AJ Barnett · Product Designer & Software Engineer",
         },
         {
           property: "og:description",
           content:
-            "Ask A.J. is a production AI agent designed and engineered by AJ Barnett, supported by frontend platform, enterprise design-system, and software architecture experience.",
+            "Explore AJ Barnett’s work across product design, visual design, design systems, and software engineering.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -112,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
         {
           rel: "preconnect",
-          href: "https://fonts.googleapis.com",
+          href: "https://api.fontshare.com",
         },
         {
           rel: "preconnect",
@@ -121,7 +127,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo+Black&family=Archivo:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
+          href: "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap",
         },
       ],
     }),
@@ -165,8 +175,8 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <AskAjLauncher />
       </div>
-      <AskAjLauncher />
     </QueryClientProvider>
   );
 }

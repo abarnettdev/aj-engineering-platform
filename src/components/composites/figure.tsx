@@ -29,13 +29,13 @@ export function CompositeFigure({
   return (
     <figure
       className={cn(
-        "relative w-full max-w-none border border-border bg-card shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]",
+        "relative w-full max-w-none overflow-hidden rounded-3xl border border-border bg-card shadow-lift",
         className,
       )}
     >
       {/* Meta strip */}
       <div className="flex items-center justify-between gap-4 border-b border-border/70 px-5 py-3">
-        <span className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+        <span className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
           {eyebrow}
         </span>
         {title ? (
@@ -77,22 +77,26 @@ export function CompositeFigure({
       {(caption || legend?.length) && (
         <figcaption className="border-t border-border/70 px-5 py-4">
           {caption ? (
-            <p className="text-sm leading-relaxed text-foreground/85">{caption}</p>
+            <p className="text-sm leading-relaxed text-foreground/85">
+              {caption}
+            </p>
           ) : null}
           {legend?.length ? (
             <dl className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
               {legend.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-baseline gap-2 border-l border-gold/50 pl-3"
+                  className="flex items-baseline gap-2 border-l border-accent/50 pl-3"
                 >
-                  <dt className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                     {String(i + 1).padStart(2, "0")}
                   </dt>
                   <dd className="text-xs text-foreground/80">
                     <span className="font-medium text-ink">{item.label}</span>
                     {item.note ? (
-                      <span className="text-muted-foreground">, {item.note}</span>
+                      <span className="text-muted-foreground">
+                        , {item.note}
+                      </span>
                     ) : null}
                   </dd>
                 </div>
@@ -118,8 +122,8 @@ function CornerMark({
       className={cn("pointer-events-none absolute h-3 w-3", className)}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
-      <span className="absolute left-0 top-0 h-px w-full bg-gold/60" />
-      <span className="absolute left-0 top-0 h-full w-px bg-gold/60" />
+      <span className="absolute left-0 top-0 h-px w-full bg-accent/60" />
+      <span className="absolute left-0 top-0 h-full w-px bg-accent/60" />
     </span>
   );
 }

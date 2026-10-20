@@ -4,7 +4,6 @@ import { Reveal } from "@/components/reveal";
 import { articles } from "@/content/site-data";
 import { PageHero, Accent } from "@/components/page-hero";
 import { ArticleCard } from "@/components/composites/article-card";
-import heroImage from "@/assets/hero-writing.jpg";
 
 export const Route = createFileRoute("/writing/")({
   head: () => ({
@@ -25,11 +24,11 @@ function Writing() {
   return (
     <>
       <PageHero
-        eyebrow="Field Notes · Chapter 05"
+        eyebrow="Field notes"
         chapter="05"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Open notebook with fountain pen and coffee, the daily practice of writing between shipping."
+        image="/visuals/field-notes-studio.webp"
+        imageAlt="An editorial writing desk showing an ajbarnett.tech article, outline, component notes, and code annotation."
         imageCaption="Written between shipping"
         imageMeta="Ongoing"
         headline={
@@ -59,8 +58,14 @@ function Writing() {
             >
               <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
                 <div className="flex flex-col">
-                  <ArticleCard.Meta tag={featured.tag} read={featured.read} featured />
-                  <ArticleCard.Title size="lg">{featured.title}</ArticleCard.Title>
+                  <ArticleCard.Meta
+                    tag={featured.tag}
+                    read={featured.read}
+                    featured
+                  />
+                  <ArticleCard.Title size="lg">
+                    {featured.title}
+                  </ArticleCard.Title>
                   <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
                     {featured.dek}
                   </p>
@@ -68,7 +73,7 @@ function Writing() {
                 </div>
                 <div className="relative">
                   <FeaturedArt />
-                  <div className="mono absolute right-3 top-3 text-[10px] uppercase tracking-[0.22em] text-gold">
+                  <div className="mono absolute right-3 top-3 text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                     {featured.read} · {featured.date}
                   </div>
                 </div>
@@ -100,14 +105,28 @@ function Writing() {
 function FeaturedArt() {
   return (
     <div className="relative aspect-[4/3] w-full overflow-hidden border border-border bg-ink">
-      <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full text-background">
+      <svg
+        viewBox="0 0 400 300"
+        className="absolute inset-0 h-full w-full text-background"
+      >
         <defs>
-          <pattern id="feat-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeOpacity="0.05" strokeWidth="1" />
+          <pattern
+            id="feat-grid"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 20 0 L 0 0 0 20"
+              fill="none"
+              stroke="currentColor"
+              strokeOpacity="0.05"
+              strokeWidth="1"
+            />
           </pattern>
           <linearGradient id="feat-glow" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="var(--gold)" stopOpacity="0.9" />
-            <stop offset="1" stopColor="var(--gold)" stopOpacity="0" />
+            <stop offset="0" stopColor="var(--accent)" stopOpacity="0.9" />
+            <stop offset="1" stopColor="var(--accent)" stopOpacity="0" />
           </linearGradient>
         </defs>
         <rect width="400" height="300" fill="url(#feat-grid)" />
@@ -119,7 +138,7 @@ function FeaturedArt() {
               y={40 + r * 50}
               width="52"
               height="40"
-              fill={r === 1 && c === 2 ? "var(--gold)" : "none"}
+              fill={r === 1 && c === 2 ? "var(--accent)" : "none"}
               stroke="currentColor"
               strokeOpacity={r === 1 && c === 2 ? 0 : 0.25}
               strokeWidth="1"

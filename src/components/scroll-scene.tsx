@@ -35,7 +35,8 @@ export function Choreograph({
         toggleActions: "play none none reverse",
       },
     });
-    return () => ScrollTrigger.getAll().forEach((t) => t.trigger === scope && t.kill());
+    return () =>
+      ScrollTrigger.getAll().forEach((t) => t.trigger === scope && t.kill());
   }, []);
 
   return (
@@ -46,7 +47,7 @@ export function Choreograph({
 }
 
 /**
- * ReadingProgress, thin gold bar at top of viewport for long-form pages.
+ * ReadingProgress, thin coral-red bar at top of viewport for long-form pages.
  */
 export function ReadingProgress() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -70,7 +71,7 @@ export function ReadingProgress() {
     >
       <div
         ref={ref}
-        className="h-full origin-left bg-gold"
+        className="h-full origin-left bg-accent"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

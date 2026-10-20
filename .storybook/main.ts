@@ -8,7 +8,7 @@ const config: StorybookConfig = {
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   framework: {
     name: "@storybook/react-vite",
-    options: {},
+    options: { builder: { viteConfigPath: ".storybook/vite.config.ts" } },
   },
   docs: {},
   typescript: { reactDocgen: "react-docgen" },
@@ -25,8 +25,6 @@ const config: StorybookConfig = {
     merged.configFile = false;
     return merged as never;
   },
-
 };
 
 export default config;
-

@@ -11,7 +11,12 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "node scripts/build-storybook.mjs"
+    "build-storybook": "node scripts/build-storybook.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:app": "vite build",
+    "check": "bun run typecheck && bun run test:smoke",
+    "test:smoke": "node --test scripts/smoke.test.mjs",
+    "test:design-system": "bun test scripts/design-system.test.tsx"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -43,9 +48,9 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-query": "^5.101.1",
-    "@tanstack/react-router": "^1.170.16",
-    "@tanstack/react-start": "^1.168.26",
-    "@tanstack/router-plugin": "^1.168.18",
+    "@tanstack/react-router": "1.170.45",
+    "@tanstack/react-start": "1.169.3",
+    "@tanstack/router-plugin": "1.168.47",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "class-variance-authority": "^0.7.1",
@@ -74,7 +79,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@lovable.dev/vite-tanstack-config": "2.7.1",
     "@storybook/addon-essentials": "^8",
     "@storybook/addon-links": "^8",
     "@storybook/blocks": "^8",

@@ -195,7 +195,7 @@ export function AskAjContactForm({
       </div>
       {error && (
         <p
-          className="border border-oxblood/40 bg-oxblood/5 p-3 text-sm text-oxblood"
+          className="rounded-2xl border border-oxblood/40 bg-oxblood/5 p-3 text-sm text-oxblood"
           role="alert"
         >
           {error}
@@ -203,7 +203,7 @@ export function AskAjContactForm({
       )}
       {state === "success" && (
         <p
-          className="border border-success/35 bg-success-surface p-3 text-sm text-success-foreground"
+          className="rounded-2xl border border-success/35 bg-success-surface p-3 text-sm text-success-foreground"
           role="status"
           aria-live="polite"
         >

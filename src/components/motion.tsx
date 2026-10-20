@@ -38,7 +38,11 @@ export function Parallax({
   }, []);
 
   return (
-    <div ref={ref as never} className={className} style={{ willChange: "transform" }}>
+    <div
+      ref={ref as never}
+      className={className}
+      style={{ willChange: "transform" }}
+    >
       {children}
     </div>
   );
@@ -85,7 +89,6 @@ export function SplitReveal({
           className="inline-block align-baseline"
           style={{ overflow: "visible", lineHeight: 1.1 }}
         >
-
           <span data-word className="inline-block will-change-transform">
             {w}
             {i < words.length - 1 ? "\u00A0" : ""}
@@ -118,7 +121,7 @@ export function Magnetic({
 }
 
 /**
- * CursorSpotlight, a soft gold spotlight follows the pointer inside its container.
+ * CursorSpotlight, a soft coral-red spotlight follows the pointer inside its container.
  * Zero cost on touch / reduced motion.
  */
 export function CursorSpotlight({
@@ -146,7 +149,7 @@ export function CursorSpotlight({
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-100 transition-opacity"
           style={{
-            background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, color-mix(in oklab, var(--gold) 18%, transparent), transparent 65%)`,
+            background: `radial-gradient(280px circle at ${pos.x}px ${pos.y}px, color-mix(in oklab, var(--accent) 18%, transparent), transparent 65%)`,
           }}
         />
       )}
@@ -191,14 +194,15 @@ export function Tilt3D({
       raf = requestAnimationFrame(() => {
         el.style.transform = `perspective(1100px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) scale(${scale})`;
         if (glareRef.current) {
-          glareRef.current.style.background = `radial-gradient(420px circle at ${px * 100}% ${py * 100}%, color-mix(in oklab, var(--gold) 24%, transparent), transparent 55%)`;
+          glareRef.current.style.background = `radial-gradient(420px circle at ${px * 100}% ${py * 100}%, color-mix(in oklab, var(--accent) 24%, transparent), transparent 55%)`;
           glareRef.current.style.opacity = "1";
         }
       });
     };
     const onLeave = () => {
       cancelAnimationFrame(raf);
-      el.style.transform = "perspective(1100px) rotateX(0deg) rotateY(0deg) scale(1)";
+      el.style.transform =
+        "perspective(1100px) rotateX(0deg) rotateY(0deg) scale(1)";
       if (glareRef.current) glareRef.current.style.opacity = "0";
     };
     el.addEventListener("mousemove", onMove);
@@ -255,27 +259,34 @@ export function FloatLayer({
   className?: string;
   style?: React.CSSProperties;
 }) {
-  const ref = useGsap(({ gsap, ScrollTrigger, scope }) => {
-    gsap.set(scope, { rotate });
-    const st = ScrollTrigger.create({
-      trigger: scope,
-      start: "top 95%",
-      end: "top 55%",
-      scrub: 0.8,
-      onUpdate: (self) => {
-        // 0 = fully offset, 1 = at rest. Never overshoots past rest.
-        const p = self.progress;
-        const y = (1 - p) * 60 * depth;
-        gsap.set(scope, { y, opacity: 0.2 + p * 0.8, rotate });
-      },
-    });
-    return () => st.kill();
-  }, [depth, rotate]);
+  const ref = useGsap(
+    ({ gsap, ScrollTrigger, scope }) => {
+      gsap.set(scope, { rotate });
+      const st = ScrollTrigger.create({
+        trigger: scope,
+        start: "top 95%",
+        end: "top 55%",
+        scrub: 0.8,
+        onUpdate: (self) => {
+          // 0 = fully offset, 1 = at rest. Never overshoots past rest.
+          const p = self.progress;
+          const y = (1 - p) * 60 * depth;
+          gsap.set(scope, { y, opacity: 0.2 + p * 0.8, rotate });
+        },
+      });
+      return () => st.kill();
+    },
+    [depth, rotate],
+  );
   return (
     <div
       ref={ref as never}
       className={className}
-      style={{ willChange: "transform, opacity", transform: `rotate(${rotate}deg)`, ...style }}
+      style={{
+        willChange: "transform, opacity",
+        transform: `rotate(${rotate}deg)`,
+        ...style,
+      }}
     >
       {children}
     </div>
@@ -300,9 +311,23 @@ export function ScrollDrift3D({
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
-  from?: { z?: number; rotateY?: number; rotateX?: number; x?: number; y?: number; opacity?: number };
+  from?: {
+    z?: number;
+    rotateY?: number;
+    rotateX?: number;
+    x?: number;
+    y?: number;
+    opacity?: number;
+  };
   /** @deprecated no-op, kept for API compatibility */
-  to?: { z?: number; rotateY?: number; rotateX?: number; x?: number; y?: number; opacity?: number };
+  to?: {
+    z?: number;
+    rotateY?: number;
+    rotateX?: number;
+    x?: number;
+    y?: number;
+    opacity?: number;
+  };
   /** @deprecated no-op, kept for API compatibility */
   rest?: number;
 }) {
@@ -333,10 +358,13 @@ export function ScrollDrift3D({
     <div
       ref={ref as never}
       className={className}
-      style={{ willChange: "transform, opacity", transformStyle: "preserve-3d", ...style }}
+      style={{
+        willChange: "transform, opacity",
+        transformStyle: "preserve-3d",
+        ...style,
+      }}
     >
       {children}
     </div>
   );
 }
-

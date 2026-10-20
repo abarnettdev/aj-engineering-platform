@@ -41,7 +41,7 @@ export const Default: Story = {
   render: (args) => (
     <Reveal {...args}>
       <article className="w-80 border border-border bg-card p-6">
-        <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+        <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
           Reveal
         </p>
         <h3 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink">
