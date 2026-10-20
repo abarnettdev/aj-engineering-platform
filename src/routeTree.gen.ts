@@ -14,6 +14,7 @@ import { Route as TimelineRouteImport } from './routes/timeline'
 import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as EngineeringRouteImport } from './routes/engineering'
+import { Route as DesignRouteImport } from './routes/design'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AskAjRouteImport } from './routes/ask-aj'
 import { Route as IndexRouteImport } from './routes/index'
@@ -46,6 +47,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const EngineeringRoute = EngineeringRouteImport.update({
   id: '/engineering',
   path: '/engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -187,6 +199,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AskAjRoute: typeof AskAjRoute
   ContactRoute: typeof ContactRoute
+  DesignRoute: typeof DesignRoute
   EngineeringRoute: typeof EngineeringRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsRoute: typeof SystemsRoute
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/engineering'
       fullPath: '/engineering'
       preLoaderRoute: typeof EngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -308,6 +328,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AskAjRoute: AskAjRoute,
   ContactRoute: ContactRoute,
+  DesignRoute: DesignRoute,
   EngineeringRoute: EngineeringRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsRoute: SystemsRoute,

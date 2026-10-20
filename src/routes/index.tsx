@@ -1,23 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { Section, Eyebrow } from "@/components/section";
-import { Reveal } from "@/components/reveal";
-import { Choreograph } from "@/components/scroll-scene";
-import { Tilt3D, FloatLayer, SplitReveal } from "@/components/motion";
-import { MaskReveal } from "@/components/mask-reveal";
-import { BlueprintIllus } from "@/components/illus";
-import headshot from "@/assets/aj-barnett-headshot.jpg.asset.json";
+import { ArrowDownToLine, ArrowUpRight, Github, Mail } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title: "AJ Barnett · Product Designer & Software Engineer",
-      },
+      { title: "AJ Barnett · Product Designer & Software Engineer" },
       {
         name: "description",
         content:
-          "Product design, visual design, design systems, and software engineering. From first concept to production code.",
+          "AJ Barnett connects product design, visual systems, frontend architecture, and production software. From first concept to production code.",
       },
       {
         property: "og:title",
@@ -26,491 +17,381 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Explore AJ Barnett’s work across product design, visual design, design systems, and software engineering.",
+          "Product design, design systems, and software engineering from first concept to production code.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://ajbarnett.tech/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "https://ajbarnett.tech/" }],
   }),
   component: Home,
 });
 
-const disciplines = [
+const expertise = [
   {
-    k: "01",
-    t: "Product & Visual Design",
-    d: "Interfaces, responsive layouts, visual hierarchy, and design decisions carried through to production code.",
+    title: "Product design",
+    detail:
+      "Interfaces, visual hierarchy, responsive behavior, and interaction design.",
   },
   {
-    k: "02",
-    t: "Frontend Architecture",
-    d: "Interfaces designed for change, not for demos. Boundaries first, then components.",
+    title: "Design systems",
+    detail:
+      "Tokens, component APIs, accessibility, documentation, and governance.",
   },
   {
-    k: "03",
-    t: "Backend & System Design",
-    d: "API contracts, data shape, service seams. The parts of the product no user sees, but every user feels.",
+    title: "Software engineering",
+    detail:
+      "React, TypeScript, full-stack applications, APIs, and production architecture.",
   },
   {
-    k: "04",
-    t: "Product Engineering",
-    d: "Ship the outcome, not the ticket. Own the surface area from problem to release.",
+    title: "Technical leadership",
+    detail:
+      "Clear standards, practical mentoring, incremental modernization, and delivery.",
+  },
+] as const;
+
+const featuredWork = [
+  {
+    eyebrow: "Enterprise design system · 2022–2026",
+    title: "CDW Legato",
+    role: "Technical Lead · Senior Software Engineer",
+    description:
+      "Architecture, shared libraries, component APIs, tooling, governance, and adoption across product teams.",
+    outcome:
+      "92% adoption · 60%+ less implementation effort · 170+ shared UI assets",
+    image: "/projects/design-system-demo.png",
+    alt: "Independent public design-system demonstration showing component states, tokens, and implementation guidance.",
+    note: "Independent public demonstration. CDW source and design files remain private.",
+    href: "/work#cdw-legato",
+    tone: "dark",
   },
   {
-    k: "05",
-    t: "Technical Leadership",
-    d: "Multiply teams. Lower ambiguity. Make the next decision cheaper than the last.",
+    eyebrow: "Client web platform · 2016–2020",
+    title: "LSI Companies",
+    role: "Design & development · Priority Marketing",
+    description:
+      "A responsive commercial real-estate experience designed around service discovery, market content, and property search.",
+    outcome: "Responsive UX · CMS architecture · production delivery",
+    image: "/projects/lsi-current-reference.png",
+    alt: "Current LSI Companies public homepage showing commercial real-estate navigation over an aerial property image.",
+    note: "Current public site reference captured October 20, 2026. It may differ from the version AJ built.",
+    href: "/work#priority-marketing",
+    tone: "light",
   },
   {
-    k: "06",
-    t: "Design Systems",
-    d: "Tokens, primitives, motion, docs, accessibility, one chapter of the work, not the thesis.",
+    eyebrow: "Hospitality website · 2016–2020",
+    title: "Artisan Eatery",
+    role: "Design & development · Priority Marketing",
+    description:
+      "A food-first restaurant experience built to make the menu, location, story, and calls to action easy to find.",
+    outcome: "Visual design · responsive frontend · content management",
+    image: "/projects/artisan-current-reference.png",
+    alt: "Current Artisan Eatery public homepage showing restaurant navigation over a close-up food image.",
+    note: "Current public site reference captured October 20, 2026. It may differ from the version AJ built.",
+    href: "/work#priority-marketing",
+    tone: "light",
   },
-  {
-    k: "07",
-    t: "Accessibility",
-    d: "Working toward WCAG 2.2 AA with reproducible testing. A full accessibility audit is still pending.",
-  },
-  {
-    k: "08",
-    t: "Design-to-development workflows",
-    d: "Connect interface decisions, component specifications, and implementation so design intent survives delivery.",
-  },
-  {
-    k: "09",
-    t: "Engineering Judgment",
-    d: "The compounding asset. Knowing which problems are worth solving, and which tradeoffs to refuse.",
-  },
-];
+] as const;
 
 function Home() {
   return (
     <>
-      {/* HERO, cinematic, layered engineering artifacts, split reveal headline */}
-      <section className="relative overflow-hidden border-b border-border/70 bg-background">
-        {/* Blueprint grid backdrop */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.35]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-            maskImage:
-              "radial-gradient(ellipse at 70% 40%, black 20%, transparent 75%)",
-          }}
-        />
-
-        <div className="container-page relative grid gap-10 py-14 md:grid-cols-[1.1fr_1fr] md:py-16 lg:py-20">
-          <div className="relative">
-            {/* Mobile-only engineer's ID badge, compact horizontal card */}
-            <div className="mb-6 md:hidden">
-              <div className="relative flex items-stretch border border-border bg-background shadow-[0_20px_40px_-20px_rgba(0,0,0,0.35)]">
-                <div className="relative aspect-square w-24 shrink-0 overflow-hidden bg-surface">
-                  <img
-                    src={headshot.url}
-                    alt="Portrait of AJ Barnett, product-minded systems engineer."
-                    className="h-full w-full object-cover grayscale-[0.15] contrast-[1.02]"
-                    loading="eager"
-                    decoding="async"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute left-1 top-1 h-2 w-2 border-l border-t border-gold"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute right-1 top-1 h-2 w-2 border-r border-t border-gold"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute left-1 bottom-1 h-2 w-2 border-l border-b border-gold"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute right-1 bottom-1 h-2 w-2 border-r border-b border-gold"
-                  />
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col justify-between border-l border-border p-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="mono text-[9px] uppercase tracking-[0.24em] text-gold">
-                      ID · 001
-                    </p>
-                    <p className="mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
-                      Est. 2001
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-display text-[13px] font-semibold uppercase leading-tight tracking-tight text-ink">
-                      AJ Barnett
-                    </p>
-                    <p className="mono mt-1 text-[9px] uppercase leading-relaxed tracking-[0.22em] text-muted-foreground">
-                      Designer &amp; Engineer
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <Reveal>
-              <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                <span className="text-gold">
-                  Product Designer &amp; Software Engineer
-                </span>
-                <span className="mx-3 text-border-strong">·</span>
-                React + TypeScript
-                <span className="mx-3 text-border-strong">·</span>
-                Production systems
-              </p>
-            </Reveal>
-
-            <h1 className="mt-6 text-balance font-display uppercase text-[2.2rem] leading-[1.02] tracking-[-0.045em] text-ink md:text-[3.1rem] lg:text-[3.6rem]">
-              <span className="block">
-                <SplitReveal stagger={0.06} y={40}>
-                  I chase problems
-                </SplitReveal>
-              </span>
-              <span className="block">
-                <SplitReveal delay={0.15} stagger={0.06} y={40}>
-                  worth solving,
-                </SplitReveal>
-              </span>
-              <span
-                className="mt-2 block font-accent italic normal-case text-gold"
-                style={{ letterSpacing: "-0.01em", lineHeight: 1.15 }}
-              >
-                <SplitReveal delay={0.35} stagger={0.05} y={40}>
-                  not technologies.
-                </SplitReveal>
+      <section className="border-b border-border bg-background">
+        <div className="container-page grid min-h-[calc(100svh-4rem)] items-stretch lg:grid-cols-[1.45fr_0.55fr]">
+          <div className="flex flex-col justify-center py-20 sm:py-28 lg:py-32 lg:pr-16">
+            <p className="mono text-[11px] uppercase tracking-[0.24em] text-gold-text">
+              AJ Barnett · Cape Coral, Florida
+            </p>
+            <h1 className="mt-8 max-w-5xl text-balance font-display text-[clamp(3.4rem,9vw,8.4rem)] uppercase leading-[0.84] tracking-[-0.065em] text-ink">
+              Product Designer
+              <span className="block font-accent normal-case tracking-[-0.025em] text-gold-text">
+                &amp; Software Engineer
               </span>
             </h1>
-
-            <Reveal delay={520}>
-              <div className="mt-5 h-px w-32 origin-left bg-gold rule-in" />
-            </Reveal>
-
-            <Reveal delay={620}>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-                From first concept to production code. Nearly two decades across
-                product design, visual design, design systems, and software
-                engineering.
-              </p>
-            </Reveal>
-
-            <Reveal delay={720}>
-              <div className="mt-7 flex flex-wrap items-center gap-3">
-                <Link
-                  to="/work"
-                  className="group tactile inline-flex cursor-pointer items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
-                >
-                  Explore selected work
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
-                <Link
-                  to="/systems"
-                  className="group tactile inline-flex cursor-pointer items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
-                >
-                  Explore design systems
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </Link>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Layered cinematic artifact composition */}
-          <div
-            className="relative hidden min-h-[460px] md:block"
-            style={{ perspective: "1400px" }}
-          >
-            {/* Decorative wire connector between panels, draws once on mount */}
-            <svg
-              aria-hidden
-              viewBox="0 0 400 560"
-              preserveAspectRatio="none"
-              className="pointer-events-none absolute inset-0 h-full w-full"
-            >
-              <defs>
-                <linearGradient id="hero-wire" x1="0" y1="0" x2="1" y2="1">
-                  <stop
-                    offset="0%"
-                    stopColor="var(--gold)"
-                    stopOpacity="0.05"
-                  />
-                  <stop
-                    offset="50%"
-                    stopColor="var(--gold)"
-                    stopOpacity="0.7"
-                  />
-                  <stop
-                    offset="100%"
-                    stopColor="var(--gold)"
-                    stopOpacity="0.05"
-                  />
-                </linearGradient>
-              </defs>
-              <path
-                d="M 320 90 Q 200 220, 90 300 T 320 480"
-                fill="none"
-                stroke="url(#hero-wire)"
-                strokeWidth="1"
-                strokeDasharray="3 6"
-                className="rule-in"
-                style={{ strokeDashoffset: 0 }}
-              />
-            </svg>
-
-            {/* Live status chip */}
-            <div className="absolute right-0 top-0 z-20 flex items-center gap-2 border border-border bg-background/90 px-3 py-1.5 backdrop-blur">
-              <span
-                aria-hidden
-                className="pulse-dot h-1.5 w-1.5 rounded-full bg-gold"
-              />
-              <span className="mono text-[9px] uppercase tracking-[0.24em] text-ink">
-                System · v4.2 · shipping
-              </span>
-            </div>
-
-            {/* Back layer, architecture blueprint */}
-            <FloatLayer
-              depth={-0.6}
-              rotate={-3}
-              className="absolute right-[-2rem] top-10 w-[78%]"
-            >
-              <div className="float-idle-a">
-                <Tilt3D max={4} glare={false}>
-                  <MaskReveal delay={200}>
-                    <div className="border border-border bg-surface shadow-[0_30px_60px_-25px_rgba(0,0,0,0.25)]">
-                      <BlueprintIllus label="Architecture" />
-                    </div>
-                  </MaskReveal>
-                </Tilt3D>
-              </div>
-            </FloatLayer>
-
-            {/* Mid layer, code / token panel */}
-            <FloatLayer
-              depth={0.2}
-              rotate={2}
-              className="absolute left-0 top-[42%] w-[62%]"
-            >
-              <div className="float-idle-b">
-                <Tilt3D max={6} glare>
-                  <div className="border border-border bg-card shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)]">
-                    <div className="flex items-center gap-1.5 border-b border-border bg-surface/70 px-3 py-2">
-                      <span className="h-2 w-2 rounded-full bg-border-strong/70" />
-                      <span className="h-2 w-2 rounded-full bg-border-strong/50" />
-                      <span className="h-2 w-2 rounded-full bg-border-strong/30" />
-                      <span className="mono ml-3 text-[9px] uppercase tracking-[0.24em] text-muted-foreground">
-                        tokens.ts
-                      </span>
-                    </div>
-                    <pre className="mono overflow-hidden p-4 text-[11px] leading-relaxed text-foreground/85">
-                      {`export const semantic = {
-  color: {
-    action:  { primary: `}
-                      <span className="text-gold">{`'brand.600'`}</span>
-                      {` },
-    surface: { raised:  `}
-                      <span className="text-gold">{`'neutral.50'`}</span>
-                      {` },
-    text:    { primary: `}
-                      <span className="text-gold">{`'neutral.900'`}</span>
-                      {` },
-  },
-  space:  { 1: 4, 2: 8, 3: 12, 4: 16 },
-  motion: { ease: `}
-                      <span className="text-gold">{`'cubic-bezier(.22,1,.36,1)'`}</span>
-                      {` },
-} as const;`}
-                    </pre>
-                  </div>
-                </Tilt3D>
-              </div>
-            </FloatLayer>
-
-            {/* Front layer, engineer's ID badge, the human behind the systems */}
-            <FloatLayer
-              depth={0.9}
-              rotate={-1}
-              className="absolute right-4 bottom-6 w-[48%]"
-            >
-              <div className="float-idle-c">
-                <Tilt3D max={10}>
-                  <div className="border border-border bg-background shadow-[0_50px_100px_-30px_rgba(0,0,0,0.4)]">
-                    <div className="flex items-center justify-between border-b border-border bg-surface/70 px-3 py-2">
-                      <p className="mono text-[9px] uppercase tracking-[0.24em] text-gold">
-                        ID · 001
-                      </p>
-                      <p className="mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
-                        Est. 2001
-                      </p>
-                    </div>
-                    <div className="relative aspect-square overflow-hidden bg-surface">
-                      <img
-                        src={headshot.url}
-                        alt="Portrait of AJ Barnett, product-minded systems engineer."
-                        className="h-full w-full object-cover grayscale-[0.15] contrast-[1.02]"
-                        loading="eager"
-                        decoding="async"
-                      />
-                      {/* corner registration marks on the portrait */}
-                      <span
-                        aria-hidden
-                        className="absolute left-1.5 top-1.5 h-2.5 w-2.5 border-l border-t border-gold"
-                      />
-                      <span
-                        aria-hidden
-                        className="absolute right-1.5 top-1.5 h-2.5 w-2.5 border-r border-t border-gold"
-                      />
-                      <span
-                        aria-hidden
-                        className="absolute left-1.5 bottom-1.5 h-2.5 w-2.5 border-l border-b border-gold"
-                      />
-                      <span
-                        aria-hidden
-                        className="absolute right-1.5 bottom-1.5 h-2.5 w-2.5 border-r border-b border-gold"
-                      />
-                    </div>
-                    <div className="border-t border-border p-3">
-                      <p className="font-display text-[13px] font-semibold uppercase leading-tight tracking-tight text-ink">
-                        AJ Barnett
-                      </p>
-                      <p className="mono mt-1 text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
-                        Designer &amp; Engineer
-                      </p>
-                    </div>
-                  </div>
-                </Tilt3D>
-              </div>
-            </FloatLayer>
-
-            {/* corner registration marks */}
-            <div aria-hidden className="pointer-events-none absolute inset-0">
-              {[
-                "left-0 top-8",
-                "right-0 top-8",
-                "left-0 bottom-8",
-                "right-0 bottom-8",
-              ].map((pos) => (
-                <span
-                  key={pos}
-                  className={`absolute ${pos} h-3 w-3 border-l border-t border-gold/60`}
-                />
-              ))}
-            </div>
-
-            {/* micro-labels */}
-            <p className="mono absolute bottom-0 left-0 text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-              Problems · Judgment · Systems
+            <p className="mt-10 max-w-2xl text-balance text-xl leading-relaxed text-foreground/80 sm:text-2xl">
+              From first concept to production code. I connect visual design,
+              user experience, frontend architecture, and reliable software.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* THE PROOF, breadth + depth across the full product lifecycle */}
-      <section className="border-b border-border/70 bg-background">
-        <div className="container-page grid gap-16 py-24 md:grid-cols-[1fr_1.6fr] md:py-32">
-          <Reveal>
-            <div className="md:sticky md:top-24 md:self-start">
-              <Eyebrow>What I carry into the room</Eyebrow>
-              <h2 className="mt-6 font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl">
-                Breadth,
-                <br />
-                <span className="font-accent italic normal-case text-gold">
-                  with depth.
-                </span>
-              </h2>
-              <div className="mt-6 h-px w-24 bg-gold" />
-              <p className="mt-8 max-w-md text-muted-foreground">
-                A staff engineer's job is holding the whole product in mind,
-                frontend, backend, systems, the seams between them, and knowing
-                which lever to pull first. Frameworks come and go. These
-                disciplines compound.
-              </p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                to="/work"
+                className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Explore my work
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+              <Link
+                to="/design"
+                className="inline-flex min-h-12 items-center gap-2 border border-border-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Product design
+              </Link>
               <Link
                 to="/engineering"
-                className="group mt-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
+                className="inline-flex min-h-12 items-center gap-2 border border-border-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
-                <span className="story-link">How I think</span>
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                Software engineering
               </Link>
             </div>
-          </Reveal>
+          </div>
 
-          <Choreograph
-            className="relative"
-            stagger={0.12}
-            y={32}
-            duration={1.0}
-          >
-            <ol className="relative space-y-6 border-l border-border pl-8">
-              {disciplines.map((r) => (
-                <li key={r.k} className="group relative">
-                  <span
-                    aria-hidden
-                    className="absolute -left-[35px] top-2 h-2 w-2 rounded-full bg-border-strong transition-colors group-hover:bg-gold"
-                  />
-                  <div className="mono flex items-baseline gap-3 text-[10px] uppercase tracking-[0.24em] text-gold">
-                    {r.k}
-                    <span className="h-px flex-1 bg-border transition-colors group-hover:bg-gold" />
-                  </div>
-                  <h3 className="mt-2 font-display text-2xl font-medium tracking-tight text-ink md:text-3xl">
-                    {r.t}
-                  </h3>
-                  <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                    {r.d}
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </Choreograph>
+          <aside className="relative flex min-h-72 items-end overflow-hidden border-t border-border bg-ink p-8 text-background lg:min-h-0 lg:border-l lg:border-t-0 lg:p-10">
+            <div
+              aria-hidden="true"
+              className="absolute -right-16 -top-20 font-display text-[18rem] leading-none tracking-[-0.1em] text-white/40"
+            >
+              AJ
+            </div>
+            <div className="relative">
+              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
+                2001 → now
+              </p>
+              <p className="mt-5 max-w-xs text-2xl font-medium leading-tight text-white">
+                Design craft became product thinking. Product thinking became
+                software architecture.
+              </p>
+              <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-white/15 pt-7">
+                <div>
+                  <dt className="mono text-[9px] uppercase tracking-[0.18em] text-white/55">
+                    Experience
+                  </dt>
+                  <dd className="mt-2 text-lg font-semibold text-white">
+                    15+ years
+                  </dd>
+                </div>
+                <div>
+                  <dt className="mono text-[9px] uppercase tracking-[0.18em] text-white/55">
+                    Perspective
+                  </dt>
+                  <dd className="mt-2 text-lg font-semibold text-white">
+                    Design + code
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
         </div>
       </section>
 
-      {/*
-        Metrics, featured work, tech evolution, and timeline previews used to
-        live here. They each answer a different question, cut so Home answers
-        only one: Who is AJ? Those chapters live at /work, /timeline,
-        /engineering, /systems, /writing.
-      */}
-
-      {/* CLOSING */}
-      <div className="relative overflow-hidden border-t border-border/70">
-        <div className="container-page relative py-28 md:py-36">
-          <Reveal>
-            <div className="mx-auto max-w-3xl text-center">
-              <Eyebrow>End of Chapter One</Eyebrow>
-              <h2 className="mt-8 text-balance font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-7xl">
-                The next chapter
-                <br />
-                <span className="font-accent italic text-gold">
-                  is being written.
-                </span>
-              </h2>
-              <p className="mt-8 text-lg text-muted-foreground">
-                If your team is building something worth showing up for, I'd
-                love to hear about it.
+      <section className="border-b border-border bg-surface/35 py-20 sm:py-28">
+        <div className="container-page">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+                Selected work
               </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink"
-                >
-                  Start a conversation
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-                <Link
-                  to="/writing"
-                  className="inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink hover:border-gold hover:text-gold"
-                >
-                  Read field notes
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
+              <h2 className="mt-4 max-w-xl text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.055em] sm:text-7xl">
+                Work you can see and inspect.
+              </h2>
             </div>
-          </Reveal>
+            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
+              Real client work, enterprise systems, and public demonstrations.
+              Each case study separates verified outcomes from independently
+              recreated examples.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-8">
+            {featuredWork.map((project, index) => (
+              <article
+                key={project.title}
+                className="grid overflow-hidden border border-border bg-card lg:grid-cols-[1.35fr_0.65fr]"
+              >
+                <a
+                  href={project.href}
+                  className={`group relative block min-h-72 overflow-hidden sm:min-h-[30rem] ${
+                    project.tone === "dark" ? "bg-ink" : "bg-surface"
+                  }`}
+                  aria-label={`Read the ${project.title} case study`}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    width="1440"
+                    height="900"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
+                  />
+                  <span className="absolute bottom-4 left-4 bg-black/75 px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+                    {project.note}
+                  </span>
+                </a>
+                <div className="flex flex-col justify-between p-7 sm:p-10">
+                  <div>
+                    <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold-text">
+                      {project.eyebrow}
+                    </p>
+                    <h3 className="mt-5 font-display text-4xl uppercase tracking-[-0.045em] text-ink sm:text-5xl">
+                      {project.title}
+                    </h3>
+                    <p className="mt-3 text-sm font-semibold text-foreground">
+                      {project.role}
+                    </p>
+                    <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </p>
+                  </div>
+                  <div className="mt-10 border-t border-border pt-6">
+                    <p className="text-sm font-medium leading-relaxed text-foreground">
+                      {project.outcome}
+                    </p>
+                    <a
+                      href={project.href}
+                      className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-gold-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      View case study
+                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="border-b border-border py-20 sm:py-28">
+        <div className="container-page grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
+          <div>
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+              One career, two lenses
+            </p>
+            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-6xl">
+              The handoff is part of the work.
+            </h2>
+            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+              I have worked on both sides of the design-to-development handoff.
+              That changes how I plan interfaces, shape APIs, document
+              decisions, and support teams after launch.
+            </p>
+          </div>
+          <ol className="grid border-l border-t border-border sm:grid-cols-2">
+            {expertise.map((item, index) => (
+              <li
+                key={item.title}
+                className="border-b border-r border-border p-7 sm:min-h-52 sm:p-9"
+              >
+                <span className="mono text-[10px] tracking-[0.2em] text-gold-text">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-8 text-2xl font-semibold tracking-[-0.03em] text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {item.detail}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-b border-border bg-ink py-20 text-white sm:py-28">
+        <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
+              Don&apos;t take my word for it.
+            </p>
+            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-7xl">
+              Test this website.
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-2xl text-lg leading-relaxed text-white/70">
+              Inspect the source, explore Storybook, navigate with a keyboard,
+              check the tokens, resize the layout, and run your own Lighthouse
+              audit. Remaining gaps are documented instead of hidden.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/storybook/index.html"
+                className="inline-flex min-h-12 items-center gap-2 bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Explore Storybook
+                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="https://github.com/abarnettdev/aj-engineering-platform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <Github className="h-4 w-4" aria-hidden="true" />
+                View source
+              </a>
+              <Link
+                to="/systems"
+                className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                Inspect the design system
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resumes" className="scroll-mt-24 py-20 sm:py-28">
+        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <div>
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+              Résumés
+            </p>
+            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-6xl">
+              Choose the perspective that fits the role.
+            </h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <a
+              href="/resumes/aj-barnett-product-design.pdf"
+              download
+              className="group flex min-h-28 items-center justify-between border border-border-strong p-5 hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="font-semibold text-ink">
+                Product Design Résumé
+              </span>
+              <ArrowDownToLine
+                className="h-5 w-5 text-gold-text"
+                aria-hidden="true"
+              />
+            </a>
+            <a
+              href="/resumes/aj-barnett-software-engineering.pdf"
+              download
+              className="group flex min-h-28 items-center justify-between border border-border-strong p-5 hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="font-semibold text-ink">
+                Software Engineering Résumé
+              </span>
+              <ArrowDownToLine
+                className="h-5 w-5 text-gold-text"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border bg-surface/40 py-20 sm:py-24">
+        <div className="container-page flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+              Start a conversation
+            </p>
+            <h2 className="mt-4 max-w-3xl text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-7xl">
+              Building something worth caring about?
+            </h2>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-background hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Contact AJ
+          </Link>
+        </div>
+      </section>
     </>
   );
 }

@@ -11,6 +11,7 @@ const request = (path, options) =>
 for (const path of [
   "/",
   "/work",
+  "/design",
   "/timeline",
   "/systems",
   "/engineering",
@@ -40,8 +41,8 @@ test("XML sitemap and static assets", async () => {
   assert.match(await sitemap.text(), /https:\/\/ajbarnett.tech/);
   for (const path of [
     "/robots.txt",
-    "/resume.pdf",
-    "/assets/aj-barnett-headshot.jpg",
+    "/resumes/aj-barnett-product-design.pdf",
+    "/resumes/aj-barnett-software-engineering.pdf",
     "/storybook/index.html",
   ]) {
     assert.equal((await request(path)).status, 200, path);

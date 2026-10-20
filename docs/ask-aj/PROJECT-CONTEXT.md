@@ -125,7 +125,7 @@ The working slice must:
 - Routes are file-based under `src/routes`.
 - `src/content/site-data.ts` contains typed portfolio data.
 - Page prose exists throughout the route files.
-- `public/resume.pdf` is an additional source.
+- The two role-specific PDFs under `public/resumes/` are additional sources.
 - Reusable application and shadcn/Radix components already exist.
 - Tailwind v4 tokens are centralized in `src/styles.css`.
 - No database, OpenAI, LangGraph, MCP, or vector dependencies are installed yet.

@@ -20,7 +20,7 @@ Date: October 20, 2026. Base commit: `f6ccac9`. Scope: the authorized
 
 | Area                 | Observed state                                                                             | Follow-up                                                                                          |
 | -------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
-| Build                | Lovable wrapper 2.7.1, Vite 8, Start, Nitro prerelease                                     | Explicit supported plugin entry points, retain pinned versions                                     |
+| Build                | Legacy builder wrapper 2.7.1, Vite 8, Start, Nitro prerelease                              | Explicit supported plugin entry points, retain pinned versions                                     |
 | Hosting              | README says Cloudflare and Vercel; no committed host config                                | Preserve Cloudflare fallback and Nitro detection; host settings not independently verified         |
 | Routes               | Portfolio, work, journey, systems, engineering, writing, contact, assistant, APIs, sitemap | Keep Start routing and server boundary                                                             |
 | Positioning          | Homepage and global metadata lead with AI; global assistant overlay                        | Remove overlay and featured assistant promotion; introduce dual-discipline identity                |

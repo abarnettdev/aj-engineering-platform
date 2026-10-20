@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, FileDown } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -28,10 +28,10 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["Work", "/work"],
-              ["Journey", "/timeline"],
+              ["Product Design", "/design"],
               ["Engineering", "/engineering"],
-              ["Systems", "/systems"],
-              ["Field Notes", "/writing"],
+              ["Design System", "/systems"],
+              ["About", "/timeline"],
             ].map(([label, to]) => (
               <li key={to}>
                 <Link
@@ -62,6 +62,22 @@ export function SiteFooter() {
             </li>
             <li>
               <a
+                href="/resumes/aj-barnett-product-design.pdf"
+                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
+              >
+                <FileDown className="h-3.5 w-3.5" /> Design résumé
+              </a>
+            </li>
+            <li>
+              <a
+                href="/resumes/aj-barnett-software-engineering.pdf"
+                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
+              >
+                <FileDown className="h-3.5 w-3.5" /> Engineering résumé
+              </a>
+            </li>
+            <li>
+              <a
                 href="https://github.com/abarnettdev"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -84,7 +100,7 @@ export function SiteFooter() {
       <div className="border-t border-border/70">
         <div className="container-page flex flex-col items-start justify-between gap-2 py-5 text-xs text-muted-foreground md:flex-row md:items-center">
           <p className="mono">
-            © {new Date().getFullYear()} AJ Barnett, Built with intent.
+            © {new Date().getFullYear()} AJ Barnett. Built with intent.
           </p>
           <p className="mono">
             Product design · Design systems · Software engineering
