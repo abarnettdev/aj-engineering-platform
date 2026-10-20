@@ -8,7 +8,6 @@ import { JourneyRail } from "@/components/composites/journey-rail";
 import heroImage from "@/assets/hero-timeline.jpg";
 import ch1 from "@/assets/chapter-01-first-website.jpg";
 import ch2 from "@/assets/chapter-02-creative-technologist.jpg";
-import ch3 from "@/assets/chapter-03-realidreams.jpg";
 import ch4 from "@/assets/chapter-04-caldwell-kerr.jpg";
 import ch5 from "@/assets/chapter-05-priority.jpg";
 import ch6 from "@/assets/chapter-06-midland.jpg";
@@ -22,13 +21,13 @@ export const Route = createFileRoute("/timeline")({
       {
         name: "description",
         content:
-          "2001 to 2026. Not a résumé, a story of chasing problems across eight chapters, and the engineering mindset each one forged.",
+          "2001 to 2026. Not a résumé, a story of chasing problems across seven chapters, and the engineering mindset each one forged.",
       },
       { property: "og:title", content: "Journey · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "Eight chapters. Technologies came and went. The problems, and the judgment to solve them, compounded.",
+          "Seven chapters. Technologies came and went. The problems, and the judgment to solve them, compounded.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -47,11 +46,6 @@ const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
     src: ch2,
     alt: "Illustration of a creative technologist's toolkit: a graphics tablet with color wheel and stylus, a 3D wireframe cube, and an After Effects motion timeline, representing design, motion, and 3D craft.",
     caption: "02 · Design + motion + 3D",
-  },
-  {
-    src: ch3,
-    alt: "Illustration of an independent design studio desk: stacked brand identity samples, an open magazine of logo studies, a brand mark on a display podium, and a laptop showing a website mockup, representing running a full-service studio.",
-    caption: "03 · Independent studio",
   },
   {
     src: ch4,
@@ -91,7 +85,6 @@ const chapterAnchor: Record<string, string> = {
   "Midland Trust": "midland-trust",
   "Priority Marketing": "priority-marketing",
   "Caldwell & Kerr": "affinitiv",
-  "Founder, RealiDreams": "realidreams",
 };
 
 function Timeline() {

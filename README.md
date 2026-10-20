@@ -1,96 +1,79 @@
-# AJ Barnett Engineering Platform
+# AJ Barnett — Product Designer & Software Engineer
 
-An interactive engineering journal exploring
-software architecture, frontend systems,
-design systems, AI-assisted engineering,
-component architecture,
-and product thinking.
+From first concept to production code. This repository contains the portfolio at
+[ajbarnett.tech](https://ajbarnett.tech), built with React 19, strict TypeScript,
+TanStack Start/Router, Vite 8, Tailwind CSS v4, Bun, and Storybook.
 
-Built with:
+## Run locally
 
-• TanStack Start
-• React 19
-• TypeScript
-• Tailwind v4
-• Storybook
-• Bun
-• Vercel
+Use Bun 1.3.14 and Node 22.20+ (the versions used for the foundation verification).
 
-## Requirements
-
-- Bun 1.1+ (recommended) or Node 20+ with npm
-- macOS, Linux, or WSL
-
-## Install
-
-```bash
-bun install
-# or
-npm install
-```
-
-## Development
-
-```
+```sh
+bun install --frozen-lockfile
 bun run dev
-
-Starts the development server.
 ```
 
-## Build
+Open http://127.0.0.1:8080. No model or email credentials are required to browse
+the portfolio. Provider integrations remain server-only and need their own
+runtime configuration to send real requests. Never prefix secrets with `VITE_`.
 
-```bash
+The Cloudflare production preview invokes Wrangler through Nitro. If Wrangler is
+not installed, Nitro uses `npx` to download it (local verification used 4.151.2).
+This is local emulation, not a deployment; it adds no project dependency.
+
+## Build and verify
+
+```sh
+bun run typecheck
 bun run build
+bun run preview -- --host 127.0.0.1 --port 8081
+# In another terminal, against the running preview:
+SMOKE_BASE_URL=http://127.0.0.1:8081 bun run test:smoke
 ```
 
-This runs the Storybook build first (writing static output to
-`public/storybook/`) and then the Vite/TanStack Start production build.
-The final artifact is emitted to `.output/` for Cloudflare-compatible
-deployment.
+`build` generates Storybook in `public/storybook/`, then builds the app.
+Generated Storybook files are ignored by Git and must be generated before release.
+`build:app` builds only the application. `build:dev` builds with Vite development
+mode; it is not the interactive development server or a guaranteed unminified build.
+`check` runs TypeScript and HTTP smoke tests against a running local server.
+Smoke tests cover SSR routes, public files, 404s, and invalid API payloads without
+calling model or email providers. `lint` is available, but the existing repository
+has formatting/lint debt; see the dated audit for its actual status.
 
-Development build (no Storybook, no minification):
+## Architecture
 
-```bash
-bun run build:dev
-```
+- `src/routes`: TanStack Router pages and Start server handlers.
+- `src/server`: privileged provider clients, configuration, and request guards.
+- `src/server.ts`: custom SSR entry and catastrophic error response handling.
+- `src/components`, `src/styles.css`: UI implementation and CSS tokens.
+- `src/stories`, `.storybook`: independent component examples and controls.
+- `vite.config.ts`: explicit Tailwind, TypeScript paths, Start, Nitro, React setup.
+
+Start owns routing, SSR, and the backend boundary. Nitro packages the server for
+its host; it does not introduce a second backend. The config retains the previous
+`cloudflare-module` fallback and permits Nitro's Vercel environment detection or
+an explicit `NITRO_PRESET`. Cloudflare builds emit `.output/`; Vercel builds emit
+`.vercel/output/`. Artifacts are host-specific, not interchangeable. The existing
+Nitro prerelease is pinned; this change does not migrate deployment adapters.
 
 ## Storybook
 
-```bash
-bun run storybook          # interactive dev server on :6006
-bun run build-storybook    # writes static build to public/storybook/
+```sh
+bun run storybook
+bun run build-storybook
 ```
 
-The static Storybook is served at `/storybook/index.html` alongside the
-site.
+Open http://localhost:6006 or `/storybook/index.html` after building. Storybook
+uses its own Vite config; it never moves the application config. Existing examples
+are a starting point, not a published component package or proof of accessibility
+compliance. Radix-based primitives retain their upstream implementation attribution.
 
-## Lint & format
+## Review and deployment
 
-```bash
-bun run lint
-bun run format
-```
+Work happens on feature branches. Do not merge or deploy without AJ's approval.
+`vercel.json` disables Git deployments for `chore/independent-build-foundation` so
+this review branch does not request an automatic Vercel preview. No deployment
+credentials or provider configuration are stored here.
 
-## Deploy
-
-The project targets a Cloudflare Workers-compatible edge runtime. Build
-output in `.output/` is deploy-ready for any TanStack Start compatible
-host (Cloudflare, Netlify, Vercel edge).
-
-Before publishing:
-
-- Confirm `public/resume.pdf` exists, or update the link in
-  `src/routes/contact.tsx`.
-- Update `og:image` on leaf routes if a hosted preview image becomes
-  available.
-
-## Project structure
-
-```
-src/
-  routes/            file-based routes (TanStack Router)
-  components/        shared UI + composite editorial figures
-  content/           site data
-  stories/           Storybook stories mirroring the design system
-  styles.css         Tailwind v4 tokens + custom utilities
-```
+The [baseline audit](docs/rebuild/phase-a-baseline.md) records current gaps,
+verification evidence, wrapper replacement decisions, and the remaining rebuild.

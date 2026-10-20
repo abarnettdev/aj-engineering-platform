@@ -50,8 +50,6 @@ function CaseIllus({ slug }: { slug: string }) {
       return <BlueprintIllus label="CMS" />;
     case "affinitiv":
       return <AutomotiveIllus />;
-    case "realidreams":
-      return <AiLoopIllus />;
     default:
       return <BlueprintIllus label="Case" />;
   }

@@ -12,21 +12,21 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "AJ Barnett · AI Product Engineer",
+        title: "AJ Barnett · Product Designer & Software Engineer",
       },
       {
         name: "description",
         content:
-          "Software engineer building AI-powered products, frontend platforms, and scalable developer systems with React, TypeScript, and production-minded architecture.",
+          "Product design, visual design, design systems, and software engineering. From first concept to production code.",
       },
       {
         property: "og:title",
-        content: "AJ Barnett · AI Product Engineer",
+        content: "AJ Barnett · Product Designer & Software Engineer",
       },
       {
         property: "og:description",
         content:
-          "Ask A.J. is a production AI agent designed and engineered by AJ Barnett to demonstrate production-minded AI product engineering.",
+          "Explore AJ Barnett’s work across product design, visual design, design systems, and software engineering.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -38,8 +38,8 @@ export const Route = createFileRoute("/")({
 const disciplines = [
   {
     k: "01",
-    t: "AI Application Engineering",
-    d: "Server-side model integration, streamed interfaces, fallback models, circuit breaking, validation, and cost-aware production behavior.",
+    t: "Product & Visual Design",
+    d: "Interfaces, responsive layouts, visual hierarchy, and design decisions carried through to production code.",
   },
   {
     k: "02",
@@ -69,12 +69,12 @@ const disciplines = [
   {
     k: "07",
     t: "Accessibility",
-    d: "WCAG 2.1 AA and Section 508 as product quality, verified, never a compliance checkbox.",
+    d: "Working toward WCAG 2.2 AA with reproducible testing. A full accessibility audit is still pending.",
   },
   {
     k: "08",
-    t: "AI as Leverage",
-    d: "Model-assisted workflows used to widen the surface I can hold. Execution accelerates. Judgment stays human.",
+    t: "Design-to-development workflows",
+    d: "Connect interface decisions, component specifications, and implementation so design intent survives delivery.",
   },
   {
     k: "09",
@@ -145,7 +145,7 @@ function Home() {
                       AJ Barnett
                     </p>
                     <p className="mono mt-1 text-[9px] uppercase leading-relaxed tracking-[0.22em] text-muted-foreground">
-                      Systems Engineer · Judgment
+                      Designer &amp; Engineer
                     </p>
                   </div>
                 </div>
@@ -154,7 +154,9 @@ function Home() {
 
             <Reveal>
               <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-                <span className="text-gold">AI product engineer</span>
+                <span className="text-gold">
+                  Product Designer &amp; Software Engineer
+                </span>
                 <span className="mx-3 text-border-strong">·</span>
                 React + TypeScript
                 <span className="mx-3 text-border-strong">·</span>
@@ -189,28 +191,26 @@ function Home() {
 
             <Reveal delay={620}>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-                Software engineer building AI-powered products, frontend
-                platforms, and scalable developer systems. I combine nearly two
-                decades of software engineering experience with modern AI
-                orchestration, React, TypeScript, server architecture, and
-                enterprise platform engineering.
+                From first concept to production code. Nearly two decades across
+                product design, visual design, design systems, and software
+                engineering.
               </p>
             </Reveal>
 
             <Reveal delay={720}>
               <div className="mt-7 flex flex-wrap items-center gap-3">
                 <Link
-                  to="/ask-aj"
+                  to="/work"
                   className="group tactile inline-flex cursor-pointer items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
                 >
-                  Ask A.J.
+                  Explore selected work
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
                 <Link
-                  to="/work"
+                  to="/systems"
                   className="group tactile inline-flex cursor-pointer items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
                 >
-                  Explore my engineering work
+                  Explore design systems
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </div>
@@ -376,7 +376,7 @@ function Home() {
                         AJ Barnett
                       </p>
                       <p className="mono mt-1 text-[9px] uppercase tracking-[0.22em] text-muted-foreground">
-                        Systems Engineer · Judgment
+                        Designer &amp; Engineer
                       </p>
                     </div>
                   </div>
@@ -404,62 +404,6 @@ function Home() {
               Problems · Judgment · Systems
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="border-b border-border/70 bg-surface/30">
-        <div className="container-page grid gap-10 py-20 md:grid-cols-[0.9fr_1.4fr] md:py-28">
-          <Reveal>
-            <div>
-              <Eyebrow>Featured Experience</Eyebrow>
-              <h2 className="mt-6 font-display text-5xl font-medium leading-[0.98] tracking-tight text-ink md:text-6xl">
-                Ask A.J.
-                <br />
-                <span className="font-accent italic normal-case text-gold">
-                  is the portfolio proof.
-                </span>
-              </h2>
-              <p className="mt-7 max-w-md text-[17px] leading-relaxed text-foreground/85">
-                A production AI agent designed and engineered by AJ Barnett,
-                built to show how intelligent product experiences work when the
-                model is only one piece of a resilient system.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/ask-aj"
-                  className="inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink"
-                >
-                  Try Ask A.J.
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-                <Link
-                  to="/work/ask-aj"
-                  className="inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink hover:border-gold hover:text-gold"
-                >
-                  Read the case study
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                "OpenAI Responses API with server-owned context",
-                "NDJSON streaming for visible, responsive answers",
-                "Request validation, origin checks, and cost controls",
-                "Retries, fallback model, cached answers, and graceful degradation",
-                "Curated portfolio knowledge with retrieval-ready structure",
-                "React and TypeScript interface built for recruiter conversations",
-              ].map((item) => (
-                <div key={item} className="border border-border bg-card p-5">
-                  <p className="text-sm leading-relaxed text-foreground/85">
-                    {item}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Reveal>
         </div>
       </section>
 

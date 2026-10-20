@@ -13,12 +13,11 @@ export function SiteFooter() {
             <span className="text-sm font-medium">AJ Barnett</span>
           </div>
           <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Product-minded systems engineer. Twenty years chasing problems worth
-            solving across the full product lifecycle, frontend architecture,
-            backend services, system design, and the judgment between them.
+            Product Designer &amp; Software Engineer. Nearly two decades across
+            product design, visual design, design systems, and production code.
           </p>
           <p className="mono mt-6 text-[11px] uppercase tracking-widest text-muted-foreground">
-            Available for Lead Sr. Software Engineer · Staff Engineer roles
+            Available for Product Design &amp; Software Engineering roles
           </p>
         </div>
 
@@ -88,7 +87,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} AJ Barnett, Built with intent.
           </p>
           <p className="mono">
-            Systems thinking · Product engineering · AI as leverage
+            Product design · Design systems · Software engineering
           </p>
         </div>
       </div>

@@ -14,7 +14,6 @@ import { reportError } from "../lib/error-reporting";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { AskAjLauncher } from "@/components/ask-aj-launcher";
 
 function NotFoundComponent() {
   return (
@@ -87,22 +86,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { charSet: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
-          title: "AJ Barnett · AI Product Engineering · React · TypeScript",
+          title: "AJ Barnett · Product Designer & Software Engineer",
         },
         {
           name: "description",
           content:
-            "Software engineer building AI-powered products, frontend platforms, scalable developer systems, React and TypeScript architecture, and production-minded AI systems.",
+            "Product design, visual design, design systems, and software engineering. From first concept to production code.",
         },
         { name: "author", content: "AJ Barnett" },
         {
           property: "og:title",
-          content: "AJ Barnett · AI Product Engineering · React · TypeScript",
+          content: "AJ Barnett · Product Designer & Software Engineer",
         },
         {
           property: "og:description",
           content:
-            "Ask A.J. is a production AI agent designed and engineered by AJ Barnett, supported by frontend platform, enterprise design-system, and software architecture experience.",
+            "Explore AJ Barnett’s work across product design, visual design, design systems, and software engineering.",
         },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -166,7 +165,6 @@ function RootComponent() {
         </main>
         <SiteFooter />
       </div>
-      <AskAjLauncher />
     </QueryClientProvider>
   );
 }

@@ -1,0 +1,83 @@
+$ node --test scripts/smoke.test.mjs
+TAP version 13
+# Subtest: SSR /
+ok 1 - SSR /
+  ---
+  duration_ms: 123.336458
+  type: 'test'
+  ...
+# Subtest: SSR /work
+ok 2 - SSR /work
+  ---
+  duration_ms: 17.399292
+  type: 'test'
+  ...
+# Subtest: SSR /timeline
+ok 3 - SSR /timeline
+  ---
+  duration_ms: 20.985292
+  type: 'test'
+  ...
+# Subtest: SSR /systems
+ok 4 - SSR /systems
+  ---
+  duration_ms: 11.725042
+  type: 'test'
+  ...
+# Subtest: SSR /engineering
+ok 5 - SSR /engineering
+  ---
+  duration_ms: 11.589208
+  type: 'test'
+  ...
+# Subtest: SSR /contact
+ok 6 - SSR /contact
+  ---
+  duration_ms: 12.969666
+  type: 'test'
+  ...
+# Subtest: SSR /writing
+ok 7 - SSR /writing
+  ---
+  duration_ms: 8.512792
+  type: 'test'
+  ...
+# Subtest: SSR /ask-aj
+ok 8 - SSR /ask-aj
+  ---
+  duration_ms: 6.377166
+  type: 'test'
+  ...
+# Subtest: SSR /work/ask-aj
+ok 9 - SSR /work/ask-aj
+  ---
+  duration_ms: 10.49875
+  type: 'test'
+  ...
+# Subtest: XML sitemap and static assets
+ok 10 - XML sitemap and static assets
+  ---
+  duration_ms: 17.431167
+  type: 'test'
+  ...
+# Subtest: unknown route returns 404
+ok 11 - unknown route returns 404
+  ---
+  duration_ms: 4.135542
+  type: 'test'
+  ...
+# Subtest: server APIs reject invalid requests without calling providers
+ok 12 - server APIs reject invalid requests without calling providers
+  ---
+  duration_ms: 8.84725
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6279.03525

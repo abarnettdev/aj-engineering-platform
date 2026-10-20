@@ -11,7 +11,11 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "node scripts/build-storybook.mjs"
+    "build-storybook": "node scripts/build-storybook.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:app": "vite build",
+    "check": "bun run typecheck && bun run test:smoke",
+    "test:smoke": "node --test scripts/smoke.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -74,7 +78,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
-    "@lovable.dev/vite-tanstack-config": "2.7.1",
     "@storybook/addon-essentials": "^8",
     "@storybook/addon-links": "^8",
     "@storybook/blocks": "^8",

@@ -2,11 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section, Eyebrow } from "@/components/section";
 import { Badge, TechBadge } from "@/components/badge";
 import { Reveal } from "@/components/reveal";
-import {
-  ComponentSystemIllus,
-  TokensIllus,
-  ArchitectureIllus,
-} from "@/components/illus";
+import { TokensIllus, ArchitectureIllus } from "@/components/illus";
 import { PageHero, Accent } from "@/components/page-hero";
 import { TokenPlayground } from "@/components/token-playground";
 import { ComponentAnatomy } from "@/components/composites/component-anatomy";
@@ -48,20 +44,41 @@ const tokens = {
   space: ["0", "1", "2", "3", "4", "6", "8", "12", "16", "24", "32"],
   radius: ["sm", "md", "lg", "xl", "2xl"],
   type: [
-    ["Display / Hero", "font-display text-6xl font-medium tracking-[-0.03em] text-ink", "Systems that scale."],
-    ["Display / L", "font-display text-4xl font-medium tracking-[-0.02em] text-ink", "Composable primitives"],
-    ["Body / L", "text-lg leading-relaxed text-foreground/85", "Composition over configuration."],
-    ["Body / S", "text-sm text-muted-foreground", "Documentation is a product."],
-    ["Mono / XS", "mono text-[10px] uppercase tracking-[0.24em] text-gold", "TOKENS · TYPE · MOTION"],
+    [
+      "Display / Hero",
+      "font-display text-6xl font-medium tracking-[-0.03em] text-ink",
+      "Systems that scale.",
+    ],
+    [
+      "Display / L",
+      "font-display text-4xl font-medium tracking-[-0.02em] text-ink",
+      "Composable primitives",
+    ],
+    [
+      "Body / L",
+      "text-lg leading-relaxed text-foreground/85",
+      "Composition over configuration.",
+    ],
+    [
+      "Body / S",
+      "text-sm text-muted-foreground",
+      "Documentation is a product.",
+    ],
+    [
+      "Mono / XS",
+      "mono text-[10px] uppercase tracking-[0.24em] text-gold",
+      "TOKENS · TYPE · MOTION",
+    ],
   ] as const,
 };
 
 const components = [
-  "Button","Input","Textarea","Select","Checkbox","Radio","Switch","Card",
-  "Modal","Dialog","Sheet","Tooltip","Popover","Badge","Avatar","Breadcrumb",
-  "Tabs","Accordion","Toast","Progress","Table","Pagination","Skeleton",
-  "Spinner","Search","Navigation","Container","Section","Stack","Grid",
-  "TimelineItem","ProjectCard","MetricCard","TechnologyBadge","CodeBlock",
+  "Button",
+  "Badge",
+  "Card",
+  "Section",
+  "PageHero",
+  "TokenPlayground",
 ];
 
 function DesignSystem() {
@@ -84,10 +101,10 @@ function DesignSystem() {
         }
         description={
           <>
-            A product scales when the next engineer can move fast without
-            asking permission. That means shape before surface: data model,
-            API contracts, boundaries, DX, and tokens, decided on purpose,
-            not inherited by accident.
+            A product scales when the next engineer can move fast without asking
+            permission. That means shape before surface: data model, API
+            contracts, boundaries, DX, and tokens, decided on purpose, not
+            inherited by accident.
           </>
         }
         actions={
@@ -109,7 +126,8 @@ function DesignSystem() {
               Live Component Explorer
             </p>
             <h2 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink md:text-3xl">
-              One primitive of many: <span className="font-accent italic text-gold">Storybook</span>.
+              One primitive of many:{" "}
+              <span className="font-accent italic text-gold">Storybook</span>.
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
               Components are the visible edge of the system. Underneath sit
@@ -128,29 +146,35 @@ function DesignSystem() {
               Open Storybook →
             </a>
           </div>
-
         </div>
       </div>
 
-
-
-
       {/* TOKENS, interactive */}
       <div className="border-b border-border/70 bg-surface/30">
-        <Section eyebrow="Chapter 01 · Tokens" title="Design tokens as a language.">
+        <Section
+          eyebrow="Chapter 01 · Tokens"
+          title="Design tokens as a language."
+        >
           <div className="grid gap-10 md:grid-cols-3">
             <Reveal>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">Color</h3>
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  Color
+                </h3>
                 <ul className="mt-5 space-y-2">
                   {tokens.color.map(([name, label]) => (
-                    <li key={name} className="lift flex items-center gap-3 border border-border bg-card px-3 py-2.5">
+                    <li
+                      key={name}
+                      className="lift flex items-center gap-3 border border-border bg-card px-3 py-2.5"
+                    >
                       <span
                         className="h-7 w-7 border border-border-strong"
                         style={{ background: `var(${name})` }}
                       />
                       <span className="mono text-[11px] text-ink">{name}</span>
-                      <span className="ml-auto text-[11px] text-muted-foreground">{label}</span>
+                      <span className="ml-auto text-[11px] text-muted-foreground">
+                        {label}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -158,19 +182,27 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={100}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">Spacing</h3>
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  Spacing
+                </h3>
                 <div className="mt-5 space-y-2">
                   {tokens.space.map((s) => (
                     <div key={s} className="flex items-center gap-3">
-                      <span className="mono w-8 text-[11px] text-muted-foreground">{s}</span>
+                      <span className="mono w-8 text-[11px] text-muted-foreground">
+                        {s}
+                      </span>
                       <span
                         className="h-2 bg-ink"
-                        style={{ width: `${Math.min(Number(s) * 8 || 4, 240)}px` }}
+                        style={{
+                          width: `${Math.min(Number(s) * 8 || 4, 240)}px`,
+                        }}
                       />
                     </div>
                   ))}
                 </div>
-                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-gold">Radius</h3>
+                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-gold">
+                  Radius
+                </h3>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {tokens.radius.map((r) => (
                     <div
@@ -186,7 +218,9 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={200}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">Typography</h3>
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  Typography
+                </h3>
                 <ul className="mt-5 space-y-6">
                   {tokens.type.map(([label, cls, sample]) => (
                     <li key={label} className="border-t border-border pt-4">
@@ -227,18 +261,42 @@ function DesignSystem() {
       <Section eyebrow="Chapter 02 · Principles" title="How I build for scale.">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
-            ["Shape before surface", "Data model and API contracts first. UI last. The shape decides everything downstream."],
-            ["Boundaries are the product", "Auth, ownership, and trust lines are named on purpose. Every ambiguity is a future bug."],
-            ["Composition over configuration", "Small primitives that combine. Fewer props, sharper APIs, less to memorize."],
-            ["Tokens over hardcodes", "Every visual decision goes through a token. One change ripples through every surface."],
-            ["DX is UX for the next engineer", "The paved road is the product. If it's easier to do it right, right is what ships."],
-            ["Docs travel with the code", "A component without an example is a component without a contract."],
+            [
+              "Shape before surface",
+              "Data model and API contracts first. UI last. The shape decides everything downstream.",
+            ],
+            [
+              "Boundaries are the product",
+              "Auth, ownership, and trust lines are named on purpose. Every ambiguity is a future bug.",
+            ],
+            [
+              "Composition over configuration",
+              "Small primitives that combine. Fewer props, sharper APIs, less to memorize.",
+            ],
+            [
+              "Tokens over hardcodes",
+              "Every visual decision goes through a token. One change ripples through every surface.",
+            ],
+            [
+              "DX is UX for the next engineer",
+              "The paved road is the product. If it's easier to do it right, right is what ships.",
+            ],
+            [
+              "Docs travel with the code",
+              "A component without an example is a component without a contract.",
+            ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
               <div className="lift gold-sweep h-full border border-border bg-card p-7">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">0{i + 1}</p>
-                <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">{t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/85">{d}</p>
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
+                  {t}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                  {d}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -259,7 +317,7 @@ function DesignSystem() {
                   Configuration (avoid)
                 </p>
                 <pre className="mono mt-4 overflow-auto rounded border border-border bg-background p-4 text-[11px] leading-relaxed text-muted-foreground">
-{`<Card
+                  {`<Card
   title="…" subtitle="…" icon={<X />}
   actionLabel="…" actionVariant="outline"
   showDivider hasFooter footerAlign="end"
@@ -274,7 +332,7 @@ function DesignSystem() {
                   Composition (preferred)
                 </p>
                 <pre className="mono mt-4 overflow-auto rounded border border-border bg-background p-4 text-[11px] leading-relaxed text-ink">
-{`<Card>
+                  {`<Card>
   <Card.Header>
     <Card.Title>…</Card.Title>
   </Card.Header>
@@ -309,18 +367,42 @@ function DesignSystem() {
       >
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            ["Purpose", "Motion earns its place by clarifying causality, what caused what, where the user is, what to look at next."],
-            ["Duration", "180–420ms for UI. 700–900ms for reveals. Never long enough to feel like waiting."],
-            ["Easing", "cubic-bezier(0.22, 1, 0.36, 1), a single expressive out-curve for everything."],
-            ["Reduced motion", "Motion is a feature, not a mandate. Honor prefers-reduced-motion, always."],
-            ["Choreography", "Sequenced stagger for lists. Solo reveals for hero moments. Never both at once."],
-            ["Restraint", "If it doesn't clarify, it distracts. When in doubt, remove."],
+            [
+              "Purpose",
+              "Motion earns its place by clarifying causality, what caused what, where the user is, what to look at next.",
+            ],
+            [
+              "Duration",
+              "180–420ms for UI. 700–900ms for reveals. Never long enough to feel like waiting.",
+            ],
+            [
+              "Easing",
+              "cubic-bezier(0.22, 1, 0.36, 1), a single expressive out-curve for everything.",
+            ],
+            [
+              "Reduced motion",
+              "Motion is a feature, not a mandate. Honor prefers-reduced-motion, always.",
+            ],
+            [
+              "Choreography",
+              "Sequenced stagger for lists. Solo reveals for hero moments. Never both at once.",
+            ],
+            [
+              "Restraint",
+              "If it doesn't clarify, it distracts. When in doubt, remove.",
+            ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
               <div className="lift border border-border bg-card p-6">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">0{i + 1}</p>
-                <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">{t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-foreground/85">{d}</p>
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  0{i + 1}
+                </p>
+                <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
+                  {t}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                  {d}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -331,16 +413,19 @@ function DesignSystem() {
       <div className="border-y border-border/70 bg-surface/30">
         <Section
           eyebrow="Chapter 05 · The Handoff"
-          title="Figma and code, sharing a language."
+          title="Figma-to-code principles."
         >
           <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
-            <Reveal><ArchitectureIllus /></Reveal>
+            <Reveal>
+              <ArchitectureIllus />
+            </Reveal>
             <Reveal delay={120}>
               <div className="space-y-4 text-foreground/85">
                 <p className="leading-relaxed">
-                  When tokens are the source of truth, Figma variables and code
-                  variables both point at the same intent. The handoff stops
-                  being a translation and becomes a lookup.
+                  These are workflow principles, not evidence of published Figma
+                  artifacts. When tokens are the source of truth, Figma
+                  variables and code variables both point at the same intent.
+                  The handoff stops being a translation and becomes a lookup.
                 </p>
                 <ul className="mt-4 space-y-3 text-sm">
                   {[
@@ -364,10 +449,9 @@ function DesignSystem() {
       {/* COMPONENTS */}
       <Section
         eyebrow="Chapter 06 · Inventory"
-        title="Included in packages/ui."
-        description="Every component is typed, accessible, composable, documented, and styled entirely through tokens."
+        title="A source-level starting point."
+        description="These components have existing Storybook examples. They live in src/components; no public packages/ui package is published. Accessibility and keyboard coverage have not yet been comprehensively verified."
       >
-        <ComponentSystemIllus className="mb-10" />
         <div className="flex flex-wrap gap-1.5">
           {components.map((c) => (
             <TechBadge key={c}>{c}</TechBadge>
@@ -383,15 +467,30 @@ function DesignSystem() {
         >
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              ["One decision, many surfaces", "A token, a contract, a boundary, decided once, inherited everywhere. No coordination meeting required."],
-              ["Onboarding as a byproduct", "New engineers learn the system, not the codebase. The system is the codebase."],
-              ["Quality compounds", "Accessibility, performance, and consistency are inherited by every new surface, not re-litigated per feature."],
+              [
+                "One decision, many surfaces",
+                "A token, a contract, a boundary, decided once, inherited everywhere. No coordination meeting required.",
+              ],
+              [
+                "Onboarding as a byproduct",
+                "New engineers learn the system, not the codebase. The system is the codebase.",
+              ],
+              [
+                "Quality compounds",
+                "Accessibility, performance, and consistency are inherited by every new surface, not re-litigated per feature.",
+              ],
             ].map(([t, d], i) => (
               <Reveal key={t} delay={i * 80}>
                 <div className="lift border border-border bg-card p-6">
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">0{i + 1}</p>
-                  <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">{t}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-foreground/85">{d}</p>
+                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                    0{i + 1}
+                  </p>
+                  <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
+                    {t}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/85">
+                    {d}
+                  </p>
                 </div>
               </Reveal>
             ))}

@@ -47,20 +47,6 @@ export const timeline: TimelineEntry[] = [
       "Craft opened the door to client work, and the harder problem of owning outcomes end-to-end.",
   },
   {
-    year: "2010–2015",
-    chapter: "Founder, RealiDreams",
-    role: "Independent studio",
-    tech: ["Branding", "Web", "Motion", "3D", "Print"],
-    changed:
-      "The problem: clients didn't need a deliverable, they needed a result. Nobody was coming to bridge the gap between what they asked for and what would actually work.",
-    learned:
-      "The call was to start with the business outcome and reason backward to the artifact. Scope, price, and say no on my own signature.",
-    forged:
-      "Ownership. Product thinking begins with the client's business, not the file you're about to open.",
-    bridge:
-      "Running the studio revealed the ceiling of solo work, and the leverage of shipping inside a team.",
-  },
-  {
     year: "2015–2016",
     chapter: "Caldwell & Kerr",
     role: "Designer → Senior Frontend Web Developer",
@@ -312,33 +298,6 @@ export const workCases: WorkCase[] = [
       "The foundational literacy every interface engineer needs, hierarchy, conversion, typography, attention, earned inside real deadlines with real accountability.",
     lessons:
       "Craft is a discipline. Typography is the quiet architecture of trust. User attention is the scarcest resource in every product I've built since.",
-  },
-  {
-    slug: "realidreams",
-    company: "RealiDreams",
-    title: "Founder, Independent Studio",
-    period: "2010, 2015",
-    role: "Founder & Creative Director",
-    summary:
-      "Ran a studio delivering websites, branding, logos, print, motion, and 3D logo animation.",
-    tags: ["Brand", "Web", "Motion", "3D"],
-    metrics: [
-      ["5", "years"],
-      ["Full", "ownership"],
-      ["Studio", "operations"],
-    ],
-    discipline: "Ownership, end to end",
-    challenge:
-      "Running a studio meant every discipline, brand, web, motion, 3D, print, plus the parts nobody teaches: scoping, delivery, and getting paid.",
-    approach: [
-      "Treated every client engagement as a product with a beginning, middle, and shipped end.",
-      "Built brand systems and websites as one coherent artifact, not separate deliverables.",
-      "Owned scoping, delivery, and support, the full lifecycle, not just the fun part.",
-    ],
-    impact:
-      "Five years of shipping real work for real clients, with no one to escalate to. The habits from this era shape how I show up for product teams today.",
-    lessons:
-      "Nobody is coming to save the ship. You are the ship. Product thinking starts with the client's business, not the artifact.",
   },
 ];
 
