@@ -29,7 +29,7 @@ export function ActiveToc({
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
         if (visible[0]?.target?.id) setActive(visible[0].target.id);
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.1, 0.5, 1] }
+      { rootMargin: "-30% 0px -60% 0px", threshold: [0, 0.1, 0.5, 1] },
     );
     nodes.forEach((n) => io.observe(n));
     return () => io.disconnect();
@@ -50,13 +50,15 @@ export function ActiveToc({
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
                   "group flex items-baseline gap-3 transition-colors",
-                  isActive ? "text-ink" : "text-muted-foreground hover:text-ink"
+                  isActive
+                    ? "text-ink"
+                    : "text-muted-foreground hover:text-ink",
                 )}
               >
                 <span
                   className={cn(
                     "mono text-[9.5px] tracking-[0.18em] transition-colors",
-                    isActive ? "text-gold" : "text-gold-dark"
+                    isActive ? "text-accent-ink" : "text-accent-ink-dark",
                   )}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -64,7 +66,7 @@ export function ActiveToc({
                 <span
                   className={cn(
                     "story-link relative",
-                    isActive && "after:scale-x-100 after:origin-bottom-left"
+                    isActive && "after:scale-x-100 after:origin-bottom-left",
                   )}
                 >
                   {s.label}

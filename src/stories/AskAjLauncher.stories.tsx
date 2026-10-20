@@ -27,7 +27,7 @@ export const Default: Story = {
     <a
       href="/ask-aj"
       onClick={fn()}
-      className="inline-flex max-w-[calc(100vw-2rem)] items-center gap-3 border border-gold/50 bg-ink px-4 py-3 text-background shadow-[0_18px_45px_-25px_rgba(0,0,0,0.55)] transition-colors hover:bg-gold hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+      className="inline-flex max-w-[calc(100vw-2rem)] items-center gap-2 rounded-full bg-ink py-2 pl-2 pr-4 text-white shadow-lift transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       <AskAjLauncherContent {...args} />
     </a>

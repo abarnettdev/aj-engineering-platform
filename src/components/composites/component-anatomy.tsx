@@ -1,32 +1,22 @@
 import { CompositeFigure } from "@/components/composites/figure";
-import image from "@/assets/composite-component-anatomy.jpg";
-
-/**
- * ComponentAnatomy, editorial figure for the Design System page.
- *
- * An exploded-view 3D illustration of a Card compound component: the
- * four slots (header, title, body, footer) rendered as floating slabs
- * linked by gold connector wires. Replaces the previous SVG-based
- * anatomy diagram.
- */
 export function ComponentAnatomy() {
   return (
     <CompositeFigure
-      eyebrow="Fig. 02 · Component Anatomy"
-      title="Card · compound slots"
-      image={image}
-      alt="Exploded isometric view of a card component, split into four floating slabs linked by thin gold connector wires."
+      eyebrow="Fig. 02 · This Site in Production"
+      title="Tokens · Type · Components"
+      image="/projects/design-system-demo.webp"
+      alt="The live ajbarnett.tech token playground demonstrating how site tokens change a real component."
       caption={
         <>
-          A card is not a monolith. It is a contract between slots, each
-          replaceable, each optional, each aligned to the same grid.
+          The ajbarnett.tech system proves its contract in production: one set
+          of tokens controls typography, spacing, surfaces, component states,
+          interaction feedback, and responsive behavior.
         </>
       }
       legend={[
-        { label: "CardHeader", note: "eyebrow, controls, chapter marks" },
-        { label: "CardTitle", note: "the primary label" },
-        { label: "CardContent", note: "body prose, lists, media" },
-        { label: "CardFooter", note: "trailing actions" },
+        { label: "Tokens", note: "shared visual decisions" },
+        { label: "Type", note: "consistent editorial hierarchy" },
+        { label: "Components", note: "reusable behavior and states" },
       ]}
     />
   );

@@ -10,7 +10,7 @@ import { Badge, TechBadge } from "@/components/badge";
  *
  * ## Variants
  * - `default` — neutral surface, used for section eyebrows.
- * - `accent`  — gold, used sparingly for status ("Shipping", "Live").
+ * - `accent`  — coral red, used sparingly for status ("Shipping", "Live").
  * - `outline` — quiet border-only, for tertiary metadata.
  *
  * ## When not to use
@@ -39,7 +39,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: { variant: "default", children: "Design Systems" },
   parameters: {
-    docs: { source: { code: `<Badge variant="default">Design Systems</Badge>` } },
+    docs: {
+      source: { code: `<Badge variant="default">Design Systems</Badge>` },
+    },
   },
 };
 

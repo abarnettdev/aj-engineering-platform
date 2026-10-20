@@ -39,7 +39,7 @@ export function AskAjFlowDiagram({
   return (
     <section
       className={cn(
-        "border border-border bg-card p-5 md:p-6",
+        "rounded-3xl border border-border bg-card p-5 shadow-soft md:p-6",
         tone === "accent" && "bg-ink text-background",
       )}
       aria-labelledby={flowHeadingId(title)}
@@ -47,8 +47,8 @@ export function AskAjFlowDiagram({
       <header className="max-w-3xl">
         <p
           className={cn(
-            "mono text-[10px] uppercase tracking-[0.22em] text-gold",
-            tone === "accent" && "text-gold-text-on-dark",
+            "mono text-[10px] uppercase tracking-[0.22em] text-accent-ink",
+            tone === "accent" && "text-accent",
           )}
         >
           Architecture flow
@@ -73,7 +73,7 @@ export function AskAjFlowDiagram({
           <li key={`${step.title}-${index}`} className="relative">
             <div
               className={cn(
-                "h-full border border-border bg-surface p-4",
+                "h-full rounded-2xl border border-border bg-surface p-4",
                 tone === "accent" &&
                   "border-background/20 bg-background/5 text-background",
               )}
@@ -99,8 +99,8 @@ export function AskAjFlowDiagram({
             {index < steps.length - 1 && (
               <ArrowRight
                 className={cn(
-                  "absolute -right-3 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-gold xl:block",
-                  tone === "accent" && "text-gold-text-on-dark",
+                  "absolute -right-3 top-1/2 z-10 hidden h-5 w-5 -translate-y-1/2 text-accent-ink xl:block",
+                  tone === "accent" && "text-accent",
                 )}
                 aria-hidden="true"
               />
@@ -122,7 +122,7 @@ export function AskAjDecisionGrid({
       {decisions.map((item) => (
         <article
           key={item.decision}
-          className="border border-border bg-card p-5"
+          className="rounded-3xl border border-border bg-card p-5 shadow-soft"
         >
           <h3 className="font-display text-2xl leading-tight text-ink">
             {item.decision}
@@ -144,7 +144,10 @@ export function AskAjSignalGrid({
   return (
     <dl className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {signals.map((signal) => (
-        <div key={signal.label} className="border border-border bg-surface p-4">
+        <div
+          key={signal.label}
+          className="rounded-2xl border border-border bg-surface p-4"
+        >
           <dt className="mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
             {signal.label}
           </dt>
@@ -172,9 +175,9 @@ export function AskAjMilestoneTimeline({
       {milestones.map((milestone, index) => (
         <li
           key={milestone.label}
-          className="relative border border-border bg-card p-5"
+          className="relative rounded-3xl border border-border bg-card p-5 shadow-soft"
         >
-          <span className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+          <span className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
             Milestone {index + 1}
           </span>
           <h3 className="mt-3 font-display text-2xl leading-tight text-ink">
@@ -198,7 +201,7 @@ function DecisionField({
 }) {
   return (
     <div className="mt-4 border-t border-border pt-4">
-      <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+      <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
         {label}
       </p>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

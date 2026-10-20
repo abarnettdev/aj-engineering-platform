@@ -28,12 +28,16 @@ export function Section({
           )}
         >
           {eyebrow && (
-            <p className="mono mb-4 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-accent-ink shadow-soft">
+              <span
+                aria-hidden="true"
+                className="size-1.5 rounded-full bg-accent"
+              />
               {eyebrow}
             </p>
           )}
           {title && (
-            <h2 className="text-balance font-display text-4xl leading-[1.05] md:text-5xl">
+            <h2 className="text-balance font-display text-4xl font-medium leading-[1.05] md:text-5xl">
               {title}
             </h2>
           )}
@@ -51,8 +55,8 @@ export function Section({
 
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span className="mono inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-      <span className="h-px w-6 bg-border-strong" />
+    <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-accent-ink shadow-soft">
+      <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
       {children}
     </span>
   );

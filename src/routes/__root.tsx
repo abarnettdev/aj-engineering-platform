@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportError } from "../lib/error-reporting";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { AskAjLauncher } from "@/components/ask-aj-launcher";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function NotFoundComponent() {
@@ -40,7 +41,13 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({
+  error,
+  reset,
+}: {
+  error: unknown;
+  reset: () => void;
+}) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -111,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
         {
           rel: "preconnect",
-          href: "https://fonts.googleapis.com",
+          href: "https://api.fontshare.com",
         },
         {
           rel: "preconnect",
@@ -120,7 +127,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Archivo+Black&family=Archivo:wght@600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
+          href: "https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap",
         },
       ],
     }),
@@ -164,6 +175,7 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <AskAjLauncher />
       </div>
     </QueryClientProvider>
   );

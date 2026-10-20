@@ -25,7 +25,7 @@ export const Route = createFileRoute("/writing/$slug")({
   },
   notFoundComponent: () => (
     <div className="container-page py-32 text-center">
-      <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+      <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
         404
       </p>
       <h1 className="mt-6 font-display text-5xl font-medium text-ink">
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/writing/$slug")({
       </h1>
       <Link
         to="/writing"
-        className="mono mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-ink hover:text-gold"
+        className="mono mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-ink hover:text-accent-ink"
       >
         ← Back to field notes
       </Link>
@@ -58,18 +58,18 @@ function Article() {
           className="pointer-events-none absolute inset-0 opacity-60"
           style={{
             backgroundImage:
-              "radial-gradient(ellipse 60% 40% at 20% 100%, color-mix(in oklab, var(--gold) 22%, transparent), transparent 60%), radial-gradient(ellipse 60% 40% at 90% 0%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 60%)",
+              "radial-gradient(ellipse 60% 40% at 20% 100%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 60%), radial-gradient(ellipse 60% 40% at 90% 0%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 60%)",
           }}
         />
         <div className="container-page relative py-20 md:py-28">
           <Link
             to="/writing"
-            className="mono inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-background/70 hover:text-gold"
+            className="mono inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-background/70 hover:text-accent-ink"
           >
             <ArrowLeft className="h-3 w-3" /> Back to field notes
           </Link>
           <Reveal delay={80}>
-            <p className="mono mt-10 text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono mt-10 text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               {article.tag}
             </p>
           </Reveal>
@@ -85,7 +85,7 @@ function Article() {
           </Reveal>
           <Reveal delay={320}>
             <div className="mono mt-10 flex flex-wrap items-center gap-5 text-[10px] uppercase tracking-[0.22em] text-background/60">
-              <span className="text-gold">AJ Barnett</span>
+              <span className="text-accent-ink">AJ Barnett</span>
               <span>·</span>
               <span>{article.date}</span>
               <span>·</span>
@@ -99,7 +99,7 @@ function Article() {
       <div className="container-page grid gap-16 py-20 md:grid-cols-[1fr_3fr] md:py-28">
         {/* TOC */}
         <aside className="min-w-0 md:sticky md:top-24 md:self-start">
-          <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+          <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
             In this essay
           </p>
           <ActiveToc items={article.toc} className="mt-4" />
@@ -131,7 +131,7 @@ function Article() {
             }
             if (block.kind === "quote") {
               return (
-                <blockquote key={i} className="rule-gold my-10 pl-6">
+                <blockquote key={i} className="rule-accent my-10 pl-6">
                   <p className="font-display text-2xl italic leading-snug text-ink md:text-3xl">
                     {block.text}
                   </p>
@@ -142,9 +142,9 @@ function Article() {
               return (
                 <aside
                   key={i}
-                  className="my-10 border-y border-gold/40 bg-gold/5 px-6 py-6"
+                  className="my-10 border-y border-accent/40 bg-accent/5 px-6 py-6"
                 >
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     Note
                   </p>
                   <p className="mt-3 font-display text-xl font-medium leading-snug text-ink">
@@ -161,7 +161,7 @@ function Article() {
                 >
                   <div className="mb-3 flex items-center justify-between text-[9px] uppercase tracking-[0.22em] text-background/50">
                     <span>{block.lang ?? "code"}</span>
-                    <span className="text-gold-text-on-dark">// snippet</span>
+                    <span className="text-accent">// snippet</span>
                   </div>
                   <code>{block.text}</code>
                 </pre>
@@ -172,7 +172,7 @@ function Article() {
 
           {/* Author */}
           <div className="mt-16 border-t border-border pt-8">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Written by
             </p>
             <p className="mt-3 font-display text-2xl font-medium text-ink">
@@ -190,7 +190,7 @@ function Article() {
       {related.length > 0 && (
         <div className="border-t border-border/70 bg-surface/40">
           <div className="container-page py-20">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Keep reading
             </p>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -201,13 +201,13 @@ function Article() {
                   params={{ slug: r.slug }}
                   className="group lift block border border-border bg-card p-7"
                 >
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     {r.tag} · {r.read}
                   </p>
                   <h3 className="mt-4 font-display text-2xl font-medium tracking-tight text-ink">
                     {r.title}
                   </h3>
-                  <span className="mono mt-6 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-ink group-hover:text-gold">
+                  <span className="mono mt-6 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-ink group-hover:text-accent-ink">
                     Read <ArrowUpRight className="h-3 w-3" />
                   </span>
                 </Link>

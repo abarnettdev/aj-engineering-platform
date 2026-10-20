@@ -24,7 +24,7 @@ function Demo() {
     <div className="grid gap-6 p-8 md:grid-cols-2">
       <Reveal>
         <article className="border border-border bg-card p-6">
-          <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+          <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
             Reveal
           </p>
           <h3 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink">
@@ -38,15 +38,14 @@ function Demo() {
 
       <Tilt3D max={6}>
         <article className="border border-border bg-card p-6">
-          <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+          <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
             Tilt3D
           </p>
           <h3 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink">
             Cursor-aware
           </h3>
           <p className="mt-2 text-sm text-foreground/80">
-            Move your cursor across the card. Tilt is sub-degree, on
-            purpose.
+            Move your cursor across the card. Tilt is sub-degree, on purpose.
           </p>
         </article>
       </Tilt3D>

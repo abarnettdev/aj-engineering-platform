@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-/**
- * Typography — three families, one rhythm.
- *
- * `font-display` for editorial headlines (serif), `font-sans` for body,
- * `font-mono` for eyebrow labels, metadata, and figure captions. Italic
- * accents use `font-accent` inside headlines only.
- */
+/** General Sans carries display and body text. JetBrains Mono labels technical metadata. */
 
 function Specimen() {
   return (
@@ -16,10 +10,8 @@ function Specimen() {
           Display · headlines
         </p>
         <h1 className="font-display text-6xl font-medium leading-[0.98] tracking-tight text-ink">
-          Inputs in.{" "}
-          <span className="font-accent italic normal-case text-gold">
-            Production out.
-          </span>
+          From first concept to{" "}
+          <span className="text-accent-ink">production code.</span>
         </h1>
       </section>
 
@@ -28,10 +20,8 @@ function Specimen() {
           Body · long-form
         </p>
         <p className="max-w-2xl text-[17px] leading-[1.7] text-foreground/90">
-          Body copy is optimized for editorial reading — 17px at a 1.7 line
-          height, sized to keep measures between 60 and 75 characters. Bold
-          weights are reserved for emphasis inside a paragraph, not for
-          hierarchy.
+          Body copy uses a comfortable line height and a measured width so
+          product details stay easy to scan on large and small screens.
         </p>
       </section>
 
@@ -40,11 +30,11 @@ function Specimen() {
           Mono · labels & captions
         </p>
         <div className="space-y-2">
-          <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
-            Fig. 01 · Engineering Judgment
+          <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
+            Component · Live example
           </p>
           <p className="mono text-[11px] uppercase tracking-[0.24em] text-muted-foreground">
-            Chapter · Practice
+            React · TypeScript · Accessible
           </p>
         </div>
       </section>
@@ -93,10 +83,10 @@ const meta = {
     docs: {
       source: {
         code: `<h1 className="font-display text-6xl font-medium tracking-tight text-ink">
-  Inputs in. <span className="font-accent italic text-gold">Production out.</span>
+  From first concept to <span className="text-accent-ink">production code.</span>
 </h1>
 <p className="text-[17px] leading-[1.7] text-foreground/90">Body copy…</p>
-<p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">Fig. 01</p>`,
+<p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">Component</p>`,
       },
     },
   },

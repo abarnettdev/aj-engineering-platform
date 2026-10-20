@@ -20,19 +20,19 @@ export function ChapterArtwork({
   return (
     <figure
       className={cn(
-        "relative w-full overflow-hidden border border-border bg-card shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]",
+        "relative w-full overflow-hidden rounded-3xl border border-border bg-card shadow-lift",
         className,
       )}
     >
       <div
         className="relative w-full overflow-hidden bg-background"
-        style={{ aspectRatio: "4 / 3" }}
+        style={{ aspectRatio: "8 / 5" }}
       >
         <img
           src={src}
           alt={alt}
           width={1600}
-          height={1200}
+          height={1008}
           loading="lazy"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
@@ -52,7 +52,7 @@ export function ChapterArtwork({
       </div>
       {caption ? (
         <figcaption className="flex items-center justify-between gap-4 border-t border-border/70 px-4 py-2.5">
-          <span className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+          <span className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
             {caption}
           </span>
         </figcaption>
@@ -74,8 +74,8 @@ function CornerMark({
       className={cn("pointer-events-none absolute h-3 w-3", className)}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
-      <span className="absolute left-0 top-0 h-px w-full bg-gold/60" />
-      <span className="absolute left-0 top-0 h-full w-px bg-gold/60" />
+      <span className="absolute left-0 top-0 h-px w-full bg-accent/60" />
+      <span className="absolute left-0 top-0 h-full w-px bg-accent/60" />
     </span>
   );
 }
