@@ -47,11 +47,11 @@ const Demo = () => (
       className="aspect-[4/3] w-full"
       style={{
         background:
-          "radial-gradient(120% 90% at 20% 20%, color-mix(in oklab, var(--gold) 24%, transparent), transparent 60%), linear-gradient(135deg, color-mix(in oklab, var(--ink) 92%, transparent), color-mix(in oklab, var(--ink) 70%, transparent))",
+          "radial-gradient(120% 90% at 20% 20%, color-mix(in oklab, var(--accent) 24%, transparent), transparent 60%), linear-gradient(135deg, color-mix(in oklab, var(--ink) 92%, transparent), color-mix(in oklab, var(--ink) 70%, transparent))",
       }}
     />
     <figcaption className="border-t border-border p-4">
-      <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+      <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
         Figure 01
       </p>
       <p className="mt-2 text-sm text-foreground/80">

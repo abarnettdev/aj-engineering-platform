@@ -53,7 +53,7 @@ const source = `<PageHero
   chapterLabel="Engineering Judgment"
   headline={<>The craft of shipping <em>with taste</em>.</>}
   description="How I choose what to build, what to postpone, and what to refuse."
-  image="/visuals/product-system-studio.webp"
+  image="/visuals/aj-site-system-studio.webp"
   imageAlt="Floating product-system panels"
   imageCaption="Product system"
   imageMeta="2026"
@@ -68,13 +68,14 @@ export const Default: Story = {
     headline: (
       <>
         The craft of shipping{" "}
-        <em className="italic text-gold/90">with taste</em>.
+        <em className="italic text-accent-ink/90">with taste</em>.
       </>
     ),
     description:
       "How I choose what to build, what to postpone, and what to refuse.",
-    image: "/visuals/product-system-studio.webp",
-    imageAlt: "Floating product-system panels with components and code",
+    image: "/visuals/aj-site-system-studio.webp",
+    imageAlt:
+      "The ajbarnett.tech token playground, typography, and component states",
     imageCaption: "Product system",
     imageMeta: "2026",
     chips: ["Systems", "Editorial", "Motion"],

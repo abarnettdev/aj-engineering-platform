@@ -36,7 +36,7 @@ const tokens = {
     ["--surface", "elevated 1"],
     ["--surface-elevated", "elevated 2"],
     ["--primary", "actions"],
-    ["--gold", "accent · achievement"],
+    ["--accent", "actions · emphasis"],
     ["--muted-foreground", "subtle text"],
     ["--border", "hairlines"],
   ] as const,
@@ -65,7 +65,7 @@ const tokens = {
     ],
     [
       "Mono / XS",
-      "mono text-[10px] uppercase tracking-[0.24em] text-gold",
+      "mono text-[10px] uppercase tracking-[0.24em] text-accent-ink",
       "TOKENS · TYPE · MOTION",
     ],
   ] as const,
@@ -87,9 +87,9 @@ function DesignSystem() {
         eyebrow="Design system"
         chapter="04"
         chapterLabel="06"
-        image="/visuals/design-system-studio.webp"
-        imageAlt="The current CDW website, built with the Legato design system, displayed in a polished studio monitor."
-        imageCaption="Legato in production · Architecture · API · DX"
+        image="/visuals/aj-site-system-studio.webp"
+        imageAlt="The ajbarnett.tech token playground with coral-red color tokens, typography, and component states."
+        imageCaption="ajbarnett.tech · Tokens · Components · Code"
         imageMeta="Systems"
         headline={
           <>
@@ -121,12 +121,15 @@ function DesignSystem() {
       <div className="border-b border-border/70 bg-background">
         <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between md:py-12">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Live Component Explorer
             </p>
             <h2 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink md:text-3xl">
               One primitive of many:{" "}
-              <span className="font-accent italic text-gold">Storybook</span>.
+              <span className="font-accent italic text-accent-ink">
+                Storybook
+              </span>
+              .
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
               Components are the visible edge of the system. Underneath sit
@@ -140,7 +143,7 @@ function DesignSystem() {
               target="_blank"
               rel="noreferrer"
               aria-label="Open Storybook component explorer in a new tab"
-              className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-accent hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Open Storybook →
             </a>
@@ -154,7 +157,7 @@ function DesignSystem() {
           <div className="grid gap-10 md:grid-cols-3">
             <Reveal>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Color
                 </h3>
                 <ul className="mt-5 space-y-2">
@@ -178,7 +181,7 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={100}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Spacing
                 </h3>
                 <div className="mt-5 space-y-2">
@@ -196,7 +199,7 @@ function DesignSystem() {
                     </div>
                   ))}
                 </div>
-                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Radius
                 </h3>
                 <div className="mt-5 flex flex-wrap gap-3">
@@ -214,7 +217,7 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={200}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Typography
                 </h3>
                 <ul className="mt-5 space-y-6">
@@ -283,8 +286,8 @@ function DesignSystem() {
             ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
-              <div className="lift gold-sweep h-full rounded-3xl border border-border bg-card p-7 shadow-soft">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <div className="lift accent-sweep h-full rounded-3xl border border-border bg-card p-7 shadow-soft">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   0{i + 1}
                 </p>
                 <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
@@ -323,8 +326,8 @@ function DesignSystem() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div className="border border-gold/40 bg-card p-6">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <div className="border border-accent/40 bg-card p-6">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Composition (preferred)
                 </p>
                 <pre className="mono mt-4 overflow-auto rounded border border-border bg-background p-4 text-[11px] leading-relaxed text-ink">
@@ -387,7 +390,7 @@ function DesignSystem() {
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
               <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   0{i + 1}
                 </p>
                 <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
@@ -425,7 +428,7 @@ function DesignSystem() {
                     "Accessibility annotations travel with the component, not the ticket.",
                   ].map((line) => (
                     <li key={line} className="flex gap-3">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                       <span>{line}</span>
                     </li>
                   ))}
@@ -469,7 +472,7 @@ function DesignSystem() {
             ].map(([t, d], i) => (
               <Reveal key={t} delay={i * 80}>
                 <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     0{i + 1}
                   </p>
                   <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">

@@ -48,8 +48,8 @@ function AskAjCaseStudy() {
         eyebrow="Case Study · AI Application Engineering"
         chapter="AI"
         chapterLabel="Ask A.J."
-        image="/visuals/ask-aj-studio.webp"
-        imageAlt="The real Ask A.J. product displayed on a laptop in a dark coral studio scene."
+        image="/visuals/ask-aj-architecture-studio.webp"
+        imageAlt="The real Ask A.J. interface surrounded by its event stream, server architecture, knowledge sources, validation, and fallback behavior."
         imageCaption="Live AI agent"
         imageMeta="Production-minded MVP"
         headline={
@@ -83,7 +83,7 @@ function AskAjCaseStudy() {
             </p>
             <Link
               to="/ask-aj"
-              className="mt-6 inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink"
+              className="mt-6 inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-accent hover:text-ink"
             >
               Try Ask A.J.
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -172,7 +172,7 @@ function AskAjCaseStudy() {
             </section>
 
             <section className="border border-ink bg-ink p-6 text-background">
-              <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold-text-on-dark">
+              <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent">
                 Interview the engineer
               </p>
               <h2 className="mt-4 font-display text-3xl">
@@ -186,7 +186,7 @@ function AskAjCaseStudy() {
               </p>
               <Link
                 to="/ask-aj"
-                className="mt-6 inline-flex items-center gap-2 border border-background/25 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:border-gold hover:text-gold-text-on-dark"
+                className="mt-6 inline-flex items-center gap-2 border border-background/25 px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:border-accent hover:text-accent"
               >
                 Start with Ask A.J.
                 <ArrowUpRight className="h-3.5 w-3.5" />
@@ -387,7 +387,7 @@ const architectureDecisions: AskAjDecision[] = [
   },
   {
     decision: "Use semantic success tokens",
-    why: "The contact form success state should communicate completion without borrowing the site's gold accent or warning tone.",
+    why: "The contact form success state should communicate completion without borrowing the site's coral-red accent or warning tone.",
     tradeoff: "The design token surface grows slightly.",
     result:
       "Success, error, accent, and neutral states now have clearer visual roles in light and dark themes.",

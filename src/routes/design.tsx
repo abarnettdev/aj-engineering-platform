@@ -79,7 +79,7 @@ function ProductDesign() {
       <section className="border-b border-border py-20 sm:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Product Design
             </p>
             <h1 className="mt-6 max-w-5xl text-balance font-display text-[clamp(2.8rem,12.5vw,8rem)] uppercase leading-[0.84] tracking-[-0.065em] text-ink">
@@ -103,7 +103,7 @@ function ProductDesign() {
                 key={capability}
                 className="flex min-h-32 flex-col justify-between border-b border-r border-border p-5"
               >
-                <span className="mono text-[9px] tracking-[0.18em] text-gold-text">
+                <span className="mono text-[9px] tracking-[0.18em] text-accent-ink">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span className="text-base font-semibold text-ink">
@@ -118,7 +118,7 @@ function ProductDesign() {
       <section className="py-20 sm:py-28">
         <div className="container-page">
           <div className="max-w-3xl">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Client work · 2016–2020
             </p>
             <h2 className="mt-5 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-7xl">
@@ -152,7 +152,7 @@ function ProductDesign() {
                   </figcaption>
                 </figure>
                 <div className="p-7 sm:p-10">
-                  <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold-text">
+                  <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                     {project.type}
                   </p>
                   <h3 className="mt-4 font-display text-4xl uppercase tracking-[-0.045em] text-ink sm:text-5xl">
@@ -194,7 +194,7 @@ function ProductDesign() {
       <section className="border-y border-border bg-ink py-20 text-white sm:py-24">
         <div className="container-page flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent">
               The other half
             </p>
             <h2 className="mt-4 max-w-3xl text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-6xl">
@@ -203,7 +203,7 @@ function ProductDesign() {
           </div>
           <Link
             to="/engineering"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="inline-flex min-h-12 shrink-0 items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-black hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Software engineering
             <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

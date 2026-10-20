@@ -2,20 +2,21 @@ import { CompositeFigure } from "@/components/composites/figure";
 export function ComponentAnatomy() {
   return (
     <CompositeFigure
-      eyebrow="Fig. 02 · Legato in Production"
-      title="Navigation · Content · Commerce"
-      image="/visuals/design-system-studio.webp"
-      alt="The current CDW website, built with the Legato design system, displayed in a polished studio monitor."
+      eyebrow="Fig. 02 · This Site in Production"
+      title="Tokens · Type · Components"
+      image="/projects/design-system-demo.webp"
+      alt="The live ajbarnett.tech token playground demonstrating how site tokens change a real component."
       caption={
         <>
-          Shared foundations become real navigation, product surfaces, content
-          cards, and commerce patterns across the CDW experience.
+          The ajbarnett.tech system proves its contract in production: one set
+          of tokens controls typography, spacing, surfaces, component states,
+          interaction feedback, and responsive behavior.
         </>
       }
       legend={[
-        { label: "Foundation", note: "tokens, type, spacing, and behavior" },
-        { label: "Patterns", note: "navigation, cards, calls to action" },
-        { label: "Product", note: "the system working at enterprise scale" },
+        { label: "Tokens", note: "shared visual decisions" },
+        { label: "Type", note: "consistent editorial hierarchy" },
+        { label: "Components", note: "reusable behavior and states" },
       ]}
     />
   );

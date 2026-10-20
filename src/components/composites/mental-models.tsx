@@ -4,8 +4,8 @@ export function MentalModels() {
     <CompositeFigure
       eyebrow="Fig. 05 · Platform Model"
       title="Data · Interface · Trust"
-      image="/visuals/platform-studio.webp"
-      alt="A financial-platform interface displayed on a polished tablet device."
+      image="/visuals/mental-model-studio.webp"
+      alt="A regulated fintech workflow connecting structured data, a clear customer interface, and explicit trust boundaries."
       caption={
         <>
           Strong platforms make complex data understandable while keeping the

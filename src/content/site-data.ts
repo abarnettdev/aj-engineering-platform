@@ -48,7 +48,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2015–2016",
-    chapter: "Caldwell & Kerr",
+    chapter: "Moore & Scarry → Caldwell & Kerr → Affinitiv",
     role: "Designer → Senior Frontend Web Developer",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "WordPress", "Coda"],
     changed:
@@ -85,7 +85,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     year: "2020–2022",
-    chapter: "Midland Trust",
+    chapter: "Midland Trust → Equity Trust",
     role: "Software Engineer, Fintech",
     tech: [
       "React",
@@ -218,7 +218,7 @@ export const workCases: WorkCase[] = [
   },
   {
     slug: "midland-trust",
-    company: "Midland Trust",
+    company: "Midland Trust → Equity Trust",
     title: "Fintech Portals, Client, Payment & Pro",
     period: "2020, 2022",
     role: "Software Engineer",
@@ -274,7 +274,7 @@ export const workCases: WorkCase[] = [
   },
   {
     slug: "affinitiv",
-    company: "Caldwell & Kerr",
+    company: "Moore & Scarry → Caldwell & Kerr → Affinitiv",
     title: "Automotive Campaigns, The Origin of the Product Instinct",
     period: "2015, 2016",
     role: "Junior Designer → Senior Frontend",

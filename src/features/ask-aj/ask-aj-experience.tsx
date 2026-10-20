@@ -89,7 +89,7 @@ export function AskAjExperience({
         >
           <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                 Ask A.J.
               </p>
               <h1
@@ -146,7 +146,7 @@ export function AskAjExperience({
                     key={starter}
                     type="button"
                     onClick={() => onStarterQuestion(starter)}
-                    className="min-h-11 w-[15rem] shrink-0 rounded-2xl border border-border bg-surface p-3 text-left text-sm leading-relaxed transition-colors hover:border-gold hover:bg-background md:w-auto"
+                    className="min-h-11 w-[15rem] shrink-0 rounded-2xl border border-border bg-surface p-3 text-left text-sm leading-relaxed transition-colors hover:border-accent hover:bg-background md:w-auto"
                   >
                     {starter}
                   </button>
@@ -174,7 +174,7 @@ export function AskAjExperience({
                 />
                 {message.sources.length > 0 && (
                   <div className="mt-5 border-t border-border pt-4">
-                    <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+                    <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                       Sources
                     </p>
                     <ul className="mt-3 space-y-3">
@@ -182,13 +182,13 @@ export function AskAjExperience({
                         <li key={source.id}>
                           <a
                             href={source.url}
-                            className="group block rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-gold hover:bg-background"
+                            className="group block rounded-2xl border border-border bg-surface p-4 transition-colors hover:border-accent hover:bg-background"
                           >
                             <span className="flex items-center justify-between gap-4">
                               <span className="font-semibold text-ink">
                                 {source.title}
                               </span>
-                              <ArrowUpRight className="h-4 w-4 shrink-0 text-gold transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                              <ArrowUpRight className="h-4 w-4 shrink-0 text-accent-ink transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                             </span>
                             {source.section && (
                               <span className="mono mt-1 block text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
@@ -216,7 +216,7 @@ export function AskAjExperience({
                     key={starter}
                     type="button"
                     onClick={() => onStarterQuestion(starter)}
-                    className="min-h-10 w-[13rem] shrink-0 rounded-full border border-border bg-surface px-3 py-2 text-left text-xs leading-relaxed text-muted-foreground transition-colors hover:border-gold hover:bg-background hover:text-ink"
+                    className="min-h-10 w-[13rem] shrink-0 rounded-full border border-border bg-surface px-3 py-2 text-left text-xs leading-relaxed text-muted-foreground transition-colors hover:border-accent hover:bg-background hover:text-ink"
                   >
                     {starter}
                   </button>
@@ -295,7 +295,7 @@ export function AskAjExperience({
       </section>
 
       <aside className="hidden min-h-0 overflow-y-auto overscroll-contain rounded-3xl border border-border bg-surface p-5 shadow-soft lg:block">
-        <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+        <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
           Recruiter contact
         </p>
         <h2 className="mt-3 font-display text-2xl text-ink">

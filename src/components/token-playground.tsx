@@ -8,10 +8,10 @@ import { useState } from "react";
 export function TokenPlayground() {
   const [radius, setRadius] = useState(8);
   const [padding, setPadding] = useState(24);
-  const [hue, setHue] = useState(78);
+  const [hue, setHue] = useState(33);
   const [density, setDensity] = useState(1);
 
-  const goldish = `oklch(0.52 0.135 ${hue})`;
+  const accentColor = `oklch(0.63 0.22 ${hue})`;
   const scale = 0.9 + density * 0.15;
 
   return (
@@ -19,7 +19,7 @@ export function TokenPlayground() {
       {/* Controls */}
       <div className="space-y-6">
         <div>
-          <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+          <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
             Tokens live
           </p>
           <p className="mt-3 text-sm text-muted-foreground">
@@ -66,7 +66,7 @@ export function TokenPlayground() {
         />
 
         <pre className="mono mt-4 overflow-auto rounded-2xl border border-border bg-background p-3 text-[10.5px] leading-relaxed text-muted-foreground">
-          {`--color-accent: oklch(0.52 0.135 ${hue});
+          {`--color-accent: oklch(0.63 0.22 ${hue});
 --radius-base: ${radius}px;
 --space-pad: ${padding}px;
 --density-scale: ${scale.toFixed(2)};`}
@@ -90,12 +90,12 @@ export function TokenPlayground() {
           <div className="flex items-center gap-3">
             <span
               className="h-8 w-8"
-              style={{ background: goldish, borderRadius: radius * 0.5 }}
+              style={{ background: accentColor, borderRadius: radius * 0.5 }}
             />
             <div>
               <p
                 className="mono text-[9.5px] uppercase tracking-[0.24em]"
-                style={{ color: goldish }}
+                style={{ color: accentColor }}
               >
                 Component
               </p>
@@ -108,7 +108,7 @@ export function TokenPlayground() {
           </p>
           <button
             className="mono mt-5 inline-flex items-center gap-2 px-4 py-2 text-[10.5px] font-semibold uppercase tracking-[0.18em] text-background transition-transform hover:scale-[1.02]"
-            style={{ background: goldish, borderRadius: radius * 0.6 }}
+            style={{ background: accentColor, borderRadius: radius * 0.6 }}
           >
             Primary action
           </button>
@@ -143,7 +143,7 @@ function Control({
         <span className="mono text-[10px] uppercase tracking-[0.22em] text-ink">
           {label}
         </span>
-        <span className="mono text-[10.5px] text-gold">
+        <span className="mono text-[10.5px] text-accent-ink">
           {discrete ? discrete[v] : value}
         </span>
       </div>
@@ -155,7 +155,7 @@ function Control({
         step={step}
         value={v}
         onChange={(e) => set(Number(e.target.value))}
-        className="mt-2 h-1 w-full cursor-pointer appearance-none bg-border accent-[color:var(--gold)]"
+        className="mt-2 h-1 w-full cursor-pointer appearance-none bg-border accent-[color:var(--accent)]"
       />
     </div>
   );

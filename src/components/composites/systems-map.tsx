@@ -4,8 +4,8 @@ export function SystemsMap() {
     <CompositeFigure
       eyebrow="Fig. 01 · Product System"
       title="Tokens · Components · Code"
-      image="/visuals/product-system-studio.webp"
-      alt="Floating token, component, and code panels arranged as a polished product-system composition."
+      image="/visuals/systems-map-studio.webp"
+      alt="Coral-red design tokens flowing into reusable component states and TypeScript code."
       caption={
         <>
           Product intent becomes reusable decisions, then working software a

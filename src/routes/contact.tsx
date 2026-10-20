@@ -32,8 +32,8 @@ function Contact() {
         eyebrow="Contact · Let's connect"
         chapter="07"
         chapterLabel="END"
-        image="/visuals/ask-aj-studio.webp"
-        imageAlt="The real Ask A.J. interface and recruiter contact form presented in a dark coral studio scene."
+        image="/visuals/contact-studio.webp"
+        imageAlt="The ajbarnett.tech recruiter contact form and Ask A.J. entry point displayed across laptop and phone."
         imageCaption="Signal · Not noise"
         imageMeta="Available"
         headline={

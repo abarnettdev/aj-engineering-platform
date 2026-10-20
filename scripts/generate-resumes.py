@@ -23,7 +23,7 @@ OUTPUT_DIR = ROOT / "output" / "pdf"
 PUBLIC_DIR = ROOT / "public" / "resumes"
 INK = colors.HexColor("#161616")
 MUTED = colors.HexColor("#595959")
-GOLD = colors.HexColor("#9A5700")
+ACCENT = colors.HexColor("#D9361E")
 RULE = colors.HexColor("#D8D5CF")
 
 
@@ -154,7 +154,7 @@ STYLES = {
         fontSize=10.5,
         leading=13,
         tracking=1.2,
-        textColor=GOLD,
+        textColor=ACCENT,
     ),
     "Contact": ParagraphStyle(
         "Contact",
@@ -171,7 +171,7 @@ STYLES = {
         fontSize=8.5,
         leading=10,
         tracking=1.5,
-        textColor=GOLD,
+        textColor=ACCENT,
         borderColor=RULE,
         borderWidth=0,
         borderPadding=0,

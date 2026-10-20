@@ -4,8 +4,8 @@ export function AiLifecycle() {
     <CompositeFigure
       eyebrow="Fig. 04 · AI Product"
       title="Interface · Stream · Safeguards"
-      image="/visuals/ask-aj-studio.webp"
-      alt="The real Ask A.J. interface displayed in a polished dark coral laptop scene."
+      image="/visuals/ai-lifecycle-studio.webp"
+      alt="The Ask A.J. lifecycle from question through validation and streamed citation to graceful fallback."
       caption={
         <>
           A useful AI product combines a clear interface with server-side model

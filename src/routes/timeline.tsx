@@ -30,39 +30,39 @@ export const Route = createFileRoute("/timeline")({
 
 const chapterArt: Array<{ src: string; alt: string; caption: string }> = [
   {
-    src: "/visuals/product-system-studio.webp",
-    alt: "Floating interface, component, and code panels showing the foundations of product work.",
-    caption: "01 · From first page to product systems",
+    src: "/visuals/timeline-first-web.webp",
+    alt: "An early 2000s workstation with a hand-coded first website, HTML notebook, CRT monitor, and keyboard.",
+    caption: "01 · Curiosity became a first website",
   },
   {
-    src: "/visuals/client-work-studio.webp",
-    alt: "Three real client websites presented as polished browser mockups.",
-    caption: "02 · Design became production work",
+    src: "/visuals/timeline-creative-tech.webp",
+    alt: "A creative technology workstation combining motion timelines, vector paths, 3D work, and code.",
+    caption: "02 · Design and code became one practice",
   },
   {
-    src: "/visuals/client-work-studio.webp",
-    alt: "A studio composition of production client websites across real estate, hospitality, and health care.",
-    caption: "04 · Marketing, measured in outcomes",
+    src: "/visuals/timeline-affinitiv.webp",
+    alt: "Automotive campaigns evolving through Moore and Scarry, Caldwell and Kerr, and Affinitiv into reusable digital advertising modules.",
+    caption: "03 · Agency speed became repeatable systems",
   },
   {
-    src: "/visuals/client-work-studio.webp",
-    alt: "Real production websites arranged as a cohesive multi-project browser composition.",
-    caption: "05 · Reusable systems for client teams",
+    src: "/visuals/timeline-priority.webp",
+    alt: "The real LSI Companies, Artisan Eatery, and Hope Hospice sites arranged as a production workflow.",
+    caption: "04 · Fifty-plus sites built for handoff",
   },
   {
-    src: "/visuals/platform-studio.webp",
-    alt: "A secure financial-platform interface displayed on a polished tablet device.",
-    caption: "06 · Fintech · trust and rigor",
+    src: "/visuals/timeline-equity-trust.webp",
+    alt: "Equity Trust educational, calculator, and application flows shown with validation and completion states.",
+    caption: "05 · Fintech · trust and rigor",
   },
   {
-    src: "/visuals/design-system-studio.webp",
-    alt: "The current CDW website, built with Legato, displayed in a polished studio monitor.",
-    caption: "07 · Enterprise design-system leadership",
+    src: "/visuals/timeline-legato.webp",
+    alt: "CDW product listing and detail screens surrounded by reusable Legato commerce component specimens.",
+    caption: "06 · Enterprise design-system leadership",
   },
   {
-    src: "/visuals/ask-aj-studio.webp",
-    alt: "The real Ask A.J. interface displayed on a laptop in a dark coral studio scene.",
-    caption: "08 · AI application engineering",
+    src: "/visuals/timeline-ai.webp",
+    alt: "The real Ask A.J. interface with a citation card, streaming status, and server-only trust boundary.",
+    caption: "07 · AI application engineering",
   },
 ];
 
@@ -86,8 +86,8 @@ function Timeline() {
         eyebrow="2001 → 2026"
         chapter="02"
         chapterLabel="06"
-        image="/visuals/product-system-studio.webp"
-        imageAlt="A polished composition of component panels and code representing a career spanning design and engineering."
+        image="/visuals/timeline-overview-studio.webp"
+        imageAlt="A chronological studio timeline moving from an early CRT website through modern product systems and AI engineering."
         imageCaption="One practice · Many chapters"
         imageMeta="Est. 2001"
         headline={
@@ -146,7 +146,7 @@ function Timeline() {
                       </p>
                     </div>
                     <div>
-                      <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+                      <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                         Mindset forged
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-foreground/85">
@@ -166,7 +166,7 @@ function Timeline() {
                     </div>
                   </div>
 
-                  <blockquote className="rule-gold mt-8 pl-5">
+                  <blockquote className="rule-accent mt-8 pl-5">
                     <p className="text-sm italic leading-relaxed text-muted-foreground">
                       → {t.bridge}
                     </p>

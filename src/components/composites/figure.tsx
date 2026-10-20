@@ -35,7 +35,7 @@ export function CompositeFigure({
     >
       {/* Meta strip */}
       <div className="flex items-center justify-between gap-4 border-b border-border/70 px-5 py-3">
-        <span className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+        <span className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
           {eyebrow}
         </span>
         {title ? (
@@ -86,9 +86,9 @@ export function CompositeFigure({
               {legend.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-baseline gap-2 border-l border-gold/50 pl-3"
+                  className="flex items-baseline gap-2 border-l border-accent/50 pl-3"
                 >
-                  <dt className="mono text-[10px] uppercase tracking-[0.22em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.22em] text-accent-ink">
                     {String(i + 1).padStart(2, "0")}
                   </dt>
                   <dd className="text-xs text-foreground/80">
@@ -122,8 +122,8 @@ function CornerMark({
       className={cn("pointer-events-none absolute h-3 w-3", className)}
       style={{ transform: `rotate(${rotate}deg)` }}
     >
-      <span className="absolute left-0 top-0 h-px w-full bg-gold/60" />
-      <span className="absolute left-0 top-0 h-full w-px bg-gold/60" />
+      <span className="absolute left-0 top-0 h-px w-full bg-accent/60" />
+      <span className="absolute left-0 top-0 h-full w-px bg-accent/60" />
     </span>
   );
 }

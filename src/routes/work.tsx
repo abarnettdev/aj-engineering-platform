@@ -32,32 +32,31 @@ export const Route = createFileRoute("/work")({
 
 const caseVisuals: Record<string, { src: string; alt: string }> = {
   "ask-aj": {
-    src: "/visuals/ask-aj-studio.webp",
-    alt: "The real Ask A.J. product displayed in a dark coral studio laptop mockup.",
+    src: "/projects/ask-aj-product.webp",
+    alt: "The real Ask A.J. recruiter-facing AI product interface.",
   },
   "cdw-legato": {
-    src: "/visuals/design-system-studio.webp",
-    alt: "The current CDW website, built with Legato, displayed in a polished studio monitor.",
+    src: "/visuals/legato-commerce-studio.webp",
+    alt: "CDW product detail and listing experiences showing Legato commerce components across two screens.",
   },
   "midland-trust": {
-    src: "/visuals/platform-studio.webp",
-    alt: "A polished tablet product mockup representing secure financial-platform work.",
+    src: "/visuals/equity-trust-studio.webp",
+    alt: "The Equity Trust self-directed IRA experience presented across desktop, tablet, and mobile.",
   },
   "priority-marketing": {
-    src: "/visuals/client-work-studio.webp",
-    alt: "A polished studio composition of three real client websites.",
+    src: "/visuals/priority-marketing-studio.webp",
+    alt: "The real LSI Companies, Artisan Eatery, and Hope Hospice websites across desktop, tablet, and laptop.",
   },
   affinitiv: {
-    src: "/visuals/client-work-studio.webp",
-    alt: "A polished studio composition of production client websites.",
+    src: "/visuals/affinitiv-studio.webp",
+    alt: "The Affinitiv digital advertising experience presented across desktop and mobile devices.",
   },
 };
 
 function CaseVisual({ slug }: { slug: string }) {
-  const visual = caseVisuals[slug] ?? {
-    src: "/visuals/product-system-studio.webp",
-    alt: "Floating interface panels and code in a polished product-system composition.",
-  };
+  const visual = caseVisuals[slug];
+
+  if (!visual) return null;
 
   return (
     <img
@@ -78,7 +77,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
       <article
         id={w.slug}
         aria-labelledby={`case-${w.slug}-title`}
-        className="group edge-gold relative overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
+        className="group edge-accent relative overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
       >
         {/* Header rail */}
         <header className="flex items-baseline justify-between gap-4 border-b border-border px-8 pt-8 md:px-12 md:pt-10">
@@ -87,7 +86,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
               {num}
             </span>
             <div>
-              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                 {w.company}
               </p>
               <p className="mono mt-1 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -120,7 +119,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
             <dl className="mt-10 space-y-8">
               {w.challenge && (
                 <div className="grid gap-2 border-t border-border pt-6 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     Challenge
                   </dt>
                   <dd className="text-[15px] leading-relaxed text-foreground/85">
@@ -130,7 +129,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
               )}
 
               <div className="grid gap-2 border-t border-border pt-6 md:grid-cols-[9rem_1fr] md:gap-8">
-                <dt className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <dt className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Role
                 </dt>
                 <dd className="text-[15px] leading-relaxed text-foreground/85">
@@ -140,7 +139,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
 
               {w.approach && (
                 <div className="grid gap-2 border-t border-border pt-6 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     Approach
                   </dt>
                   <dd>
@@ -149,7 +148,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
                         <li key={line} className="flex gap-3">
                           <span
                             aria-hidden
-                            className="mt-[0.65rem] h-px w-3 shrink-0 bg-gold"
+                            className="mt-[0.65rem] h-px w-3 shrink-0 bg-accent"
                           />
                           <span>{line}</span>
                         </li>
@@ -161,7 +160,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
 
               {w.impact && (
                 <div className="grid gap-2 border-t border-border pt-6 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     Impact
                   </dt>
                   <dd className="text-[15px] leading-relaxed text-foreground/85">
@@ -172,7 +171,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
 
               {w.lessons && (
                 <div className="grid gap-2 border-t border-border pt-6 md:grid-cols-[9rem_1fr] md:gap-8">
-                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                  <dt className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     Lessons
                   </dt>
                   <dd className="font-accent text-lg italic leading-relaxed text-foreground">
@@ -225,7 +224,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
                 {w.slug === "cdw-legato" ? (
                   <Link
                     to="/work/legato"
-                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
+                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-accent-ink"
                   >
                     <span className="story-link">Open flagship case study</span>
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
@@ -234,7 +233,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
                   <Link
                     to="/timeline"
                     hash={w.slug === "ask-aj" ? "now" : w.slug}
-                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
+                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-accent-ink"
                     aria-label={
                       w.slug === "ask-aj"
                         ? "Read the Now chapter in the journey"
@@ -261,9 +260,9 @@ function Work() {
         eyebrow="Case studies"
         chapter="01"
         chapterLabel="06"
-        image="/visuals/client-work-studio.webp"
-        imageAlt="Three polished browser mockups showing real client websites built across AJ's career."
-        imageCaption="Real client work · Polished presentation"
+        image="/visuals/work-overview-studio.webp"
+        imageAlt="A studio overview of AJ Barnett's Legato, Affinitiv, Equity Trust, Ask A.J., and client website work."
+        imageCaption="Distinct systems · One product practice"
         imageMeta="Est. 2001"
         headline={
           <>
@@ -292,12 +291,12 @@ function Work() {
         {/* Closing CTA */}
         <Reveal>
           <div className="mt-20 border-t border-border pt-12 text-center">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               End of the case studies
             </p>
             <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] tracking-tight text-ink md:text-5xl">
               The rest of the story{" "}
-              <span className="font-accent italic normal-case text-gold">
+              <span className="font-accent italic normal-case text-accent-ink">
                 lives in the journey.
               </span>
             </h2>
@@ -305,7 +304,7 @@ function Work() {
               <Magnetic>
                 <Link
                   to="/timeline"
-                  className="group tactile inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-white"
+                  className="group tactile inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-accent hover:text-white"
                 >
                   Walk the timeline
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -314,7 +313,7 @@ function Work() {
               <Magnetic>
                 <Link
                   to="/contact"
-                  className="group tactile inline-flex items-center gap-2 rounded-full border border-border-strong bg-card px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
+                  className="group tactile inline-flex items-center gap-2 rounded-full border border-border-strong bg-card px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-accent hover:text-accent-ink"
                 >
                   Start a conversation
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

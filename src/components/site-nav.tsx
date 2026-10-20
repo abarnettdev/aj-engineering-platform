@@ -218,7 +218,7 @@ export function MobileNavPanelContent({
                 rel="noopener noreferrer"
                 className="flex min-h-16 items-center gap-3 border border-border bg-background p-3 text-sm font-semibold text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
-                <Icon className="h-4 w-4 text-gold-text" aria-hidden="true" />
+                <Icon className="h-4 w-4 text-accent-ink" aria-hidden="true" />
                 {item.label}
               </a>
             );

@@ -29,10 +29,6 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
-  --color-gold: var(--gold);
-  --color-gold-text: var(--gold-text);
-  --color-gold-text-on-dark: var(--gold-text-on-dark);
-  --color-gold-muted: var(--gold-muted);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
@@ -83,11 +79,6 @@
   --accent-foreground: oklch(0.99 0 0);
   --accent-ink: oklch(0.53 0.2 32);
   --accent-soft: oklch(0.94 0.04 35);
-  /* Compatibility aliases for existing components while the system migrates. */
-  --gold: var(--accent-ink);
-  --gold-text: var(--accent-ink);
-  --gold-text-on-dark: oklch(0.75 0.17 36);
-  --gold-muted: oklch(0.72 0.13 36);
   --oxblood: oklch(0.329 0.088 17.5);
   --oxblood-muted: oklch(0.44 0.075 17.5);
   --ivory: oklch(0.975 0.008 82);
@@ -135,14 +126,11 @@
   --secondary: oklch(0.2 0.007 260);
   --secondary-foreground: oklch(0.97 0.003 260);
   --muted: oklch(0.2 0.007 260);
-  --gold: oklch(0.82 0.14 82);
-  --gold-text: var(--gold);
   --oxblood: oklch(0.44 0.1 17.5);
   --oxblood-muted: oklch(0.55 0.085 17.5);
   --ivory: oklch(0.16 0.006 82);
   --graphite: oklch(0.72 0.005 260);
-  --gold-muted: oklch(0.62 0.11 82);
-  --accent: var(--gold);
+  --accent: oklch(0.69 0.2 33);
   --accent-foreground: oklch(0.09 0.005 260);
   --success: oklch(0.74 0.12 150);
   --success-foreground: oklch(0.97 0.003 260);
@@ -150,7 +138,7 @@
   --border: oklch(0.24 0.007 260);
   --border-strong: oklch(0.36 0.008 260);
   --input: oklch(0.24 0.007 260);
-  --ring: oklch(0.82 0.14 82);
+  --ring: oklch(0.69 0.2 33);
 }
 
 @layer base {
@@ -168,7 +156,7 @@
     font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    background: color-mix(in oklab, var(--gold) 32%, transparent);
+    background: color-mix(in oklab, var(--accent) 32%, transparent);
     color: var(--foreground);
   }
   h1,
@@ -256,17 +244,17 @@
   letter-spacing: -0.01em;
 }
 
-@utility rule-gold {
+@utility rule-accent {
   position: relative;
 }
-.rule-gold::before {
+.rule-accent::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--gold);
+  background: var(--accent);
 }
 
 /* Scroll reveal */
@@ -298,7 +286,7 @@
   right: 0;
   bottom: -6px;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: right center;
   transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -320,7 +308,7 @@
   bottom: -2px;
   width: 100%;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent);
   transform: scaleX(0);
   transform-origin: right center;
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -340,24 +328,24 @@
 .lift:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 1px 0 0 color-mix(in oklab, var(--gold) 18%, transparent),
+    0 1px 0 0 color-mix(in oklab, var(--accent) 18%, transparent),
     0 24px 60px -32px color-mix(in oklab, var(--foreground) 30%, transparent);
 }
 
-/* Gold sweep, passes across a surface on hover */
-@utility gold-sweep {
+/* Accent sweep, passes across a surface on hover */
+@utility accent-sweep {
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
-.gold-sweep::before {
+.accent-sweep::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     115deg,
     transparent 30%,
-    color-mix(in oklab, var(--gold) 22%, transparent) 50%,
+    color-mix(in oklab, var(--accent) 22%, transparent) 50%,
     transparent 70%
   );
   transform: translateX(-100%);
@@ -365,7 +353,7 @@
   pointer-events: none;
   z-index: -1;
 }
-.gold-sweep:hover::before {
+.accent-sweep:hover::before {
   transform: translateX(100%);
 }
 
@@ -421,7 +409,7 @@
   }
 }
 
-/* Numbered plate, quiet gold, editorial */
+/* Numbered plate, quiet coral-red, editorial */
 @utility plate {
   display: inline-flex;
   align-items: center;
@@ -437,7 +425,7 @@
   display: inline-block;
   width: 22px;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent);
 }
 
 /* Global focus indicator — WCAG 2.4.7 Focus Visible */
@@ -452,7 +440,7 @@
     summary,
     [tabindex]
   ):focus-visible {
-    outline: 2px solid var(--gold);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
     border-radius: 2px;
   }
@@ -543,7 +531,7 @@
   width: 3px;
   height: 3px;
   border-radius: 999px;
-  background: var(--gold);
+  background: var(--accent);
   animation: ask-aj-status-dot 1.1s ease-in-out infinite;
 }
 .ask-aj-status-dots span:nth-child(2) {
@@ -566,26 +554,26 @@
   animation: none;
 }
 
-/* Gold edge reveal, a hair-thin gold border blooms on the left edge of a card on hover */
-@utility edge-gold {
+/* Accent edge reveal, a hair-thin coral-red border blooms on the left edge of a card on hover */
+@utility edge-accent {
   position: relative;
   isolation: isolate;
 }
-.edge-gold::after {
+.edge-accent::after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--gold);
+  background: var(--accent);
   transform: scaleY(0);
   transform-origin: top center;
   transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
 }
-.edge-gold:hover::after,
-.edge-gold:focus-within::after {
+.edge-accent:hover::after,
+.edge-accent:focus-within::after {
   transform: scaleY(1);
   transform-origin: bottom center;
 }
@@ -622,7 +610,7 @@
     clip-path: none !important;
     transition: none !important;
   }
-  .edge-gold::after {
+  .edge-accent::after {
     transform: scaleY(1) !important;
     transition: none !important;
   }

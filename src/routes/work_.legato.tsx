@@ -116,7 +116,7 @@ function LegatoCaseStudy() {
 
           <div className="mt-12 grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
             <div>
-              <p className="mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-gold-text">
+              <p className="mono text-[10px] uppercase leading-relaxed tracking-[0.2em] text-accent-ink">
                 <span className="block sm:inline">Flagship case study</span>
                 <span className="hidden sm:inline"> · </span>
                 <span className="block sm:inline">
@@ -137,7 +137,7 @@ function LegatoCaseStudy() {
             </div>
 
             <aside className="border border-border bg-ink p-7 text-white sm:p-9">
-              <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold-text-on-dark">
+              <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent">
                 AJ&apos;s role
               </p>
               <p className="mt-4 text-xl font-semibold leading-snug">
@@ -158,16 +158,17 @@ function LegatoCaseStudy() {
 
           <figure className="mt-14 overflow-hidden rounded-3xl border border-border bg-card p-2 shadow-lift">
             <img
-              src="/visuals/design-system-studio.webp"
-              srcSet="/visuals/design-system-studio-960.webp 960w, /visuals/design-system-studio.webp 1586w"
+              src="/visuals/legato-case-study-studio.webp"
+              srcSet="/visuals/legato-case-study-studio-960.webp 960w, /visuals/legato-case-study-studio.webp 1536w"
               sizes="(min-width: 1280px) 1200px, calc(100vw - 3rem)"
-              alt="The current CDW website, built with the Legato design system, displayed in a polished studio monitor."
+              alt="CDW product detail, listing, responsive, filter, cart, comparison, warranty, and focus patterns powered by Legato."
               width={1586}
               height={992}
               className="aspect-[8/5] w-full rounded-[1.15rem] object-cover"
             />
             <figcaption className="px-4 py-3 text-xs text-muted-foreground">
-              Legato in production · Current CDW public website
+              Legato in production · Shared commerce patterns across product
+              journeys
             </figcaption>
           </figure>
 
@@ -193,7 +194,7 @@ function LegatoCaseStudy() {
         <div className="container-page">
           <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
             <div>
-              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+              <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                 The system path
               </p>
               <h2 className="mt-5 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-7xl">
@@ -218,7 +219,7 @@ function LegatoCaseStudy() {
                 >
                   <div className="flex items-center justify-between">
                     <Icon
-                      className="h-5 w-5 text-gold-text"
+                      className="h-5 w-5 text-accent-ink"
                       aria-hidden="true"
                     />
                     <span className="mono text-[10px] tracking-[0.2em] text-muted-foreground">
@@ -241,7 +242,7 @@ function LegatoCaseStudy() {
       <section className="border-b border-border py-20 sm:py-28">
         <div className="container-page">
           <div className="max-w-3xl">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Independent public demonstration
             </p>
             <h2 className="mt-5 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-7xl">
@@ -269,7 +270,7 @@ function LegatoCaseStudy() {
 
                 <TabsContent value="component" className="mt-8">
                   <div className="max-w-xl rounded-3xl border border-border bg-background p-6 shadow-soft sm:p-8">
-                    <p className="mono text-[9px] uppercase tracking-[0.2em] text-gold-text">
+                    <p className="mono text-[9px] uppercase tracking-[0.2em] text-accent-ink">
                       Account preferences
                     </p>
                     <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-ink">
@@ -352,7 +353,7 @@ function LegatoCaseStudy() {
                         className="flex gap-3 rounded-2xl border border-border bg-background p-4 text-sm leading-relaxed text-foreground/85"
                       >
                         <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-gold-text"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-accent-ink"
                           aria-hidden="true"
                         />
                         {item}
@@ -365,7 +366,7 @@ function LegatoCaseStudy() {
 
             <div className="grid gap-6">
               <div className="border border-border bg-ink p-6 text-white sm:p-8">
-                <p className="mono text-[9px] uppercase tracking-[0.2em] text-gold-text-on-dark">
+                <p className="mono text-[9px] uppercase tracking-[0.2em] text-accent">
                   Typed API
                 </p>
                 <pre className="mt-5 overflow-x-auto text-[12px] leading-relaxed text-white/75">
@@ -373,7 +374,7 @@ function LegatoCaseStudy() {
                 </pre>
               </div>
               <div className="rounded-3xl border border-border bg-surface p-6 shadow-soft sm:p-8">
-                <p className="mono text-[9px] uppercase tracking-[0.2em] text-gold-text">
+                <p className="mono text-[9px] uppercase tracking-[0.2em] text-accent-ink">
                   Semantic tokens
                 </p>
                 <pre className="mt-5 overflow-x-auto text-[12px] leading-relaxed text-foreground/75">
@@ -386,7 +387,7 @@ function LegatoCaseStudy() {
           <div className="mt-10 flex flex-wrap gap-3">
             <a
               href="/storybook/index.html"
-              className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-accent hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Inspect Storybook
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
@@ -404,7 +405,7 @@ function LegatoCaseStudy() {
       <section className="border-b border-border bg-ink py-20 text-white sm:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent">
               What made adoption possible
             </p>
             <h2 className="mt-5 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-7xl">
@@ -425,7 +426,7 @@ function LegatoCaseStudy() {
                 className="flex gap-3 border-t border-white/20 py-5"
               >
                 <Check
-                  className="mt-0.5 h-4 w-4 shrink-0 text-gold-text-on-dark"
+                  className="mt-0.5 h-4 w-4 shrink-0 text-accent"
                   aria-hidden="true"
                 />
                 <p className="text-sm leading-relaxed text-white/75">{item}</p>
@@ -438,7 +439,7 @@ function LegatoCaseStudy() {
       <section className="py-20 sm:py-24">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Public evidence and limits
             </p>
             <h2 className="mt-5 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-6xl">
@@ -457,7 +458,7 @@ function LegatoCaseStudy() {
                 href="https://github.com/abarnettdev/aj-engineering-platform"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-accent hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 View source
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
