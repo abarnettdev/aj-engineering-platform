@@ -34,7 +34,7 @@ const Root = forwardRef<HTMLElement, RootProps>(function ArticleCardRoot(
       <article
         ref={ref}
         className={cn(
-          "group/article relative flex h-full flex-col overflow-hidden border border-border bg-card p-7 transition-colors",
+          "group/article relative flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-soft transition-colors",
           "shadow-[0_10px_40px_-30px_rgba(0,0,0,0.2)]",
           "before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity",
           "before:[background:linear-gradient(120deg,transparent_45%,color-mix(in_oklab,var(--gold)_10%,transparent)_50%,transparent_55%)]",
@@ -124,7 +124,8 @@ function Footer({ children = "Read" }: { children?: ReactNode }) {
   return (
     <div className="mt-auto pt-6">
       <span className="mono inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-ink transition-colors group-hover/article:text-gold">
-        {children} <ArrowUpRight className="h-3 w-3 transition-transform group-hover/article:-translate-y-0.5 group-hover/article:translate-x-0.5" />
+        {children}{" "}
+        <ArrowUpRight className="h-3 w-3 transition-transform group-hover/article:-translate-y-0.5 group-hover/article:translate-x-0.5" />
       </span>
     </div>
   );

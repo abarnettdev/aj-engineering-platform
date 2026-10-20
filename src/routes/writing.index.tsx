@@ -25,7 +25,7 @@ function Writing() {
   return (
     <>
       <PageHero
-        eyebrow="Field Notes · Chapter 05"
+        eyebrow="Field notes"
         chapter="05"
         chapterLabel="06"
         image={heroImage}

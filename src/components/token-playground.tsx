@@ -15,7 +15,7 @@ export function TokenPlayground() {
   const scale = 0.9 + density * 0.15;
 
   return (
-    <div className="grid gap-8 border border-border bg-card p-6 md:grid-cols-[1fr_1.2fr] md:p-8">
+    <div className="grid gap-8 rounded-3xl border border-border bg-card p-6 shadow-soft md:grid-cols-[1fr_1.2fr] md:p-8">
       {/* Controls */}
       <div className="space-y-6">
         <div>
@@ -65,8 +65,8 @@ export function TokenPlayground() {
           discrete={["Compact", "Comfortable", "Spacious"]}
         />
 
-        <pre className="mono mt-4 overflow-auto border border-border bg-background p-3 text-[10.5px] leading-relaxed text-muted-foreground">
-{`--color-accent: oklch(0.52 0.135 ${hue});
+        <pre className="mono mt-4 overflow-auto rounded-2xl border border-border bg-background p-3 text-[10.5px] leading-relaxed text-muted-foreground">
+          {`--color-accent: oklch(0.52 0.135 ${hue});
 --radius-base: ${radius}px;
 --space-pad: ${padding}px;
 --density-scale: ${scale.toFixed(2)};`}
@@ -75,11 +75,11 @@ export function TokenPlayground() {
 
       {/* Live output */}
       <div
-        className="grid place-items-center border border-border bg-background"
+        className="grid place-items-center rounded-2xl border border-border bg-background"
         style={{ padding: padding * 1.5 }}
       >
         <div
-          className="w-full max-w-sm border border-border bg-card"
+          className="w-full max-w-sm rounded-2xl border border-border bg-card shadow-soft"
           style={{
             borderRadius: radius,
             padding,

@@ -192,27 +192,27 @@ export const workCases: WorkCase[] = [
     slug: "cdw-legato",
     company: "CDW",
     title: "Legato Design System",
-    period: "2022, 2026",
+    period: "2022–2026",
     role: "Senior Software Engineer I / Technical Lead",
     summary:
-      "Evolved an enterprise design system supporting 10+ product teams and 15+ applications across the CDW portfolio.",
+      "Helped lead an enterprise design system that connected design intent, component APIs, documentation, accessibility, and adoption across product teams.",
     tags: ["React", "TypeScript", "Stencil", "Storybook", "Nx", "Tokens"],
     metrics: [
-      ["170+", "UI assets"],
-      ["20+", "engineers supported"],
-      ["10+", "product teams"],
+      ["92%", "targeted adoption"],
+      ["60%+", "less implementation effort"],
+      ["170+", "shared UI assets"],
     ],
     discipline: "Design Systems at Fortune 500 scale",
     challenge:
       "A shared UI foundation had to serve dozens of engineers, product teams, and product surfaces without becoming the bottleneck that every team quietly worked around.",
     approach: [
-      "Treat tokens as a language, not a stylesheet, semantic layers that translate design intent into code contracts.",
-      "Ship primitives + composition slots instead of prop-heavy configurations.",
-      "Publish accessibility and motion decisions as part of the component contract, not as a follow-up ticket.",
-      "Make Storybook the single source of truth, docs, states, and interaction tests live next to the component.",
+      "Worked with Product Design, Product, QA, and engineering partners to translate design intent into code contracts.",
+      "Shaped shared libraries, component APIs, tokens, tooling, documentation, and incremental integration paths.",
+      "Published accessibility and behavior decisions as part of the reusable component contract.",
+      "Used Storybook to keep examples, states, guidance, and implementation details beside the component.",
     ],
     impact:
-      "The system moved from a component library that teams debated to shared infrastructure they built on. Reviews shifted from styling arguments to product decisions.",
+      "Targeted adoption reached 92%, shared patterns cut implementation effort by more than 60%, and the libraries grew to more than 170 shared UI assets.",
     lessons:
       "Systems win when they lower ambiguity. Documentation is a product. The best API is the one that lets a caller write intent, not configuration.",
   },

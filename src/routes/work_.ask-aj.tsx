@@ -16,7 +16,7 @@ import {
 import { askAjKnowledge } from "@/content/knowledge/ask-aj";
 import heroImage from "@/assets/composite-ai-lifecycle.jpg";
 
-export const Route = createFileRoute("/work/ask-aj")({
+export const Route = createFileRoute("/work_/ask-aj")({
   head: () => ({
     meta: [
       {
@@ -71,7 +71,7 @@ function AskAjCaseStudy() {
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.4fr]">
-          <aside className="h-fit border border-border bg-surface p-6 lg:sticky lg:top-24">
+          <aside className="h-fit rounded-3xl border border-border bg-surface p-6 shadow-soft lg:sticky lg:top-24">
             <Eyebrow>Live System</Eyebrow>
             <h2 className="mt-5 font-display text-3xl text-ink">
               Built to prove the work.
@@ -152,7 +152,7 @@ function AskAjCaseStudy() {
                 {reliabilityGroups.map((group) => (
                   <article
                     key={group.title}
-                    className="border border-border bg-surface p-5"
+                    className="rounded-2xl border border-border bg-surface p-5"
                   >
                     <h3 className="font-display text-2xl text-ink">
                       {group.title}
@@ -268,7 +268,7 @@ function AskAjCaseStudy() {
             />
             <CaseList title="Future Roadmap" items={askAjKnowledge.roadmap} />
 
-            <section className="border border-border bg-card p-6">
+            <section className="rounded-3xl border border-border bg-card p-6 shadow-soft">
               <h2 className="font-display text-3xl text-ink">
                 Technology Stack
               </h2>
@@ -584,7 +584,7 @@ function CaseList({
         {items.map((item) => (
           <li
             key={item}
-            className="border border-border bg-surface p-4 text-sm leading-relaxed text-foreground/85"
+            className="rounded-2xl border border-border bg-surface p-4 text-sm leading-relaxed text-foreground/85"
           >
             {item}
           </li>

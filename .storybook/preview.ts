@@ -5,10 +5,11 @@ const preview: Preview = {
   parameters: {
     layout: "centered",
     backgrounds: {
-      default: "paper",
+      default: "canvas",
       values: [
-        { name: "paper", value: "#f5f4ef" },
-        { name: "ink", value: "#0b0b0b" },
+        { name: "canvas", value: "#edf0f4" },
+        { name: "card", value: "#ffffff" },
+        { name: "ink", value: "#17181a" },
       ],
     },
     controls: {
@@ -21,4 +22,3 @@ const preview: Preview = {
 };
 
 export default preview;
-

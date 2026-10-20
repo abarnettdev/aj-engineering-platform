@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { MessageSquareText } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 type AskAjLauncherContentProps = {
   label?: string;
@@ -16,8 +16,7 @@ export function AskAjLauncher() {
   return (
     <Link
       to="/ask-aj"
-      aria-label="Ask A.J., AI agent built by AJ Barnett"
-      className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-40 inline-flex max-w-[calc(100vw-2rem)] items-center gap-3 border border-gold/50 bg-ink px-4 py-3 text-background shadow-[0_18px_45px_-25px_rgba(0,0,0,0.55)] transition-colors hover:bg-gold hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold md:right-6"
+      className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-4 z-40 inline-flex max-w-[calc(100vw-2rem)] items-center gap-2 rounded-full bg-ink py-2 pl-2 pr-4 text-white shadow-lift transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:right-6"
     >
       <AskAjLauncherContent />
     </Link>
@@ -30,14 +29,14 @@ export function AskAjLauncherContent({
 }: AskAjLauncherContentProps) {
   return (
     <>
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-current/25">
-        <MessageSquareText className="h-4 w-4" />
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+        <MessageCircle className="h-4 w-4" aria-hidden="true" />
       </span>
       <span className="min-w-0">
         <span className="block text-sm font-semibold leading-tight">
           {label}
         </span>
-        <span className="mono hidden text-[9px] uppercase tracking-[0.18em] opacity-75 sm:block">
+        <span className="hidden text-[10px] leading-tight text-white/65 sm:block">
           {description}
         </span>
       </span>

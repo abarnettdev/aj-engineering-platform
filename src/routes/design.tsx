@@ -136,7 +136,7 @@ function ProductDesign() {
             {projects.map((project, index) => (
               <article
                 key={project.title}
-                className="grid gap-0 overflow-hidden border border-border bg-card lg:grid-cols-[1.2fr_0.8fr]"
+                className="grid gap-0 overflow-hidden rounded-3xl border border-border bg-card shadow-soft lg:grid-cols-[1.2fr_0.8fr]"
               >
                 <figure className="bg-surface">
                   <img

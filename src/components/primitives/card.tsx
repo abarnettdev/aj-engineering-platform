@@ -1,4 +1,10 @@
-import { createContext, forwardRef, useContext, type HTMLAttributes, type ReactNode } from "react";
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  type HTMLAttributes,
+  type ReactNode,
+} from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -22,7 +28,9 @@ import { cn } from "@/lib/utils";
 type Density = "comfortable" | "compact";
 type Tone = "surface" | "raised" | "accent";
 
-const CardContext = createContext<{ density: Density }>({ density: "comfortable" });
+const CardContext = createContext<{ density: Density }>({
+  density: "comfortable",
+});
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   /** Visual weight. `accent` gets a gold hairline; `raised` lifts on the page. */
@@ -35,13 +43,19 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 const toneClass: Record<Tone, string> = {
   surface: "border-border bg-card",
-  raised:
-    "border-border bg-card shadow-[0_20px_50px_-30px_rgba(0,0,0,0.25)]",
+  raised: "border-border bg-card shadow-[0_20px_50px_-30px_rgba(0,0,0,0.25)]",
   accent: "border-gold/50 bg-card",
 };
 
 const CardRoot = forwardRef<HTMLDivElement, CardProps>(function Card(
-  { tone = "surface", density = "comfortable", as: Tag = "div", className, children, ...rest },
+  {
+    tone = "surface",
+    density = "comfortable",
+    as: Tag = "div",
+    className,
+    children,
+    ...rest
+  },
   ref,
 ) {
   return (
@@ -49,7 +63,7 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(function Card(
       <Tag
         ref={ref as never}
         className={cn(
-          "group/card relative flex flex-col border transition-colors",
+          "group/card relative flex flex-col overflow-hidden rounded-3xl border transition-colors",
           toneClass[tone],
           className,
         )}
@@ -64,7 +78,11 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(function Card(
 const padX = (d: Density) => (d === "compact" ? "px-5" : "px-7");
 const padY = (d: Density) => (d === "compact" ? "py-4" : "py-5");
 
-function CardHeader({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+function CardHeader({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLDivElement>) {
   const { density } = useContext(CardContext);
   return (
     <header
@@ -81,7 +99,11 @@ function CardHeader({ className, children, ...rest }: HTMLAttributes<HTMLDivElem
   );
 }
 
-function CardEyebrow({ className, children, ...rest }: HTMLAttributes<HTMLParagraphElement>) {
+function CardEyebrow({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
       className={cn(
@@ -95,7 +117,12 @@ function CardEyebrow({ className, children, ...rest }: HTMLAttributes<HTMLParagr
   );
 }
 
-function CardTitle({ className, children, as: Tag = "h3", ...rest }: HTMLAttributes<HTMLHeadingElement> & { as?: "h2" | "h3" | "h4" }) {
+function CardTitle({
+  className,
+  children,
+  as: Tag = "h3",
+  ...rest
+}: HTMLAttributes<HTMLHeadingElement> & { as?: "h2" | "h3" | "h4" }) {
   return (
     <Tag
       className={cn(
@@ -109,7 +136,11 @@ function CardTitle({ className, children, as: Tag = "h3", ...rest }: HTMLAttribu
   );
 }
 
-function CardMeta({ className, children, ...rest }: HTMLAttributes<HTMLParagraphElement>) {
+function CardMeta({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
       className={cn(
@@ -123,10 +154,17 @@ function CardMeta({ className, children, ...rest }: HTMLAttributes<HTMLParagraph
   );
 }
 
-function CardMedia({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+function CardMedia({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("relative overflow-hidden border-b border-border", className)}
+      className={cn(
+        "relative overflow-hidden border-b border-border",
+        className,
+      )}
       {...rest}
     >
       {children}
@@ -134,7 +172,11 @@ function CardMedia({ className, children, ...rest }: HTMLAttributes<HTMLDivEleme
   );
 }
 
-function CardBody({ className, children, ...rest }: HTMLAttributes<HTMLDivElement>) {
+function CardBody({
+  className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLDivElement>) {
   const { density } = useContext(CardContext);
   return (
     <div

@@ -10,11 +10,12 @@ import {
 } from "@/components/ui/sheet";
 
 const navigation = [
-  { to: "/work", label: "Work", num: "01" },
-  { to: "/design", label: "Product Design", num: "02" },
-  { to: "/engineering", label: "Engineering", num: "03" },
-  { to: "/systems", label: "Design System", num: "04" },
-  { to: "/timeline", label: "About", num: "05" },
+  { to: "/work", label: "Work" },
+  { to: "/design", label: "Product Design" },
+  { to: "/engineering", label: "Engineering" },
+  { to: "/systems", label: "Design System" },
+  { to: "/ask-aj", label: "Ask A.J." },
+  { to: "/timeline", label: "About" },
 ] as const;
 
 const externalLinks = [
@@ -37,28 +38,34 @@ export function SiteNav() {
   });
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between gap-6">
+    <header className="sticky top-3 z-40 px-3">
+      <div className="mx-auto flex min-h-16 max-w-[1240px] items-center justify-between gap-6 rounded-full border border-border bg-card/90 py-2 pl-3 pr-2 shadow-soft backdrop-blur-xl">
         <Link
           to="/"
-          aria-label="AJ Barnett, home"
           className="group flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <span className="grid h-9 w-9 shrink-0 place-items-center bg-ink font-display text-[12px] font-semibold tracking-[-0.04em] text-background transition-colors group-hover:bg-gold group-hover:text-ink">
+          <span
+            aria-hidden="true"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink font-display text-[12px] font-semibold tracking-[-0.04em] text-white transition-colors group-hover:bg-accent"
+          >
             AJ
           </span>
-          <span className="hidden text-sm font-bold uppercase tracking-[-0.01em] text-ink sm:inline">
+          <span className="sr-only">AJ Barnett, home</span>
+          <span
+            aria-hidden="true"
+            className="hidden text-sm font-bold uppercase tracking-[-0.01em] text-ink sm:inline"
+          >
             AJ Barnett
           </span>
         </Link>
 
         <nav aria-label="Primary navigation" className="hidden xl:block">
-          <ul className="flex items-center gap-7">
+          <ul className="flex items-center gap-0.5">
             {navigation.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  className="text-xs font-semibold text-muted-foreground transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&.active]:text-ink"
+                  className="rounded-full px-3 py-2 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&.active]:bg-accent-soft [&.active]:text-accent-ink"
                   activeProps={{ className: "active" }}
                 >
                   {item.label}
@@ -71,13 +78,13 @@ export function SiteNav() {
         <div className="flex items-center gap-2">
           <a
             href="/#resumes"
-            className="hidden min-h-11 items-center px-3 text-xs font-semibold text-muted-foreground hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-flex"
+            className="hidden min-h-11 items-center rounded-full px-3 text-xs font-semibold text-muted-foreground hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:inline-flex"
           >
             Résumés
           </a>
           <Link
             to="/contact"
-            className="hidden min-h-11 items-center gap-2 bg-ink px-4 text-xs font-semibold text-background hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:inline-flex"
+            className="hidden min-h-11 items-center gap-2 rounded-full bg-ink px-5 text-xs font-semibold text-white hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:inline-flex"
           >
             Contact
             <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -89,8 +96,8 @@ export function SiteNav() {
                 type="button"
                 aria-label={open ? "Close menu" : "Open menu"}
                 aria-expanded={open}
-                aria-controls="mobile-nav-panel"
-                className="inline-flex h-11 w-11 items-center justify-center border border-border bg-background text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:hidden"
+                aria-controls={open ? "mobile-nav-panel" : undefined}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-background text-ink hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring xl:hidden"
               >
                 <Menu className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -147,7 +154,6 @@ export function MobileNavPanelContent({
               className: mobileLinkClass(currentPath === "/"),
               children: (
                 <>
-                  <span className="mono text-[10px] text-gold-text">00</span>
                   <span>Home</span>
                   <ArrowUpRight
                     className="ml-auto h-4 w-4"
@@ -167,9 +173,6 @@ export function MobileNavPanelContent({
                   className: mobileLinkClass(active),
                   children: (
                     <>
-                      <span className="mono text-[10px] text-gold-text">
-                        {item.num}
-                      </span>
                       <span>{item.label}</span>
                       <ArrowUpRight
                         className="ml-auto h-4 w-4"
@@ -188,7 +191,6 @@ export function MobileNavPanelContent({
               className: mobileLinkClass(currentPath.startsWith("/contact")),
               children: (
                 <>
-                  <span className="mono text-[10px] text-gold-text">06</span>
                   <span>Contact</span>
                   <ArrowUpRight
                     className="ml-auto h-4 w-4"

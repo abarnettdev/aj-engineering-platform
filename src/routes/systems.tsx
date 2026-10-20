@@ -85,7 +85,7 @@ function DesignSystem() {
   return (
     <>
       <PageHero
-        eyebrow="Systems · Chapter 04"
+        eyebrow="Design system"
         chapter="04"
         chapterLabel="06"
         image={heroImage}
@@ -151,10 +151,7 @@ function DesignSystem() {
 
       {/* TOKENS, interactive */}
       <div className="border-b border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 01 · Tokens"
-          title="Design tokens as a language."
-        >
+        <Section eyebrow="Tokens" title="Design tokens as a language.">
           <div className="grid gap-10 md:grid-cols-3">
             <Reveal>
               <div>
@@ -165,7 +162,7 @@ function DesignSystem() {
                   {tokens.color.map(([name, label]) => (
                     <li
                       key={name}
-                      className="lift flex items-center gap-3 border border-border bg-card px-3 py-2.5"
+                      className="lift flex items-center gap-3 rounded-2xl border border-border bg-card px-3 py-2.5"
                     >
                       <span
                         className="h-7 w-7 border border-border-strong"
@@ -207,7 +204,7 @@ function DesignSystem() {
                   {tokens.radius.map((r) => (
                     <div
                       key={r}
-                      className="grid h-16 w-16 place-items-center border border-border bg-card text-[11px] text-muted-foreground"
+                      className="grid h-16 w-16 place-items-center rounded-2xl border border-border bg-card text-[11px] text-muted-foreground"
                       style={{ borderRadius: `var(--radius-${r})` }}
                     >
                       {r}
@@ -258,7 +255,7 @@ function DesignSystem() {
       </div>
 
       {/* PRINCIPLES */}
-      <Section eyebrow="Chapter 02 · Principles" title="How I build for scale.">
+      <Section eyebrow="Principles" title="How I build for scale.">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
             [
@@ -287,7 +284,7 @@ function DesignSystem() {
             ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
-              <div className="lift gold-sweep h-full border border-border bg-card p-7">
+              <div className="lift gold-sweep h-full rounded-3xl border border-border bg-card p-7 shadow-soft">
                 <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
                   0{i + 1}
                 </p>
@@ -306,13 +303,13 @@ function DesignSystem() {
       {/* API */}
       <div className="border-y border-border/70 bg-surface/30">
         <Section
-          eyebrow="Chapter 03 · API"
+          eyebrow="Public API"
           title="Component APIs shaped by intent."
           description="The API is the product. It teaches, constrains, and rewards good composition."
         >
           <div className="grid gap-8 md:grid-cols-2">
             <Reveal>
-              <div className="border border-border bg-card p-6">
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
                 <p className="mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
                   Configuration (avoid)
                 </p>
@@ -361,10 +358,7 @@ function DesignSystem() {
       </div>
 
       {/* MOTION */}
-      <Section
-        eyebrow="Chapter 04 · Motion"
-        title="Motion as a system, not decoration."
-      >
+      <Section eyebrow="Motion" title="Motion as a system, not decoration.">
         <div className="grid gap-6 md:grid-cols-3">
           {[
             [
@@ -393,7 +387,7 @@ function DesignSystem() {
             ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
-              <div className="lift border border-border bg-card p-6">
+              <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
                 <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
                   0{i + 1}
                 </p>
@@ -411,10 +405,7 @@ function DesignSystem() {
 
       {/* FIGMA ↔ CODE */}
       <div className="border-y border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 05 · The Handoff"
-          title="Figma-to-code principles."
-        >
+        <Section eyebrow="Design to code" title="Figma-to-code principles.">
           <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
             <Reveal>
               <ArchitectureIllus />
@@ -448,7 +439,7 @@ function DesignSystem() {
 
       {/* COMPONENTS */}
       <Section
-        eyebrow="Chapter 06 · Inventory"
+        eyebrow="Inventory"
         title="A source-level starting point."
         description="These components have existing Storybook examples. They live in src/components; no public packages/ui package is published. Accessibility and keyboard coverage have not yet been comprehensively verified."
       >
@@ -461,10 +452,7 @@ function DesignSystem() {
 
       {/* SCALE */}
       <div className="border-t border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 07 · Scale"
-          title="Why systems multiply teams."
-        >
+        <Section eyebrow="Scale" title="Why systems multiply teams.">
           <div className="grid gap-6 md:grid-cols-3">
             {[
               [
@@ -481,7 +469,7 @@ function DesignSystem() {
               ],
             ].map(([t, d], i) => (
               <Reveal key={t} delay={i * 80}>
-                <div className="lift border border-border bg-card p-6">
+                <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
                   <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
                     0{i + 1}
                   </p>

@@ -76,7 +76,7 @@ function Engineering() {
     <>
       {/* HERO */}
       <PageHero
-        eyebrow="How I think · Chapter 03"
+        eyebrow="How I think"
         chapter="03"
         chapterLabel="06"
         image={heroImage}
@@ -269,7 +269,7 @@ function Engineering() {
                   className={
                     p.risk
                       ? "group relative flex h-full flex-col border border-oxblood/60 bg-card p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.2)]"
-                      : "group edge-gold relative flex h-full flex-col border border-border bg-card p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.2)]"
+                      : "group edge-gold relative flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft"
                   }
                 >
                   <div
@@ -404,7 +404,7 @@ function Engineering() {
                   ].map(([t, d]) => (
                     <li
                       key={t}
-                      className="edge-gold group border border-border bg-card p-4"
+                      className="edge-gold group rounded-2xl border border-border bg-card p-4 shadow-soft"
                     >
                       <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
                         {t}
@@ -460,7 +460,7 @@ function Engineering() {
 
           <div className="mt-20 grid gap-6 md:grid-cols-2">
             <Reveal>
-              <article className="edge-gold group h-full border border-border bg-card p-8">
+              <article className="edge-gold group h-full rounded-3xl border border-border bg-card p-8 shadow-soft">
                 <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
                   Where AI helps
                 </p>

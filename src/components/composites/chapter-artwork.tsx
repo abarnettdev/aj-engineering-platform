@@ -20,7 +20,7 @@ export function ChapterArtwork({
   return (
     <figure
       className={cn(
-        "relative w-full overflow-hidden border border-border bg-card shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]",
+        "relative w-full overflow-hidden rounded-3xl border border-border bg-card shadow-lift",
         className,
       )}
     >

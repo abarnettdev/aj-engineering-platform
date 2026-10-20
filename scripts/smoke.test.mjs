@@ -11,6 +11,7 @@ const request = (path, options) =>
 for (const path of [
   "/",
   "/work",
+  "/work/legato",
   "/design",
   "/timeline",
   "/systems",
@@ -31,6 +32,14 @@ for (const path of [
       assert.match(html, /Product Designer &amp; Software Engineer/);
       assert.match(html, /From first concept to production code/);
       assert.doesNotMatch(html, /Ask A\.J\. is the portfolio proof/);
+    }
+    if (path === "/work/legato") {
+      assert.match(html, /Design decisions become shared infrastructure/);
+      assert.match(html, /Independent public demonstration/);
+    }
+    if (path === "/work/ask-aj") {
+      assert.match(html, /AI portfolio agent/);
+      assert.match(html, /How Ask A\.J\. Works/);
     }
   });
 }

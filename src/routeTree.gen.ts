@@ -20,7 +20,8 @@ import { Route as AskAjRouteImport } from './routes/ask-aj'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WritingIndexRouteImport } from './routes/writing.index'
 import { Route as WritingSlugRouteImport } from './routes/writing.$slug'
-import { Route as WorkAskAjRouteImport } from './routes/work.ask-aj'
+import { Route as WorkLegatoRouteImport } from './routes/work_.legato'
+import { Route as WorkAskAjRouteImport } from './routes/work_.ask-aj'
 import { Route as ApiContactRouteImport } from './routes/api.contact'
 import { Route as ApiAskAjRouteImport } from './routes/api.ask-aj'
 
@@ -79,10 +80,15 @@ const WritingSlugRoute = WritingSlugRouteImport.update({
   path: '/writing/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkLegatoRoute = WorkLegatoRouteImport.update({
+  id: '/work_/legato',
+  path: '/work/legato',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkAskAjRoute = WorkAskAjRouteImport.update({
-  id: '/ask-aj',
-  path: '/ask-aj',
-  getParentRoute: () => WorkRoute,
+  id: '/work_/ask-aj',
+  path: '/work/ask-aj',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ApiContactRoute = ApiContactRouteImport.update({
   id: '/api/contact',
@@ -104,10 +110,11 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
   '/work/ask-aj': typeof WorkAskAjRoute
+  '/work/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -120,10 +127,11 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
   '/work/ask-aj': typeof WorkAskAjRoute
+  '/work/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing': typeof WritingIndexRoute
 }
@@ -137,10 +145,11 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
-  '/work/ask-aj': typeof WorkAskAjRoute
+  '/work_/ask-aj': typeof WorkAskAjRoute
+  '/work_/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/api/ask-aj'
     | '/api/contact'
     | '/work/ask-aj'
+    | '/work/legato'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesByTo: FileRoutesByTo
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/api/ask-aj'
     | '/api/contact'
     | '/work/ask-aj'
+    | '/work/legato'
     | '/writing/$slug'
     | '/writing'
   id:
@@ -190,7 +201,8 @@ export interface FileRouteTypes {
     | '/work'
     | '/api/ask-aj'
     | '/api/contact'
-    | '/work/ask-aj'
+    | '/work_/ask-aj'
+    | '/work_/legato'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesById: FileRoutesById
@@ -204,9 +216,11 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsRoute: typeof SystemsRoute
   TimelineRoute: typeof TimelineRoute
-  WorkRoute: typeof WorkRouteWithChildren
+  WorkRoute: typeof WorkRoute
   ApiAskAjRoute: typeof ApiAskAjRoute
   ApiContactRoute: typeof ApiContactRoute
+  WorkAskAjRoute: typeof WorkAskAjRoute
+  WorkLegatoRoute: typeof WorkLegatoRoute
   WritingSlugRoute: typeof WritingSlugRoute
   WritingIndexRoute: typeof WritingIndexRoute
 }
@@ -290,12 +304,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WritingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/work/ask-aj': {
-      id: '/work/ask-aj'
-      path: '/ask-aj'
+    '/work_/legato': {
+      id: '/work_/legato'
+      path: '/work/legato'
+      fullPath: '/work/legato'
+      preLoaderRoute: typeof WorkLegatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work_/ask-aj': {
+      id: '/work_/ask-aj'
+      path: '/work/ask-aj'
       fullPath: '/work/ask-aj'
       preLoaderRoute: typeof WorkAskAjRouteImport
-      parentRoute: typeof WorkRoute
+      parentRoute: typeof rootRouteImport
     }
     '/api/contact': {
       id: '/api/contact'
@@ -314,16 +335,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface WorkRouteChildren {
-  WorkAskAjRoute: typeof WorkAskAjRoute
-}
-
-const WorkRouteChildren: WorkRouteChildren = {
-  WorkAskAjRoute: WorkAskAjRoute,
-}
-
-const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AskAjRoute: AskAjRoute,
@@ -333,9 +344,11 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsRoute: SystemsRoute,
   TimelineRoute: TimelineRoute,
-  WorkRoute: WorkRouteWithChildren,
+  WorkRoute: WorkRoute,
   ApiAskAjRoute: ApiAskAjRoute,
   ApiContactRoute: ApiContactRoute,
+  WorkAskAjRoute: WorkAskAjRoute,
+  WorkLegatoRoute: WorkLegatoRoute,
   WritingSlugRoute: WritingSlugRoute,
   WritingIndexRoute: WritingIndexRoute,
 }

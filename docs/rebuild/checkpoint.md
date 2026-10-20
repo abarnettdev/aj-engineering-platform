@@ -12,11 +12,16 @@ Last updated: October 20, 2026
 - Added clearly labeled current public references for three verified client relationships.
 - Added distinct Product Design and Software Engineering résumé PDFs from verified career information.
 - Added source, Storybook, keyboard, responsive, and design-token inspection prompts.
+- Applied the approved cool-gray, white-card, near-black, and orange-red visual system across shared site surfaces.
+- Restored Ask A.J. to the main navigation and persistent launcher, and added a homepage feature using an authentic local product capture.
+- Reframed verified client screenshots inside responsive browser compositions without altering their content.
+- Added a flagship Legato case study and made the Ask A.J. project route directly accessible.
+- Updated Storybook foundations and shared primitives to use the same tokens as the application.
 
 ## Current work
 
-- Branch: `feat/portfolio-identity-redesign`
-- Base branch: `chore/independent-build-foundation`
+- Branch: `feat/approved-visual-system`
+- Base branch: `feat/portfolio-identity-redesign`
 - Review state: verified and ready for review
 
 ## Verification completed so far
@@ -33,10 +38,14 @@ Last updated: October 20, 2026
 - Desktop and 390-pixel mobile layouts were visually reviewed. A Product Design headline overflow found during review was corrected.
 - The mobile menu opens with focus inside the dialog and closes with Escape.
 - Current source and generated output contain no personal-photo asset references or prohibited builder references.
+- Homepage and Ask A.J. desktop/mobile Lighthouse audits scored 100 for Accessibility, Best Practices, SEO, and Agentic Browsing.
+- The Legato mobile Lighthouse audit scored 100 for Accessibility, Best Practices, SEO, and Agentic Browsing.
+- The updated homepage recorded 102 ms LCP and 0.00 CLS in a local unthrottled performance trace.
+- Responsive WebP derivatives reduce homepage image transfer while preserving the original PNG evidence files.
 
 ## Remaining priorities
 
-1. Build the flagship enterprise design-system case study.
+1. Review the approved visual direction in the pull request.
 2. Expand verified client work only when historical evidence can be sourced accurately.
 
 ## Blocking issues

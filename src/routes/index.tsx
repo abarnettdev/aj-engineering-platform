@@ -1,5 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowDownToLine, ArrowUpRight, Github, Mail } from "lucide-react";
+import {
+  Accessibility,
+  ArrowDownToLine,
+  ArrowRight,
+  Check,
+  Code2,
+  FileCode,
+  Gauge,
+  Layers,
+  Mail,
+  PenTool,
+  Smartphone,
+} from "lucide-react";
+import { ProjectShowcase } from "@/components/project-showcase";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -8,7 +21,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AJ Barnett connects product design, visual systems, frontend architecture, and production software. From first concept to production code.",
+          "AJ Barnett designs product interfaces, builds design systems, and ships production software from first concept to working code.",
       },
       {
         property: "og:title",
@@ -28,367 +41,533 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const expertise = [
+const clientScreenshots = [
   {
-    title: "Product design",
-    detail:
-      "Interfaces, visual hierarchy, responsive behavior, and interaction design.",
+    src: "/projects/lsi-current-reference.webp",
+    srcSet:
+      "/projects/lsi-current-reference-960.webp 960w, /projects/lsi-current-reference.webp 1440w",
+    alt: "Current LSI Companies public homepage showing commercial real-estate navigation over an aerial property image.",
+    label: "LSI Companies",
   },
   {
-    title: "Design systems",
-    detail:
-      "Tokens, component APIs, accessibility, documentation, and governance.",
+    src: "/projects/artisan-current-reference.webp",
+    srcSet:
+      "/projects/artisan-current-reference-960.webp 960w, /projects/artisan-current-reference.webp 1440w",
+    alt: "Current Artisan Eatery public homepage showing restaurant navigation over a food image.",
+    label: "Artisan Eatery",
   },
   {
-    title: "Software engineering",
-    detail:
-      "React, TypeScript, full-stack applications, APIs, and production architecture.",
-  },
-  {
-    title: "Technical leadership",
-    detail:
-      "Clear standards, practical mentoring, incremental modernization, and delivery.",
+    src: "/projects/hope-current-reference.webp",
+    srcSet:
+      "/projects/hope-current-reference-960.webp 960w, /projects/hope-current-reference.webp 1440w",
+    alt: "Current Hope Hospice public homepage showing its care information and contact form.",
+    label: "Hope Hospice",
   },
 ] as const;
 
-const featuredWork = [
-  {
-    eyebrow: "Enterprise design system · 2022–2026",
-    title: "CDW Legato",
-    role: "Technical Lead · Senior Software Engineer",
-    description:
-      "Architecture, shared libraries, component APIs, tooling, governance, and adoption across product teams.",
-    outcome:
-      "92% adoption · 60%+ less implementation effort · 170+ shared UI assets",
-    image: "/projects/design-system-demo.png",
-    alt: "Independent public design-system demonstration showing component states, tokens, and implementation guidance.",
-    note: "Independent public demonstration. CDW source and design files remain private.",
-    href: "/work#cdw-legato",
-    tone: "dark",
-  },
-  {
-    eyebrow: "Client web platform · 2016–2020",
-    title: "LSI Companies",
-    role: "Design & development · Priority Marketing",
-    description:
-      "A responsive commercial real-estate experience designed around service discovery, market content, and property search.",
-    outcome: "Responsive UX · CMS architecture · production delivery",
-    image: "/projects/lsi-current-reference.png",
-    alt: "Current LSI Companies public homepage showing commercial real-estate navigation over an aerial property image.",
-    note: "Current public site reference captured October 20, 2026. It may differ from the version AJ built.",
-    href: "/work#priority-marketing",
-    tone: "light",
-  },
-  {
-    eyebrow: "Hospitality website · 2016–2020",
-    title: "Artisan Eatery",
-    role: "Design & development · Priority Marketing",
-    description:
-      "A food-first restaurant experience built to make the menu, location, story, and calls to action easy to find.",
-    outcome: "Visual design · responsive frontend · content management",
-    image: "/projects/artisan-current-reference.png",
-    alt: "Current Artisan Eatery public homepage showing restaurant navigation over a close-up food image.",
-    note: "Current public site reference captured October 20, 2026. It may differ from the version AJ built.",
-    href: "/work#priority-marketing",
-    tone: "light",
-  },
+const stats = [
+  ["20+", "Years across design and engineering"],
+  ["92%", "Legato adoption across targeted experiences"],
+  ["170+", "Shared UI assets shipped"],
 ] as const;
+
+const buttonPrimary =
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ink px-6 text-sm font-semibold text-white shadow-soft transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+const buttonOutline =
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-card px-6 text-sm font-semibold text-ink transition-colors hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+
+function Eyebrow({
+  children,
+  dark = false,
+}: {
+  children: string;
+  dark?: boolean;
+}) {
+  return (
+    <span
+      className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-medium ${dark ? "border-white/15 bg-white/5 text-white" : "border-border bg-card text-accent-ink"}`}
+    >
+      <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
+      {children}
+    </span>
+  );
+}
 
 function Home() {
   return (
     <>
-      <section className="border-b border-border bg-background">
-        <div className="container-page grid min-h-[calc(100svh-4rem)] items-stretch lg:grid-cols-[1.45fr_0.55fr]">
-          <div className="flex flex-col justify-center py-20 sm:py-28 lg:py-32 lg:pr-16">
-            <p className="mono text-[11px] uppercase tracking-[0.24em] text-gold-text">
-              AJ Barnett · Cape Coral, Florida
-            </p>
-            <h1 className="mt-8 max-w-5xl text-balance font-display text-[clamp(3.4rem,9vw,8.4rem)] uppercase leading-[0.84] tracking-[-0.065em] text-ink">
-              Product Designer
-              <span className="block font-accent normal-case tracking-[-0.025em] text-gold-text">
-                &amp; Software Engineer
-              </span>
-            </h1>
-            <p className="mt-10 max-w-2xl text-balance text-xl leading-relaxed text-foreground/80 sm:text-2xl">
-              From first concept to production code. I connect visual design,
-              user experience, frontend architecture, and reliable software.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link
-                to="/work"
-                className="inline-flex min-h-12 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-background transition-colors hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                Explore my work
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <Link
-                to="/design"
-                className="inline-flex min-h-12 items-center gap-2 border border-border-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                Product design
-              </Link>
-              <Link
-                to="/engineering"
-                className="inline-flex min-h-12 items-center gap-2 border border-border-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                Software engineering
-              </Link>
-            </div>
-          </div>
-
-          <aside className="relative flex min-h-72 items-end overflow-hidden border-t border-border bg-ink p-8 text-background lg:min-h-0 lg:border-l lg:border-t-0 lg:p-10">
-            <div
-              aria-hidden="true"
-              className="absolute -right-16 -top-20 font-display text-[18rem] leading-none tracking-[-0.1em] text-white/40"
+      <section className="px-3 pt-3" aria-labelledby="home-title">
+        <div className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[2rem] bg-surface shadow-soft">
+          <div
+            aria-hidden="true"
+            className="glow pointer-events-none absolute inset-0"
+          />
+          <div className="relative px-6 pb-6 pt-16 text-center md:px-12 md:pt-24">
+            <Eyebrow>Product Designer &amp; Software Engineer</Eyebrow>
+            <h1
+              id="home-title"
+              aria-label="From first concept to production code."
+              className="mx-auto mt-6 max-w-5xl text-balance text-[clamp(3.2rem,8vw,7.4rem)] font-medium leading-[0.94] tracking-[-0.065em] text-ink"
             >
-              AJ
+              From first concept to{" "}
+              <span className="text-accent-ink">production code.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+              I’m AJ Barnett. I design interfaces, build design systems, and
+              ship the software behind them.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link to="/work" className={buttonPrimary}>
+                Explore work{" "}
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+              <Link to="/systems" className={buttonOutline}>
+                View design system
+              </Link>
+              <Link
+                to="/ask-aj"
+                className="inline-flex min-h-12 items-center rounded-full px-5 text-sm font-semibold text-ink hover:bg-muted"
+              >
+                Try Ask A.J.
+              </Link>
             </div>
-            <div className="relative">
-              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
-                2001 → now
-              </p>
-              <p className="mt-5 max-w-xs text-2xl font-medium leading-tight text-white">
-                Design craft became product thinking. Product thinking became
-                software architecture.
-              </p>
-              <dl className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-white/15 pt-7">
-                <div>
-                  <dt className="mono text-[9px] uppercase tracking-[0.18em] text-white/55">
-                    Experience
-                  </dt>
-                  <dd className="mt-2 text-lg font-semibold text-white">
-                    15+ years
-                  </dd>
-                </div>
-                <div>
-                  <dt className="mono text-[9px] uppercase tracking-[0.18em] text-white/55">
-                    Perspective
-                  </dt>
-                  <dd className="mt-2 text-lg font-semibold text-white">
-                    Design + code
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </aside>
+            <ProjectShowcase
+              screenshots={clientScreenshots}
+              className="mx-auto mt-12 max-w-5xl text-left"
+            />
+            <p className="mx-auto mt-4 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+              Current public references captured October 20, 2026. These sites
+              may differ from the versions AJ originally designed and built.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="border-b border-border bg-surface/35 py-20 sm:py-28">
-        <div className="container-page">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
-                Selected work
-              </p>
-              <h2 className="mt-4 max-w-xl text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.055em] sm:text-7xl">
-                Work you can see and inspect.
+      <section
+        className="container-page py-20 sm:py-28"
+        aria-labelledby="about-work-title"
+      >
+        <div className="grid gap-6 lg:grid-cols-12">
+          <div className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white shadow-soft md:p-10 lg:col-span-7">
+            <div
+              aria-hidden="true"
+              className="glow pointer-events-none absolute inset-0 opacity-70"
+            />
+            <div className="relative">
+              <Eyebrow dark>About the work</Eyebrow>
+              <h2
+                id="about-work-title"
+                aria-label="One person who speaks design and code fluently."
+                className="mt-6 text-balance text-4xl font-medium text-white md:text-6xl"
+              >
+                One person who speaks{" "}
+                <span className="text-accent">design</span> and{" "}
+                <span className="text-accent">code</span> fluently.
               </h2>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
+                My work spans visual design, product design, design systems,
+                frontend engineering, and production software. I keep the intent
+                intact from the first sketch through delivery.
+              </p>
             </div>
-            <p className="max-w-xl text-lg leading-relaxed text-muted-foreground lg:justify-self-end">
-              Real client work, enterprise systems, and public demonstrations.
-              Each case study separates verified outcomes from independently
-              recreated examples.
+          </div>
+          <div className="grid gap-4 lg:col-span-5">
+            {stats.map(([value, label]) => (
+              <div
+                key={label}
+                className="flex items-end justify-between gap-6 rounded-3xl bg-card p-7 shadow-soft"
+              >
+                <p className="max-w-[13rem] text-sm leading-relaxed text-muted-foreground">
+                  {label}
+                </p>
+                <p className="text-5xl font-medium tracking-tight text-ink md:text-6xl">
+                  {value}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="container-page pb-20 sm:pb-28"
+        aria-labelledby="featured-title"
+      >
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-3xl">
+            <Eyebrow>Featured work</Eyebrow>
+            <h2
+              id="featured-title"
+              className="mt-5 text-5xl font-medium tracking-tight text-ink md:text-7xl"
+            >
+              Selected projects
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Systems, software, and client sites designed and built for real
+              teams.
             </p>
           </div>
+          <Link to="/work" className={buttonOutline}>
+            All work <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
+        </div>
 
-          <div className="mt-14 grid gap-8">
-            {featuredWork.map((project, index) => (
-              <article
-                key={project.title}
-                className="grid overflow-hidden border border-border bg-card lg:grid-cols-[1.35fr_0.65fr]"
-              >
-                <a
-                  href={project.href}
-                  className={`group relative block min-h-72 overflow-hidden sm:min-h-[30rem] ${
-                    project.tone === "dark" ? "bg-ink" : "bg-surface"
-                  }`}
-                  aria-label={`Read the ${project.title} case study`}
+        <div className="mt-12 grid gap-6">
+          <article className="overflow-hidden rounded-3xl bg-card p-3 shadow-soft lg:grid lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="overflow-hidden rounded-2xl bg-ink p-4 sm:p-8">
+              <img
+                src="/projects/design-system-demo.webp"
+                srcSet="/projects/design-system-demo-960.webp 960w, /projects/design-system-demo.webp 1440w"
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                alt="Independent public design-system demonstration showing live tokens and a component preview."
+                width={1440}
+                height={900}
+                className="aspect-[16/9] w-full rounded-xl object-cover object-top shadow-lift"
+              />
+            </div>
+            <div className="flex flex-col justify-between p-6 sm:p-9">
+              <div>
+                <Eyebrow>Enterprise design system</Eyebrow>
+                <h3 className="mt-5 text-4xl font-medium text-ink md:text-5xl">
+                  CDW Legato
+                </h3>
+                <p className="mt-3 text-sm font-semibold">
+                  Technical Lead · Senior Software Engineer
+                </p>
+                <p className="mt-5 leading-relaxed text-muted-foreground">
+                  Shared libraries, component APIs, tooling, accessibility,
+                  documentation, and adoption across product teams.
+                </p>
+              </div>
+              <div className="mt-8 border-t border-border pt-6">
+                <p className="text-sm font-medium">
+                  92% adoption · 60%+ less implementation effort · 170+ shared
+                  UI assets
+                </p>
+                <Link
+                  to="/work/legato"
+                  className="mt-6 inline-flex items-center gap-2 font-semibold text-accent-ink"
                 >
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    width="1440"
-                    height="900"
-                    loading={index === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.015]"
-                  />
-                  <span className="absolute bottom-4 left-4 bg-black/75 px-3 py-2 text-[10px] uppercase tracking-[0.16em] text-white backdrop-blur-sm">
-                    {project.note}
-                  </span>
-                </a>
-                <div className="flex flex-col justify-between p-7 sm:p-10">
-                  <div>
-                    <p className="mono text-[10px] uppercase tracking-[0.22em] text-gold-text">
-                      {project.eyebrow}
-                    </p>
-                    <h3 className="mt-5 font-display text-4xl uppercase tracking-[-0.045em] text-ink sm:text-5xl">
-                      {project.title}
-                    </h3>
-                    <p className="mt-3 text-sm font-semibold text-foreground">
-                      {project.role}
-                    </p>
-                    <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
-                  </div>
-                  <div className="mt-10 border-t border-border pt-6">
-                    <p className="text-sm font-medium leading-relaxed text-foreground">
-                      {project.outcome}
-                    </p>
-                    <a
-                      href={project.href}
-                      className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-gold-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      View case study
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </div>
-                </div>
+                  Read the case study{" "}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          <article className="grid overflow-hidden rounded-3xl bg-ink text-white shadow-soft lg:grid-cols-2">
+            <div className="p-8 md:p-12">
+              <Eyebrow dark>Software project</Eyebrow>
+              <h3 className="mt-6 text-4xl font-medium text-white md:text-6xl">
+                Ask A.J.
+              </h3>
+              <p className="mt-5 max-w-lg leading-relaxed text-white/65">
+                A working AI assistant that answers questions about my
+                experience, process, and projects through a streamed, accessible
+                interface.
+              </p>
+              <ul
+                className="mt-6 flex flex-wrap gap-2"
+                aria-label="Ask A.J. capabilities"
+              >
+                {[
+                  "Streaming responses",
+                  "Server-only model access",
+                  "Citations",
+                  "Graceful fallbacks",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                to="/ask-aj"
+                className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-6 text-sm font-semibold text-ink hover:bg-accent hover:text-white"
+              >
+                Try Ask A.J.{" "}
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="m-3 overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-3 lg:ml-0">
+              <img
+                src="/projects/ask-aj-product.webp"
+                srcSet="/projects/ask-aj-product-960.webp 960w, /projects/ask-aj-product.webp 1440w"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                alt="The live Ask A.J. interface with starter questions, status, and a message composer."
+                width={1440}
+                height={900}
+                loading="lazy"
+                className="h-full min-h-72 w-full rounded-xl object-cover object-top"
+              />
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section className="px-3" aria-labelledby="disciplines-title">
+        <div className="mx-auto max-w-[1240px] rounded-[2rem] bg-surface px-6 py-20 shadow-soft md:px-12">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Two disciplines, one practice</Eyebrow>
+            <h2
+              id="disciplines-title"
+              className="mt-5 text-balance text-4xl font-medium text-ink md:text-6xl"
+            >
+              Hire for design. Hire for engineering.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              One craft that covers the full product lifecycle.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                icon: PenTool,
+                title: "Product Design",
+                to: "/design" as const,
+                items: [
+                  "Product strategy and UX flows",
+                  "Visual and interaction design",
+                  "Design systems and tokens",
+                  "Accessible patterns",
+                ],
+              },
+              {
+                icon: Code2,
+                title: "Software Engineering",
+                to: "/engineering" as const,
+                items: [
+                  "React and TypeScript",
+                  "Frontend architecture",
+                  "Server integration and AI features",
+                  "Testing, performance, and delivery",
+                ],
+              },
+            ].map((discipline) => (
+              <article
+                key={discipline.title}
+                className="rounded-3xl border border-border bg-card p-8"
+              >
+                <span className="grid size-12 place-items-center rounded-2xl bg-accent-soft text-accent-ink">
+                  <discipline.icon className="size-6" aria-hidden="true" />
+                </span>
+                <h3 className="mt-6 text-3xl font-medium text-ink">
+                  {discipline.title}
+                </h3>
+                <ul className="mt-6 grid gap-3">
+                  {discipline.items.map((item) => (
+                    <li key={item} className="flex items-center gap-3">
+                      <Check
+                        className="size-4 text-accent-ink"
+                        aria-hidden="true"
+                      />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to={discipline.to}
+                  className="mt-8 inline-flex items-center gap-2 font-semibold text-accent-ink"
+                >
+                  Explore {discipline.title.toLowerCase()}{" "}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </Link>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="border-b border-border py-20 sm:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.62fr_1.38fr]">
-          <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
-              One career, two lenses
-            </p>
-            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-6xl">
-              The handoff is part of the work.
+      <section
+        className="container-page py-20 sm:py-28"
+        aria-labelledby="system-title"
+      >
+        <Eyebrow>Design system</Eyebrow>
+        <h2
+          id="system-title"
+          className="mt-5 max-w-4xl text-balance text-4xl font-medium text-ink md:text-6xl"
+        >
+          I build and document the systems behind the interface.
+        </h2>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              icon: Layers,
+              title: "Design tokens",
+              description:
+                "One source for color, type, spacing, radius, and elevation.",
+            },
+            {
+              icon: FileCode,
+              title: "Components",
+              description:
+                "Typed components with clear variants, states, and public APIs.",
+            },
+            {
+              icon: PenTool,
+              title: "Documentation",
+              description:
+                "Usage guidance and realistic examples beside the implementation.",
+            },
+            {
+              icon: Accessibility,
+              title: "Accessibility",
+              description:
+                "Keyboard support, visible focus, and WCAG targets by default.",
+            },
+            {
+              icon: Code2,
+              title: "Code quality",
+              description:
+                "Strict TypeScript, linting, and tests around meaningful contracts.",
+            },
+            {
+              icon: Gauge,
+              title: "Storybook",
+              description:
+                "A component workshop that shares the same tokens as the product.",
+            },
+          ].map(({ icon: Icon, title, description }, index) => (
+            <article
+              key={String(title)}
+              className={`rounded-3xl p-7 ${index === 0 ? "bg-ink text-white" : "bg-card shadow-soft"}`}
+            >
+              <Icon
+                className={`size-6 ${index === 0 ? "text-accent" : "text-accent-ink"}`}
+                aria-hidden="true"
+              />
+              <h3
+                className={`mt-8 text-xl font-medium ${index === 0 ? "text-white" : "text-ink"}`}
+              >
+                {title}
+              </h3>
+              <p
+                className={`mt-2 text-sm leading-relaxed ${index === 0 ? "text-white/60" : "text-muted-foreground"}`}
+              >
+                {description}
+              </p>
+            </article>
+          ))}
+        </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link to="/systems" className={buttonPrimary}>
+            Explore the system
+          </Link>
+          <a href="/storybook/index.html" className={buttonOutline}>
+            Open Storybook
+          </a>
+        </div>
+      </section>
+
+      <section
+        className="container-page pb-20 sm:pb-28"
+        aria-labelledby="test-title"
+      >
+        <div className="grid gap-10 rounded-3xl bg-card p-8 shadow-soft md:grid-cols-12 md:p-12">
+          <div className="md:col-span-5">
+            <Eyebrow>Test this website</Eyebrow>
+            <h2
+              id="test-title"
+              className="mt-5 text-4xl font-medium text-ink md:text-5xl"
+            >
+              Inspect the work directly.
             </h2>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
-              I have worked on both sides of the design-to-development handoff.
-              That changes how I plan interfaces, shape APIs, document
-              decisions, and support teams after launch.
+            <p className="mt-5 text-muted-foreground">
+              Review the site the same way you would review a product or pull
+              request.
             </p>
           </div>
-          <ol className="grid border-l border-t border-border sm:grid-cols-2">
-            {expertise.map((item, index) => (
+          <ul className="grid gap-3 sm:grid-cols-2 md:col-span-7">
+            {[
+              {
+                icon: Gauge,
+                title: "Run Lighthouse",
+                description: "Targets 100 in Accessibility and SEO.",
+              },
+              {
+                icon: Accessibility,
+                title: "Use a keyboard",
+                description: "Skip links, focus rings, and labelled controls.",
+              },
+              {
+                icon: Smartphone,
+                title: "Resize it",
+                description: "Responsive from small phones to wide desktops.",
+              },
+              {
+                icon: Layers,
+                title: "Read the system",
+                description:
+                  "Tokens and components are documented in Storybook.",
+              },
+            ].map(({ icon: Icon, title, description }) => (
               <li
-                key={item.title}
-                className="border-b border-r border-border p-7 sm:min-h-52 sm:p-9"
+                key={String(title)}
+                className="rounded-2xl border border-border p-5"
               >
-                <span className="mono text-[10px] tracking-[0.2em] text-gold-text">
-                  0{index + 1}
-                </span>
-                <h3 className="mt-8 text-2xl font-semibold tracking-[-0.03em] text-ink">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {item.detail}
+                <Icon className="size-5 text-accent-ink" aria-hidden="true" />
+                <p className="mt-4 font-medium text-ink">{title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {description}
                 </p>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </section>
 
-      <section className="border-b border-border bg-ink py-20 text-white sm:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <section
+        id="resumes"
+        className="container-page scroll-mt-24 pb-20 sm:pb-28"
+        aria-labelledby="resumes-title"
+      >
+        <div className="grid gap-8 rounded-3xl bg-surface p-8 shadow-soft md:grid-cols-2 md:items-end md:p-12">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text-on-dark">
-              Don&apos;t take my word for it.
-            </p>
-            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] text-white sm:text-7xl">
-              Test this website.
-            </h2>
-          </div>
-          <div>
-            <p className="max-w-2xl text-lg leading-relaxed text-white/70">
-              Inspect the source, explore Storybook, navigate with a keyboard,
-              check the tokens, resize the layout, and run your own Lighthouse
-              audit. Remaining gaps are documented instead of hidden.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="/storybook/index.html"
-                className="inline-flex min-h-12 items-center gap-2 bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Explore Storybook
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a
-                href="https://github.com/abarnettdev/aj-engineering-platform"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                View source
-              </a>
-              <Link
-                to="/systems"
-                className="inline-flex min-h-12 items-center gap-2 border border-white/30 px-5 py-3 text-sm font-semibold text-white hover:border-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                Inspect the design system
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="resumes" className="scroll-mt-24 py-20 sm:py-28">
-        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
-              Résumés
-            </p>
-            <h2 className="mt-4 text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-6xl">
-              Choose the perspective that fits the role.
+            <Eyebrow>Résumés</Eyebrow>
+            <h2
+              id="resumes-title"
+              className="mt-5 text-4xl font-medium text-ink md:text-5xl"
+            >
+              Choose the version that fits the role.
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <a
               href="/resumes/aj-barnett-product-design.pdf"
               download
-              className="group flex min-h-28 items-center justify-between border border-border-strong p-5 hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={buttonOutline}
             >
-              <span className="font-semibold text-ink">
-                Product Design Résumé
-              </span>
-              <ArrowDownToLine
-                className="h-5 w-5 text-gold-text"
-                aria-hidden="true"
-              />
+              <ArrowDownToLine className="size-4" aria-hidden="true" /> Product
+              Design
             </a>
             <a
               href="/resumes/aj-barnett-software-engineering.pdf"
               download
-              className="group flex min-h-28 items-center justify-between border border-border-strong p-5 hover:border-ink hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className={buttonOutline}
             >
-              <span className="font-semibold text-ink">
-                Software Engineering Résumé
-              </span>
-              <ArrowDownToLine
-                className="h-5 w-5 text-gold-text"
-                aria-hidden="true"
-              />
+              <ArrowDownToLine className="size-4" aria-hidden="true" />{" "}
+              Engineering
             </a>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface/40 py-20 sm:py-24">
-        <div className="container-page flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+      <section className="container-page pb-8" aria-labelledby="contact-title">
+        <div className="flex flex-col gap-8 rounded-3xl bg-card p-8 shadow-soft sm:flex-row sm:items-end sm:justify-between md:p-12">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold-text">
-              Start a conversation
-            </p>
-            <h2 className="mt-4 max-w-3xl text-balance font-display text-5xl uppercase leading-[0.94] tracking-[-0.05em] sm:text-7xl">
+            <Eyebrow>Start a conversation</Eyebrow>
+            <h2
+              id="contact-title"
+              className="mt-5 max-w-3xl text-balance text-4xl font-medium text-ink md:text-6xl"
+            >
               Building something worth caring about?
             </h2>
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex min-h-12 shrink-0 items-center gap-2 bg-ink px-6 py-3 text-sm font-semibold text-background hover:bg-gold hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <Mail className="h-4 w-4" aria-hidden="true" />
-            Contact AJ
+          <Link to="/contact" className={buttonPrimary}>
+            <Mail className="size-4" aria-hidden="true" /> Contact AJ
           </Link>
         </div>
       </section>

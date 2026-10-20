@@ -18,7 +18,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "mono inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-[10.5px] uppercase tracking-widest",
+        "mono inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10.5px] uppercase tracking-widest",
         styles[variant],
         className,
       )}
@@ -30,7 +30,7 @@ export function Badge({
 
 export function TechBadge({ children }: { children: ReactNode }) {
   return (
-    <span className="mono inline-flex items-center rounded border border-border bg-surface/60 px-2 py-1 text-[11px] text-foreground/80">
+    <span className="mono inline-flex items-center rounded-full border border-border bg-surface/60 px-2.5 py-1 text-[11px] text-foreground/80">
       {children}
     </span>
   );

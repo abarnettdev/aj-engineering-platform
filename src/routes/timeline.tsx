@@ -91,7 +91,7 @@ function Timeline() {
   return (
     <>
       <PageHero
-        eyebrow="2001 → 2026 · Chapter 02"
+        eyebrow="2001 → 2026"
         chapter="02"
         chapterLabel="06"
         image={heroImage}

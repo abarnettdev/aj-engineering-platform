@@ -29,7 +29,7 @@ export function CompositeFigure({
   return (
     <figure
       className={cn(
-        "relative w-full max-w-none border border-border bg-card shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)]",
+        "relative w-full max-w-none overflow-hidden rounded-3xl border border-border bg-card shadow-lift",
         className,
       )}
     >
@@ -77,7 +77,9 @@ export function CompositeFigure({
       {(caption || legend?.length) && (
         <figcaption className="border-t border-border/70 px-5 py-4">
           {caption ? (
-            <p className="text-sm leading-relaxed text-foreground/85">{caption}</p>
+            <p className="text-sm leading-relaxed text-foreground/85">
+              {caption}
+            </p>
           ) : null}
           {legend?.length ? (
             <dl className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
@@ -92,7 +94,9 @@ export function CompositeFigure({
                   <dd className="text-xs text-foreground/80">
                     <span className="font-medium text-ink">{item.label}</span>
                     {item.note ? (
-                      <span className="text-muted-foreground">, {item.note}</span>
+                      <span className="text-muted-foreground">
+                        , {item.note}
+                      </span>
                     ) : null}
                   </dd>
                 </div>

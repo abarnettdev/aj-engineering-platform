@@ -62,7 +62,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
       <article
         id={w.slug}
         aria-labelledby={`case-${w.slug}-title`}
-        className="group edge-gold relative border border-border bg-card shadow-[0_30px_60px_-40px_rgba(0,0,0,0.25)]"
+        className="group edge-gold relative overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
       >
         {/* Header rail */}
         <header className="flex items-baseline justify-between gap-4 border-b border-border px-8 pt-8 md:px-12 md:pt-10">
@@ -172,7 +172,7 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
             <div style={{ perspective: "1400px" }}>
               <MaskReveal>
                 <Tilt3D max={5} glare={false} scale={1.01}>
-                  <div className="border border-border bg-surface p-1 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.3)]">
+                  <div className="overflow-hidden rounded-2xl border border-border bg-surface p-1 shadow-lift">
                     <CaseIllus slug={w.slug} />
                   </div>
                 </Tilt3D>
@@ -206,19 +206,29 @@ function CaseStudy({ w, index }: { w: WorkCase; index: number }) {
             {/* CTA into the fuller story */}
             <div className="mt-2 border-t border-border pt-6">
               <Magnetic strength={0.25}>
-                <Link
-                  to="/timeline"
-                  hash={w.slug === "ask-aj" ? "now" : w.slug}
-                  className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
-                  aria-label={
-                    w.slug === "ask-aj"
-                      ? "Read the Now chapter in the journey"
-                      : `Read the full ${w.company} chapter in the journey`
-                  }
-                >
-                  <span className="story-link">Read the chapter</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
-                </Link>
+                {w.slug === "cdw-legato" ? (
+                  <Link
+                    to="/work/legato"
+                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
+                  >
+                    <span className="story-link">Open flagship case study</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
+                  </Link>
+                ) : (
+                  <Link
+                    to="/timeline"
+                    hash={w.slug === "ask-aj" ? "now" : w.slug}
+                    className="group/cta tactile inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink hover:text-gold"
+                    aria-label={
+                      w.slug === "ask-aj"
+                        ? "Read the Now chapter in the journey"
+                        : `Read the full ${w.company} chapter in the journey`
+                    }
+                  >
+                    <span className="story-link">Read the chapter</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5" />
+                  </Link>
+                )}
               </Magnetic>
             </div>
           </div>
@@ -232,7 +242,7 @@ function Work() {
   return (
     <>
       <PageHero
-        eyebrow="Case Studies · Chapter 01"
+        eyebrow="Case studies"
         chapter="01"
         chapterLabel="06"
         image={heroImage}
@@ -279,7 +289,7 @@ function Work() {
               <Magnetic>
                 <Link
                   to="/timeline"
-                  className="group tactile inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
+                  className="group tactile inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-white"
                 >
                   Walk the timeline
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -288,7 +298,7 @@ function Work() {
               <Magnetic>
                 <Link
                   to="/contact"
-                  className="group tactile inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
+                  className="group tactile inline-flex items-center gap-2 rounded-full border border-border-strong bg-card px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
                 >
                   Start a conversation
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
