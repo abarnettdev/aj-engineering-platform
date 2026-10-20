@@ -17,7 +17,7 @@ Last updated: October 20, 2026
 
 - Branch: `feat/portfolio-identity-redesign`
 - Base branch: `chore/independent-build-foundation`
-- Review state: local verification complete; commit and push pending
+- Review state: verified and ready for review
 
 ## Verification completed so far
 
@@ -36,9 +36,8 @@ Last updated: October 20, 2026
 
 ## Remaining priorities
 
-1. Commit, push, and open the stacked identity redesign pull request.
-2. Build the flagship enterprise design-system case study.
-3. Expand verified client work only when historical evidence can be sourced accurately.
+1. Build the flagship enterprise design-system case study.
+2. Expand verified client work only when historical evidence can be sourced accurately.
 
 ## Blocking issues
 
