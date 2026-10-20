@@ -20,9 +20,10 @@ const groups = [
   {
     label: "Accent",
     items: [
-      { name: "gold", var: "--gold" },
-      { name: "primary", var: "--primary" },
       { name: "accent", var: "--accent" },
+      { name: "accent ink", var: "--accent-ink" },
+      { name: "accent soft", var: "--accent-soft" },
+      { name: "primary", var: "--primary" },
     ],
   },
   {
@@ -46,7 +47,10 @@ function Palette() {
           </p>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {g.items.map((s) => (
-              <div key={s.name} className="border border-border">
+              <div
+                key={s.name}
+                className="overflow-hidden rounded-2xl border border-border bg-card shadow-soft"
+              >
                 <div
                   className="h-20 border-b border-border"
                   style={{ background: `var(${s.var})` }}
@@ -74,11 +78,11 @@ const meta = {
     docs: {
       description: {
         component:
-          "All colors on the site resolve to CSS custom properties defined in `src/styles.css`. Components never hardcode hex values — they consume semantic tokens (`bg-card`, `text-ink`, `text-gold`) so theming stays a data change.",
+          "The site and Storybook use the same semantic color tokens from `src/styles.css`. Components use names such as `bg-card`, `text-ink`, and `text-accent-ink` so a token change updates the full system.",
       },
       source: {
         code: `<div className="bg-card text-ink border border-border" />
-<span className="text-gold" />
+<span className="text-accent-ink" />
 <p className="text-muted-foreground" />`,
       },
     },

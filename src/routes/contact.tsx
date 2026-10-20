@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/section";
 import { Linkedin, Github, Mail, FileDown } from "lucide-react";
 import { PageHero, Accent } from "@/components/page-hero";
-import heroImage from "@/assets/hero-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -11,13 +10,13 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Lead Sr. Software Engineer and Staff Engineer roles at teams building real products for real users, using AI as leverage, not as a shortcut.",
+          "Contact AJ Barnett about product design, design systems, and senior software engineering roles.",
       },
       { property: "og:title", content: "Contact · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "Open to Lead Sr. Software Engineer and Staff Engineer roles. Judgment stays human. Execution accelerates.",
+          "Open to product design, design systems, and senior software engineering opportunities.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -33,8 +32,8 @@ function Contact() {
         eyebrow="Contact · Let's connect"
         chapter="07"
         chapterLabel="END"
-        image={heroImage}
-        imageAlt="A lighthouse cutting warm light through fog, a signal for the right teams to find their way in."
+        image="/visuals/contact-studio.webp"
+        imageAlt="The ajbarnett.tech recruiter contact form and Ask A.J. entry point displayed across laptop and phone."
         imageCaption="Signal · Not noise"
         imageMeta="Available"
         headline={
@@ -46,9 +45,8 @@ function Contact() {
         }
         description={
           <>
-            Lead Sr. Software Engineer and Staff Engineer roles at teams
-            shipping real products for real users. Judgment stays human.
-            Execution accelerates.
+            Product design, design systems, and senior software engineering
+            roles with teams shipping useful products for real people.
           </>
         }
       />
@@ -89,13 +87,22 @@ function Contact() {
               Code, systems, and side projects
             </p>
           </a>
-          {/* Resume PDF served from public/resume.pdf */}
           <a
-            href="/resume.pdf"
+            href="/resumes/aj-barnett-product-design.pdf"
             className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-border-strong hover:bg-surface-elevated"
           >
             <FileDown className="h-5 w-5 text-accent" />
-            <h2 className="mt-4 font-display text-2xl">Resume</h2>
+            <h2 className="mt-4 font-display text-2xl">
+              Product Design Résumé
+            </h2>
+            <p className="mt-1 text-sm text-muted-foreground">Download PDF</p>
+          </a>
+          <a
+            href="/resumes/aj-barnett-software-engineering.pdf"
+            className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-border-strong hover:bg-surface-elevated"
+          >
+            <FileDown className="h-5 w-5 text-accent" />
+            <h2 className="mt-4 font-display text-2xl">Engineering Résumé</h2>
             <p className="mt-1 text-sm text-muted-foreground">Download PDF</p>
           </a>
         </div>

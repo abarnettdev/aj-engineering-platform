@@ -31,3 +31,6 @@ dist/
 
 # Vercel local build artifacts
 .vercel/
+
+# Local inspection and rendering scratch files
+/tmp/

@@ -6,7 +6,6 @@ import { TokensIllus, ArchitectureIllus } from "@/components/illus";
 import { PageHero, Accent } from "@/components/page-hero";
 import { TokenPlayground } from "@/components/token-playground";
 import { ComponentAnatomy } from "@/components/composites/component-anatomy";
-import heroImage from "@/assets/hero-design-system.jpg";
 
 export const Route = createFileRoute("/systems")({
   head: () => ({
@@ -37,7 +36,7 @@ const tokens = {
     ["--surface", "elevated 1"],
     ["--surface-elevated", "elevated 2"],
     ["--primary", "actions"],
-    ["--gold", "accent · achievement"],
+    ["--accent", "actions · emphasis"],
     ["--muted-foreground", "subtle text"],
     ["--border", "hairlines"],
   ] as const,
@@ -66,7 +65,7 @@ const tokens = {
     ],
     [
       "Mono / XS",
-      "mono text-[10px] uppercase tracking-[0.24em] text-gold",
+      "mono text-[10px] uppercase tracking-[0.24em] text-accent-ink",
       "TOKENS · TYPE · MOTION",
     ],
   ] as const,
@@ -85,12 +84,12 @@ function DesignSystem() {
   return (
     <>
       <PageHero
-        eyebrow="Systems · Chapter 04"
+        eyebrow="Design system"
         chapter="04"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Brutalist grid ceiling with dramatic light, a system built from repeated, disciplined form."
-        imageCaption="Architecture · API · DX · Tokens"
+        image="/visuals/aj-site-system-studio.webp"
+        imageAlt="The ajbarnett.tech token playground with coral-red color tokens, typography, and component states."
+        imageCaption="ajbarnett.tech · Tokens · Components · Code"
         imageMeta="Systems"
         headline={
           <>
@@ -122,12 +121,15 @@ function DesignSystem() {
       <div className="border-b border-border/70 bg-background">
         <div className="container-page flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between md:py-12">
           <div>
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Live Component Explorer
             </p>
             <h2 className="mt-3 font-display text-2xl font-medium tracking-tight text-ink md:text-3xl">
               One primitive of many:{" "}
-              <span className="font-accent italic text-gold">Storybook</span>.
+              <span className="font-accent italic text-accent-ink">
+                Storybook
+              </span>
+              .
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
               Components are the visible edge of the system. Underneath sit
@@ -141,7 +143,7 @@ function DesignSystem() {
               target="_blank"
               rel="noreferrer"
               aria-label="Open Storybook component explorer in a new tab"
-              className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-gold hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              className="inline-flex items-center gap-2 bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background hover:bg-accent hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Open Storybook →
             </a>
@@ -151,21 +153,18 @@ function DesignSystem() {
 
       {/* TOKENS, interactive */}
       <div className="border-b border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 01 · Tokens"
-          title="Design tokens as a language."
-        >
+        <Section eyebrow="Tokens" title="Design tokens as a language.">
           <div className="grid gap-10 md:grid-cols-3">
             <Reveal>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Color
                 </h3>
                 <ul className="mt-5 space-y-2">
                   {tokens.color.map(([name, label]) => (
                     <li
                       key={name}
-                      className="lift flex items-center gap-3 border border-border bg-card px-3 py-2.5"
+                      className="lift flex items-center gap-3 rounded-2xl border border-border bg-card px-3 py-2.5"
                     >
                       <span
                         className="h-7 w-7 border border-border-strong"
@@ -182,7 +181,7 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={100}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Spacing
                 </h3>
                 <div className="mt-5 space-y-2">
@@ -200,14 +199,14 @@ function DesignSystem() {
                     </div>
                   ))}
                 </div>
-                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono mt-8 text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Radius
                 </h3>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {tokens.radius.map((r) => (
                     <div
                       key={r}
-                      className="grid h-16 w-16 place-items-center border border-border bg-card text-[11px] text-muted-foreground"
+                      className="grid h-16 w-16 place-items-center rounded-2xl border border-border bg-card text-[11px] text-muted-foreground"
                       style={{ borderRadius: `var(--radius-${r})` }}
                     >
                       {r}
@@ -218,7 +217,7 @@ function DesignSystem() {
             </Reveal>
             <Reveal delay={200}>
               <div>
-                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <h3 className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Typography
                 </h3>
                 <ul className="mt-5 space-y-6">
@@ -258,7 +257,7 @@ function DesignSystem() {
       </div>
 
       {/* PRINCIPLES */}
-      <Section eyebrow="Chapter 02 · Principles" title="How I build for scale.">
+      <Section eyebrow="Principles" title="How I build for scale.">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {[
             [
@@ -287,8 +286,8 @@ function DesignSystem() {
             ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
-              <div className="lift gold-sweep h-full border border-border bg-card p-7">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <div className="lift accent-sweep h-full rounded-3xl border border-border bg-card p-7 shadow-soft">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   0{i + 1}
                 </p>
                 <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
@@ -306,13 +305,13 @@ function DesignSystem() {
       {/* API */}
       <div className="border-y border-border/70 bg-surface/30">
         <Section
-          eyebrow="Chapter 03 · API"
+          eyebrow="Public API"
           title="Component APIs shaped by intent."
           description="The API is the product. It teaches, constrains, and rewards good composition."
         >
           <div className="grid gap-8 md:grid-cols-2">
             <Reveal>
-              <div className="border border-border bg-card p-6">
+              <div className="rounded-3xl border border-border bg-card p-6 shadow-soft">
                 <p className="mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
                   Configuration (avoid)
                 </p>
@@ -327,8 +326,8 @@ function DesignSystem() {
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div className="border border-gold/40 bg-card p-6">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <div className="border border-accent/40 bg-card p-6">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   Composition (preferred)
                 </p>
                 <pre className="mono mt-4 overflow-auto rounded border border-border bg-background p-4 text-[11px] leading-relaxed text-ink">
@@ -361,10 +360,7 @@ function DesignSystem() {
       </div>
 
       {/* MOTION */}
-      <Section
-        eyebrow="Chapter 04 · Motion"
-        title="Motion as a system, not decoration."
-      >
+      <Section eyebrow="Motion" title="Motion as a system, not decoration.">
         <div className="grid gap-6 md:grid-cols-3">
           {[
             [
@@ -393,8 +389,8 @@ function DesignSystem() {
             ],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 60}>
-              <div className="lift border border-border bg-card p-6">
-                <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+              <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
+                <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                   0{i + 1}
                 </p>
                 <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">
@@ -411,10 +407,7 @@ function DesignSystem() {
 
       {/* FIGMA ↔ CODE */}
       <div className="border-y border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 05 · The Handoff"
-          title="Figma-to-code principles."
-        >
+        <Section eyebrow="Design to code" title="Figma-to-code principles.">
           <div className="grid gap-10 md:grid-cols-[1fr_1fr]">
             <Reveal>
               <ArchitectureIllus />
@@ -435,7 +428,7 @@ function DesignSystem() {
                     "Accessibility annotations travel with the component, not the ticket.",
                   ].map((line) => (
                     <li key={line} className="flex gap-3">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
                       <span>{line}</span>
                     </li>
                   ))}
@@ -448,7 +441,7 @@ function DesignSystem() {
 
       {/* COMPONENTS */}
       <Section
-        eyebrow="Chapter 06 · Inventory"
+        eyebrow="Inventory"
         title="A source-level starting point."
         description="These components have existing Storybook examples. They live in src/components; no public packages/ui package is published. Accessibility and keyboard coverage have not yet been comprehensively verified."
       >
@@ -461,10 +454,7 @@ function DesignSystem() {
 
       {/* SCALE */}
       <div className="border-t border-border/70 bg-surface/30">
-        <Section
-          eyebrow="Chapter 07 · Scale"
-          title="Why systems multiply teams."
-        >
+        <Section eyebrow="Scale" title="Why systems multiply teams.">
           <div className="grid gap-6 md:grid-cols-3">
             {[
               [
@@ -481,8 +471,8 @@ function DesignSystem() {
               ],
             ].map(([t, d], i) => (
               <Reveal key={t} delay={i * 80}>
-                <div className="lift border border-border bg-card p-6">
-                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                <div className="lift rounded-3xl border border-border bg-card p-6 shadow-soft">
+                  <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                     0{i + 1}
                   </p>
                   <h3 className="mt-4 font-display text-xl font-medium tracking-tight text-ink">

@@ -4,7 +4,7 @@ import { useGsap } from "@/lib/gsap";
 /**
  * JourneyRail — scroll-driven documentary spine.
  *
- * Renders a fixed vertical rail that fills with gold as the user scrolls
+ * Renders a fixed vertical rail that fills with the coral-red accent as the user scrolls
  * through the timeline. Chapter markers along the rail highlight when their
  * matching chapter enters view. Each chapter's body drifts in from Z-depth,
  * settles at rest, and drifts back out on exit — all scrubbed to scroll so
@@ -29,8 +29,10 @@ function RailRoot({
   const railRef = useRef<HTMLDivElement | null>(null);
 
   const ref = useGsap(({ gsap, ScrollTrigger, scope }) => {
-    const fill = railRef.current?.querySelector<HTMLElement>("[data-rail-fill]");
-    const ticks = railRef.current?.querySelectorAll<HTMLElement>("[data-rail-tick]");
+    const fill =
+      railRef.current?.querySelector<HTMLElement>("[data-rail-fill]");
+    const ticks =
+      railRef.current?.querySelectorAll<HTMLElement>("[data-rail-tick]");
     const chapters = scope.querySelectorAll<HTMLElement>("[data-chapter]");
 
     const st = ScrollTrigger.create({
@@ -132,8 +134,11 @@ function RailRoot({
       >
         <div
           data-rail-fill
-          className="h-full origin-top bg-gold"
-          style={{ transform: "scaleY(0)", transition: "transform 60ms linear" }}
+          className="h-full origin-top bg-accent"
+          style={{
+            transform: "scaleY(0)",
+            transition: "transform 60ms linear",
+          }}
         />
         <ol className="absolute inset-y-0 -left-16 right-0 flex flex-col justify-between">
           {years.map((y, i) => (
@@ -143,16 +148,14 @@ function RailRoot({
               data-active="false"
               className="group flex items-center justify-end gap-2"
             >
-              <span className="mono rounded-sm bg-background/85 px-1.5 py-0.5 text-[9px] uppercase tracking-[0.24em] text-muted-foreground backdrop-blur-sm transition-colors group-data-[active=true]:text-gold">
+              <span className="mono rounded-sm bg-background/85 px-1.5 py-0.5 text-[9px] uppercase tracking-[0.24em] text-muted-foreground backdrop-blur-sm transition-colors group-data-[active=true]:text-accent-ink">
                 {y}
               </span>
-              <span className="h-2 w-2 shrink-0 rounded-full border-2 border-background bg-border-strong transition-colors group-data-[active=true]:bg-gold" />
+              <span className="h-2 w-2 shrink-0 rounded-full border-2 border-background bg-border-strong transition-colors group-data-[active=true]:bg-accent" />
             </li>
           ))}
         </ol>
-
       </div>
-
 
       {children}
     </div>
@@ -189,7 +192,7 @@ function Chapter({
       <span
         aria-hidden
         data-chapter-marker
-        className="absolute -left-1 top-4 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-background bg-gold shadow-[0_0_0_2px_color-mix(in_oklab,var(--gold)_30%,transparent)] md:block"
+        className="absolute -left-1 top-4 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-background bg-accent shadow-[0_0_0_2px_color-mix(in_oklab,var(--accent)_30%,transparent)] md:block"
       />
       <div
         className={`grid gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16 ${
@@ -203,7 +206,7 @@ function Chapter({
               className="pointer-events-none absolute -inset-6 opacity-60"
               style={{
                 backgroundImage:
-                  "radial-gradient(ellipse 60% 60% at 50% 50%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 70%)",
+                  "radial-gradient(ellipse 60% 60% at 50% 50%, color-mix(in oklab, var(--accent) 14%, transparent), transparent 70%)",
               }}
             />
             {artifact}
@@ -212,7 +215,7 @@ function Chapter({
 
         <div data-chapter-body>
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <span className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Ch. {String(index + 1).padStart(2, "0")}
             </span>
             <span aria-hidden className="mono text-[10px] text-border-strong">

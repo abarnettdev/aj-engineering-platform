@@ -96,7 +96,8 @@ Strong initial RAG sources already exist:
   - `src/routes/writing.index.tsx`
   - `src/routes/writing.$slug.tsx`
 - Static/public source:
-  - `public/resume.pdf`
+  - `public/resumes/aj-barnett-product-design.pdf`
+  - `public/resumes/aj-barnett-software-engineering.pdf`
 - Secondary corpus candidates:
   - `src/stories/`, especially stories describing component and engineering philosophy.
 

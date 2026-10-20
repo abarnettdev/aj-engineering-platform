@@ -1,94 +1,117 @@
 import { Link } from "@tanstack/react-router";
-import { Linkedin, Github, Mail } from "lucide-react";
+import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+
+const exploreLinks = [
+  ["Work", "/work"],
+  ["Product Design", "/design"],
+  ["Engineering", "/engineering"],
+  ["Design System", "/systems"],
+  ["Ask A.J.", "/ask-aj"],
+  ["About", "/timeline"],
+] as const;
 
 export function SiteFooter() {
   return (
-    <footer className="mt-32 border-t border-border/70 bg-surface/40">
-      <div className="container-page grid gap-10 py-14 md:grid-cols-4">
-        <div className="md:col-span-2">
-          <div className="flex items-center gap-2">
-            <span className="grid h-7 w-7 place-items-center rounded-md border border-border-strong bg-surface-elevated text-[11px] font-semibold">
-              AJ
-            </span>
-            <span className="text-sm font-medium">AJ Barnett</span>
+    <footer className="px-3 pb-3 pt-20 sm:pt-28">
+      <div className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[2rem] bg-ink px-6 py-14 text-white md:px-12">
+        <div
+          aria-hidden="true"
+          className="glow pointer-events-none absolute inset-0 opacity-55"
+        />
+        <div className="relative grid gap-12 md:grid-cols-[1.2fr_0.8fr]">
+          <div>
+            <p className="max-w-2xl text-balance text-4xl font-medium tracking-tight text-white md:text-6xl">
+              From first concept to{" "}
+              <span className="text-accent">production code.</span>
+            </p>
+            <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/65">
+              Product design, design systems, and software engineering with one
+              person accountable for the handoff.
+            </p>
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex min-h-12 items-center rounded-full bg-white px-6 text-sm font-semibold text-ink transition-colors hover:bg-accent hover:text-white"
+            >
+              Start a conversation
+            </Link>
           </div>
-          <p className="mt-4 max-w-md text-sm text-muted-foreground">
-            Product Designer &amp; Software Engineer. Nearly two decades across
-            product design, visual design, design systems, and production code.
-          </p>
-          <p className="mono mt-6 text-[11px] uppercase tracking-widest text-muted-foreground">
-            Available for Product Design &amp; Software Engineering roles
-          </p>
+
+          <div className="grid grid-cols-2 gap-8 text-sm">
+            <div>
+              <h2 className="font-medium text-white/50">Explore</h2>
+              <ul className="mt-4 grid gap-2.5">
+                {exploreLinks.map(([label, to]) => (
+                  <li key={to}>
+                    <Link to={to} className="text-white/80 hover:text-accent">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="font-medium text-white/50">Connect</h2>
+              <ul className="mt-4 grid gap-2.5">
+                <li>
+                  <a
+                    href="mailto:aj.barnett84@gmail.com"
+                    className="inline-flex items-center gap-2 text-white/80 hover:text-accent"
+                  >
+                    <Mail className="size-4" aria-hidden="true" /> Email
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/abarnettdev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white/80 hover:text-accent"
+                  >
+                    <Github className="size-4" aria-hidden="true" /> GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/aj-barnett-2b5574382/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white/80 hover:text-accent"
+                  >
+                    <Linkedin className="size-4" aria-hidden="true" /> LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/resumes/aj-barnett-product-design.pdf"
+                    className="text-white/80 hover:text-accent"
+                  >
+                    Design résumé
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/resumes/aj-barnett-software-engineering.pdf"
+                    className="text-white/80 hover:text-accent"
+                  >
+                    Engineering résumé
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <h2 className="mono text-[11px] uppercase tracking-widest text-muted-foreground">
-            Explore
-          </h2>
-          <ul className="mt-4 space-y-2 text-sm">
-            {[
-              ["Work", "/work"],
-              ["Journey", "/timeline"],
-              ["Engineering", "/engineering"],
-              ["Systems", "/systems"],
-              ["Field Notes", "/writing"],
-            ].map(([label, to]) => (
-              <li key={to}>
-                <Link
-                  to={to}
-                  className="text-foreground/80 hover:text-foreground"
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h2 className="mono text-[11px] uppercase tracking-widest text-muted-foreground">
-            Connect
-          </h2>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li>
-              <a
-                href="https://www.linkedin.com/in/aj-barnett-2b5574382/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
-              >
-                <Linkedin className="h-3.5 w-3.5" /> LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/abarnettdev"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
-              >
-                <Github className="h-3.5 w-3.5" /> GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:aj.barnett84@gmail.com"
-                className="inline-flex items-center gap-2 text-foreground/80 hover:text-foreground"
-              >
-                <Mail className="h-3.5 w-3.5" /> Email
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border/70">
-        <div className="container-page flex flex-col items-start justify-between gap-2 py-5 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p className="mono">
-            © {new Date().getFullYear()} AJ Barnett, Built with intent.
+        <div className="relative mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-white/15 pt-6 text-xs text-white/50">
+          <p>
+            © {new Date().getFullYear()} AJ Barnett. Product Designer &amp;
+            Software Engineer.
           </p>
-          <p className="mono">
-            Product design · Design systems · Software engineering
-          </p>
+          <a
+            href="#main"
+            className="inline-flex items-center gap-1.5 hover:text-white"
+          >
+            Back to top <ArrowUp className="size-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>

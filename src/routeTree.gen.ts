@@ -9,48 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorkRouteImport } from './routes/work'
-import { Route as TimelineRouteImport } from './routes/timeline'
-import { Route as SystemsRouteImport } from './routes/systems'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as EngineeringRouteImport } from './routes/engineering'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AskAjRouteImport } from './routes/ask-aj'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AskAjRouteImport } from './routes/ask-aj'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DesignRouteImport } from './routes/design'
+import { Route as EngineeringRouteImport } from './routes/engineering'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SystemsRouteImport } from './routes/systems'
+import { Route as TimelineRouteImport } from './routes/timeline'
+import { Route as WorkRouteImport } from './routes/work'
+import { Route as ApiAskAjRouteImport } from './routes/api.ask-aj'
+import { Route as ApiContactRouteImport } from './routes/api.contact'
+import { Route as WorkAskAjRouteImport } from './routes/work_.ask-aj'
+import { Route as WorkLegatoRouteImport } from './routes/work_.legato'
 import { Route as WritingIndexRouteImport } from './routes/writing.index'
 import { Route as WritingSlugRouteImport } from './routes/writing.$slug'
-import { Route as WorkAskAjRouteImport } from './routes/work.ask-aj'
-import { Route as ApiContactRouteImport } from './routes/api.contact'
-import { Route as ApiAskAjRouteImport } from './routes/api.ask-aj'
 
-const WorkRoute = WorkRouteImport.update({
-  id: '/work',
-  path: '/work',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TimelineRoute = TimelineRouteImport.update({
-  id: '/timeline',
-  path: '/timeline',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SystemsRoute = SystemsRouteImport.update({
-  id: '/systems',
-  path: '/systems',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EngineeringRoute = EngineeringRouteImport.update({
-  id: '/engineering',
-  path: '/engineering',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AskAjRoute = AskAjRouteImport.update({
@@ -58,9 +35,59 @@ const AskAjRoute = AskAjRouteImport.update({
   path: '/ask-aj',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EngineeringRoute = EngineeringRouteImport.update({
+  id: '/engineering',
+  path: '/engineering',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemsRoute = SystemsRouteImport.update({
+  id: '/systems',
+  path: '/systems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineRoute = TimelineRouteImport.update({
+  id: '/timeline',
+  path: '/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAskAjRoute = ApiAskAjRouteImport.update({
+  id: '/api/ask-aj',
+  path: '/api/ask-aj',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkAskAjRoute = WorkAskAjRouteImport.update({
+  id: '/work_/ask-aj',
+  path: '/work/ask-aj',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkLegatoRoute = WorkLegatoRouteImport.update({
+  id: '/work_/legato',
+  path: '/work/legato',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WritingIndexRoute = WritingIndexRouteImport.update({
@@ -73,34 +100,21 @@ const WritingSlugRoute = WritingSlugRouteImport.update({
   path: '/writing/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WorkAskAjRoute = WorkAskAjRouteImport.update({
-  id: '/ask-aj',
-  path: '/ask-aj',
-  getParentRoute: () => WorkRoute,
-} as any)
-const ApiContactRoute = ApiContactRouteImport.update({
-  id: '/api/contact',
-  path: '/api/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApiAskAjRoute = ApiAskAjRouteImport.update({
-  id: '/api/ask-aj',
-  path: '/api/ask-aj',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
   '/work/ask-aj': typeof WorkAskAjRoute
+  '/work/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -108,14 +122,16 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
   '/work/ask-aj': typeof WorkAskAjRoute
+  '/work/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing': typeof WritingIndexRoute
 }
@@ -124,14 +140,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ask-aj': typeof AskAjRoute
   '/contact': typeof ContactRoute
+  '/design': typeof DesignRoute
   '/engineering': typeof EngineeringRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/systems': typeof SystemsRoute
   '/timeline': typeof TimelineRoute
-  '/work': typeof WorkRouteWithChildren
+  '/work': typeof WorkRoute
   '/api/ask-aj': typeof ApiAskAjRoute
   '/api/contact': typeof ApiContactRoute
-  '/work/ask-aj': typeof WorkAskAjRoute
+  '/work_/ask-aj': typeof WorkAskAjRoute
+  '/work_/legato': typeof WorkLegatoRoute
   '/writing/$slug': typeof WritingSlugRoute
   '/writing/': typeof WritingIndexRoute
 }
@@ -141,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -149,6 +168,7 @@ export interface FileRouteTypes {
     | '/api/ask-aj'
     | '/api/contact'
     | '/work/ask-aj'
+    | '/work/legato'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesByTo: FileRoutesByTo
@@ -156,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -164,6 +185,7 @@ export interface FileRouteTypes {
     | '/api/ask-aj'
     | '/api/contact'
     | '/work/ask-aj'
+    | '/work/legato'
     | '/writing/$slug'
     | '/writing'
   id:
@@ -171,6 +193,7 @@ export interface FileRouteTypes {
     | '/'
     | '/ask-aj'
     | '/contact'
+    | '/design'
     | '/engineering'
     | '/sitemap.xml'
     | '/systems'
@@ -178,7 +201,8 @@ export interface FileRouteTypes {
     | '/work'
     | '/api/ask-aj'
     | '/api/contact'
-    | '/work/ask-aj'
+    | '/work_/ask-aj'
+    | '/work_/legato'
     | '/writing/$slug'
     | '/writing/'
   fileRoutesById: FileRoutesById
@@ -187,59 +211,27 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AskAjRoute: typeof AskAjRoute
   ContactRoute: typeof ContactRoute
+  DesignRoute: typeof DesignRoute
   EngineeringRoute: typeof EngineeringRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SystemsRoute: typeof SystemsRoute
   TimelineRoute: typeof TimelineRoute
-  WorkRoute: typeof WorkRouteWithChildren
+  WorkRoute: typeof WorkRoute
   ApiAskAjRoute: typeof ApiAskAjRoute
   ApiContactRoute: typeof ApiContactRoute
+  WorkAskAjRoute: typeof WorkAskAjRoute
+  WorkLegatoRoute: typeof WorkLegatoRoute
   WritingSlugRoute: typeof WritingSlugRoute
   WritingIndexRoute: typeof WritingIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/work': {
-      id: '/work'
-      path: '/work'
-      fullPath: '/work'
-      preLoaderRoute: typeof WorkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/timeline': {
-      id: '/timeline'
-      path: '/timeline'
-      fullPath: '/timeline'
-      preLoaderRoute: typeof TimelineRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/systems': {
-      id: '/systems'
-      path: '/systems'
-      fullPath: '/systems'
-      preLoaderRoute: typeof SystemsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/engineering': {
-      id: '/engineering'
-      path: '/engineering'
-      fullPath: '/engineering'
-      preLoaderRoute: typeof EngineeringRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ask-aj': {
@@ -249,11 +241,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AskAjRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/engineering': {
+      id: '/engineering'
+      path: '/engineering'
+      fullPath: '/engineering'
+      preLoaderRoute: typeof EngineeringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/systems': {
+      id: '/systems'
+      path: '/systems'
+      fullPath: '/systems'
+      preLoaderRoute: typeof SystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline': {
+      id: '/timeline'
+      path: '/timeline'
+      fullPath: '/timeline'
+      preLoaderRoute: typeof TimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work': {
+      id: '/work'
+      path: '/work'
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ask-aj': {
+      id: '/api/ask-aj'
+      path: '/api/ask-aj'
+      fullPath: '/api/ask-aj'
+      preLoaderRoute: typeof ApiAskAjRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work_/ask-aj': {
+      id: '/work_/ask-aj'
+      path: '/work/ask-aj'
+      fullPath: '/work/ask-aj'
+      preLoaderRoute: typeof WorkAskAjRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work_/legato': {
+      id: '/work_/legato'
+      path: '/work/legato'
+      fullPath: '/work/legato'
+      preLoaderRoute: typeof WorkLegatoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/writing/': {
@@ -270,51 +332,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WritingSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/work/ask-aj': {
-      id: '/work/ask-aj'
-      path: '/ask-aj'
-      fullPath: '/work/ask-aj'
-      preLoaderRoute: typeof WorkAskAjRouteImport
-      parentRoute: typeof WorkRoute
-    }
-    '/api/contact': {
-      id: '/api/contact'
-      path: '/api/contact'
-      fullPath: '/api/contact'
-      preLoaderRoute: typeof ApiContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/api/ask-aj': {
-      id: '/api/ask-aj'
-      path: '/api/ask-aj'
-      fullPath: '/api/ask-aj'
-      preLoaderRoute: typeof ApiAskAjRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
-
-interface WorkRouteChildren {
-  WorkAskAjRoute: typeof WorkAskAjRoute
-}
-
-const WorkRouteChildren: WorkRouteChildren = {
-  WorkAskAjRoute: WorkAskAjRoute,
-}
-
-const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AskAjRoute: AskAjRoute,
   ContactRoute: ContactRoute,
+  DesignRoute: DesignRoute,
   EngineeringRoute: EngineeringRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SystemsRoute: SystemsRoute,
   TimelineRoute: TimelineRoute,
-  WorkRoute: WorkRouteWithChildren,
+  WorkRoute: WorkRoute,
   ApiAskAjRoute: ApiAskAjRoute,
   ApiContactRoute: ApiContactRoute,
+  WorkAskAjRoute: WorkAskAjRoute,
+  WorkLegatoRoute: WorkLegatoRoute,
   WritingSlugRoute: WritingSlugRoute,
   WritingIndexRoute: WritingIndexRoute,
 }

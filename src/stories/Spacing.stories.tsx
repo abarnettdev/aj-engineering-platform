@@ -25,7 +25,7 @@ function Ruler() {
                 {n} · {n * 4}px
               </span>
               <div
-                className="h-3 bg-gold"
+                className="h-3 bg-accent"
                 style={{ width: `${n * 4}px` }}
                 aria-hidden
               />
@@ -40,7 +40,7 @@ function Ruler() {
         </p>
         <div className="border border-border">
           <div className="border-b border-border bg-card px-6 py-20 md:py-28">
-            <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
               Section · py-20 md:py-28
             </p>
             <p className="mt-3 text-sm text-foreground/80">

@@ -6,7 +6,6 @@ import { SystemsMap } from "@/components/composites/systems-map";
 import { AiLifecycle } from "@/components/composites/ai-lifecycle";
 import { MentalModels } from "@/components/composites/mental-models";
 import { Magnetic } from "@/components/motion";
-import heroImage from "@/assets/hero-engineering.jpg";
 
 export const Route = createFileRoute("/engineering")({
   head: () => ({
@@ -76,11 +75,11 @@ function Engineering() {
     <>
       {/* HERO */}
       <PageHero
-        eyebrow="How I think · Chapter 03"
+        eyebrow="How I think"
         chapter="03"
         chapterLabel="06"
-        image={heroImage}
-        imageAlt="Control-room whiteboard covered in hand-drawn architecture: nodes, contracts, and a critical path traced in gold with a single risk noted in oxblood."
+        image="/visuals/engineering-thinking-studio.webp"
+        imageAlt="A system moving from data shape through API contract and reusable component to a tested product."
         imageCaption="Systems thinking"
         imageMeta="Practice"
         headline={
@@ -121,7 +120,7 @@ function Engineering() {
           {/* Left: framing */}
           <Reveal>
             <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
-              <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+              <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                 Fig. 01 · The Operating System
               </p>
               <h2
@@ -131,11 +130,11 @@ function Engineering() {
               >
                 Inputs in.
                 <br />
-                <span className="font-accent italic normal-case text-gold">
+                <span className="font-accent italic normal-case text-accent-ink">
                   Production out.
                 </span>
               </h2>
-              <div className="mt-6 h-px w-24 bg-gold" />
+              <div className="mt-6 h-px w-24 bg-accent" />
               <p className="mt-8 max-w-md text-[17px] leading-relaxed text-foreground/85">
                 Product intent, users, constraints, and the systems already in
                 the ground, all of it passes through the same axis before it
@@ -165,7 +164,7 @@ function Engineering() {
         <div className="container-page grid gap-10 py-20 md:grid-cols-[0.9fr_1.4fr] md:py-28">
           <Reveal>
             <div>
-              <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+              <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                 From Frontend to AI Product Engineering
               </p>
               <h2
@@ -174,7 +173,7 @@ function Engineering() {
               >
                 The same foundation,
                 <br />
-                <span className="font-accent italic normal-case text-gold">
+                <span className="font-accent italic normal-case text-accent-ink">
                   a larger product surface.
                 </span>
               </h2>
@@ -210,7 +209,7 @@ function Engineering() {
           <Reveal>
             <div className="grid gap-6 md:grid-cols-[1fr_2fr] md:items-end md:gap-16">
               <div>
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Chapter · Principles
                 </p>
                 <h2
@@ -219,7 +218,7 @@ function Engineering() {
                 >
                   Six rules
                   <br />
-                  <span className="font-accent italic normal-case text-gold">
+                  <span className="font-accent italic normal-case text-accent-ink">
                     I keep coming back to.
                   </span>
                 </h2>
@@ -237,9 +236,9 @@ function Engineering() {
           >
             {/* Featured principle spans wide */}
             <Reveal className="md:col-span-2">
-              <article className="group edge-gold relative flex h-full flex-col justify-between overflow-hidden border border-ink bg-ink p-8 text-background md:min-h-[16rem] md:flex-row md:items-end md:gap-10 md:p-12">
+              <article className="group edge-accent relative flex h-full flex-col justify-between overflow-hidden border border-ink bg-ink p-8 text-background md:min-h-[16rem] md:flex-row md:items-end md:gap-10 md:p-12">
                 <div className="relative z-10">
-                  <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                  <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                     Principle {featured.n} · Featured
                   </p>
                   <h3 className="mt-6 max-w-3xl font-display text-4xl font-medium leading-[1.02] tracking-tight text-background md:text-5xl">
@@ -252,7 +251,7 @@ function Engineering() {
                 {/* oversized numeral escapes the container */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -bottom-10 -right-4 font-display text-[10rem] font-black leading-none tracking-[-0.06em] text-gold/20 md:text-[18rem]"
+                  className="pointer-events-none absolute -bottom-10 -right-4 font-display text-[10rem] font-black leading-none tracking-[-0.06em] text-accent-ink/20 md:text-[18rem]"
                 >
                   {featured.n}
                 </span>
@@ -269,7 +268,7 @@ function Engineering() {
                   className={
                     p.risk
                       ? "group relative flex h-full flex-col border border-oxblood/60 bg-card p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.2)]"
-                      : "group edge-gold relative flex h-full flex-col border border-border bg-card p-7 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.2)]"
+                      : "group edge-accent relative flex h-full flex-col rounded-3xl border border-border bg-card p-7 shadow-soft"
                   }
                 >
                   <div
@@ -279,7 +278,7 @@ function Engineering() {
                   >
                     <span
                       className={`mono text-[10px] uppercase tracking-[0.28em] ${
-                        p.risk ? "text-oxblood" : "text-gold"
+                        p.risk ? "text-oxblood" : "text-accent-ink"
                       }`}
                     >
                       {p.risk ? `Principle ${p.n} · Risk` : `Principle ${p.n}`}
@@ -326,7 +325,7 @@ function Engineering() {
           <div className="grid gap-12 md:grid-cols-[1fr_1.05fr] md:gap-20">
             <Reveal>
               <div>
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Chapter · Accessibility
                 </p>
                 <h2
@@ -335,11 +334,11 @@ function Engineering() {
                 >
                   Accessibility is not compliance.
                   <br />
-                  <span className="font-accent italic normal-case text-gold">
+                  <span className="font-accent italic normal-case text-accent-ink">
                     It&apos;s product quality.
                   </span>
                 </h2>
-                <div className="mt-6 h-px w-24 bg-gold" />
+                <div className="mt-6 h-px w-24 bg-accent" />
 
                 <div className="mt-10 max-w-xl space-y-6 text-[17px] leading-[1.7] text-foreground/90">
                   <p>
@@ -374,12 +373,12 @@ function Engineering() {
               <div className="relative">
                 {/* pull quote card, escapes left */}
                 <blockquote className="relative z-10 border border-ink bg-ink p-8 text-background md:-ml-16 md:p-10">
-                  <p className="mono mb-6 text-[10px] uppercase tracking-[0.28em] text-gold">
+                  <p className="mono mb-6 text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                     Field note
                   </p>
                   <p className="font-display text-[1.7rem] font-medium leading-[1.15] tracking-tight text-background md:text-[2rem]">
                     &ldquo;The accessibility investment{" "}
-                    <span className="font-accent italic normal-case text-gold">
+                    <span className="font-accent italic normal-case text-accent-ink">
                       pays back somewhere else.
                     </span>{" "}
                     Every time.&rdquo;
@@ -404,9 +403,9 @@ function Engineering() {
                   ].map(([t, d]) => (
                     <li
                       key={t}
-                      className="edge-gold group border border-border bg-card p-4"
+                      className="edge-accent group rounded-2xl border border-border bg-card p-4 shadow-soft"
                     >
-                      <p className="mono text-[10px] uppercase tracking-[0.24em] text-gold">
+                      <p className="mono text-[10px] uppercase tracking-[0.24em] text-accent-ink">
                         {t}
                       </p>
                       <p className="mt-1.5 text-[13.5px] leading-relaxed text-foreground/85">
@@ -430,7 +429,7 @@ function Engineering() {
           <Reveal>
             <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-end md:gap-16">
               <div>
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Chapter · AI-Assisted Engineering
                 </p>
                 <h2
@@ -439,7 +438,7 @@ function Engineering() {
                 >
                   AI accelerates me.
                   <br />
-                  <span className="font-accent italic normal-case text-gold">
+                  <span className="font-accent italic normal-case text-accent-ink">
                     It does not replace me.
                   </span>
                 </h2>
@@ -460,8 +459,8 @@ function Engineering() {
 
           <div className="mt-20 grid gap-6 md:grid-cols-2">
             <Reveal>
-              <article className="edge-gold group h-full border border-border bg-card p-8">
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+              <article className="edge-accent group h-full rounded-3xl border border-border bg-card p-8 shadow-soft">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Where AI helps
                 </p>
                 <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-foreground/85">
@@ -475,7 +474,7 @@ function Engineering() {
                     <li key={line} className="flex gap-3">
                       <span
                         aria-hidden
-                        className="mt-2 h-1 w-4 shrink-0 bg-gold"
+                        className="mt-2 h-1 w-4 shrink-0 bg-accent"
                       />
                       <span>{line}</span>
                     </li>
@@ -484,8 +483,8 @@ function Engineering() {
               </article>
             </Reveal>
             <Reveal delay={120}>
-              <article className="edge-gold group h-full border border-ink bg-ink p-8 text-background">
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+              <article className="edge-accent group h-full border border-ink bg-ink p-8 text-background">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Where judgment stays
                 </p>
                 <ul className="mt-6 space-y-3 text-[15px] leading-relaxed text-background/85">
@@ -499,7 +498,7 @@ function Engineering() {
                     <li key={line} className="flex gap-3">
                       <span
                         aria-hidden
-                        className="mt-2 h-1 w-4 shrink-0 bg-gold"
+                        className="mt-2 h-1 w-4 shrink-0 bg-accent"
                       />
                       <span>{line}</span>
                     </li>
@@ -520,7 +519,7 @@ function Engineering() {
           <Reveal>
             <div className="grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-end md:gap-16">
               <div>
-                <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+                <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
                   Chapter · Mental Models
                 </p>
                 <h2
@@ -529,7 +528,7 @@ function Engineering() {
                 >
                   Models before
                   <br />
-                  <span className="font-accent italic normal-case text-gold">
+                  <span className="font-accent italic normal-case text-accent-ink">
                     implementation.
                   </span>
                 </h2>
@@ -551,12 +550,12 @@ function Engineering() {
       <section className="border-t border-border/70 bg-background">
         <div className="container-page py-20 text-center md:py-28">
           <Reveal>
-            <p className="mono text-[10px] uppercase tracking-[0.28em] text-gold">
+            <p className="mono text-[10px] uppercase tracking-[0.28em] text-accent-ink">
               End of Chapter Three
             </p>
             <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] tracking-tight text-ink md:text-5xl">
               Read the field notes,{" "}
-              <span className="font-accent italic normal-case text-gold">
+              <span className="font-accent italic normal-case text-accent-ink">
                 or start a conversation.
               </span>
             </h2>
@@ -564,7 +563,7 @@ function Engineering() {
               <Magnetic>
                 <Link
                   to="/writing"
-                  className="group tactile inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-gold hover:text-ink"
+                  className="group tactile inline-flex items-center gap-2 bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-accent hover:text-ink"
                 >
                   Read the practice
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -573,7 +572,7 @@ function Engineering() {
               <Magnetic>
                 <Link
                   to="/contact"
-                  className="group tactile inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-gold hover:text-gold"
+                  className="group tactile inline-flex items-center gap-2 border border-border-strong px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-ink transition-all hover:border-accent hover:text-accent-ink"
                 >
                   Start a conversation
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

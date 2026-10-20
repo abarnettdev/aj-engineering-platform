@@ -1,30 +1,21 @@
 import { CompositeFigure } from "@/components/composites/figure";
-import image from "@/assets/composite-ai-lifecycle.jpg";
-
-/**
- * AiLifecycle, editorial figure of the four-phase AI-assisted flow.
- *
- * Explore → Draft → Review → Ship, rendered as four physical objects
- * on plinths connected by a single continuous gold ribbon.
- */
 export function AiLifecycle() {
   return (
     <CompositeFigure
-      eyebrow="Fig. 04 · AI Lifecycle"
-      title="Explore · Draft · Review · Ship"
-      image={image}
-      alt="Four isometric objects on plinths, a crystal, an unfolded blueprint, a stacked pair of panels, and a solid block, connected by a continuous gold ribbon."
+      eyebrow="Fig. 04 · AI Product"
+      title="Interface · Stream · Safeguards"
+      image="/visuals/ai-lifecycle-studio.webp"
+      alt="The Ask A.J. lifecycle from question through validation and streamed citation to graceful fallback."
       caption={
         <>
-          AI is a co-author, never the signature. Each phase leaves an
-          artifact a human can inspect, revise, and stand behind.
+          A useful AI product combines a clear interface with server-side model
+          access, streamed feedback, citations, and graceful fallbacks.
         </>
       }
       legend={[
-        { label: "Explore", note: "find the shape of the problem" },
-        { label: "Draft", note: "write the first honest attempt" },
-        { label: "Review", note: "cut, sharpen, verify" },
-        { label: "Ship", note: "sign the work and move on" },
+        { label: "Interface", note: "a focused question-and-answer flow" },
+        { label: "Stream", note: "progress the user can see" },
+        { label: "Safeguards", note: "validation, limits, and fallbacks" },
       ]}
     />
   );

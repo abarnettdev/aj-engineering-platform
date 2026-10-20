@@ -28,7 +28,7 @@ export function AskAjStatus({
         </span>
       ) : (
         <Sparkles
-          className="h-3.5 w-3.5 shrink-0 text-gold"
+          className="h-3.5 w-3.5 shrink-0 text-accent-ink"
           aria-hidden="true"
         />
       )}

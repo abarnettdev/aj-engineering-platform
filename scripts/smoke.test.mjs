@@ -11,6 +11,8 @@ const request = (path, options) =>
 for (const path of [
   "/",
   "/work",
+  "/work/legato",
+  "/design",
   "/timeline",
   "/systems",
   "/engineering",
@@ -31,6 +33,14 @@ for (const path of [
       assert.match(html, /From first concept to production code/);
       assert.doesNotMatch(html, /Ask A\.J\. is the portfolio proof/);
     }
+    if (path === "/work/legato") {
+      assert.match(html, /Design decisions become shared infrastructure/);
+      assert.match(html, /Independent public demonstration/);
+    }
+    if (path === "/work/ask-aj") {
+      assert.match(html, /AI portfolio agent/);
+      assert.match(html, /How Ask A\.J\. Works/);
+    }
   });
 }
 test("XML sitemap and static assets", async () => {
@@ -40,8 +50,8 @@ test("XML sitemap and static assets", async () => {
   assert.match(await sitemap.text(), /https:\/\/ajbarnett.tech/);
   for (const path of [
     "/robots.txt",
-    "/resume.pdf",
-    "/assets/aj-barnett-headshot.jpg",
+    "/resumes/aj-barnett-product-design.pdf",
+    "/resumes/aj-barnett-software-engineering.pdf",
     "/storybook/index.html",
   ]) {
     assert.equal((await request(path)).status, 200, path);
