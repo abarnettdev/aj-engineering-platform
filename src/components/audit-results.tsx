@@ -91,9 +91,8 @@ export function AuditResultsDialog({
           </DialogTitle>
           <DialogDescription className="max-w-3xl text-sm leading-relaxed sm:text-base">
             These results share one verified audit record last run on{" "}
-            {AUDIT_DATE}
-            for {AUDIT_URL}. They are evidence from that test run, not live
-            telemetry or a guarantee of future scores.
+            {AUDIT_DATE} for {AUDIT_URL}. They are evidence from that test run,
+            not live telemetry or a guarantee of future scores.
           </DialogDescription>
         </DialogHeader>
 
