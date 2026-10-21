@@ -25,8 +25,8 @@ export function SiteFooter() {
               <span className="text-accent">production code.</span>
             </p>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-white/65">
-              Product design, design systems, and software engineering with one
-              person accountable for the handoff.
+              Websites, applications, design systems, and AI-powered software
+              carried from clear product thinking into production code.
             </p>
             <Link
               to="/contact"

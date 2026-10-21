@@ -1,17 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Accessibility,
   ArrowDownToLine,
   ArrowRight,
   Check,
   Code2,
   FileCode,
-  Gauge,
   Layers,
   Mail,
   PenTool,
-  Smartphone,
 } from "lucide-react";
+import { QualityShowcase } from "@/components/quality-showcase";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,16 +86,18 @@ function Home() {
               <span className="text-accent-ink">production code.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-              I’m AJ Barnett. I design interfaces, build design systems, and
-              ship the software behind them.
+              I design and build websites, applications, and software that solve
+              real problems. My background spans visual design, full-stack
+              development, enterprise design systems, and AI-powered
+              applications.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link to="/work" className={buttonPrimary}>
                 Explore work{" "}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <Link to="/systems" className={buttonOutline}>
-                View design system
+              <Link to="/contact" className={buttonOutline}>
+                Hire AJ
               </Link>
               <Link
                 to="/ask-aj"
@@ -136,20 +136,19 @@ function Home() {
               className="glow pointer-events-none absolute inset-0 opacity-70"
             />
             <div className="relative">
-              <Eyebrow dark>About the work</Eyebrow>
+              <Eyebrow dark>Design through delivery</Eyebrow>
               <h2
                 id="about-work-title"
-                aria-label="One person who speaks design and code fluently."
+                aria-label="Design judgment backed by engineering depth."
                 className="mt-6 text-balance text-4xl font-medium text-white md:text-6xl"
               >
-                One person who speaks{" "}
-                <span className="text-accent">design</span> and{" "}
-                <span className="text-accent">code</span> fluently.
+                Design judgment with the engineering depth to ship it.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
-                My work spans visual design, product design, design systems,
-                frontend engineering, and production software. I keep the intent
-                intact from the first sketch through delivery.
+                I started in visual and web design, moved into application
+                development, and later led enterprise frontend and design-system
+                work. That range helps me carry an idea from concept to
+                production.
               </p>
             </div>
           </div>
@@ -168,6 +167,52 @@ function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section
+        className="container-page pb-20 sm:pb-28"
+        aria-labelledby="career-title"
+      >
+        <div className="rounded-3xl border border-border bg-card p-8 md:p-10">
+          <Eyebrow>Career progression</Eyebrow>
+          <h2
+            id="career-title"
+            className="mt-5 max-w-3xl text-4xl font-medium text-ink md:text-5xl"
+          >
+            From visual design to enterprise software.
+          </h2>
+          <ol className="mt-8 grid gap-5 md:grid-cols-5">
+            {[
+              ["Early work", "Branding, websites, and digital experiences"],
+              ["Automotive", "Campaign design and frontend development"],
+              ["Client work", "Commercial sites and custom applications"],
+              ["Fintech", "Authenticated workflows, APIs, and databases"],
+              [
+                "Enterprise",
+                "Legato, accessibility, standards, and leadership",
+              ],
+            ].map(([title, detail], index) => (
+              <li key={title} className="border-t border-border pt-4">
+                <span className="text-xs font-semibold text-accent-ink">
+                  0{index + 1}
+                </span>
+                <h3 className="mt-2 text-base font-semibold text-ink">
+                  {title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {detail}
+                </p>
+              </li>
+            ))}
+          </ol>
+          <Link
+            to="/timeline"
+            className="mt-8 inline-flex items-center gap-2 font-semibold text-accent-ink"
+          >
+            Read the full story{" "}
+            <ArrowRight className="size-4" aria-hidden="true" />
+          </Link>
         </div>
       </section>
 
@@ -293,39 +338,51 @@ function Home() {
       <section className="px-3" aria-labelledby="disciplines-title">
         <div className="mx-auto max-w-[1240px] rounded-[2rem] bg-surface px-6 py-20 shadow-soft md:px-12">
           <div className="mx-auto max-w-3xl text-center">
-            <Eyebrow>Two disciplines, one practice</Eyebrow>
+            <Eyebrow>Ways I can help</Eyebrow>
             <h2
               id="disciplines-title"
               className="mt-5 text-balance text-4xl font-medium text-ink md:text-6xl"
             >
-              Hire for design. Hire for engineering.
+              Useful work for teams and businesses.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground">
-              One craft that covers the full product lifecycle.
+              Bring me in for a full-time role, a focused contract, or a product
+              that needs both design and engineering judgment.
             </p>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 icon: PenTool,
-                title: "Product Design",
+                title: "Websites and product design",
                 to: "/design" as const,
                 items: [
-                  "Product strategy and UX flows",
+                  "Clear structure and user flows",
                   "Visual and interaction design",
-                  "Design systems and tokens",
-                  "Accessible patterns",
                 ],
               },
               {
                 icon: Code2,
-                title: "Software Engineering",
+                title: "Full-stack software",
                 to: "/engineering" as const,
+                items: ["React and TypeScript", "APIs, services, and delivery"],
+              },
+              {
+                icon: Layers,
+                title: "Design systems",
+                to: "/systems" as const,
                 items: [
-                  "React and TypeScript",
-                  "Frontend architecture",
-                  "Server integration and AI features",
-                  "Testing, performance, and delivery",
+                  "Reusable accessible components",
+                  "Tokens, Storybook, and governance",
+                ],
+              },
+              {
+                icon: FileCode,
+                title: "AI-powered applications",
+                to: "/work/ask-aj" as const,
+                items: [
+                  "Helpful AI interfaces",
+                  "RAG, MCP, and agent workflow prototypes",
                 ],
               },
             ].map((discipline) => (
@@ -354,7 +411,7 @@ function Home() {
                   to={discipline.to}
                   className="mt-8 inline-flex items-center gap-2 font-semibold text-accent-ink"
                 >
-                  Explore {discipline.title.toLowerCase()}{" "}
+                  See related work{" "}
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </article>
@@ -364,7 +421,7 @@ function Home() {
       </section>
 
       <section
-        className="container-page py-20 sm:py-28"
+        className="container-page py-20 sm:py-24"
         aria-labelledby="system-title"
       >
         <Eyebrow>Design system</Eyebrow>
@@ -374,66 +431,11 @@ function Home() {
         >
           I build and document the systems behind the interface.
         </h2>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              icon: Layers,
-              title: "Design tokens",
-              description:
-                "One source for color, type, spacing, radius, and elevation.",
-            },
-            {
-              icon: FileCode,
-              title: "Components",
-              description:
-                "Typed components with clear variants, states, and public APIs.",
-            },
-            {
-              icon: PenTool,
-              title: "Documentation",
-              description:
-                "Usage guidance and realistic examples beside the implementation.",
-            },
-            {
-              icon: Accessibility,
-              title: "Accessibility",
-              description:
-                "Keyboard support, visible focus, and WCAG targets by default.",
-            },
-            {
-              icon: Code2,
-              title: "Code quality",
-              description:
-                "Strict TypeScript, linting, and tests around meaningful contracts.",
-            },
-            {
-              icon: Gauge,
-              title: "Storybook",
-              description:
-                "A component workshop that shares the same tokens as the product.",
-            },
-          ].map(({ icon: Icon, title, description }, index) => (
-            <article
-              key={String(title)}
-              className={`rounded-3xl p-7 ${index === 0 ? "bg-ink text-white" : "bg-card shadow-soft"}`}
-            >
-              <Icon
-                className={`size-6 ${index === 0 ? "text-accent" : "text-accent-ink"}`}
-                aria-hidden="true"
-              />
-              <h3
-                className={`mt-8 text-xl font-medium ${index === 0 ? "text-white" : "text-ink"}`}
-              >
-                {title}
-              </h3>
-              <p
-                className={`mt-2 text-sm leading-relaxed ${index === 0 ? "text-white/60" : "text-muted-foreground"}`}
-              >
-                {description}
-              </p>
-            </article>
-          ))}
-        </div>
+        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          This site uses its own typed components, semantic tokens, documented
+          states, and accessible interaction patterns. Storybook exposes the
+          same building blocks used in production.
+        </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/systems" className={buttonPrimary}>
             Explore the system
@@ -448,57 +450,7 @@ function Home() {
         className="container-page pb-20 sm:pb-28"
         aria-labelledby="test-title"
       >
-        <div className="grid gap-10 rounded-3xl bg-card p-8 shadow-soft md:grid-cols-12 md:p-12">
-          <div className="md:col-span-5">
-            <Eyebrow>Test this website</Eyebrow>
-            <h2
-              id="test-title"
-              className="mt-5 text-4xl font-medium text-ink md:text-5xl"
-            >
-              Inspect the work directly.
-            </h2>
-            <p className="mt-5 text-muted-foreground">
-              Review the site the same way you would review a product or pull
-              request.
-            </p>
-          </div>
-          <ul className="grid gap-3 sm:grid-cols-2 md:col-span-7">
-            {[
-              {
-                icon: Gauge,
-                title: "Run Lighthouse",
-                description: "Targets 100 in Accessibility and SEO.",
-              },
-              {
-                icon: Accessibility,
-                title: "Use a keyboard",
-                description: "Skip links, focus rings, and labelled controls.",
-              },
-              {
-                icon: Smartphone,
-                title: "Resize it",
-                description: "Responsive from small phones to wide desktops.",
-              },
-              {
-                icon: Layers,
-                title: "Read the system",
-                description:
-                  "Tokens and components are documented in Storybook.",
-              },
-            ].map(({ icon: Icon, title, description }) => (
-              <li
-                key={String(title)}
-                className="rounded-2xl border border-border p-5"
-              >
-                <Icon className="size-5 text-accent-ink" aria-hidden="true" />
-                <p className="mt-4 font-medium text-ink">{title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {description}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <QualityShowcase />
       </section>
 
       <section
@@ -545,7 +497,7 @@ function Home() {
               id="contact-title"
               className="mt-5 max-w-3xl text-balance text-4xl font-medium text-ink md:text-6xl"
             >
-              Building something worth caring about?
+              Need a designer and engineer who can ship?
             </h2>
           </div>
           <Link to="/contact" className={buttonPrimary}>

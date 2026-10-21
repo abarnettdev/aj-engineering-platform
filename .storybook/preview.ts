@@ -1,6 +1,53 @@
 import type { Preview } from "@storybook/react";
 import "../src/styles.css";
 
+type DocumentedArgType = {
+  table?: Record<string, unknown> & { category?: string };
+  [key: string]: unknown;
+};
+
+const propCategories: Record<string, string> = {
+  children: "Content",
+  title: "Content",
+  description: "Content",
+  eyebrow: "Content",
+  headline: "Content",
+  image: "Media",
+  imageAlt: "Accessibility",
+  imageCaption: "Media",
+  variant: "Appearance",
+  size: "Appearance",
+  tone: "Appearance",
+  className: "Appearance",
+  disabled: "State",
+  open: "State",
+  isStreaming: "State",
+  error: "State",
+  currentPath: "Navigation",
+  onClick: "Events",
+  onChange: "Events",
+  onSubmit: "Events",
+  onNavigate: "Events",
+};
+
+export const argTypesEnhancers = [
+  ({ argTypes }: { argTypes: Record<string, DocumentedArgType> }) =>
+    Object.fromEntries(
+      Object.entries(argTypes).map(([name, config]) => [
+        name,
+        {
+          ...config,
+          table: {
+            ...config.table,
+            ...(propCategories[name]
+              ? { category: propCategories[name] }
+              : undefined),
+          },
+        },
+      ]),
+    ),
+];
+
 const preview: Preview = {
   tags: ["autodocs"],
   parameters: {
@@ -33,29 +80,6 @@ const preview: Preview = {
         ],
       },
     },
-  },
-  argTypes: {
-    children: { table: { category: "Content" } },
-    title: { table: { category: "Content" } },
-    description: { table: { category: "Content" } },
-    eyebrow: { table: { category: "Content" } },
-    headline: { table: { category: "Content" } },
-    image: { table: { category: "Media" } },
-    imageAlt: { table: { category: "Accessibility" } },
-    imageCaption: { table: { category: "Media" } },
-    variant: { table: { category: "Appearance" } },
-    size: { table: { category: "Appearance" } },
-    tone: { table: { category: "Appearance" } },
-    className: { table: { category: "Appearance" } },
-    disabled: { table: { category: "State" } },
-    open: { table: { category: "State" } },
-    isStreaming: { table: { category: "State" } },
-    error: { table: { category: "State" } },
-    currentPath: { table: { category: "Navigation" } },
-    onClick: { table: { category: "Events" } },
-    onChange: { table: { category: "Events" } },
-    onSubmit: { table: { category: "Events" } },
-    onNavigate: { table: { category: "Events" } },
   },
 };
 

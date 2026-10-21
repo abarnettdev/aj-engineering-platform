@@ -652,3 +652,154 @@
   font-style: italic;
   font-weight: 500;
 }
+
+.seasonal-detail {
+  --seasonal-orange: var(--accent);
+  --seasonal-orange-dark: color-mix(
+    in oklab,
+    var(--accent-ink) 78%,
+    var(--ink)
+  );
+  --seasonal-face: var(--ink);
+  --seasonal-stem: var(--success);
+  --seasonal-brown: color-mix(
+    in oklab,
+    var(--oxblood-muted) 58%,
+    var(--accent)
+  );
+  --seasonal-turkey-tail: color-mix(
+    in oklab,
+    var(--seasonal-brown) 72%,
+    var(--accent)
+  );
+  --seasonal-turkey-body: var(--seasonal-brown);
+  --seasonal-turkey-head: color-mix(
+    in oklab,
+    var(--seasonal-brown) 78%,
+    var(--ivory)
+  );
+  --seasonal-turkey-dark: color-mix(
+    in oklab,
+    var(--seasonal-brown) 72%,
+    var(--ink)
+  );
+  --seasonal-beak: var(--accent);
+  --seasonal-wattle: var(--oxblood);
+  --seasonal-blue: oklch(0.52 0.14 246);
+  --seasonal-green: var(--success);
+  --seasonal-firework-main: var(--accent);
+  --seasonal-firework-accent: var(--seasonal-blue);
+  --seasonal-firework-core: var(--ink);
+  --seasonal-detail-stroke: color-mix(in oklab, currentColor 70%, var(--ink));
+  color: var(--ink);
+}
+.seasonal-detail[data-season="default"] {
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+}
+.seasonal-detail[data-season="christmas"] {
+  color: var(--seasonal-blue);
+}
+.seasonal-detail[data-season="valentine"] {
+  color: var(--oxblood);
+}
+.seasonal-detail[data-season="st-patrick"] {
+  color: var(--success);
+}
+.seasonal-detail[data-season="memorial-day"] {
+  color: var(--graphite);
+}
+.seasonal-detail svg {
+  filter: drop-shadow(0 1px 1px oklch(0.2 0 0 / 20%));
+  transform-origin: center;
+}
+
+.group:hover .seasonal-pumpkin {
+  transform: translateY(1px) rotate(-4deg) scale(0.96);
+}
+.group:hover .seasonal-turkey {
+  transform: rotate(7deg) scale(1.03);
+}
+.group:hover .seasonal-snowflake {
+  animation: seasonal-turn 600ms ease-out 1;
+}
+.group:hover .seasonal-heart {
+  animation: seasonal-pulse 480ms ease-out 1;
+}
+.group:hover .seasonal-firework-burst {
+  animation: seasonal-burst 720ms cubic-bezier(0.22, 1, 0.36, 1) 1;
+}
+.group:hover .seasonal-clover,
+.group:hover .seasonal-star,
+.group:hover .seasonal-craft {
+  transform: rotate(10deg);
+}
+.group:hover .seasonal-sprout {
+  transform: translateY(-2px);
+}
+.seasonal-pumpkin,
+.seasonal-turkey,
+.seasonal-clover,
+.seasonal-star,
+.seasonal-craft,
+.seasonal-sprout {
+  transition:
+    transform 240ms ease,
+    opacity 240ms ease;
+}
+.seasonal-firework-burst {
+  animation: seasonal-burst 900ms cubic-bezier(0.22, 1, 0.36, 1) 1;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.seasonal-flag-cloth {
+  animation: seasonal-flag-wave 2.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: left center;
+}
+
+@keyframes seasonal-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes seasonal-pulse {
+  50% {
+    transform: scale(1.16);
+  }
+}
+@keyframes seasonal-burst {
+  from {
+    opacity: 0.2;
+    transform: scale(0.25) rotate(-14deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.08) rotate(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes seasonal-flag-wave {
+  0%,
+  100% {
+    transform: skewY(0deg) scaleX(1);
+  }
+  50% {
+    transform: skewY(-2deg) scaleX(0.96);
+  }
+}
+
+.audit-score-ring {
+  stroke-dasharray: var(--audit-score) 100;
+  animation: audit-score-reveal 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes audit-score-reveal {
+  from {
+    stroke-dasharray: 0 100;
+  }
+}

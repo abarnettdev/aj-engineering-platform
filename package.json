@@ -16,7 +16,8 @@
     "build:app": "vite build",
     "check": "bun run typecheck && bun run test:smoke",
     "test:smoke": "node --test scripts/smoke.test.mjs",
-    "test:design-system": "bun test scripts/design-system.test.tsx"
+    "test:design-system": "bun test scripts/design-system.test.tsx",
+    "test:seasonal": "bun test scripts/seasonal-details.test.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
