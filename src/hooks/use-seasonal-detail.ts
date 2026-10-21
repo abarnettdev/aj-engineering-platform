@@ -5,8 +5,8 @@ import {
   type SeasonalVariant,
 } from "@/lib/seasonal-details";
 
-export function useSeasonalDetail(): SeasonalVariant {
-  const [variant, setVariant] = useState<SeasonalVariant>("default");
+export function useSeasonalDetail(): SeasonalVariant | null {
+  const [variant, setVariant] = useState<SeasonalVariant | null>(null);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;

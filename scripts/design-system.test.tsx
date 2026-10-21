@@ -97,12 +97,20 @@ describe("public design-system contracts", () => {
     expect(html).toContain('aria-hidden="true"');
     expect(html).toContain("pointer-events-none");
     expect(html).toContain('data-season="halloween"');
-    expect(html).toContain("seasonal-pumpkin");
+    expect(html).toContain("/images/seasonal/halloween.webp");
+    expect(html).toContain("seasonal-art--halloween");
   });
 
   test("the default seasonal monogram keeps AJ", () => {
     const html = renderToStaticMarkup(<SeasonalDetail variant="default" />);
     expect(html).toContain('data-season="default"');
     expect(html).toContain(">AJ<");
+  });
+
+  test("the server render reserves space without flashing the AJ monogram", () => {
+    const html = renderToStaticMarkup(<SeasonalDetail />);
+    expect(html).toContain('data-season="pending"');
+    expect(html).not.toContain("seasonal-monogram");
+    expect(html).not.toContain(">AJ<");
   });
 });
