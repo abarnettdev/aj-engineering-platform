@@ -32,7 +32,6 @@ export const QUALITY_AUDIT = {
   axe: {
     detectedIssues: 0,
     ruleset: "WCAG 2.1 AA",
-    bestPractices: false,
   },
 } as const;
 
@@ -194,17 +193,15 @@ export function AxeResults() {
           <div>
             <p className="text-3xl font-semibold text-ink">0 detected issues</p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              axe automated scan with the WCAG 2.1 AA ruleset selected. Best
-              Practices was off. The scan reported zero critical, serious,
-              moderate, or minor issues.
+              axe automated scan with the WCAG 2.1 AA ruleset selected. The scan
+              reported zero critical, serious, moderate, or minor issues.
             </p>
           </div>
         </div>
-        <dl className="mt-7 grid gap-3 text-sm sm:grid-cols-2">
+        <dl className="mt-7 grid gap-3 text-sm sm:grid-cols-3">
           <ResultFact term="Test date" detail={AUDIT_DATE} />
           <ResultFact term="Tested URL" detail={AUDIT_URL} />
           <ResultFact term="Automated ruleset" detail="WCAG 2.1 AA" />
-          <ResultFact term="Best Practices" detail="Off in the supplied scan" />
         </dl>
       </div>
       <EvidenceNote
