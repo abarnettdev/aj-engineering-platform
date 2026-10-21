@@ -10,13 +10,13 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contact AJ Barnett about product design, design systems, and senior software engineering roles.",
+          "Contact AJ Barnett about full-time roles, contract work, websites, applications, design systems, and practical AI integrations.",
       },
       { property: "og:title", content: "Contact · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "Open to product design, design systems, and senior software engineering opportunities.",
+          "Open to full-time design and engineering roles, focused contracts, and client software projects.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -29,24 +29,25 @@ function Contact() {
   return (
     <>
       <PageHero
-        eyebrow="Contact · Let's connect"
+        eyebrow="Contact"
         chapter="07"
         chapterLabel="END"
         image="/visuals/contact-studio.webp"
         imageAlt="The ajbarnett.tech recruiter contact form and Ask A.J. entry point displayed across laptop and phone."
-        imageCaption="Signal · Not noise"
+        imageCaption="Clear next steps"
         imageMeta="Available"
         headline={
           <>
-            Let's build
+            Tell me what
             <br />
-            <Accent>something worth it.</Accent>
+            <Accent>you need to build.</Accent>
           </>
         }
         description={
           <>
-            Product design, design systems, and senior software engineering
-            roles with teams shipping useful products for real people.
+            I am open to full-time roles, contract design or engineering work,
+            freelance websites and applications, design-system consulting, and
+            practical AI integrations.
           </>
         }
       />

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/work")({
       {
         property: "og:description",
         content:
-          "AI product engineering, frontend platforms, and enterprise systems, the decisions behind the ship.",
+          "The problems, contributions, results, and limits behind AJ Barnett's product and engineering work.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -266,17 +266,16 @@ function Work() {
         imageMeta="Est. 2001"
         headline={
           <>
-            The decisions
+            The work
             <br />
-            <Accent>behind the ship.</Accent>
+            <Accent>and what it solved.</Accent>
           </>
         }
         description={
           <>
-            AI-powered software, frontend platforms, regulated fintech, agency
-            systems, and Fortune 500 design systems. Each case reads the same
-            way: Challenge, Role, Approach, Impact, Lessons. Judgment first,
-            artifacts second.
+            Product design, client websites, financial applications, enterprise
+            design systems, and a working AI assistant. Each case explains the
+            problem, my contribution, the result, and what remains limited.
           </>
         }
       />
@@ -295,9 +294,9 @@ function Work() {
               End of the case studies
             </p>
             <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] tracking-tight text-ink md:text-5xl">
-              The rest of the story{" "}
+              See how the work evolved{" "}
               <span className="font-accent italic normal-case text-accent-ink">
-                lives in the journey.
+                across my career.
               </span>
             </h2>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -306,7 +305,7 @@ function Work() {
                   to="/timeline"
                   className="group tactile inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-background transition-all hover:bg-accent hover:text-white"
                 >
-                  Walk the timeline
+                  Read the career story
                   <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
               </Magnetic>

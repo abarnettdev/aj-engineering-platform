@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { SeasonalDetail } from "@/components/seasonal-detail";
 
 const navigation = [
   { to: "/work", label: "Work" },
@@ -44,12 +45,7 @@ export function SiteNav() {
           to="/"
           className="group flex min-w-0 items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
-          <span
-            aria-hidden="true"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink font-display text-[12px] font-semibold tracking-[-0.04em] text-white transition-colors group-hover:bg-accent"
-          >
-            AJ
-          </span>
+          <SeasonalDetail />
           <span className="sr-only">AJ Barnett, home</span>
           <span
             aria-hidden="true"

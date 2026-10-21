@@ -10,6 +10,12 @@ import {
   TabsList,
   TabsTrigger,
 } from "../src/components/ui/tabs";
+import {
+  AxeResults,
+  AxeSummary,
+  ScoreRing,
+} from "../src/components/audit-results";
+import { SeasonalDetail } from "../src/components/seasonal-detail";
 
 describe("public design-system contracts", () => {
   test("button keeps native disabled semantics and a visible-focus class", () => {
@@ -62,5 +68,41 @@ describe("public design-system contracts", () => {
     expect(html).toContain('aria-selected="true"');
     expect(html).toContain('role="tabpanel"');
     expect(html).toContain("Overview content");
+  });
+
+  test("audit scores remain available as text", () => {
+    const html = renderToStaticMarkup(
+      <ScoreRing score={98} label="Performance" />,
+    );
+    expect(html).toContain(">98<");
+    expect(html).toContain("Performance");
+    expect(html).toContain('aria-hidden="true"');
+  });
+
+  test("axe evidence states the automated scope and limitation", () => {
+    const html = renderToStaticMarkup(<AxeResults />);
+    expect(html).toContain("0 detected issues");
+    expect(html).toContain("WCAG 2.1 AA");
+    expect(html).toContain("cannot prove WCAG");
+  });
+
+  test("the axe summary shares the verified audit run date", () => {
+    const html = renderToStaticMarkup(<AxeSummary />);
+    expect(html).toContain("axe: 0 detected issues");
+    expect(html).toContain("Last run October 20, 2026");
+  });
+
+  test("seasonal details stay decorative and ignore pointer input", () => {
+    const html = renderToStaticMarkup(<SeasonalDetail variant="halloween" />);
+    expect(html).toContain('aria-hidden="true"');
+    expect(html).toContain("pointer-events-none");
+    expect(html).toContain('data-season="halloween"');
+    expect(html).toContain("seasonal-pumpkin");
+  });
+
+  test("the default seasonal monogram keeps AJ", () => {
+    const html = renderToStaticMarkup(<SeasonalDetail variant="default" />);
+    expect(html).toContain('data-season="default"');
+    expect(html).toContain(">AJ<");
   });
 });

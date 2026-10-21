@@ -32,6 +32,11 @@ for (const path of [
       assert.match(html, /Product Designer &amp; Software Engineer/);
       assert.match(html, /From first concept to production code/);
       assert.doesNotMatch(html, /Ask A\.J\. is the portfolio proof/);
+      assert.match(html, /Built to be tested/);
+      assert.match(html, /October 20, 2026/);
+      assert.match(html, /View accessibility results/);
+      assert.match(html, /View Lighthouse scores/);
+      assert.doesNotMatch(html, /Targets 100 in Accessibility and SEO/);
     }
     if (path === "/work/legato") {
       assert.match(html, /Design decisions become shared infrastructure/);

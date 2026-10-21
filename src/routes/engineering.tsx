@@ -56,7 +56,7 @@ const supporting = [
   {
     n: "05",
     t: "Accessibility is product quality",
-    d: "WCAG 2.1 AA and Section 508 are the floor. Keyboard flow, focus visibility, and reduced motion are how a product respects the humans it was built for.",
+    d: "WCAG 2.2 AA and Section 508 requirements guide the implementation. Keyboard flow, focus visibility, and reduced motion are part of product quality.",
   },
   {
     n: "06",
@@ -91,9 +91,8 @@ function Engineering() {
         }
         description={
           <>
-            The operating system underneath the work, how I frame a problem,
-            name the risk, weigh the tradeoff, and treat AI as leverage without
-            ceding the last read.
+            How I frame a problem, name the risk, weigh the tradeoff, and use AI
+            without giving up engineering judgment.
           </>
         }
       />
@@ -189,11 +188,10 @@ function Engineering() {
                 AI-powered applications.
               </p>
               <p>
-                CDW and Legato remain important proof: AJ can lead enterprise
-                engineering initiatives, coordinate across product, design, QA,
-                and engineering, build reusable platforms, and operate at
-                organizational scale. Ask A.J. turns that foundation toward
-                modern AI product engineering.
+                My CDW and Legato work shows that I can lead enterprise
+                initiatives, coordinate across product, design, QA, and
+                engineering, and build reusable platforms. Ask A.J. applies that
+                foundation to a working AI product.
               </p>
             </div>
           </Reveal>
@@ -224,8 +222,8 @@ function Engineering() {
                 </h2>
               </div>
               <p className="max-w-lg text-[17px] leading-relaxed text-foreground/85 md:justify-self-end md:text-right">
-                Not a manifesto. Working principles, earned, re-tested, and
-                still useful after twenty-five years of shipping.
+                Working principles shaped by more than twenty years of design
+                and engineering work.
               </p>
             </div>
           </Reveal>
@@ -343,14 +341,14 @@ function Engineering() {
                 <div className="mt-10 max-w-xl space-y-6 text-[17px] leading-[1.7] text-foreground/90">
                   <p>
                     <strong className="font-semibold text-ink">
-                      WCAG 2.1 AA
+                      WCAG 2.2 AA
                     </strong>{" "}
                     and{" "}
                     <strong className="font-semibold text-ink">
                       Section 508
                     </strong>{" "}
-                    are the floor of what a product owes the humans using it,
-                    not a checklist to survive an audit.
+                    requirements shape how I design and build. Automated results
+                    are useful evidence, but they are not a conformance claim.
                   </p>
                   <p>
                     The ceiling is quality: keyboard-first flows, visible focus

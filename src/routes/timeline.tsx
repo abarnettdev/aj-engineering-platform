@@ -13,13 +13,13 @@ export const Route = createFileRoute("/timeline")({
       {
         name: "description",
         content:
-          "2001 to 2026. Not a résumé, a story of chasing problems across seven chapters, and the engineering mindset each one forged.",
+          "AJ Barnett's path from visual and web design to application engineering, enterprise systems, technical leadership, and applied AI.",
       },
       { property: "og:title", content: "Journey · AJ Barnett" },
       {
         property: "og:description",
         content:
-          "Seven chapters. Technologies came and went. The problems, and the judgment to solve them, compounded.",
+          "A career that began in design and grew through client work, financial software, enterprise systems, and applied AI.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,9 +101,10 @@ function Timeline() {
         }
         description={
           <>
-            Technologies expired. The problems didn't. Each chapter carries an
-            artifact, the tech that defined it, the lesson it taught, and the
-            mindset it forged.
+            I began with visual design and websites, moved into application
+            engineering, and later led enterprise frontend and design-system
+            work. Each chapter added new responsibility without leaving design
+            behind.
           </>
         }
       />
