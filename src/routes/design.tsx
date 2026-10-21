@@ -138,16 +138,16 @@ function ProductDesign() {
                 key={project.title}
                 className="grid gap-0 overflow-hidden rounded-3xl border border-border bg-card shadow-soft lg:grid-cols-[1.2fr_0.8fr]"
               >
-                <figure className="bg-surface">
+                <figure className="flex min-w-0 flex-col bg-surface">
                   <img
                     src={project.image}
                     alt={project.alt}
                     width="1440"
                     height="900"
                     loading={index === 0 ? "eager" : "lazy"}
-                    className="aspect-[16/10] h-full w-full object-cover object-top"
+                    className="aspect-[16/10] w-full shrink-0 object-cover object-top lg:min-h-0 lg:flex-1 lg:shrink lg:aspect-auto"
                   />
-                  <figcaption className="border-t border-border px-5 py-3 text-xs leading-relaxed text-muted-foreground">
+                  <figcaption className="shrink-0 border-t border-border px-5 py-3 text-xs leading-relaxed text-muted-foreground">
                     {project.note}
                   </figcaption>
                 </figure>
