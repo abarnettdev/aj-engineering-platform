@@ -654,142 +654,266 @@
 }
 
 .seasonal-detail {
-  --seasonal-orange: var(--accent);
-  --seasonal-orange-dark: color-mix(
-    in oklab,
-    var(--accent-ink) 78%,
-    var(--ink)
+  position: relative;
+  isolation: isolate;
+}
+.seasonal-detail[data-season="pending"] {
+  visibility: hidden;
+}
+.seasonal-monogram {
+  animation: seasonal-art-arrive 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.seasonal-art {
+  position: relative;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  perspective: 12rem;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 5px 5px oklch(0.18 0.02 35 / 22%));
+  animation: seasonal-art-arrive 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.seasonal-art::after {
+  position: absolute;
+  inset: 0.2rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    oklch(1 0 0 / 45%) 45%,
+    transparent 62%
   );
-  --seasonal-face: var(--ink);
-  --seasonal-stem: var(--success);
-  --seasonal-brown: color-mix(
-    in oklab,
-    var(--oxblood-muted) 58%,
-    var(--accent)
-  );
-  --seasonal-turkey-tail: color-mix(
-    in oklab,
-    var(--seasonal-brown) 72%,
-    var(--accent)
-  );
-  --seasonal-turkey-body: var(--seasonal-brown);
-  --seasonal-turkey-head: color-mix(
-    in oklab,
-    var(--seasonal-brown) 78%,
-    var(--ivory)
-  );
-  --seasonal-turkey-dark: color-mix(
-    in oklab,
-    var(--seasonal-brown) 72%,
-    var(--ink)
-  );
-  --seasonal-beak: var(--accent);
-  --seasonal-wattle: var(--oxblood);
-  --seasonal-blue: oklch(0.52 0.14 246);
-  --seasonal-green: var(--success);
-  --seasonal-firework-main: var(--accent);
-  --seasonal-firework-accent: var(--seasonal-blue);
-  --seasonal-firework-core: var(--ink);
-  --seasonal-detail-stroke: color-mix(in oklab, currentColor 70%, var(--ink));
-  color: var(--ink);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-70%) rotate(-12deg);
 }
-.seasonal-detail[data-season="default"] {
-  border-radius: 999px;
-  background: var(--ink);
-  color: white;
-}
-.seasonal-detail[data-season="christmas"] {
-  color: var(--seasonal-blue);
-}
-.seasonal-detail[data-season="valentine"] {
-  color: var(--oxblood);
-}
-.seasonal-detail[data-season="st-patrick"] {
-  color: var(--success);
-}
-.seasonal-detail[data-season="memorial-day"] {
-  color: var(--graphite);
-}
-.seasonal-detail svg {
-  filter: drop-shadow(0 1px 1px oklch(0.2 0 0 / 20%));
+.seasonal-art-image {
+  grid-area: 1 / 1;
+  width: 2.7rem;
+  height: 2.7rem;
+  object-fit: contain;
+  user-select: none;
   transform-origin: center;
-}
-
-.group:hover .seasonal-pumpkin {
-  transform: translateY(1px) rotate(-4deg) scale(0.96);
-}
-.group:hover .seasonal-turkey {
-  transform: rotate(7deg) scale(1.03);
-}
-.group:hover .seasonal-snowflake {
-  animation: seasonal-turn 600ms ease-out 1;
-}
-.group:hover .seasonal-heart {
-  animation: seasonal-pulse 480ms ease-out 1;
-}
-.group:hover .seasonal-firework-burst {
-  animation: seasonal-burst 720ms cubic-bezier(0.22, 1, 0.36, 1) 1;
-}
-.group:hover .seasonal-clover,
-.group:hover .seasonal-star,
-.group:hover .seasonal-craft {
-  transform: rotate(10deg);
-}
-.group:hover .seasonal-sprout {
-  transform: translateY(-2px);
-}
-.seasonal-pumpkin,
-.seasonal-turkey,
-.seasonal-clover,
-.seasonal-star,
-.seasonal-craft,
-.seasonal-sprout {
+  transform-style: preserve-3d;
   transition:
-    transform 240ms ease,
-    opacity 240ms ease;
+    opacity 360ms ease,
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 360ms ease;
 }
-.seasonal-firework-burst {
-  animation: seasonal-burst 900ms cubic-bezier(0.22, 1, 0.36, 1) 1;
-  transform-box: fill-box;
-  transform-origin: center;
+.seasonal-art-image--secondary {
+  opacity: 0;
+  transform: rotateY(-78deg) scale(0.72);
 }
-.seasonal-flag-cloth {
-  animation: seasonal-flag-wave 2.8s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: left center;
+.seasonal-detail--preview .seasonal-art {
+  width: 5rem;
+  height: 5rem;
+}
+.seasonal-detail--preview .seasonal-art-image {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+.seasonal-art--halloween .seasonal-art-image--primary {
+  animation: seasonal-haunt 4s ease-in-out infinite;
+}
+.seasonal-art--earth-day .seasonal-art-image--primary {
+  animation: seasonal-earth-float 5s ease-in-out infinite;
+}
+.seasonal-art--independence-day .seasonal-art-image--primary {
+  animation: seasonal-fireworks-breathe 3.6s ease-in-out infinite;
+}
+.seasonal-art--new-year::after,
+.seasonal-art--christmas::after {
+  animation: seasonal-shine 2.4s 500ms ease-out 1;
+}
+.seasonal-art--memorial-day,
+.seasonal-art--september-11 {
+  filter: drop-shadow(0 3px 4px oklch(0.18 0.02 35 / 18%));
+  animation: none;
+}
+.group:hover .seasonal-art--halloween .seasonal-art-image--primary {
+  animation: seasonal-pumpkin-pop 720ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--new-year .seasonal-art-image--primary {
+  animation: seasonal-clock-celebrate 850ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--valentine .seasonal-art-image--primary {
+  animation: seasonal-heartbeat 720ms ease-out 1;
+}
+.group:hover .seasonal-art--st-patrick .seasonal-art-image--primary {
+  animation: seasonal-clover-flip 850ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--earth-day .seasonal-art-image--primary {
+  animation: seasonal-earth-orbit 900ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--independence-day .seasonal-art-image--primary {
+  animation: seasonal-fireworks-pop 780ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--labor-day .seasonal-art-image--primary {
+  animation: seasonal-tool-tilt 720ms cubic-bezier(0.16, 1, 0.3, 1) 1;
+}
+.group:hover .seasonal-art--christmas .seasonal-art-image--primary {
+  animation: seasonal-bell-ring 760ms ease-in-out 1;
+}
+.group:hover .seasonal-art--autumn .seasonal-art-image--primary {
+  opacity: 0;
+  transform: rotateY(78deg) scale(0.72);
+}
+.group:hover .seasonal-art--autumn .seasonal-art-image--secondary {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1.04);
+}
+.group:hover .seasonal-art::after {
+  animation: seasonal-shine 800ms ease-out 1;
 }
 
-@keyframes seasonal-turn {
-  to {
-    transform: rotate(360deg);
-  }
-}
-@keyframes seasonal-pulse {
-  50% {
-    transform: scale(1.16);
-  }
-}
-@keyframes seasonal-burst {
+@keyframes seasonal-art-arrive {
   from {
-    opacity: 0.2;
-    transform: scale(0.25) rotate(-14deg);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.08) rotate(2deg);
+    opacity: 0;
+    transform: translateY(4px) rotateX(-18deg) scale(0.78);
   }
   to {
     opacity: 1;
-    transform: scale(1) rotate(0);
+    transform: translateY(0) rotateX(0deg) scale(1);
   }
 }
-@keyframes seasonal-flag-wave {
+@keyframes seasonal-shine {
+  0% {
+    opacity: 0;
+    transform: translateX(-75%) rotate(-12deg);
+  }
+  35% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(75%) rotate(-12deg);
+  }
+}
+@keyframes seasonal-haunt {
   0%,
   100% {
-    transform: skewY(0deg) scaleX(1);
+    transform: translateY(0) rotate(-1deg);
   }
   50% {
-    transform: skewY(-2deg) scaleX(0.96);
+    transform: translateY(-2px) rotate(1.5deg);
+  }
+}
+@keyframes seasonal-pumpkin-pop {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0) scale(1);
+  }
+  38% {
+    transform: translateY(-6px) rotate(-7deg) scale(1.13);
+  }
+  68% {
+    transform: translateY(1px) rotate(4deg) scale(0.98);
+  }
+}
+@keyframes seasonal-clock-celebrate {
+  0%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  35% {
+    transform: rotate(-10deg) scale(1.14);
+  }
+  68% {
+    transform: rotate(7deg) scale(1.05);
+  }
+}
+@keyframes seasonal-heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  24% {
+    transform: scale(1.16);
+  }
+  44% {
+    transform: scale(0.98);
+  }
+  64% {
+    transform: scale(1.1);
+  }
+}
+@keyframes seasonal-clover-flip {
+  0%,
+  100% {
+    transform: rotateY(0deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.12);
+  }
+}
+@keyframes seasonal-earth-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(2deg);
+  }
+}
+@keyframes seasonal-earth-orbit {
+  0%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.12);
+  }
+}
+@keyframes seasonal-fireworks-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: saturate(1);
+  }
+  50% {
+    transform: scale(1.04);
+    filter: saturate(1.18);
+  }
+}
+@keyframes seasonal-fireworks-pop {
+  0%,
+  100% {
+    transform: scale(1) rotate(0);
+  }
+  36% {
+    transform: scale(1.2) rotate(-5deg);
+  }
+  68% {
+    transform: scale(1.05) rotate(3deg);
+  }
+}
+@keyframes seasonal-tool-tilt {
+  0%,
+  100% {
+    transform: rotate(0) translateY(0);
+  }
+  40% {
+    transform: rotate(-8deg) translateY(-3px) scale(1.1);
+  }
+  70% {
+    transform: rotate(5deg) translateY(0);
+  }
+}
+@keyframes seasonal-bell-ring {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-8deg) scale(1.08);
+  }
+  50% {
+    transform: rotate(7deg) scale(1.08);
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.03);
   }
 }
 
